@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var speed = 400.0
 @export var jump_velocity = -400.0
 
+signal hit
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var double_jump_available = true
 var wall_slide_timer: float = 0.0
@@ -65,5 +67,7 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("run")   
 		else:
 			$AnimatedSprite2D.play("idle")  
-
 	move_and_slide()
+func die():
+	CharacterBody2D.global_position = Marker2D.global_position
+	

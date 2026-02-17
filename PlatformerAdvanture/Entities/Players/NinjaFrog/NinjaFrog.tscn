@@ -349,10 +349,10 @@ scale = Vector2(2, 2)
 script = ExtResource("1_vgdbb")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_62utx")
-animation = &"idle"
+animation = &"doublejump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
