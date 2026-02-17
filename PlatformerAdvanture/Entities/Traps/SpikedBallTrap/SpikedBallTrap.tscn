@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://b37tktlyaroc4"]
 
-[ext_resource type="Script" uid="uid://dw14iccai2ksv" path="res://pivot.gd" id="1_eoys1"]
-[ext_resource type="Script" uid="uid://c4a42nswxuv0q" path="res://spiked_ball_trap.gd" id="1_n4b56"]
+[ext_resource type="Script" uid="uid://dw14iccai2ksv" path="res://Entities/Traps/SpikedBallTrap/pivot.gd" id="1_eoys1"]
+[ext_resource type="Script" uid="uid://c4a42nswxuv0q" path="res://Entities/Traps/SpikedBallTrap/spiked_ball_trap.gd" id="1_n4b56"]
 [ext_resource type="Texture2D" uid="uid://cmxudq3sxab43" path="res://Assets/Textures/Traps/Spiked Ball/Chain.png" id="1_okdjn"]
 [ext_resource type="Texture2D" uid="uid://cb3sbwsntii4k" path="res://Assets/Textures/Traps/Spiked Ball/Spiked Ball.png" id="2_eoys1"]
-[ext_resource type="Script" uid="uid://b2bshcd4v0w4d" path="res://ball.gd" id="3_24ysb"]
+[ext_resource type="Script" uid="uid://w3af3m71wt0o" path="res://Entities/Traps/SpikedBallTrap/chain.gd" id="4_ouv43"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_24ysb"]
 radius = 20.0998
@@ -21,11 +21,11 @@ texture_repeat = 2
 points = PackedVector2Array(0, 0, 0, 90)
 texture = ExtResource("1_okdjn")
 texture_mode = 1
+script = ExtResource("4_ouv43")
 
 [node name="Ball" type="Area2D" parent="Pivot"]
 texture_filter = 1
 position = Vector2(-1, 109)
-script = ExtResource("3_24ysb")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot/Ball"]

@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var spawn_marker = $SpawnPoint
-@onready var player = $ninjafrog 
+@onready var player = $Player
 
 func _ready() -> void:
 	if player and spawn_marker:

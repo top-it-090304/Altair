@@ -2,12 +2,12 @@ extends CharacterBody2D
 
 @export var speed = 400.0
 @export var jump_velocity = -400.0
-
-signal hit
+@onready var spawn_point: Marker2D = get_parent().get_node("SpawnPoint")
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var double_jump_available = true
 var wall_slide_timer: float = 0.0
+var is_dead := false
 const wall_hold_time: float = 1.0
 const wall_slide_time: float = 4.0
 const slide_speed: float = 100
@@ -68,6 +68,18 @@ func _physics_process(delta):
 		else:
 			$AnimatedSprite2D.play("idle")  
 	move_and_slide()
-func die():
-	CharacterBody2D.global_position = Marker2D.global_position
 	
+func hit():
+	if is_dead:
+		return
+	is_dead = true
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+	$CollisionShape2D.set_deferred("disabled", true) 
+	$AnimatedSprite2D.play("hit")
+	await get_tree().create_timer(1.0).timeout
+	die()
+	
+func die():
+	if get_tree():                                     
+		get_tree().reload_current_scene()
