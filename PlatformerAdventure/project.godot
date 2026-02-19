@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.4", "Mobile")
 window/size/viewport_width=720
 window/size/viewport_height=480
 
+[global_group]
+
+player=""
+
 [input]
 
 move_up={

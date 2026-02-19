@@ -345,7 +345,7 @@ radius = 11.0
 height = 24.0
 
 [node name="ninjafrog" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(2, 2)
+scale = Vector2(1.7, 1.7)
 script = ExtResource("1_vgdbb")
 metadata/_edit_group_ = true
 

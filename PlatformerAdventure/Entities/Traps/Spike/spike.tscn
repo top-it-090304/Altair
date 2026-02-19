@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjr7uja7ap7yf"]
+[gd_scene load_steps=4 format=3 uid="uid://bhayftv1kvke6"]
 
-[ext_resource type="Script" uid="uid://djyhep0lvuh4e" path="res://Entities/Traps/Spike/spike.gd" id="1_7k7bx"]
 [ext_resource type="Texture2D" uid="uid://yuwf5al2lqxy" path="res://Assets/Textures/Traps/Spikes/Idle.png" id="2_tggh8"]
+
+[sub_resource type="GDScript" id="GDScript_iaj8d"]
+script/source = "extends Area2D
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"player\"):
+		body.hit()
+		
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sso0"]
 size = Vector2(15, 12)
 
 [node name="spike" type="Area2D"]
 position = Vector2(111, 445)
-script = ExtResource("1_7k7bx")
+script = SubResource("GDScript_iaj8d")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
