@@ -1177,7 +1177,7 @@ position = Vector2(9, -7)
 texture = ExtResource("4_l4j0s")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("5_3q646")]
-position = Vector2(-250, 117)
+position = Vector2(-185, 118)
 
 [node name="spike" parent="." instance=ExtResource("6_07q1j")]
 position = Vector2(-67, 192)
