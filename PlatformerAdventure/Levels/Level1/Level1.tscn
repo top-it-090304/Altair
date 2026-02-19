@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://blwiofsi31xvj"]
+[gd_scene load_steps=11 format=4 uid="uid://blwiofsi31xvj"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level1/Level1.gd" id="1_olbyf"]
 [ext_resource type="Texture2D" uid="uid://dj8de7ehugdnm" path="res://Assets/Textures/Background/Pink.png" id="2_a1y0i"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="4_b1g7e"]
 [ext_resource type="PackedScene" uid="uid://csj274ngayvn7" path="res://Entities/Players/NinjaFrog/NinjaFrog.tscn" id="5_7ouqh"]
 [ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="6_e1uqi"]
-[ext_resource type="PackedScene" uid="uid://bjr7uja7ap7yf" path="res://Entities/Traps/Spike/spike.tscn" id="7_a1y0i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0pq"]
 texture = ExtResource("2_a1y0i")
@@ -578,9 +577,6 @@ rotation_mode = 1
 
 [node name="Chain" parent="SpikedBallTrap3/Pivot" index="0"]
 chain_length = 60.0
-
-[node name="spike" parent="." instance=ExtResource("7_a1y0i")]
-position = Vector2(-87, 184)
 
 [editable path="SpikedBallTrap"]
 [editable path="SpikedBallTrap4"]

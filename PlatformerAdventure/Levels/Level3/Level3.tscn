@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://c8h6n6c2qavgu"]
+[gd_scene load_steps=10 format=4 uid="uid://c8h6n6c2qavgu"]
 
 [ext_resource type="Texture2D" uid="uid://byvxidmfjtjfa" path="res://Assets/Textures/Background/Green.png" id="1_osmeb"]
 [ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="2_o2r2v"]
 [ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="3_o2r2v"]
 [ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="4_tlbnf"]
+[ext_resource type="PackedScene" uid="uid://syd6r3uiupkp" path="res://Entities/Traps/Cube/cube.tscn" id="5_0w36y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlbnf"]
 texture = ExtResource("1_osmeb")
@@ -339,10 +340,23 @@ position = Vector2(528, 388)
 [node name="SpikedBallTrap" parent="." instance=ExtResource("4_tlbnf")]
 position = Vector2(273, 335)
 
+[node name="Pivot" parent="SpikedBallTrap" index="0"]
+position = Vector2(-2, 1)
+metadata/_edit_group_ = true
+
 [node name="Chain" parent="SpikedBallTrap/Pivot" index="0"]
 chain_length = 45.0
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(529, 390)
+
+[node name="Cube" parent="." instance=ExtResource("5_0w36y")]
+position = Vector2(104, 393)
+
+[node name="Cube2" parent="." instance=ExtResource("5_0w36y")]
+position = Vector2(303, 74)
+
+[node name="Cube3" parent="." instance=ExtResource("5_0w36y")]
+position = Vector2(628, 246)
 
 [editable path="SpikedBallTrap"]

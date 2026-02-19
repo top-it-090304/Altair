@@ -341,11 +341,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxa28"]
-radius = 20.0
-height = 50.0002
+radius = 17.0001
+height = 42.0002
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(707, 458)
+position = Vector2(714, 458)
 rotation = 2.35619
 script = ExtResource("1_dl81w")
 metadata/_edit_group_ = true
@@ -354,9 +354,9 @@ metadata/_edit_group_ = true
 texture_filter = 1
 position = Vector2(0.236979, -0.330986)
 rotation = -2.35619
-scale = Vector2(2, 2.031)
+scale = Vector2(1.7, 1.726)
 sprite_frames = SubResource("SpriteFrames_dk10w")
-animation = &"doublejump"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4.24268, -5.65686)

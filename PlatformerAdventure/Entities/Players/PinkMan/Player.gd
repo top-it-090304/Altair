@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed = 400.0
-@export var jump_velocity = -400.0
+@export var speed = 300.0
+@export var jump_velocity = -350.0
 @onready var spawn_point: Marker2D = get_parent().get_node("SpawnPoint")
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

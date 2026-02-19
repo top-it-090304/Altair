@@ -346,7 +346,7 @@ height = 26.0
 
 [node name="virtualguy" type="CharacterBody2D"]
 position = Vector2(10, -5)
-scale = Vector2(2, 2)
+scale = Vector2(1.7, 1.7)
 script = ExtResource("1_14bb7")
 metadata/_edit_group_ = true
 
@@ -355,9 +355,6 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0ahki")
 animation = &"walljump"
 offset = Vector2(1, 1)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 5)
