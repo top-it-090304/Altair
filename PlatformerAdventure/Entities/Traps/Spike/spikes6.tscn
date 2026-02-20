@@ -5,11 +5,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rd0f0"]
 resource_local_to_scene = true
+size = Vector2(47, 11)
 
 [node name="Area2D" type="Area2D"]
 position = Vector2(1, 3)
 script = ExtResource("1_rd0f0")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -30,7 +30,7 @@ scale = Vector2(1, 1.5)
 texture = ExtResource("2_0xph0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(18.5, 3)
+position = Vector2(18.5, 2.5)
 shape = SubResource("RectangleShape2D_rd0f0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

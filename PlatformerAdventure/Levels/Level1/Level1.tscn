@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://blwiofsi31xvj"]
+[gd_scene load_steps=14 format=4 uid="uid://blwiofsi31xvj"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level1/Level1.gd" id="1_olbyf"]
 [ext_resource type="Texture2D" uid="uid://dj8de7ehugdnm" path="res://Assets/Textures/Background/Pink.png" id="2_a1y0i"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="4_b1g7e"]
 [ext_resource type="PackedScene" uid="uid://csj274ngayvn7" path="res://Entities/Players/NinjaFrog/NinjaFrog.tscn" id="5_7ouqh"]
 [ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="6_e1uqi"]
+[ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="7_a1y0i"]
+[ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="8_b1g7e"]
+[ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="9_7ouqh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0pq"]
 texture = ExtResource("2_a1y0i")
@@ -543,44 +546,76 @@ texture = ExtResource("4_b1g7e")
 
 [node name="Player" parent="." instance=ExtResource("5_7ouqh")]
 texture_filter = 1
-position = Vector2(25, 84)
+position = Vector2(-231, 57)
 
-[node name="SpikedBallTrap" parent="." groups=["player"] instance=ExtResource("6_e1uqi")]
-position = Vector2(-15, 42)
-metadata/_edit_group_ = true
+[node name="Traps" type="Node2D" parent="."]
 
-[node name="Chain" parent="SpikedBallTrap/Pivot" index="0"]
-chain_length = 100.0
+[node name="SpikedBallTrap3" parent="Traps" groups=["player"] instance=ExtResource("6_e1uqi")]
+position = Vector2(207, -105)
 
-[node name="SpikedBallTrap4" parent="." groups=["player"] instance=ExtResource("6_e1uqi")]
-position = Vector2(2, -182)
+[node name="Pivot" parent="Traps/SpikedBallTrap3" index="0"]
+rotation_mode = 1
 
-[node name="Chain" parent="SpikedBallTrap4/Pivot" index="0"]
-position = Vector2(-1, 0)
-points = PackedVector2Array(0, 0, 0, 54.3115, 0, 90)
-chain_length = 90.0
+[node name="Chain" parent="Traps/SpikedBallTrap3/Pivot" index="0"]
+chain_length = 60.0
 
-[node name="SpikedBallTrap2" parent="." groups=["player"] instance=ExtResource("6_e1uqi")]
+[node name="SpikedBallTrap2" parent="Traps" groups=["player"] instance=ExtResource("6_e1uqi")]
 position = Vector2(193, 57)
 
-[node name="Pivot" parent="SpikedBallTrap2" index="0"]
+[node name="Pivot" parent="Traps/SpikedBallTrap2" index="0"]
 position = Vector2(0, 15)
 rotation_mode = 1
 metadata/_edit_group_ = true
 
-[node name="Chain" parent="SpikedBallTrap2/Pivot" index="0"]
+[node name="Chain" parent="Traps/SpikedBallTrap2/Pivot" index="0"]
 chain_length = 60.0
 
-[node name="SpikedBallTrap3" parent="." groups=["player"] instance=ExtResource("6_e1uqi")]
-position = Vector2(207, -105)
+[node name="SpikedBallTrap4" parent="Traps" groups=["player"] instance=ExtResource("6_e1uqi")]
+position = Vector2(2, -182)
 
-[node name="Pivot" parent="SpikedBallTrap3" index="0"]
-rotation_mode = 1
+[node name="Chain" parent="Traps/SpikedBallTrap4/Pivot" index="0"]
+position = Vector2(-1, 0)
+points = PackedVector2Array(0, 0, 0, 54.3115, 0, 90)
+chain_length = 90.0
 
-[node name="Chain" parent="SpikedBallTrap3/Pivot" index="0"]
-chain_length = 60.0
+[node name="SpikedBallTrap" parent="Traps" groups=["player"] instance=ExtResource("6_e1uqi")]
+position = Vector2(-15, 42)
+metadata/_edit_group_ = true
 
-[editable path="SpikedBallTrap"]
-[editable path="SpikedBallTrap4"]
-[editable path="SpikedBallTrap2"]
-[editable path="SpikedBallTrap3"]
+[node name="Chain" parent="Traps/SpikedBallTrap/Pivot" index="0"]
+chain_length = 100.0
+
+[node name="apple" parent="Traps" instance=ExtResource("7_a1y0i")]
+position = Vector2(-67, 108)
+
+[node name="apple2" parent="Traps" instance=ExtResource("7_a1y0i")]
+position = Vector2(-46, 88)
+
+[node name="apple3" parent="Traps" instance=ExtResource("7_a1y0i")]
+position = Vector2(19, 89)
+
+[node name="apple4" parent="Traps" instance=ExtResource("7_a1y0i")]
+position = Vector2(-11, 77)
+
+[node name="apple5" parent="Traps" instance=ExtResource("7_a1y0i")]
+position = Vector2(42, 115)
+
+[node name="banana" parent="Traps" instance=ExtResource("8_b1g7e")]
+position = Vector2(-223, -93)
+
+[node name="banana2" parent="Traps" instance=ExtResource("8_b1g7e")]
+position = Vector2(-184, -93)
+
+[node name="banana3" parent="Traps" instance=ExtResource("8_b1g7e")]
+position = Vector2(-148, -92)
+
+[node name="banana4" parent="Traps" instance=ExtResource("8_b1g7e")]
+position = Vector2(-111, -93)
+
+[node name="melon" parent="Traps" instance=ExtResource("9_7ouqh")]
+position = Vector2(208, -136)
+
+[editable path="Traps/SpikedBallTrap3"]
+[editable path="Traps/SpikedBallTrap2"]
+[editable path="Traps/SpikedBallTrap4"]
+[editable path="Traps/SpikedBallTrap"]
