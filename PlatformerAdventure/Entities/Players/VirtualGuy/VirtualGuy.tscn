@@ -344,7 +344,7 @@ animations = [{
 radius = 11.0
 height = 26.0
 
-[node name="virtualguy" type="CharacterBody2D"]
+[node name="virtualguy" type="CharacterBody2D" groups=["player"]]
 position = Vector2(10, -5)
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_14bb7")
