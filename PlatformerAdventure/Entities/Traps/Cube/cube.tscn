@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dwmv5jaxinvgc" path="res://Assets/Textures/Traps/Rock Head/Top Hit (42x42).png" id="6_yyp5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_loavm"]
-size = Vector2(48, 47)
+size = Vector2(48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4w3w1"]
 atlas = ExtResource("1_gk7ba")
@@ -199,7 +199,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Cube" type="CharacterBody2D"]
+[node name="Cube" type="AnimatableBody2D"]
+sync_to_physics = false
 script = ExtResource("1_ms13l")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -208,7 +209,6 @@ shape = SubResource("RectangleShape2D_loavm")
 [node name="CrushCheck" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrushCheck"]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_loavm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

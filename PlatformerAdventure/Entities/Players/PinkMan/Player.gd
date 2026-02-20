@@ -16,6 +16,8 @@ var is_hanging = false
 
 func _physics_process(delta):
 	
+	var platform_vel = get_platform_velocity()
+		
 	if is_on_wall() and not is_on_floor() and Input.get_axis("move_left", "move_right"):
 		is_hanging = true
 		if wall_slide_timer < wall_hold_time:
@@ -34,9 +36,13 @@ func _physics_process(delta):
 			
 	if not is_on_floor() and not is_hanging:
 		velocity.y += gravity * delta
+		
 	if is_on_floor():
 		double_jump_available = true
-	
+		if platform_vel.y < 0:
+			velocity.y = platform_vel.y	
+		elif platform_vel.y > 0:
+			velocity.y = platform_vel.y
 	if Input.is_action_just_pressed("move_up"):
 		if is_on_floor():
 			velocity.y = jump_velocity
@@ -46,10 +52,10 @@ func _physics_process(delta):
 
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
-		velocity.x = direction * speed
+		velocity.x = direction * speed + platform_vel.x
 		$AnimatedSprite2D.flip_h = direction < 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.x = move_toward(velocity.x, platform_vel.x, speed)
 
 	if not is_on_floor():
 		if is_hanging:
@@ -69,6 +75,26 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("idle")  
 	move_and_slide()
 	
+func is_wall_in_direction(dir) -> bool:
+	var ray : RayCast2D
+	if dir.y < -0.5: 
+		ray = $RayCastUp
+	elif dir.y >  0.5: 
+		ray = $RayCastDown
+	elif dir.x < -0.5:
+		ray = $RayCastLeft
+	elif dir.x >  0.5:
+		ray = $RayCastRight
+	else: 
+		return false
+	ray.force_raycast_update()
+	
+	if not ray.is_colliding():
+		return false
+	
+	var check = ray.get_collider()
+	return check is StaticBody2D or check is TileMapLayer
+
 func hit():
 	if is_dead:
 		return

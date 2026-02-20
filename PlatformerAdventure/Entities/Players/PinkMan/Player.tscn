@@ -344,11 +344,10 @@ animations = [{
 radius = 17.0001
 height = 42.0002
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(714, 458)
 rotation = 2.35619
 script = ExtResource("1_dl81w")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -362,3 +361,15 @@ animation = &"idle"
 position = Vector2(4.24268, -5.65686)
 rotation = 0.785397
 shape = SubResource("CapsuleShape2D_hxa28")
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+target_position = Vector2(-13.4351, 13.4349)
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(21.2133, -21.2131)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(12.7279, 12.728)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(-13.435, -13.4351)
