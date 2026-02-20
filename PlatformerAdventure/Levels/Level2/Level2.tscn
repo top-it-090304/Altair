@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://blwiofsi31xvj"]
 
-[ext_resource type="Script" uid="uid://c6usdwm5e1p62" path="res://Levels/Level2/level2.gd" id="1_1jyof"]
+[ext_resource type="Script" uid="uid://c6usdwm5e1p62" path="res://Levels/Level4/level2.gd" id="1_1jyof"]
 [ext_resource type="Texture2D" uid="uid://eqnhicopj6xe" path="res://Assets/Textures/Background/Brown.png" id="2_0ys8i"]
 [ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_bgei7"]
 [ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="4_l4j0s"]
@@ -1175,5 +1175,5 @@ texture_filter = 1
 position = Vector2(9, -7)
 texture = ExtResource("4_l4j0s")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("5_3q646")]
+[node name="Player" parent="." instance=ExtResource("5_3q646")]
 position = Vector2(-185, 118)
