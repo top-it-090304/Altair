@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://blwiofsi31xvj"]
+[gd_scene load_steps=11 format=4 uid="uid://blwiofsi31xvj"]
 
 [ext_resource type="Script" uid="uid://c6usdwm5e1p62" path="res://Levels/Level4/level2.gd" id="1_1jyof"]
 [ext_resource type="Texture2D" uid="uid://eqnhicopj6xe" path="res://Assets/Textures/Background/Brown.png" id="2_0ys8i"]
 [ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_bgei7"]
 [ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="4_l4j0s"]
 [ext_resource type="PackedScene" uid="uid://dyds15vnjstj6" path="res://Entities/Players/VirtualGuy/VirtualGuy.tscn" id="5_3q646"]
+[ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="6_1jyof"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0pq"]
 texture = ExtResource("2_0ys8i")
@@ -1177,3 +1178,6 @@ texture = ExtResource("4_l4j0s")
 
 [node name="Player" parent="." instance=ExtResource("5_3q646")]
 position = Vector2(-185, 118)
+
+[node name="FireTrap" parent="." instance=ExtResource("6_1jyof")]
+position = Vector2(2, 151)
