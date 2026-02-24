@@ -181,7 +181,7 @@ animations = [{
 "speed": 16.0
 }]
 
-[node name="apple" type="Area2D"]
+[node name="apple" type="Area2D" groups=["fruits"]]
 script = ExtResource("1_krysu")
 metadata/_edit_group_ = true
 

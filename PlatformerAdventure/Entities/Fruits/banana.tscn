@@ -181,7 +181,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_tex6d"]
 radius = 6.08276
 
-[node name="banana" type="Area2D"]
+[node name="banana" type="Area2D" groups=["fruits"]]
 script = ExtResource("1_tecn2")
 metadata/_edit_group_ = true
 
