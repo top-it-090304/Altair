@@ -25,15 +25,15 @@ region = Rect2(48, 0, 16, 32)
 atlas = ExtResource("3_huagc")
 region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4kfsc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa6wx"]
 atlas = ExtResource("4_ykpqq")
 region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mc88v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpjjj"]
 atlas = ExtResource("4_ykpqq")
 region = Rect2(16, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ahelq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h83bk"]
 atlas = ExtResource("4_ykpqq")
 region = Rect2(32, 0, 16, 32)
 
@@ -66,13 +66,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4kfsc")
+"texture": SubResource("AtlasTexture_xa6wx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mc88v")
+"texture": SubResource("AtlasTexture_tpjjj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ahelq")
+"texture": SubResource("AtlasTexture_h83bk")
 }],
 "loop": true,
 "name": &"fire_on",
@@ -94,7 +94,7 @@ texture_filter = 1
 position = Vector2(0, 17)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_xjubx")
-animation = &"fire_hit"
+animation = &"fire_on"
 
 [node name="Area2D" type="Area2D" parent="."]
 
