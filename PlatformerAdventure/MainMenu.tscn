@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://co1ws314r8c86"]
+
+[ext_resource type="Script" uid="uid://bjdi8sxlppvp0" path="res://main_menu.gd" id="1_h7a2f"]
+[ext_resource type="Texture2D" uid="uid://c1el3ly4jdl76" path="res://Assets/Textures/Menu/IMG_1730.JPG" id="1_i26rj"]
+[ext_resource type="Texture2D" uid="uid://by2060u4ux78a" path="res://Assets/Textures/Menu/photo_2026-02-24_19-54-34.png" id="2_eiy7p"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_h7a2f")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_i26rj")
+expand_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 493.0
+offset_top = 577.0
+offset_right = 805.0
+offset_bottom = 697.0
+texture_normal = ExtResource("2_eiy7p")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
