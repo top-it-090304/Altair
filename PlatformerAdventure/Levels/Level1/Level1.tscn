@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://blwiofsi31xvj"]
+[gd_scene load_steps=17 format=4 uid="uid://blwiofsi31xvj"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_olbyf"]
 [ext_resource type="Texture2D" uid="uid://dj8de7ehugdnm" path="res://Assets/Textures/Background/Pink.png" id="2_a1y0i"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="7_a1y0i"]
 [ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="8_b1g7e"]
 [ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="9_7ouqh"]
+[ext_resource type="PackedScene" uid="uid://b1jblx5m8pguj" path="res://Entities/Traps/Spike/spikes6.tscn" id="10_4ipag"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/flag.tscn" id="10_7ouqh"]
+[ext_resource type="PackedScene" uid="uid://bhayftv1kvke6" path="res://Entities/Traps/Spike/spike.tscn" id="11_umoym"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0pq"]
 texture = ExtResource("2_a1y0i")
@@ -628,6 +630,12 @@ position = Vector2(288.667, -25.3333)
 
 [node name="melon3" parent="Traps" instance=ExtResource("9_7ouqh")]
 position = Vector2(192.667, 70)
+
+[node name="Area2D" parent="Traps" instance=ExtResource("10_4ipag")]
+position = Vector2(101.333, -56)
+
+[node name="spike" parent="Traps" instance=ExtResource("11_umoym")]
+position = Vector2(117.333, -56)
 
 [node name="Flag" parent="." instance=ExtResource("10_7ouqh")]
 position = Vector2(-45.3333, -80)

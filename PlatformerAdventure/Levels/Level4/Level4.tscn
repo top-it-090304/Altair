@@ -583,25 +583,25 @@ position = Vector2(330.667, 174.667)
 [node name="Fruits" type="Node2D" parent="."]
 
 [node name="apple2" parent="Fruits" instance=ExtResource("11_upge1")]
-position = Vector2(-13, 130)
+position = Vector2(-13.3333, 128)
 
 [node name="apple" parent="Fruits" instance=ExtResource("11_upge1")]
 position = Vector2(146, 178)
 
 [node name="apple3" parent="Fruits" instance=ExtResource("11_upge1")]
-position = Vector2(43, 132)
+position = Vector2(50.6667, 137.333)
 
 [node name="apple8" parent="Fruits" instance=ExtResource("11_upge1")]
-position = Vector2(15, 129)
+position = Vector2(17.3333, 137.333)
 
 [node name="apple7" parent="Fruits" instance=ExtResource("11_upge1")]
 position = Vector2(-3, 100)
 
 [node name="apple5" parent="Fruits" instance=ExtResource("11_upge1")]
-position = Vector2(70, 135)
+position = Vector2(78.6667, 130.667)
 
 [node name="apple4" parent="Fruits" instance=ExtResource("11_upge1")]
-position = Vector2(31, 106)
+position = Vector2(32, 105.333)
 
 [node name="banana" parent="Fruits" instance=ExtResource("11_pnqk5")]
 position = Vector2(-289, -94)
@@ -658,7 +658,7 @@ position = Vector2(212, -172)
 position = Vector2(177, -171)
 
 [node name="apple9" parent="Fruits" instance=ExtResource("11_upge1")]
-position = Vector2(59, 105)
+position = Vector2(60.6667, 100)
 
 [node name="apple6" parent="Fruits" instance=ExtResource("11_upge1")]
 position = Vector2(125, 179)
@@ -670,7 +670,7 @@ position = Vector2(312, 166)
 position = Vector2(312, 184)
 
 [node name="Flag" parent="." instance=ExtResource("14_mvgpy")]
-position = Vector2(-103.333, -47.3333)
+position = Vector2(280, -160)
 
 [connection signal="body_entered" from="Traps/spikes8" to="Player" method="_on_spikes_7_body_entered"]
 

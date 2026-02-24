@@ -37,4 +37,4 @@ func _on_fruit_collected():
 			flag.activate()
 			
 func _on_level_completed():
-	get_tree().change_scene_to_file(next_level_path)
+	get_tree().call_deferred("change_scene_to_file", next_level_path)
