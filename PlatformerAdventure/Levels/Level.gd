@@ -38,3 +38,7 @@ func _on_fruit_collected():
 			
 func _on_level_completed():
 	get_tree().call_deferred("change_scene_to_file", next_level_path)
+
+
+func _on_button_pressed() -> void:
+	get_tree().reload_current_scene()
