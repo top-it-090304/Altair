@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dxmc53wv1psbe"]
+[gd_scene load_steps=23 format=4 uid="uid://dxmc53wv1psbe"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_tp673"]
 [ext_resource type="Texture2D" uid="uid://eqnhicopj6xe" path="res://Assets/Textures/Background/Brown.png" id="2_0ys8i"]
@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="11_pnqk5"]
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="11_upge1"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/flag.tscn" id="14_mvgpy"]
-[ext_resource type="PackedScene" uid="uid://c1agu3vccxwvg" path="res://Entities/Level/button.tscn" id="15_s5ixx"]
+[ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/pause_menu.tscn" id="15_chhg7"]
+[ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/pause.tscn" id="16_5xq35"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0pq"]
 texture = ExtResource("2_0ys8i")
@@ -477,7 +478,6 @@ tile_set = SubResource("TileSet_cm0pq")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-293, 199)
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="SpawnPoint"]
 texture_filter = 1
@@ -673,14 +673,16 @@ position = Vector2(312, 184)
 [node name="Flag" parent="." instance=ExtResource("14_mvgpy")]
 position = Vector2(280, -160)
 
-[node name="Button" parent="." instance=ExtResource("15_s5ixx")]
-offset_left = -437.333
-offset_top = -212.0
-offset_right = -408.333
-offset_bottom = -182.0
+[node name="PauseMenu" parent="." instance=ExtResource("15_chhg7")]
+
+[node name="Pause" parent="." instance=ExtResource("16_5xq35")]
+offset_left = -432.667
+offset_top = -210.667
+offset_right = 77.3333
+offset_bottom = 299.333
 
 [connection signal="body_entered" from="Traps/spikes8" to="Player" method="_on_spikes_7_body_entered"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Pause" to="PauseMenu" method="open_pause_menu"]
 
 [editable path="Traps/SpikedBallTrap"]
 [editable path="Traps/SpikedBallTrap2"]

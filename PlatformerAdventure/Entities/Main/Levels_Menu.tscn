@@ -1,6 +1,6 @@
-[gd_scene load_steps=31 format=4 uid="uid://cqwsg5tv5sij1"]
+[gd_scene load_steps=32 format=4 uid="uid://cqwsg5tv5sij1"]
 
-[ext_resource type="Script" uid="uid://b6hqe2265jpct" path="res://level_menu.gd" id="1_c2qxo"]
+[ext_resource type="Script" uid="uid://b6hqe2265jpct" path="res://Entities/Main/level_menu.gd" id="1_c2qxo"]
 [ext_resource type="Texture2D" uid="uid://cc4ncm41fk5vu" path="res://Assets/Textures/Menu/Levels/01.png" id="2_2aape"]
 [ext_resource type="Texture2D" uid="uid://dj8de7ehugdnm" path="res://Assets/Textures/Background/Pink.png" id="2_65cti"]
 [ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_2iq8x"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cwivk2gh32uve" path="res://Assets/Textures/Menu/Levels/10.png" id="11_xkix1"]
 [ext_resource type="Texture2D" uid="uid://b2f57ftnusu8l" path="res://Assets/Textures/Menu/Levels/11.png" id="12_letmk"]
 [ext_resource type="Texture2D" uid="uid://busbexb0v2m5i" path="res://Assets/Textures/Menu/Levels/12.png" id="13_beo34"]
+[ext_resource type="Texture2D" uid="uid://bqptt8sdeja6r" path="res://Assets/Textures/Menu/Buttons/Back.png" id="17_q38h2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gg4wx"]
 texture = ExtResource("3_2iq8x")
@@ -350,6 +351,7 @@ animations = [{
 }]
 
 [node name="Control" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -472,7 +474,19 @@ layout_mode = 2
 texture_normal = ExtResource("13_beo34")
 stretch_mode = 0
 
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 95.0
+offset_right = 221.0
+offset_bottom = 175.0
+texture_normal = ExtResource("17_q38h2")
+texture_pressed = ExtResource("17_q38h2")
+texture_hover = ExtResource("17_q38h2")
+stretch_mode = 0
+
 [connection signal="pressed" from="CenterContainer/GridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
