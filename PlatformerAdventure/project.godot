@@ -15,12 +15,14 @@ config/features=PackedStringArray("4.4", "Mobile")
 
 [display]
 
-window/size/viewport_width=720
-window/size/viewport_height=480
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [global_group]
 
 player=""
+fruits=""
 
 [input]
 

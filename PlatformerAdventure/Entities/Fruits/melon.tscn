@@ -181,7 +181,7 @@ animations = [{
 "speed": 16.0
 }]
 
-[node name="melon" type="Area2D"]
+[node name="melon" type="Area2D" groups=["fruits"]]
 script = ExtResource("1_resih")
 metadata/_edit_group_ = true
 
@@ -192,6 +192,6 @@ shape = SubResource("RectangleShape2D_resih")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_nmsw0")
-animation = &"fruits"
+animation = &"collected"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

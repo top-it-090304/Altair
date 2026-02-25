@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://j3gtc24oaakm"]
+
+[ext_resource type="Texture2D" uid="uid://lvk4u8ar1dld" path="res://Assets/Textures/Menu/Buttons/Pause.png" id="1_tmfuu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f8d8"]
+bg_color = Color(0.177536, 0.17059, 0.209806, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7uvn6"]
+bg_color = Color(0.109804, 0.105882, 0.133333, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6lnn"]
+bg_color = Color(0.109804, 0.105882, 0.133333, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="Pause" type="Button"]
+texture_filter = 1
+offset_left = -82.0
+offset_top = 62.0
+offset_right = 428.0
+offset_bottom = 572.0
+scale = Vector2(0.085, 0.085)
+theme_override_styles/hover = SubResource("StyleBoxFlat_8f8d8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7uvn6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_g6lnn")
+icon = ExtResource("1_tmfuu")

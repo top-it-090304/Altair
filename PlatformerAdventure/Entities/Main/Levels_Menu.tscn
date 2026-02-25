@@ -1,0 +1,492 @@
+[gd_scene load_steps=32 format=4 uid="uid://cqwsg5tv5sij1"]
+
+[ext_resource type="Script" uid="uid://b6hqe2265jpct" path="res://Entities/Main/level_menu.gd" id="1_c2qxo"]
+[ext_resource type="Texture2D" uid="uid://cc4ncm41fk5vu" path="res://Assets/Textures/Menu/Levels/01.png" id="2_2aape"]
+[ext_resource type="Texture2D" uid="uid://dj8de7ehugdnm" path="res://Assets/Textures/Background/Pink.png" id="2_65cti"]
+[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_2iq8x"]
+[ext_resource type="Texture2D" uid="uid://c2hpnl7ikcp6i" path="res://Assets/Textures/Menu/Levels/02.png" id="3_65cti"]
+[ext_resource type="Texture2D" uid="uid://d3n5nvbdxjud6" path="res://Assets/Textures/Main Characters/Pink Man/Idle_reverse (32x32).png" id="4_b1fw8"]
+[ext_resource type="Texture2D" uid="uid://b0hduhv3iqihh" path="res://Assets/Textures/Menu/Levels/03.png" id="4_taoa4"]
+[ext_resource type="Texture2D" uid="uid://0kvbstxohsp5" path="res://Assets/Textures/Menu/Levels/04.png" id="5_2iq8x"]
+[ext_resource type="Texture2D" uid="uid://ch5lq0c10kwtf" path="res://Assets/Textures/Menu/Levels/05.png" id="6_b1fw8"]
+[ext_resource type="Texture2D" uid="uid://bj2amv1q3wg5r" path="res://Assets/Textures/Menu/Levels/06.png" id="7_gg4wx"]
+[ext_resource type="Texture2D" uid="uid://bdnndtlxx038l" path="res://Assets/Textures/Menu/Levels/07.png" id="8_k0xnw"]
+[ext_resource type="Texture2D" uid="uid://cf835vel8sdqo" path="res://Assets/Textures/Menu/Levels/08.png" id="9_ocsj8"]
+[ext_resource type="Texture2D" uid="uid://dpqtowyi6d1vy" path="res://Assets/Textures/Menu/Levels/09.png" id="10_k1eq5"]
+[ext_resource type="Texture2D" uid="uid://cwivk2gh32uve" path="res://Assets/Textures/Menu/Levels/10.png" id="11_xkix1"]
+[ext_resource type="Texture2D" uid="uid://b2f57ftnusu8l" path="res://Assets/Textures/Menu/Levels/11.png" id="12_letmk"]
+[ext_resource type="Texture2D" uid="uid://busbexb0v2m5i" path="res://Assets/Textures/Menu/Levels/12.png" id="13_beo34"]
+[ext_resource type="Texture2D" uid="uid://bqptt8sdeja6r" path="res://Assets/Textures/Menu/Buttons/Back.png" id="17_q38h2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gg4wx"]
+texture = ExtResource("3_2iq8x")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+20:4/0 = 0
+21:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+20:5/0 = 0
+21:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+19:6/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+20:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+20:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+20:10/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:4/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+8:3/0 = 0
+7:3/0 = 0
+5:2/0 = 0
+4:2/0 = 0
+6:3/0 = 0
+5:3/0 = 0
+5:0/0 = 0
+10:2/0 = 0
+9:2/0 = 0
+5:1/0 = 0
+3:2/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+1:7/0 = 0
+0:7/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+21:10/0 = 0
+16:9/0 = 0
+21:9/0 = 0
+21:8/0 = 0
+16:8/0 = 0
+11:8/0 = 0
+5:5/0 = 0
+11:5/0 = 0
+16:6/0 = 0
+20:6/0 = 0
+21:6/0 = 0
+21:7/0 = 0
+20:7/0 = 0
+19:7/0 = 0
+18:7/0 = 0
+17:7/0 = 0
+16:7/0 = 0
+15:7/0 = 0
+14:7/0 = 0
+13:7/0 = 0
+12:6/0 = 0
+11:6/0 = 0
+10:6/0 = 0
+9:6/0 = 0
+5:6/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+11:9/0 = 0
+16:5/0 = 0
+11:4/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+16:4/0 = 0
+5:8/0 = 0
+11:1/0 = 0
+16:1/0 = 0
+16:2/0 = 0
+12:2/0 = 0
+11:0/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+21:3/0 = 0
+20:3/0 = 0
+19:3/0 = 0
+18:3/0 = 0
+17:3/0 = 0
+20:1/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+21:1/0 = 0
+16:0/0 = 0
+11:2/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+14:3/0 = 0
+13:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_k0xnw"]
+sources/0 = SubResource("TileSetAtlasSource_gg4wx")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocsj8"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1eq5"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkix1"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_letmk"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beo34"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqk32"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tvfs"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk525"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itlfn"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bhca"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkg5t"]
+atlas = ExtResource("4_b1fw8")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wgwgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocsj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1eq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkix1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_letmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beo34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqk32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tvfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk525")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itlfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bhca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkg5t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Control" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_c2qxo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1286.0
+offset_bottom = 740.0
+texture = ExtResource("2_65cti")
+stretch_mode = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAMABUAAAABAAAAAAALABUAAAABAAAAAAAKABUAAAABAAAAAAAJABUAAAABAAAAAAAHABUAAAABAAAAAAAIABUAAAABAAAAAAAGABUAAAABAAAAAAAFABUAAAABAAAAAAANABUAAAABAAAAAAAOABUAAAABAAAAAAAPABUAAAABAAAAAAAQABUAAAABAAAAAAARABUAAAABAAAAAAASABUAAAABAAAAAAATABUAAAABAAAAAAAUABUAAAABAAAAAAAVABUAAAABAAAAAAAWABUAAAABAAAAAAAXABUAAAABAAAAAAAYABUAAAABAAAAAAAZABUAAAABAAAAAAAaABUAAAABAAAAAAAbABUAAAABAAAAAAAcABUAAAABAAAAAAAdABUAAAABAAAAAAAEABUAAAABAAAAAAADABUAAAABAAAAAAACABUAAAADAAEAAAACABQAAAACAAEAAAACABMAAAACAAEAAAACABIAAAACAAEAAAACABEAAAACAAEAAAACABAAAAACAAEAAAACAA8AAAACAAEAAAACAA4AAAACAAEAAAACAA0AAAACAAEAAAACAAwAAAACAAEAAAACAAsAAAACAAEAAAACAAoAAAACAAEAAAACAAkAAAACAAEAAAACAAgAAAACAAEAAAACAAcAAAACAAEAAAACAAYAAAACAAEAAAACAAUAAAACAAEAAAACAAQAAAACAAEAAAACAAMAAAACAAEAAAACAAIAAAACAAEAAAACAAEAAAAAAAIAAAADAAAAAAABAAEAAAADAAEAAAABAAIAAAAEAAAAAAABAAEAAAAEAAEAAAABAAIAAAAFAAAAAAABAAEAAAAFAAEAAAABAAIAAAAGAAAAAAABAAEAAAAGAAEAAAABAAIAAAAHAAAAAAABAAEAAAAHAAEAAAABAAIAAAAIAAAAAAABAAEAAAAIAAEAAAABAAIAAAAJAAAAAAABAAEAAAAJAAEAAAABAAIAAAAKAAAAAAABAAEAAAAKAAEAAAABAAIAAAALAAAAAAABAAEAAAALAAEAAAABAAIAAAAMAAAAAAABAAEAAAAMAAEAAAABAAIAAAANAAAAAAABAAEAAAANAAEAAAABAAIAAAAOAAAAAAABAAEAAAAOAAEAAAABAAIAAAAPAAAAAAABAAEAAAAPAAEAAAABAAIAAAAQAAAAAAABAAEAAAAQAAEAAAABAAIAAAARAAAAAAABAAEAAAARAAEAAAABAAIAAAASAAAAAAABAAEAAAASAAEAAAABAAIAAAATAAAAAAABAAEAAAATAAEAAAABAAIAAAAUAAAAAAABAAEAAAAUAAEAAAABAAIAAAAVAAAAAAABAAEAAAAVAAEAAAABAAIAAAAWAAAAAAABAAEAAAAWAAEAAAABAAIAAAAXAAAAAAABAAEAAAAXAAEAAAABAAIAAAAYAAAAAAABAAEAAAAYAAEAAAABAAIAAAAZAAAAAAABAAEAAAAZAAEAAAABAAIAAAAaAAAAAAABAAEAAAAaAAEAAAABAAIAAAAbAAAAAAABAAEAAAAbAAEAAAABAAIAAAAcAAAAAAABAAEAAAAcAAEAAAABAAIAAAAdAAAAAAABAAEAAAAdAAEAAAABAAIAAAAeAAAAAAABAAEAAAAeAAEAAAABAAIAAAAfAAAAAAABAAEAAAAfAAEAAAABAAIAAAAgAAAAAAABAAEAAAAgAAEAAAABAAIAAAAhAAAAAAABAAEAAAAhAAEAAAABAAIAAAAiAAAAAAABAAEAAAAiAAEAAAABAAIAAAAjAAAAAAABAAEAAAAjAAEAAAABAAIAAAAlAAAAAAABAAEAAAAlAAEAAAAEAAAAAAAkAAAAAAABAAEAAAAkAAEAAAABAAIAAAAlAAIAAAAAAAEAAAAlAAMAAAAAAAEAAAAlAAQAAAAAAAEAAAAlAAUAAAAAAAEAAAAlAAYAAAAAAAEAAAAlAAcAAAAAAAEAAAAlAAgAAAAAAAEAAAAlAAkAAAAAAAEAAAAlAAoAAAAAAAEAAAAlAAsAAAAAAAEAAAAlAAwAAAAAAAEAAAAlAA0AAAAAAAEAAAAlAA4AAAAAAAEAAAAlAA8AAAAAAAEAAAAlABAAAAAAAAEAAAAlABEAAAAAAAEAAAAlABIAAAAAAAEAAAAlABMAAAAAAAEAAAAlABQAAAAAAAEAAAAlABUAAAAAAAIAAAAeABUAAAABAAAAAAAfABUAAAABAAAAAAAgABUAAAABAAAAAAAhABUAAAABAAAAAAAiABUAAAABAAAAAAAjABUAAAABAAAAAAAkABUAAAABAAAAAAAAABUAAAABAAEAAAAAABQAAAABAAEAAAABABQAAAABAAEAAAABABUAAAABAAEAAAAAABYAAAABAAEAAAABABYAAAABAAEAAAACABYAAAABAAEAAAADABYAAAABAAEAAAAEABYAAAABAAEAAAAFABYAAAABAAEAAAAGABYAAAABAAEAAAAHABYAAAABAAEAAAAIABYAAAABAAEAAAAJABYAAAABAAEAAAAKABYAAAABAAEAAAALABYAAAABAAEAAAAMABYAAAABAAEAAAANABYAAAABAAEAAAAOABYAAAABAAEAAAAPABYAAAABAAEAAAAQABYAAAABAAEAAAARABYAAAABAAEAAAASABYAAAABAAEAAAATABYAAAABAAEAAAAUABYAAAABAAEAAAAVABYAAAABAAEAAAAWABYAAAABAAEAAAAXABYAAAABAAEAAAAYABYAAAABAAEAAAAZABYAAAABAAEAAAAaABYAAAABAAEAAAAbABYAAAABAAEAAAAcABYAAAABAAEAAAAdABYAAAABAAEAAAAeABYAAAABAAEAAAAfABYAAAABAAEAAAAgABYAAAABAAEAAAAhABYAAAABAAEAAAAiABYAAAABAAEAAAAjABYAAAABAAEAAAAkABYAAAABAAEAAAAlABYAAAABAAEAAAAmABYAAAABAAEAAAAnABYAAAABAAEAAAAnABUAAAABAAEAAAAmABUAAAABAAEAAAAmABQAAAABAAEAAAAmABMAAAABAAEAAAAnABMAAAABAAEAAAAnABQAAAABAAEAAAAnABIAAAABAAEAAAAmABIAAAABAAEAAAAmABEAAAABAAEAAAAmABAAAAABAAEAAAAmAA8AAAABAAEAAAAnABAAAAABAAEAAAAnABEAAAABAAEAAAAnAA8AAAABAAEAAAAnAA4AAAABAAEAAAAnAA0AAAABAAEAAAAmAA4AAAABAAEAAAAmAA0AAAABAAEAAAAnAAwAAAABAAEAAAAnAAsAAAABAAEAAAAnAAoAAAABAAEAAAAmAAwAAAABAAEAAAAmAAsAAAABAAEAAAAmAAoAAAABAAEAAAAmAAkAAAABAAEAAAAnAAkAAAABAAEAAAAnAAgAAAABAAEAAAAnAAcAAAABAAEAAAAnAAYAAAABAAEAAAAmAAcAAAABAAEAAAAmAAgAAAABAAEAAAAmAAYAAAABAAEAAAAmAAUAAAABAAEAAAAmAAQAAAABAAEAAAAmAAMAAAABAAEAAAAmAAIAAAABAAEAAAAmAAEAAAABAAEAAAAmAAAAAAABAAEAAAAnAAAAAAABAAEAAAAnAAEAAAABAAEAAAAnAAIAAAABAAEAAAAnAAMAAAABAAEAAAAnAAQAAAABAAEAAAAnAAUAAAABAAEAAAABABMAAAABAAEAAAABABIAAAABAAEAAAABABEAAAABAAEAAAAAABMAAAABAAEAAAAAABIAAAABAAEAAAAAABEAAAABAAEAAAAAABAAAAABAAEAAAAAAA8AAAABAAEAAAAAAA4AAAABAAEAAAABAA4AAAABAAEAAAABAA8AAAABAAEAAAABABAAAAABAAEAAAABAA0AAAABAAEAAAABAAwAAAABAAEAAAABAAsAAAABAAEAAAAAAAwAAAABAAEAAAAAAAsAAAABAAEAAAAAAAoAAAABAAEAAAAAAAkAAAABAAEAAAAAAAgAAAABAAEAAAAAAAcAAAABAAEAAAAAAAYAAAABAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAABAAgAAAABAAEAAAABAAkAAAABAAEAAAABAAoAAAABAAEAAAAAAA0AAAABAAEAAAABAAUAAAABAAEAAAABAAQAAAABAAEAAAABAAMAAAABAAEAAAABAAIAAAABAAEAAAABAAEAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAAAAAMAAAABAAEAAAAAAAIAAAABAAEAAAAAAAEAAAABAAEAAAAAAAAAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAADABIAAAAGAAgAAAADABMAAAAGAAkAAAADABQAAAAGAAkAAAAEABIAAAAHAAgAAAAEABMAAAAHAAkAAAAEABQAAAAHAAkAAAAFABIAAAAHAAgAAAAFABMAAAAIAAkAAAAFABQAAAAIAAkAAAAGABMAAAAGAAgAAAAGABQAAAAGAAkAAAAHABMAAAAHAAgAAAAHABQAAAAHAAkAAAAIABMAAAAIAAgAAAAIABQAAAAIAAkAAAAJABQAAAAGAAgAAAAKABQAAAAHAAgAAAALABQAAAAIAAgAAAAiAA4AAAAGAAgAAAAiAA8AAAAGAAkAAAAiABAAAAAGAAkAAAAjAA4AAAAHAAgAAAAjAA8AAAAHAAkAAAAjABAAAAAHAAkAAAAkAA4AAAAIAAgAAAAkAA8AAAAIAAkAAAAkABAAAAAIAAkAAAAgABAAAAAGAAgAAAAgABEAAAAGAAkAAAAgABIAAAAGAAkAAAAhABAAAAAIAAgAAAAhABEAAAAIAAkAAAAhABIAAAAIAAkAAAAiABEAAAAGAAkAAAAjABEAAAAHAAkAAAAkABEAAAAIAAkAAAAiABIAAAAGAAkAAAAjABIAAAAHAAkAAAAkABIAAAAIAAkAAAAiABMAAAAGAAkAAAAjABMAAAAHAAkAAAAkABMAAAAIAAkAAAAiABQAAAAGAAkAAAAjABQAAAAHAAkAAAAkABQAAAAIAAkAAAAhABMAAAAIAAkAAAAhABQAAAAIAAkAAAAgABMAAAAGAAkAAAAgABQAAAAGAAkAAAAdABMAAAAGAAgAAAAdABQAAAAGAAkAAAAeABMAAAAHAAgAAAAeABQAAAAHAAkAAAAfABMAAAAIAAgAAAAfABQAAAAIAAkAAAAfABIAAAAIAAgAAAAeABIAAAAGAAgAAAAhAA8AAAAGAAgAAAAGABIAAAAIAAgAAAAFABEAAAAIAAgAAAAEABEAAAAHAAgAAAADABEAAAAGAAgAAAADABAAAAAGAAgAAAAEABAAAAAIAAgAAAA=")
+tile_set = SubResource("TileSet_k0xnw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1135, 402)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_wgwgp")
+autoplay = "default"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 1282.0
+offset_bottom = 724.0
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 45
+theme_override_constants/v_separation = 5
+columns = 4
+
+[node name="Button" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("2_2aape")
+stretch_mode = 0
+
+[node name="Button2" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("3_65cti")
+stretch_mode = 0
+
+[node name="Button3" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("4_taoa4")
+stretch_mode = 0
+
+[node name="Button4" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("5_2iq8x")
+stretch_mode = 0
+
+[node name="Button5" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("6_b1fw8")
+stretch_mode = 0
+
+[node name="Button6" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("7_gg4wx")
+stretch_mode = 0
+
+[node name="Button7" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("8_k0xnw")
+stretch_mode = 0
+
+[node name="Button8" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("9_ocsj8")
+stretch_mode = 0
+
+[node name="Button9" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("10_k1eq5")
+stretch_mode = 0
+
+[node name="Button10" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("11_xkix1")
+stretch_mode = 0
+
+[node name="Button11" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("12_letmk")
+stretch_mode = 0
+
+[node name="Button12" type="TextureButton" parent="CenterContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+texture_normal = ExtResource("13_beo34")
+stretch_mode = 0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 95.0
+offset_right = 221.0
+offset_bottom = 175.0
+texture_normal = ExtResource("17_q38h2")
+texture_pressed = ExtResource("17_q38h2")
+texture_hover = ExtResource("17_q38h2")
+stretch_mode = 0
+
+[connection signal="pressed" from="CenterContainer/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

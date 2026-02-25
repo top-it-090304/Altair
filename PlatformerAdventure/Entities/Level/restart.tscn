@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1agu3vccxwvg"]
+
+[ext_resource type="Texture2D" uid="uid://cokbbqvgng1se" path="res://Assets/Textures/Menu/Buttons/Restart.png" id="1_1aoim"]
+[ext_resource type="Script" uid="uid://db3iwb7opnh81" path="res://Levels/Level3/button.gd" id="2_feywx"]
+
+[node name="Button" type="Button"]
+texture_filter = 1
+offset_left = -80.0
+offset_top = 20.6667
+offset_right = -51.0
+offset_bottom = 50.6667
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("1_1aoim")
+script = ExtResource("2_feywx")
