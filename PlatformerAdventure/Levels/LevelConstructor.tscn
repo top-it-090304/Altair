@@ -341,4 +341,6 @@ position = Vector2(616, 344)
 [node name="Flag" parent="Entities" instance=ExtResource("8_n5eg6")]
 position = Vector2(636, 142.667)
 
+[node name="Fruits" type="Node2D" parent="Entities"]
+
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]

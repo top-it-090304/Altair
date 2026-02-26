@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=4 uid="uid://bhe2asc6youl8"]
 
-[ext_resource type="Texture2D" uid="uid://dj8de7ehugdnm" path="res://Assets/Textures/Background/Pink.png" id="1_ifjiy"]
-[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="2_b3xe6"]
-[ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="3_b3xe6"]
-[ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="3_w47x8"]
+[ext_resource type="Texture2D" uid="uid://dj8de7ehugdnm" path="res://Assets/Textures/Background/Pink.png" id="1_qt3uo"]
+[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="2_eogwp"]
+[ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="3_wvewt"]
+[ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="4_kiv1d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xvh5y"]
-texture = ExtResource("1_ifjiy")
+texture = ExtResource("1_qt3uo")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -28,7 +28,7 @@ texture = ExtResource("1_ifjiy")
 sources/0 = SubResource("TileSetAtlasSource_xvh5y")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aq4lc"]
-texture = ExtResource("2_b3xe6")
+texture = ExtResource("2_eogwp")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -293,9 +293,9 @@ tile_set = SubResource("TileSet_12tqw")
 [node name="Sprite2D" type="Sprite2D" parent="SpawnPoint"]
 texture_filter = 1
 position = Vector2(225, 568)
-texture = ExtResource("3_b3xe6")
+texture = ExtResource("3_wvewt")
 
-[node name="Player" parent="." instance=ExtResource("3_w47x8")]
+[node name="Player" parent="." instance=ExtResource("4_kiv1d")]
 
 [node name="Traps" type="Node2D" parent="."]
 
