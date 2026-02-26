@@ -13,6 +13,7 @@ var player_in_area = null
 
 
 func _ready() -> void:
+	
 	match move_mode:
 		MoveMode.UP:
 			direction = Vector2.UP
