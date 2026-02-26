@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cjoso4k6j67y0"]
+[gd_scene load_steps=18 format=4 uid="uid://cjoso4k6j67y0"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_e04ax"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_gbnyl"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="8_gbnyl"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="8_oxc05"]
 [ext_resource type="PackedScene" uid="uid://b1jblx5m8pguj" path="res://Entities/Traps/Spike/spikes6.tscn" id="9_kmmw0"]
+[ext_resource type="PackedScene" uid="uid://bucmpsokcopt" path="res://Entities/Traps/Saw/saw.tscn" id="10_4jjeu"]
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="11_nn04n"]
 [ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="12_4jjeu"]
 
@@ -308,6 +309,18 @@ texture = ExtResource("4_nq6at")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bgei7")
 
+[sub_resource type="Curve2D" id="Curve2D_4jjeu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 752, 320, 0, 0, 0, 0, 528, 320, 0, 0, 0, 0, 528, 336, 0, 0, 0, 0, 496, 336, 0, 0, 0, 0, 496, 320, 0, 0, 0, 0, 368, 320, 0, 0, 0, 0, 368, 336, 0, 0, 0, 0, 336, 336, 0, 0, 0, 0, 336, 320, 0, 0, 0, 0, 256, 320, 0, 0, 0, 0, 256, 336, 0, 0, 0, 0, 224, 336, 0, 0, 0, 0, 224, 320, 0, 0, 0, 0, 160, 320, 0, 0, 0, 0, 160, 272, 0, 0, 0, 0, 752, 272)
+}
+point_count = 16
+
+[sub_resource type="Curve2D" id="Curve2D_5mlkt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 80, 192, 0, 0, 0, 0, 624, 192, 0, 0, 0, 0, 624, 160, 0, 0, 0, 0, 608, 160, 0, 0, 0, 0, 608, 144, 0, 0, 0, 0, 501.333, 144, 0, 0, 0, 0, 128, 144)
+}
+point_count = 7
+
 [node name="Level2" type="Node2D"]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
@@ -379,10 +392,25 @@ position = Vector2(340, 136)
 [node name="Area2D4" parent="Entities/Traps" instance=ExtResource("9_kmmw0")]
 position = Vector2(235.333, 136)
 
+[node name="SaW1" type="Path2D" parent="Entities/Traps"]
+curve = SubResource("Curve2D_4jjeu")
+
+[node name="PathFollow2D" parent="Entities/Traps/SaW1" instance=ExtResource("10_4jjeu")]
+position = Vector2(752, 320)
+rotation = 3.14159
+
+[node name="SAW2" type="Path2D" parent="Entities/Traps"]
+curve = SubResource("Curve2D_5mlkt")
+
+[node name="PathFollow2D" parent="Entities/Traps/SAW2" instance=ExtResource("10_4jjeu")]
+position = Vector2(80, 192)
+rotation = 0.0
+
 [node name="Flag" parent="Entities" instance=ExtResource("8_oxc05")]
 position = Vector2(716.667, 80)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
+metadata/_edit_group_ = true
 
 [node name="apple" parent="Entities/Fruits" instance=ExtResource("11_nn04n")]
 position = Vector2(512, 218.667)
