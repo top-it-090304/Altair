@@ -1,24 +1,24 @@
 [gd_scene load_steps=23 format=4 uid="uid://dxmc53wv1psbe"]
 
-[ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_tp673"]
-[ext_resource type="Texture2D" uid="uid://eqnhicopj6xe" path="res://Assets/Textures/Background/Brown.png" id="2_0ys8i"]
-[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_bgei7"]
-[ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="4_l4j0s"]
-[ext_resource type="PackedScene" uid="uid://dyds15vnjstj6" path="res://Entities/Players/VirtualGuy/VirtualGuy.tscn" id="5_3q646"]
-[ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="7_0ys8i"]
-[ext_resource type="PackedScene" uid="uid://bhayftv1kvke6" path="res://Entities/Traps/Spike/spike.tscn" id="7_iy0oy"]
-[ext_resource type="PackedScene" uid="uid://b1jblx5m8pguj" path="res://Entities/Traps/Spike/spikes6.tscn" id="8_ldvuh"]
-[ext_resource type="PackedScene" uid="uid://c3dtup05erfjm" path="res://Entities/Traps/Spike/spikes10.tscn" id="9_t3kpd"]
-[ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="10_a57xb"]
-[ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="10_tp673"]
-[ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="11_pnqk5"]
-[ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="11_upge1"]
-[ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="14_mvgpy"]
-[ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="15_chhg7"]
-[ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="16_5xq35"]
+[ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_8d8ux"]
+[ext_resource type="Texture2D" uid="uid://eqnhicopj6xe" path="res://Assets/Textures/Background/Brown.png" id="2_vi5gx"]
+[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_na77p"]
+[ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="4_the8d"]
+[ext_resource type="PackedScene" uid="uid://dyds15vnjstj6" path="res://Entities/Players/VirtualGuy/VirtualGuy.tscn" id="5_kya2p"]
+[ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="6_422ou"]
+[ext_resource type="PackedScene" uid="uid://bhayftv1kvke6" path="res://Entities/Traps/Spike/spike.tscn" id="7_jft2g"]
+[ext_resource type="PackedScene" uid="uid://b1jblx5m8pguj" path="res://Entities/Traps/Spike/spikes6.tscn" id="8_mb55v"]
+[ext_resource type="PackedScene" uid="uid://c3dtup05erfjm" path="res://Entities/Traps/Spike/spikes10.tscn" id="9_2c05q"]
+[ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="10_gejem"]
+[ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="11_a43tu"]
+[ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="12_ccnox"]
+[ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="13_gafy3"]
+[ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="14_3f7hf"]
+[ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="15_vrcs1"]
+[ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="16_x1sx8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0pq"]
-texture = ExtResource("2_0ys8i")
+texture = ExtResource("2_vi5gx")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -40,7 +40,7 @@ texture = ExtResource("2_0ys8i")
 sources/0 = SubResource("TileSetAtlasSource_cm0pq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0du0"]
-texture = ExtResource("3_bgei7")
+texture = ExtResource("3_na77p")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 1:0/0 = 0
@@ -462,7 +462,7 @@ size = Vector2(72, 21)
 [node name="level4" type="Node2D" groups=["player"]]
 position = Vector2(674, 352)
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_tp673")
+script = ExtResource("1_8d8ux")
 next_level_path = "uid://blwiofsi31xvj"
 
 [node name="Map" type="Node2D" parent="."]
@@ -482,36 +482,36 @@ position = Vector2(-293, 199)
 [node name="Sprite2D" type="Sprite2D" parent="SpawnPoint"]
 texture_filter = 1
 position = Vector2(9, -7)
-texture = ExtResource("4_l4j0s")
+texture = ExtResource("4_the8d")
 
-[node name="Player" parent="." instance=ExtResource("5_3q646")]
+[node name="Player" parent="." instance=ExtResource("5_kya2p")]
 position = Vector2(-296, 190)
 
 [node name="Traps" type="Node2D" parent="."]
 
-[node name="SpikedBallTrap" parent="Traps" instance=ExtResource("7_0ys8i")]
+[node name="SpikedBallTrap" parent="Traps" instance=ExtResource("6_422ou")]
 position = Vector2(-111, -194)
 
 [node name="Chain" parent="Traps/SpikedBallTrap/Pivot" index="0"]
 chain_length = 150.0
 
-[node name="SpikedBallTrap2" parent="Traps" instance=ExtResource("7_0ys8i")]
+[node name="SpikedBallTrap2" parent="Traps" instance=ExtResource("6_422ou")]
 position = Vector2(32, 17)
 metadata/_edit_group_ = true
 
 [node name="Chain" parent="Traps/SpikedBallTrap2/Pivot" index="0"]
 chain_length = 100.0
 
-[node name="spike1" parent="Traps" instance=ExtResource("7_iy0oy")]
+[node name="spike1" parent="Traps" instance=ExtResource("7_jft2g")]
 position = Vector2(214, 136)
 
-[node name="spike2" parent="Traps" instance=ExtResource("7_iy0oy")]
+[node name="spike2" parent="Traps" instance=ExtResource("7_jft2g")]
 position = Vector2(245, 104)
 
-[node name="spike3" parent="Traps" instance=ExtResource("7_iy0oy")]
+[node name="spike3" parent="Traps" instance=ExtResource("7_jft2g")]
 position = Vector2(229, 120)
 
-[node name="spikes4" parent="Traps" instance=ExtResource("8_ldvuh")]
+[node name="spikes4" parent="Traps" instance=ExtResource("8_mb55v")]
 position = Vector2(-139, -30)
 
 [node name="Sprite2D" parent="Traps/spikes4" index="0"]
@@ -530,7 +530,7 @@ scale = Vector2(1, 2)
 position = Vector2(28.5, 7)
 shape = SubResource("RectangleShape2D_t3kpd")
 
-[node name="spikes6" parent="Traps" instance=ExtResource("9_t3kpd")]
+[node name="spikes6" parent="Traps" instance=ExtResource("9_2c05q")]
 position = Vector2(-81.3333, 213.333)
 
 [node name="Sprite2D" parent="Traps/spikes6" index="0"]
@@ -556,7 +556,7 @@ scale = Vector2(1.5, 3)
 [node name="CollisionShape2D" parent="Traps/spikes6" index="5"]
 position = Vector2(61.3333, 1)
 
-[node name="spikes8" parent="Traps" instance=ExtResource("8_ldvuh")]
+[node name="spikes8" parent="Traps" instance=ExtResource("8_mb55v")]
 position = Vector2(50, 210)
 
 [node name="Sprite2D" parent="Traps/spikes8" index="0"]
@@ -575,107 +575,107 @@ scale = Vector2(1.5, 3)
 position = Vector2(26, 4.5)
 shape = SubResource("RectangleShape2D_a57xb")
 
-[node name="FireTrap" parent="Traps" instance=ExtResource("10_tp673")]
+[node name="FireTrap" parent="Traps" instance=ExtResource("10_gejem")]
 position = Vector2(293.333, 174.667)
 
-[node name="FireTrap2" parent="Traps" instance=ExtResource("10_tp673")]
+[node name="FireTrap2" parent="Traps" instance=ExtResource("10_gejem")]
 position = Vector2(330.667, 174.667)
 
 [node name="Fruits" type="Node2D" parent="."]
 
-[node name="apple2" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple2" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(-13.3333, 128)
 
-[node name="apple" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(146, 178)
 
-[node name="apple3" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple3" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(50.6667, 137.333)
 
-[node name="apple8" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple8" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(17.3333, 137.333)
 
-[node name="apple7" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple7" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(-3, 100)
 
-[node name="apple5" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple5" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(78.6667, 130.667)
 
-[node name="apple4" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple4" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(32, 105.333)
 
-[node name="banana" parent="Fruits" instance=ExtResource("11_pnqk5")]
+[node name="banana" parent="Fruits" instance=ExtResource("12_ccnox")]
 position = Vector2(-289, -94)
 
-[node name="banana8" parent="Fruits" instance=ExtResource("11_pnqk5")]
+[node name="banana8" parent="Fruits" instance=ExtResource("12_ccnox")]
 position = Vector2(-232, -72)
 
-[node name="banana7" parent="Fruits" instance=ExtResource("11_pnqk5")]
+[node name="banana7" parent="Fruits" instance=ExtResource("12_ccnox")]
 position = Vector2(-273, -71)
 
-[node name="banana6" parent="Fruits" instance=ExtResource("11_pnqk5")]
+[node name="banana6" parent="Fruits" instance=ExtResource("12_ccnox")]
 position = Vector2(-278, -110)
 
-[node name="banana10" parent="Fruits" instance=ExtResource("11_pnqk5")]
+[node name="banana10" parent="Fruits" instance=ExtResource("12_ccnox")]
 position = Vector2(-270, -127)
 
-[node name="banana9" parent="Fruits" instance=ExtResource("11_pnqk5")]
+[node name="banana9" parent="Fruits" instance=ExtResource("12_ccnox")]
 position = Vector2(-257, -110)
 
-[node name="banana5" parent="Fruits" instance=ExtResource("11_pnqk5")]
+[node name="banana5" parent="Fruits" instance=ExtResource("12_ccnox")]
 position = Vector2(-253, -72)
 
-[node name="banana4" parent="Fruits" instance=ExtResource("11_pnqk5")]
+[node name="banana4" parent="Fruits" instance=ExtResource("12_ccnox")]
 position = Vector2(-294, -71)
 
-[node name="banana3" parent="Fruits" instance=ExtResource("11_pnqk5")]
+[node name="banana3" parent="Fruits" instance=ExtResource("12_ccnox")]
 position = Vector2(-244, -93)
 
-[node name="banana2" parent="Fruits" instance=ExtResource("11_pnqk5")]
+[node name="banana2" parent="Fruits" instance=ExtResource("12_ccnox")]
 position = Vector2(-266, -93)
 
-[node name="melon" parent="Fruits" instance=ExtResource("10_a57xb")]
+[node name="melon" parent="Fruits" instance=ExtResource("13_gafy3")]
 position = Vector2(256, 85)
 
-[node name="melon2" parent="Fruits" instance=ExtResource("10_a57xb")]
+[node name="melon2" parent="Fruits" instance=ExtResource("13_gafy3")]
 position = Vector2(161, -151)
 
-[node name="melon8" parent="Fruits" instance=ExtResource("10_a57xb")]
+[node name="melon8" parent="Fruits" instance=ExtResource("13_gafy3")]
 position = Vector2(199, -153)
 
-[node name="melon3" parent="Fruits" instance=ExtResource("10_a57xb")]
+[node name="melon3" parent="Fruits" instance=ExtResource("13_gafy3")]
 position = Vector2(129, -150)
 
-[node name="melon4" parent="Fruits" instance=ExtResource("10_a57xb")]
+[node name="melon4" parent="Fruits" instance=ExtResource("13_gafy3")]
 position = Vector2(107, -171)
 
-[node name="melon5" parent="Fruits" instance=ExtResource("10_a57xb")]
+[node name="melon5" parent="Fruits" instance=ExtResource("13_gafy3")]
 position = Vector2(142, -171)
 
-[node name="melon6" parent="Fruits" instance=ExtResource("10_a57xb")]
+[node name="melon6" parent="Fruits" instance=ExtResource("13_gafy3")]
 position = Vector2(212, -172)
 
-[node name="melon7" parent="Fruits" instance=ExtResource("10_a57xb")]
+[node name="melon7" parent="Fruits" instance=ExtResource("13_gafy3")]
 position = Vector2(177, -171)
 
-[node name="apple9" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple9" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(60.6667, 100)
 
-[node name="apple6" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple6" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(125, 179)
 
-[node name="apple10" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple10" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(312, 166)
 
-[node name="apple11" parent="Fruits" instance=ExtResource("11_upge1")]
+[node name="apple11" parent="Fruits" instance=ExtResource("11_a43tu")]
 position = Vector2(312, 184)
 
-[node name="Flag" parent="." instance=ExtResource("14_mvgpy")]
+[node name="Flag" parent="." instance=ExtResource("14_3f7hf")]
 position = Vector2(280, -160)
 
-[node name="PauseMenu" parent="." instance=ExtResource("15_chhg7")]
+[node name="PauseMenu" parent="." instance=ExtResource("15_vrcs1")]
 
-[node name="Pause" parent="." instance=ExtResource("16_5xq35")]
+[node name="Pause" parent="." instance=ExtResource("16_x1sx8")]
 offset_left = -432.667
 offset_top = -210.667
 offset_right = 77.3333

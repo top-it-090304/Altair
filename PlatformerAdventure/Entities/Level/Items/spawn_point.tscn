@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://xcim7p3b4fpr"]
+
+[ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="1_dua6l"]
+
+[node name="SpawnPoint" type="Marker2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -6)
+texture = ExtResource("1_dua6l")
