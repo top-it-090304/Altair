@@ -13,9 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="10_tp673"]
 [ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="11_pnqk5"]
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="11_upge1"]
-[ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/flag.tscn" id="14_mvgpy"]
-[ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/pause_menu.tscn" id="15_chhg7"]
-[ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/pause.tscn" id="16_5xq35"]
+[ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="14_mvgpy"]
+[ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="15_chhg7"]
+[ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="16_5xq35"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0pq"]
 texture = ExtResource("2_0ys8i")
