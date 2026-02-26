@@ -506,7 +506,7 @@ texture = ExtResource("3_g03pe")
 physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_r0du0")
 
-[node name="Level1" type="Node2D"]
+[node name="Entities" type="Node2D"]
 position = Vector2(628, 360)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_bq71g")
