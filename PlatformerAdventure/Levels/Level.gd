@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var spawn_marker = $SpawnPoint
-@onready var player = $Player
-@onready var flag = $Flag
+@onready var spawn_marker = $Entities/SpawnPoint
+@onready var player = $Entities/Player
+@onready var flag = $Entities/Flag
 
 @export_file("*.tscn") var next_level_path: String
 @export var manual_fruit_count: int = 0

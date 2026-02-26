@@ -406,7 +406,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u6lrr")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_g3y0o")
 }],
 "loop": true,
@@ -414,13 +414,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jo8lf"]
-atlas = ExtResource("9_xt4qc")
-region = Rect2(0, 0, 16, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_xd6rq"]
 atlas = ExtResource("9_xt4qc")
 region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo8lf"]
+atlas = ExtResource("9_xt4qc")
+region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dsb88"]
 atlas = ExtResource("9_xt4qc")
@@ -430,10 +430,10 @@ region = Rect2(32, 0, 16, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jo8lf")
+"texture": SubResource("AtlasTexture_xd6rq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xd6rq")
+"texture": SubResource("AtlasTexture_jo8lf")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dsb88")
@@ -568,6 +568,7 @@ texture_filter = 1
 position = Vector2(989, 390)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_u6lrr")
+autoplay = "default"
 
 [node name="logo" type="Sprite2D" parent="."]
 texture_filter = 1
