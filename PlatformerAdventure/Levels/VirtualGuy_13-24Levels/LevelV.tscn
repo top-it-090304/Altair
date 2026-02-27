@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dxmc53wv1psbe"]
+[gd_scene load_steps=25 format=4 uid="uid://dxmc53wv1psbe"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_nroux"]
 [ext_resource type="Texture2D" uid="uid://eqnhicopj6xe" path="res://Assets/Textures/Background/Brown.png" id="2_npf3m"]
@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="6_fsrwk"]
 [ext_resource type="PackedScene" uid="uid://bhayftv1kvke6" path="res://Entities/Traps/Spike/spike.tscn" id="7_iqxxd"]
 [ext_resource type="PackedScene" uid="uid://b1jblx5m8pguj" path="res://Entities/Traps/Spike/spikes6.tscn" id="8_vj55v"]
-[ext_resource type="PackedScene" uid="uid://c3dtup05erfjm" path="res://Entities/Traps/Spike/spikes10.tscn" id="9_n3fn0"]
+[ext_resource type="Script" uid="uid://dolhbxyy6sihk" path="res://Entities/Traps/Spike/spike.gd" id="9_npf3m"]
+[ext_resource type="Texture2D" uid="uid://yuwf5al2lqxy" path="res://Assets/Textures/Traps/Spikes/Idle.png" id="10_mvs25"]
 [ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="10_tnb5d"]
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="11_sidmk"]
 [ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="12_wpthx"]
@@ -455,6 +456,9 @@ sources/3 = SubResource("TileSetAtlasSource_r0du0")
 resource_local_to_scene = true
 size = Vector2(51, 14)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk4mo"]
+size = Vector2(120, 20.6667)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a57xb"]
 resource_local_to_scene = true
 size = Vector2(72, 21)
@@ -530,31 +534,44 @@ scale = Vector2(1, 2)
 position = Vector2(28.5, 7)
 shape = SubResource("RectangleShape2D_t3kpd")
 
-[node name="spikes6" parent="Traps" instance=ExtResource("9_n3fn0")]
+[node name="spikes6" type="Area2D" parent="Traps"]
 position = Vector2(-81.3333, 213.333)
+script = ExtResource("9_npf3m")
+metadata/_edit_group_ = true
 
-[node name="Sprite2D" parent="Traps/spikes6" index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="Traps/spikes6"]
+texture_filter = 1
 position = Vector2(14, -13)
 scale = Vector2(1.5, 3)
+texture = ExtResource("10_mvs25")
 
-[node name="Sprite2D6" parent="Traps/spikes6" index="1"]
+[node name="Sprite2D6" type="Sprite2D" parent="Traps/spikes6"]
+texture_filter = 1
 position = Vector2(38, -13)
 scale = Vector2(1.5, 3)
+texture = ExtResource("10_mvs25")
 
-[node name="Sprite2D7" parent="Traps/spikes6" index="2"]
+[node name="Sprite2D7" type="Sprite2D" parent="Traps/spikes6"]
+texture_filter = 1
 position = Vector2(110, -13)
 scale = Vector2(1.5, 3)
+texture = ExtResource("10_mvs25")
 
-[node name="Sprite2D8" parent="Traps/spikes6" index="3"]
+[node name="Sprite2D8" type="Sprite2D" parent="Traps/spikes6"]
+texture_filter = 1
 position = Vector2(62, -13)
 scale = Vector2(1.5, 3)
+texture = ExtResource("10_mvs25")
 
-[node name="Sprite2D9" parent="Traps/spikes6" index="4"]
+[node name="Sprite2D9" type="Sprite2D" parent="Traps/spikes6"]
+texture_filter = 1
 position = Vector2(86, -13)
 scale = Vector2(1.5, 3)
+texture = ExtResource("10_mvs25")
 
-[node name="CollisionShape2D" parent="Traps/spikes6" index="5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/spikes6"]
 position = Vector2(61.3333, 1)
+shape = SubResource("RectangleShape2D_gk4mo")
 
 [node name="spikes8" parent="Traps" instance=ExtResource("8_vj55v")]
 position = Vector2(50, 210)
@@ -681,11 +698,11 @@ offset_top = -210.667
 offset_right = 77.3333
 offset_bottom = 299.333
 
+[connection signal="body_entered" from="Traps/spikes6" to="Traps/spikes6" method="_on_body_entered"]
 [connection signal="body_entered" from="Traps/spikes8" to="Player" method="_on_spikes_7_body_entered"]
 [connection signal="pressed" from="Pause" to="PauseMenu" method="open_pause_menu"]
 
 [editable path="Traps/SpikedBallTrap"]
 [editable path="Traps/SpikedBallTrap2"]
 [editable path="Traps/spikes4"]
-[editable path="Traps/spikes6"]
 [editable path="Traps/spikes8"]
