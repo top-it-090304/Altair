@@ -345,7 +345,7 @@ position = Vector2(199, -319)
 move_mode = 3
 
 [node name="Cube" parent="Entities/Traps" instance=ExtResource("7_xtwob")]
-position = Vector2(4, -0.333333)
+position = Vector2(-10.6667, -1.66666)
 
 [node name="banana" parent="Entities/Traps" instance=ExtResource("8_nwawn")]
 position = Vector2(166, 8)
