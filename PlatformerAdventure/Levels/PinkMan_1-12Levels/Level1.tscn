@@ -366,7 +366,10 @@ position = Vector2(456, 127.333)
 fire_on = 3.0
 
 [node name="Area2D" parent="Entities/Traps" instance=ExtResource("9_yhdyx")]
-position = Vector2(224.667, 425.333)
+position = Vector2(224, 425.333)
+
+[node name="CollisionShape2D" parent="Entities/Traps/Area2D" index="5"]
+position = Vector2(39.6665, 3.3335)
 
 [node name="Area2D2" parent="Entities/Traps" instance=ExtResource("9_yhdyx")]
 position = Vector2(304.667, 425.333)
@@ -378,7 +381,7 @@ position = Vector2(384, 425.333)
 position = Vector2(464, 425.333)
 
 [node name="Trampoline" parent="Entities/Traps" instance=ExtResource("10_1jc2j")]
-position = Vector2(332.667, 412)
+position = Vector2(334.667, 412)
 bounce_force = -1000.0
 
 [node name="Flag" parent="Entities" instance=ExtResource("8_3momc")]
@@ -435,3 +438,5 @@ position = Vector2(341.333, 138.667)
 position = Vector2(368, 90.6667)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
+
+[editable path="Entities/Traps/Area2D"]
