@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://c8h6n6c2qavgu"]
+[gd_scene load_steps=18 format=4 uid="uid://c8h6n6c2qavgu"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_qkrxp"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_k0ik0"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="9_yymhj"]
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="10_7nfua"]
 [ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="11_51tq7"]
+[ext_resource type="PackedScene" uid="uid://b1jblx5m8pguj" path="res://Entities/Traps/Spike/spikes6.tscn" id="12_k0ik0"]
 [ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="12_upgak"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="13_mwc2x"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="14_58ehy"]
@@ -341,11 +342,11 @@ offset_bottom = 534.0
 position = Vector2(104, 393)
 
 [node name="Cube2" parent="Entities/Traps" instance=ExtResource("7_xtwob")]
-position = Vector2(199, -319)
+position = Vector2(198.667, -321)
 move_mode = 3
 
 [node name="Cube" parent="Entities/Traps" instance=ExtResource("7_xtwob")]
-position = Vector2(-10.6667, -1.66666)
+position = Vector2(-10.6667, -0.333327)
 
 [node name="banana" parent="Entities/Traps" instance=ExtResource("8_nwawn")]
 position = Vector2(166, 8)
@@ -372,10 +373,10 @@ position = Vector2(318, -309)
 position = Vector2(282.667, -309)
 
 [node name="apple" parent="Entities/Traps" instance=ExtResource("10_7nfua")]
-position = Vector2(119, -279)
+position = Vector2(119.333, -313)
 
 [node name="apple2" parent="Entities/Traps" instance=ExtResource("10_7nfua")]
-position = Vector2(91, -279)
+position = Vector2(94.6667, -313)
 
 [node name="banana4" parent="Entities/Traps" instance=ExtResource("8_nwawn")]
 position = Vector2(433.333, -143.667)
@@ -390,10 +391,10 @@ position = Vector2(362.667, -142.333)
 position = Vector2(322.667, -143)
 
 [node name="banana8" parent="Entities/Traps" instance=ExtResource("8_nwawn")]
-position = Vector2(285.333, -142.333)
+position = Vector2(280, -181)
 
 [node name="Cube3" parent="Entities/Traps" instance=ExtResource("7_xtwob")]
-position = Vector2(524, -147)
+position = Vector2(524, -145)
 move_mode = 2
 
 [node name="FireTrap" parent="Entities/Traps" instance=ExtResource("11_51tq7")]
@@ -413,8 +414,17 @@ metadata/_edit_group_ = true
 [node name="Chain" parent="Entities/Traps/SpikedBallTrap/Pivot" index="0"]
 chain_length = 45.0
 
+[node name="Area2D" parent="Entities/Traps" instance=ExtResource("12_k0ik0")]
+position = Vector2(304.667, -257)
+
+[node name="banana9" parent="Entities/Traps" instance=ExtResource("8_nwawn")]
+position = Vector2(236.667, -146.333)
+
+[node name="Area2D2" parent="Entities/Traps" instance=ExtResource("12_k0ik0")]
+position = Vector2(259.333, -129)
+
 [node name="Flag" parent="Entities" instance=ExtResource("13_mwc2x")]
-position = Vector2(460, 112.667)
+position = Vector2(474.667, 112)
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("6_0cwma")]
 position = Vector2(529, 390)
