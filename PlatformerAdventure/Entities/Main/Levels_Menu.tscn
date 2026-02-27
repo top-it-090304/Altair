@@ -539,4 +539,6 @@ stretch_mode = 0
 [connection signal="pressed" from="CenterContainer/GridContainer/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/Button7" to="." method="_on_button_7_pressed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

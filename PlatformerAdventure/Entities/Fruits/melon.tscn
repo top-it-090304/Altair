@@ -192,6 +192,6 @@ shape = SubResource("RectangleShape2D_resih")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_nmsw0")
-animation = &"collected"
+animation = &"fruits"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

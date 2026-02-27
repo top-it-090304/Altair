@@ -510,7 +510,7 @@ sources/3 = SubResource("TileSetAtlasSource_r0du0")
 position = Vector2(628, 360)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_8io6h")
-next_level_path = "uid://c8h6n6c2qavgu"
+next_level_path = "uid://dxmc53wv1psbe"
 manual_fruit_count = 12
 metadata/_edit_group_ = true
 
