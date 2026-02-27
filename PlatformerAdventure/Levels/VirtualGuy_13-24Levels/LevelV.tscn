@@ -467,7 +467,7 @@ size = Vector2(72, 21)
 position = Vector2(674, 352)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nroux")
-next_level_path = "uid://blwiofsi31xvj"
+next_level_path = "uid://cjoso4k6j67y0"
 
 [node name="Map" type="Node2D" parent="."]
 

@@ -4,7 +4,7 @@ uniform float scroll_speed : hint_range(0.0, 200.0) = 30;
 uniform vec2 tile_size = vec2(64.0, 64.0);
 
 void vertex() {
-	
+
 }
 
 void fragment() {
