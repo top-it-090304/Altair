@@ -315,7 +315,7 @@ sources/0 = SubResource("TileSetAtlasSource_80x23")
 position = Vector2(152, 0)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_x4t0p")
-next_level_path = "uid://blwiofsi31xvj"
+next_level_path = "uid://c0q1mc08tjpsm"
 manual_fruit_count = 15
 
 [node name="UI" type="Node2D" parent="."]

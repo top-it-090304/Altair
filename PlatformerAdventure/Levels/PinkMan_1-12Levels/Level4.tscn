@@ -315,6 +315,7 @@ sources/0 = SubResource("TileSetAtlasSource_bgei7")
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ymk26")
+next_level_path = "uid://blwiofsi31xvj"
 
 [node name="UI" type="Node2D" parent="."]
 
