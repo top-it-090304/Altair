@@ -612,7 +612,6 @@ position = Vector2(117.333, -56)
 [node name="Player" parent="Entities" instance=ExtResource("13_5gia3")]
 texture_filter = 1
 position = Vector2(-231, 57)
-scale = Vector2(1.7, 1.7)
 
 [node name="SpawnPoint" type="Marker2D" parent="Entities"]
 texture_filter = 1
