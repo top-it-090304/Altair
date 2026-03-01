@@ -315,6 +315,7 @@ sources/0 = SubResource("TileSetAtlasSource_bgei7")
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ymk26")
+next_level_path = "uid://blwiofsi31xvj"
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -389,7 +390,7 @@ chain_length = 130.0
 position = Vector2(688, 410.667)
 
 [node name="SpikedBallTrap2" parent="Entities/Traps" instance=ExtResource("9_8cod1")]
-position = Vector2(362.667, 48)
+position = Vector2(362.667, 42.6667)
 
 [node name="Area2D" parent="Entities/Traps" instance=ExtResource("11_sv6u8")]
 position = Vector2(226.667, 168)
