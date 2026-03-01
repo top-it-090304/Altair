@@ -13,6 +13,10 @@ config_version=5
 config/name="Новый игровой проект"
 config/features=PackedStringArray("4.4", "Mobile")
 
+[autoload]
+
+SoundManager="*res://Levels/Sounds/SoundManager.tscn"
+
 [display]
 
 window/size/viewport_width=1280
