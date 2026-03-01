@@ -332,6 +332,20 @@ offset_bottom = 540.667
 
 [node name="Player" parent="Entities" instance=ExtResource("6_xhpvw")]
 position = Vector2(585.333, 340.667)
+speed = 300.0
+friction = 2000.0
+jump_velocity = -450.0
+jump_cut_multiplier = 0.4
+coyote_time = 0.12
+jump_buffer_time = 0.12
+wall_mechanics_enabled = false
+wall_jump_velocity = Vector2(280, -400)
+wall_jump_input_lock_time = 0.18
+wall_slide_speed = 80.0
+wall_min_contact_height = 8.0
+gravity_fall = 2200.0
+gravity_rise = 1600.0
+max_fall_speed = 900.0
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("7_rvgpq")]
 position = Vector2(616, 344)
