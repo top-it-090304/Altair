@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://64vb7pdfkovb" path="res://Assets/Textures/Main Characters/Pink Man/Idle (32x32).png" id="5_jpqh3"]
 [ext_resource type="Texture2D" uid="uid://b2tcf4i7fb64p" path="res://Assets/Textures/Main Characters/Pink Man/Jump (32x32).png" id="6_76idj"]
 [ext_resource type="Texture2D" uid="uid://j7uc28j7bvn4" path="res://Assets/Textures/Main Characters/Pink Man/Run (32x32).png" id="7_vrhuf"]
-[ext_resource type="AudioStream" uid="uid://3pypsnqli1vv" path="res://Assets/audio/jump.wav" id="9_76idj"]
-[ext_resource type="AudioStream" uid="uid://cq8vbuxn8j51g" path="res://Assets/audio/hit.wav" id="10_vrhuf"]
+[ext_resource type="AudioStream" uid="uid://bk1wgrnpjq1bi" path="res://Assets/audio/jump.wav" id="9_76idj"]
+[ext_resource type="AudioStream" uid="uid://dnw6qq4whmulw" path="res://Assets/audio/hit.wav" id="10_vrhuf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7c4g0"]
 atlas = ExtResource("2_7vg3o")
@@ -357,7 +357,7 @@ position = Vector2(0.236979, -0.330986)
 rotation = -2.35619
 scale = Vector2(1.7, 1.726)
 sprite_frames = SubResource("SpriteFrames_dk10w")
-animation = &"doublejump"
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4.24268, -5.65686)
