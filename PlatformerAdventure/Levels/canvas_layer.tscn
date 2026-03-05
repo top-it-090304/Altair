@@ -164,6 +164,7 @@ offset_bottom = 650.0
 script = ExtResource("4_ntwfq")
 
 [node name="Up" type="Button" parent="Control3"]
+layout_mode = 0
 offset_left = -45.0
 offset_top = -14.0
 offset_right = 59.0

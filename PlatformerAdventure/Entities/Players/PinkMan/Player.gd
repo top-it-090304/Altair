@@ -64,6 +64,19 @@ func _physics_process(delta: float) -> void:
 	_update_animation()
 	
 	move_and_slide()
+	_check_deadly_tiles()
+
+func _check_deadly_tiles():
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+		if collider is TileMapLayer:
+			var local_pos : Vector2 = collider.to_local(collision.get_position()) #Переводим мировые корды в локальные и возвращаем точку столнк
+			var tile_pos  : Vector2i = collider.local_to_map(local_pos) # В корды, понятные тиль мапе
+			var tile_data : TileData  = collider.get_cell_tile_data(tile_pos)
+			if tile_data and tile_data.get_custom_data("is_deadly"):
+				hit()
+				return
 
 func _update_timers(delta: float) -> void:
 	if is_on_floor():
