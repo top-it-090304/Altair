@@ -348,6 +348,12 @@ height = 26.0
 position = Vector2(10, -5)
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_14bb7")
+speed = 450.0
+acceleration = 4000.0
+friction = 4000.0
+jump_velocity = -600.0
+coyote_time = 0.15
+jump_buffer_time = 0.15
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

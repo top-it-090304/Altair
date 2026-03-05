@@ -9,6 +9,7 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("No")
 	monitoring = false
 	body_entered.connect(_on_body_entered)
+	activate()
 
 func activate():
 	is_active = true

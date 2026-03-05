@@ -1,17 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq8f414k5s5bo"]
+[gd_scene load_steps=14 format=4 uid="uid://cjtgg6g8lkup2"]
 
-[ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_ffm0y"]
-[ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_0widg"]
-[ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="3_v1krg"]
-[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_cfib4"]
-[ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="5_lp82p"]
-[ext_resource type="PackedScene" uid="uid://dqpsbv83pd5a1" path="res://Entities/Level/UI/control.tscn" id="6_0widg"]
-[ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="6_xhpvw"]
-[ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="7_rvgpq"]
-[ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="8_n5eg6"]
+[ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_1d5ma"]
+[ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_mgupv"]
+[ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="3_4ac25"]
+[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_2b0q3"]
+[ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="5_4ho3b"]
+[ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="6_mu0j0"]
+[ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="7_vsl0p"]
+[ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="8_g6ca4"]
+[ext_resource type="PackedScene" uid="uid://uyawx8kco8am" path="res://Entities/Traps/Fan/fan.tscn" id="8_mgupv"]
+[ext_resource type="PackedScene" uid="uid://c1p5iyietsr4y" path="res://Entities/Traps/FallingPlatform/falling_platform.tscn" id="9_4ac25"]
+[ext_resource type="PackedScene" uid="uid://bchxc4gq32ppd" path="res://Entities/Traps/Spinner/spinner.tscn" id="10_2b0q3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgei7"]
-texture = ExtResource("4_cfib4")
+texture = ExtResource("4_2b0q3")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -303,49 +305,102 @@ texture = ExtResource("4_cfib4")
 
 [sub_resource type="TileSet" id="TileSet_l4j0s"]
 physics_layer_0/collision_layer = 1
-custom_data_layer_0/name = "is_deadly"
-custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_bgei7")
 
 [node name="LevelConstructor" type="Node2D"]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_ffm0y")
+script = ExtResource("1_1d5ma")
 
 [node name="UI" type="Node2D" parent="."]
 
-[node name="BgTexture" parent="UI" instance=ExtResource("2_0widg")]
+[node name="BgTexture" parent="UI" instance=ExtResource("2_mgupv")]
 offset_left = 0.0
 offset_top = -2.0
 offset_right = 852.0
 offset_bottom = 479.0
 
-[node name="PauseMenu" parent="UI" instance=ExtResource("3_v1krg")]
+[node name="PauseMenu" parent="UI" instance=ExtResource("3_4ac25")]
+anchors_preset = 9
+anchor_right = 0.0
+grow_horizontal = 1
 
 [node name="Textures" type="TileMapLayer" parent="UI"]
+tile_map_data = PackedByteArray("AAANABkAAAAGAAAAAAANABoAAAAGAAEAAAANABsAAAAGAAIAAAAOABkAAAAHAAAAAAAOABoAAAAHAAEAAAAOABsAAAAHAAIAAAAPABkAAAAIAAAAAAAPABoAAAAIAAEAAAAPABsAAAAIAAIAAAAQABkAAAAGAAAAAAAQABoAAAAGAAEAAAAQABsAAAAGAAIAAAARABkAAAAHAAAAAAARABoAAAAHAAEAAAARABsAAAAHAAIAAAASABkAAAAIAAAAAAASABoAAAAIAAEAAAASABsAAAAIAAIAAAATABkAAAAGAAAAAAATABoAAAAGAAEAAAATABsAAAAGAAIAAAAUABkAAAAHAAAAAAAUABoAAAAHAAEAAAAUABsAAAAHAAIAAAAVABkAAAAIAAAAAAAVABoAAAAIAAEAAAAVABsAAAAIAAIAAAAWABkAAAAGAAAAAAAWABoAAAAGAAEAAAAWABsAAAAGAAIAAAAXABkAAAAHAAAAAAAXABoAAAAHAAEAAAAXABsAAAAHAAIAAAAYABkAAAAIAAAAAAAYABoAAAAIAAEAAAAYABsAAAAIAAIAAAAZABkAAAAGAAAAAAAZABoAAAAGAAEAAAAZABsAAAAGAAIAAAAaABkAAAAHAAAAAAAaABoAAAAHAAEAAAAaABsAAAAHAAIAAAAbABkAAAAIAAAAAAAbABoAAAAIAAEAAAAbABsAAAAIAAIAAAAcABkAAAAGAAAAAAAcABoAAAAGAAEAAAAcABsAAAAGAAIAAAAdABkAAAAHAAAAAAAdABoAAAAHAAEAAAAdABsAAAAHAAIAAAAeABkAAAAIAAAAAAAeABoAAAAIAAEAAAAeABsAAAAIAAIAAAAfABkAAAAGAAAAAAAfABoAAAAGAAEAAAAfABsAAAAGAAIAAAAgABkAAAAHAAAAAAAgABoAAAAHAAEAAAAgABsAAAAHAAIAAAAhABkAAAAIAAAAAAAhABoAAAAIAAEAAAAhABsAAAAIAAIAAAAiABkAAAAGAAAAAAAiABoAAAAGAAEAAAAiABsAAAAGAAIAAAAjABkAAAAHAAAAAAAjABoAAAAHAAEAAAAjABsAAAAHAAIAAAAkABkAAAAIAAAAAAAkABoAAAAIAAEAAAAkABsAAAAIAAIAAAAlABkAAAAGAAAAAAAlABoAAAAGAAEAAAAlABsAAAAGAAIAAAAmABkAAAAHAAAAAAAmABoAAAAHAAEAAAAmABsAAAAHAAIAAAAnABkAAAAIAAAAAAAnABoAAAAIAAEAAAAnABsAAAAIAAIAAAAoABkAAAAGAAAAAAAoABoAAAAGAAEAAAAoABsAAAAGAAIAAAApABkAAAAHAAAAAAApABoAAAAHAAEAAAApABsAAAAHAAIAAAAqABkAAAAIAAAAAAAqABoAAAAIAAEAAAAqABsAAAAIAAIAAAAMAAQAAAAGAAAAAAANAAQAAAAHAAAAAAAOAAQAAAAIAAAAAAAPAAQAAAAGAAAAAAAQAAQAAAAHAAAAAAARAAQAAAAIAAAAAAASAAQAAAAGAAAAAAATAAQAAAAHAAAAAAAUAAQAAAAIAAAAAAAVAAQAAAAGAAAAAAAWAAQAAAAHAAAAAAAXAAQAAAAIAAAAAAAYAAQAAAAGAAAAAAAZAAQAAAAHAAAAAAAaAAQAAAAIAAAAAAAbAAQAAAAGAAAAAAAcAAQAAAAHAAAAAAAdAAQAAAAIAAAAAAAeAAQAAAAGAAAAAAAfAAQAAAAHAAAAAAAgAAQAAAAIAAAAAAAhAAQAAAAGAAAAAAAiAAQAAAAHAAAAAAAjAAQAAAAIAAAAAAAkAAQAAAAGAAAAAAAlAAQAAAAHAAAAAAAmAAQAAAAIAAAAAAAnAAQAAAAGAAAAAAAoAAQAAAAHAAAAAAApAAQAAAAIAAAAAAAqAAQAAAAGAAAAAAArAAQAAAAHAAAAAAAsAAQAAAAIAAAAAAAtAAQAAAAGAAAAAAAtAAUAAAAGAAEAAAAtAAYAAAAGAAIAAAAtAAcAAAAGAAAAAAAtAAgAAAAGAAEAAAAtAAkAAAAGAAIAAAAtAAoAAAAGAAAAAAAtAAsAAAAGAAEAAAAtAAwAAAAGAAIAAAAtAA0AAAAGAAAAAAAtAA4AAAAGAAEAAAAtAA8AAAAGAAIAAAAtABAAAAAGAAAAAAAtABEAAAAGAAEAAAAtABIAAAAGAAIAAAAtABMAAAAGAAAAAAAtABQAAAAGAAEAAAAtABUAAAAGAAIAAAAtABYAAAAGAAAAAAAtABcAAAAGAAEAAAAtABgAAAAGAAIAAAAtABkAAAAIAAAAAAAtABoAAAAIAAEAAAArABkAAAAGAAAAAAArABoAAAAGAAEAAAArABsAAAAGAAIAAAAsABkAAAAHAAAAAAAsABoAAAAHAAEAAAAsABsAAAAHAAIAAAAtABsAAAAIAAIAAAAFAAQAAAAHAAAAAAAGAAQAAAAGAAAAAAAHAAQAAAAHAAAAAAAIAAQAAAAIAAAAAAAJAAQAAAAGAAAAAAAKAAQAAAAHAAAAAAALAAQAAAAIAAAAAAAEAAQAAAAGAAAAAAAEAAUAAAAGAAEAAAAEAAYAAAAGAAIAAAAFAAUAAAAHAAEAAAAFAAYAAAAHAAIAAAAEAAcAAAAGAAAAAAAEAAgAAAAGAAEAAAAEAAkAAAAGAAIAAAAFAAcAAAAHAAAAAAAFAAgAAAAHAAEAAAAFAAkAAAAHAAIAAAAEAAoAAAAGAAAAAAAEAAsAAAAGAAEAAAAEAAwAAAAGAAIAAAAFAAoAAAAHAAAAAAAFAAsAAAAHAAEAAAAFAAwAAAAHAAIAAAAEAA0AAAAGAAAAAAAEAA4AAAAGAAEAAAAEAA8AAAAGAAIAAAAFAA0AAAAHAAAAAAAFAA4AAAAHAAEAAAAFAA8AAAAHAAIAAAAEABAAAAAGAAAAAAAEABEAAAAGAAEAAAAEABIAAAAGAAIAAAAFABAAAAAHAAAAAAAFABEAAAAHAAEAAAAFABIAAAAHAAIAAAAEABMAAAAGAAAAAAAEABQAAAAGAAEAAAAEABUAAAAGAAIAAAAFABMAAAAHAAAAAAAFABQAAAAHAAEAAAAFABUAAAAHAAIAAAAEABYAAAAGAAAAAAAEABcAAAAGAAEAAAAEABgAAAAGAAIAAAAFABYAAAAHAAAAAAAFABcAAAAHAAEAAAAFABgAAAAHAAIAAAAEABkAAAAGAAAAAAAEABoAAAAGAAEAAAAFABkAAAAHAAAAAAAFABoAAAAHAAEAAAAGABgAAAAGAAAAAAAGABkAAAAGAAEAAAAGABoAAAAGAAIAAAAHABgAAAAHAAAAAAAHABkAAAAHAAEAAAAHABoAAAAHAAIAAAAIABgAAAAIAAAAAAAIABkAAAAIAAEAAAAIABoAAAAIAAIAAAAGABsAAAAGAAAAAAAHABsAAAAHAAAAAAAIABsAAAAIAAAAAAAJABgAAAAGAAAAAAAJABkAAAAGAAEAAAAJABoAAAAGAAIAAAAKABgAAAAHAAAAAAAKABkAAAAHAAEAAAAKABoAAAAHAAIAAAALABgAAAAIAAAAAAALABkAAAAIAAEAAAALABoAAAAIAAIAAAAJABsAAAAGAAAAAAAKABsAAAAHAAAAAAALABsAAAAIAAAAAAAMABgAAAAGAAAAAAAMABkAAAAGAAEAAAAMABoAAAAGAAIAAAAMABsAAAAGAAAAAAAfABYAAAAGAAAAAAAfABcAAAAGAAEAAAAfABgAAAAGAAIAAAAgABYAAAAHAAAAAAAgABcAAAAHAAEAAAAgABgAAAAHAAIAAAAhABYAAAAIAAAAAAAhABcAAAAIAAEAAAAhABgAAAAIAAIAAAAiABYAAAAJAAEAAAAiABcAAAAGAAAAAAAiABgAAAAGAAEAAAAjABcAAAAHAAAAAAAjABgAAAAHAAEAAAAkABcAAAAIAAAAAAAkABgAAAAIAAEAAAAcABcAAAAGAAEAAAAcABgAAAAGAAIAAAAdABcAAAAHAAEAAAAdABgAAAAHAAIAAAAeABcAAAAIAAEAAAAeABgAAAAIAAIAAAAbABgAAAAKAAEAAAA=")
 tile_set = SubResource("TileSet_l4j0s")
 
-[node name="PauseButton" parent="UI" instance=ExtResource("5_lp82p")]
+[node name="PauseButton" parent="UI" instance=ExtResource("5_4ho3b")]
 offset_left = 32.6667
 offset_top = 30.6667
 offset_right = 542.667
 offset_bottom = 540.667
 
-[node name="Buttons" parent="UI" instance=ExtResource("6_0widg")]
-
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="Player" parent="Entities" instance=ExtResource("6_xhpvw")]
+[node name="Player" parent="Entities" instance=ExtResource("6_mu0j0")]
 position = Vector2(585.333, 340.667)
 
-[node name="SpawnPoint" parent="Entities" instance=ExtResource("7_rvgpq")]
+[node name="SpawnPoint" parent="Entities" instance=ExtResource("7_vsl0p")]
 position = Vector2(616, 344)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
-[node name="Flag" parent="Entities" instance=ExtResource("8_n5eg6")]
+[node name="Node2D" parent="Entities/Traps" instance=ExtResource("8_mgupv")]
+position = Vector2(261.333, 396)
+max_lift_speed = 100.0
+air_height = 120.0
+time_on = 5.0
+time_off = 1.0
+
+[node name="Node2D2" parent="Entities/Traps" instance=ExtResource("8_mgupv")]
+position = Vector2(334, 396)
+max_lift_speed = 100.0
+air_height = 200.0
+time_on = 5.0
+time_off = 1.0
+
+[node name="Node2D3" parent="Entities/Traps" instance=ExtResource("8_mgupv")]
+position = Vector2(309.333, 396)
+max_lift_speed = 100.0
+air_height = 170.0
+time_on = 5.0
+time_off = 1.0
+
+[node name="Node2D4" parent="Entities/Traps" instance=ExtResource("8_mgupv")]
+position = Vector2(285.333, 396)
+max_lift_speed = 100.0
+air_height = 140.0
+time_on = 5.0
+time_off = 1.0
+
+[node name="AnimatableBody2D" parent="Entities/Traps" instance=ExtResource("9_4ac25")]
+position = Vector2(383.333, 354.667)
+
+[node name="AnimatableBody2D2" parent="Entities/Traps" instance=ExtResource("9_4ac25")]
+position = Vector2(468, 353.333)
+
+[node name="AnimatableBody2D3" parent="Entities/Traps" instance=ExtResource("9_4ac25")]
+position = Vector2(424, 353.333)
+
+[node name="Node2D5" parent="Entities/Traps" instance=ExtResource("10_2b0q3")]
+position = Vector2(456, 310)
+direction = 1
+
+[node name="Node2D6" parent="Entities/Traps" instance=ExtResource("10_2b0q3")]
+position = Vector2(322.667, 274)
+rotation_speed = 150.0
+
+[node name="Node2D7" parent="Entities/Traps" instance=ExtResource("10_2b0q3")]
+position = Vector2(392, 286.667)
+pause_duration = 4.0
+
+[node name="Node2D8" parent="Entities/Traps" instance=ExtResource("10_2b0q3")]
+position = Vector2(260, 250.667)
+
+[node name="Flag" parent="Entities" instance=ExtResource("8_g6ca4")]
 position = Vector2(636, 142.667)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
+position = Vector2(138.667, 81.3333)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]

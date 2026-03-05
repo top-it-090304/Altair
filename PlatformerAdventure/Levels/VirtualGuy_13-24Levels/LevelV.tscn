@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dxmc53wv1psbe"]
+[gd_scene load_steps=26 format=4 uid="uid://dxmc53wv1psbe"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_nroux"]
 [ext_resource type="Texture2D" uid="uid://eqnhicopj6xe" path="res://Assets/Textures/Background/Brown.png" id="2_npf3m"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="14_mrk00"]
 [ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="15_45e66"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="16_rctka"]
+[ext_resource type="PackedScene" uid="uid://dqpsbv83pd5a1" path="res://Entities/Level/UI/control.tscn" id="18_mvs25"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0pq"]
 texture = ExtResource("2_npf3m")
@@ -697,6 +698,10 @@ offset_left = -432.667
 offset_top = -210.667
 offset_right = 77.3333
 offset_bottom = 299.333
+
+[node name="Buttons" parent="." instance=ExtResource("18_mvs25")]
+
+[node name="UI" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="Traps/spikes6" to="Traps/spikes6" method="_on_body_entered"]
 [connection signal="body_entered" from="Traps/spikes8" to="Player" method="_on_spikes_7_body_entered"]
