@@ -15,7 +15,7 @@ class_name PlayerBase
 @export_group("Wall Mechanics")
 @export var wall_mechanics_enabled: bool = false
 @export var wall_jump_velocity: Vector2 = Vector2(280.0, -400.0)
-@export var wall_jump_input_lock_time: float = 0.18
+@export var wall_jump_input_lock_time: float = 0.25
 @export var wall_slide_speed: float = 80.0
 @export var wall_min_contact_height: float = 8.0
 
@@ -103,8 +103,7 @@ func _handle_wall_slide() -> void:
 	if input_x == 0.0 or sign(input_x) == sign(wall_normal.x):
 		return
 
-	if not _is_valid_wall_contact(wall_normal):
-		return
+	is_wall_sliding = true
 
 	is_wall_sliding = true
 	
@@ -124,20 +123,21 @@ func _is_valid_wall_contact(wall_normal: Vector2) -> bool:
 	return true
 
 func _handle_jump() -> void:
-	if Input.is_action_just_pressed("move_up"):
-		print("JUMP PRESSED")
-		jump_buffer_timer = jump_buffer_time
 	
+	if Input.is_action_just_pressed("move_up"):
+		jump_buffer_timer = jump_buffer_time
+
 	if Input.is_action_just_released("move_up") and is_jumping and velocity.y < 0.0:
 		velocity.y *= jump_cut_multiplier
 		is_jumping = false
-	
+
+
 	if wall_mechanics_enabled and is_on_wall() and not is_on_floor():
-		if Input.is_action_just_pressed("move_up"):
-			if _is_valid_wall_contact(get_wall_normal()):
-				_do_wall_jump()
-				return
-	
+		if jump_buffer_timer > 0.0:
+			_do_wall_jump()
+			return
+
+
 	if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
 		velocity.y = jump_velocity
 		is_jumping = true
@@ -145,7 +145,8 @@ func _handle_jump() -> void:
 		jump_buffer_timer = 0.0
 		sound_jump.play()
 		return
-	
+
+
 	if double_jump_enabled and double_jump_available:
 		if Input.is_action_just_pressed("move_up"):
 			velocity.y = jump_velocity
@@ -153,7 +154,7 @@ func _handle_jump() -> void:
 			is_double_jumping = true
 			double_jump_available = false
 			sound_jump.play()
-		
+
 func _do_wall_jump() -> void:
 	var wall_normal := get_wall_normal()
 	velocity.x = wall_normal.x * wall_jump_velocity.x #Нормаль дает направление ОТ стены
@@ -168,7 +169,8 @@ func _handle_movement(delta: float) -> void:
 	var input_x := Input.get_axis("move_left", "move_right")
 
 	if wall_jump_lock_timer > 0.0:
-		input_x *= 0.3
+		velocity.x = move_toward(velocity.x, 0.0, friction * 0.1 * delta)
+		return
 
 	if input_x != 0.0:
 		velocity.x = move_toward(velocity.x, input_x * speed, acceleration * delta)
@@ -176,7 +178,6 @@ func _handle_movement(delta: float) -> void:
 			facing_right = input_x > 0.0
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
-
 func _update_animation() -> void:
 	animated_sprite.flip_h = not facing_right
 

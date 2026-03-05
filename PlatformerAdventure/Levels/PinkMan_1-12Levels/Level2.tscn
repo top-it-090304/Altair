@@ -382,7 +382,7 @@ position = Vector2(464, 425.333)
 
 [node name="Trampoline" parent="Entities/Traps" instance=ExtResource("10_l21dc")]
 position = Vector2(334.667, 412)
-bounce_force = -1000.0
+bounce_force = -1200.0
 
 [node name="Flag" parent="Entities" instance=ExtResource("8_oxc05")]
 position = Vector2(729.333, 176)

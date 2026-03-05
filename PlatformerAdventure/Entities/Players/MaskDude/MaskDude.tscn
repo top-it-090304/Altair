@@ -347,6 +347,7 @@ height = 28.0
 [node name="maskdude" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_a2kkq")
+speed = 350.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
