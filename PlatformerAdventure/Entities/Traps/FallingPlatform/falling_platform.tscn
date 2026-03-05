@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1p5iyietsr4y"]
+[gd_scene load_steps=10 format=3 uid="uid://c1p5iyietsr4y"]
 
+[ext_resource type="Script" uid="uid://c23obcddjpo42" path="res://Entities/Traps/FallingPlatform/falling_platform.gd" id="1_jgeho"]
 [ext_resource type="Texture2D" uid="uid://dyb11kedivaj7" path="res://Assets/Textures/Traps/Falling Platforms/On (32x10).png" id="2_85rv7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vdq67"]
@@ -51,6 +52,7 @@ size = Vector2(32, 10)
 
 [node name="AnimatableBody2D" type="AnimatableBody2D"]
 texture_filter = 1
+script = ExtResource("1_jgeho")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
