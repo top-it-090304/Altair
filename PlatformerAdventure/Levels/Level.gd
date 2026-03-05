@@ -42,9 +42,9 @@ func _on_fruit_collected():
 
 	fruit_counter.update_count(collected_count)
 
-	if collected_count >= total_fruits:
-		if flag:
-			flag.activate()
+	#if collected_count >= total_fruits:
+		#if flag:
+			#flag.activate()
 
 func _on_level_completed():
  
