@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqpsbv83pd5a1"]
+
+[ext_resource type="Texture2D" uid="uid://bo58276a5wm2j" path="res://Assets/Textures/HUD/JumpButton.png" id="1_4bt1v"]
+[ext_resource type="Texture2D" uid="uid://clx53vg3swjos" path="res://Assets/Textures/HUD/JumpButtonLeft.png" id="1_ntwfq"]
+[ext_resource type="Texture2D" uid="uid://biwpw5rkdbl5d" path="res://Assets/Textures/HUD/Knob.png" id="2_ip4r5"]
+[ext_resource type="Texture2D" uid="uid://c2vd6pht02sp4" path="res://Assets/Textures/HUD/JumpButtonRight.png" id="3_c5nvv"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 63
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 70
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 75
+metadata/_edit_group_ = true
+
+[node name="Left" type="TextureButton" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("1_ntwfq")
+texture_pressed = ExtResource("2_ip4r5")
+stretch_mode = 0
+
+[node name="Right" type="TextureButton" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("3_c5nvv")
+texture_pressed = ExtResource("2_ip4r5")
+stretch_mode = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(873, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 2
+metadata/_edit_group_ = true
+
+[node name="Jump" type="TextureButton" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("1_4bt1v")
+texture_pressed = ExtResource("2_ip4r5")
+stretch_mode = 0
