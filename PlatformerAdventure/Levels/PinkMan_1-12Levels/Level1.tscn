@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bc35jpsx8tm1o"]
+[gd_scene load_steps=21 format=4 uid="uid://bc35jpsx8tm1o"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_xcayt"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_5g41i"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://52x52oidtims" path="res://Entities/Fruits/kiwi.tscn" id="16_otj4g"]
 [ext_resource type="PackedScene" uid="uid://h8i67qnod2am" path="res://Entities/Fruits/strawberry.tscn" id="17_4maxe"]
 [ext_resource type="PackedScene" uid="uid://lxxadfoc1hv7" path="res://Entities/Fruits/orange.tscn" id="17_otj4g"]
+[ext_resource type="PackedScene" uid="uid://dqpsbv83pd5a1" path="res://Levels/canvas_layer.tscn" id="18_4maxe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgei7"]
 texture = ExtResource("4_p5226")
@@ -404,5 +405,7 @@ position = Vector2(629.333, 192)
 
 [node name="strawberry5" parent="Entities/Fruits" instance=ExtResource("17_4maxe")]
 position = Vector2(298.667, 85.3333)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("18_4maxe")]
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]

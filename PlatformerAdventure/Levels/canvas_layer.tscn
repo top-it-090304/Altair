@@ -1,60 +1,179 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqpsbv83pd5a1"]
+[gd_scene load_steps=18 format=3 uid="uid://dqpsbv83pd5a1"]
 
-[ext_resource type="Texture2D" uid="uid://bo58276a5wm2j" path="res://Assets/Textures/HUD/JumpButton.png" id="1_4bt1v"]
-[ext_resource type="Texture2D" uid="uid://clx53vg3swjos" path="res://Assets/Textures/HUD/JumpButtonLeft.png" id="1_ntwfq"]
-[ext_resource type="Texture2D" uid="uid://biwpw5rkdbl5d" path="res://Assets/Textures/HUD/Knob.png" id="2_ip4r5"]
-[ext_resource type="Texture2D" uid="uid://c2vd6pht02sp4" path="res://Assets/Textures/HUD/JumpButtonRight.png" id="3_c5nvv"]
+[ext_resource type="Script" uid="uid://bsv87wppkkesp" path="res://Levels/canvas_layer.gd" id="1_c5nvv"]
+[ext_resource type="Script" uid="uid://bhhmc2k28bmot" path="res://Levels/left.gd" id="2_muowi"]
+[ext_resource type="Texture2D" uid="uid://bcjfjrymis770" path="res://Assets/Textures/Traps/Arrow/Idle (18x18).png" id="3_ntwfq"]
+[ext_resource type="Script" uid="uid://dwhj42fl28esl" path="res://Levels/levelbutton.gd" id="4_ntwfq"]
+[ext_resource type="Script" uid="uid://dkbqu02n4w2b5" path="res://Levels/right.gd" id="5_e2je6"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5nvv"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(0, 0, 18, 18)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 63
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 70
+[sub_resource type="AtlasTexture" id="AtlasTexture_muowi"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(18, 0, 18, 18)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkyf4"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(36, 0, 18, 18)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 75
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1lyi"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7dhe"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(72, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8208h"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(90, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of8c6"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(108, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7asnu"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(126, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55pdg"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(144, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkvcj"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(162, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2je6"]
+atlas = ExtResource("3_ntwfq")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gkga1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5nvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muowi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkyf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1lyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7dhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8208h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of8c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7asnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55pdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkvcj")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 35.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2je6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Buttons" type="CanvasLayer"]
+script = ExtResource("1_c5nvv")
+
+[node name="Control" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 650.0
+offset_right = 64.0
+offset_bottom = 650.0
+script = ExtResource("2_muowi")
+
+[node name="Left" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -114.0
+offset_right = 120.0
+offset_bottom = -10.0
+focus_mode = 0
+flat = true
 metadata/_edit_group_ = true
 
-[node name="Left" type="TextureButton" parent="MarginContainer/HBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture_normal = ExtResource("1_ntwfq")
-texture_pressed = ExtResource("2_ip4r5")
-stretch_mode = 0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Left"]
+position = Vector2(51.5933, 51.5933)
+rotation = -1.5708
+scale = Vector2(5.78815, 5.78815)
+sprite_frames = SubResource("SpriteFrames_gkga1")
+animation = &"hit"
 
-[node name="Right" type="TextureButton" parent="MarginContainer/HBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture_normal = ExtResource("3_c5nvv")
-texture_pressed = ExtResource("2_ip4r5")
-stretch_mode = 0
+[node name="Control2" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 650.0
+offset_right = 64.0
+offset_bottom = 650.0
+script = ExtResource("5_e2je6")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(873, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-alignment = 2
+[node name="Right" type="Button" parent="Control2"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = -114.0
+offset_right = 280.0
+offset_bottom = -10.0
+focus_mode = 0
+flat = true
 metadata/_edit_group_ = true
 
-[node name="Jump" type="TextureButton" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture_normal = ExtResource("1_4bt1v")
-texture_pressed = ExtResource("2_ip4r5")
-stretch_mode = 0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control2/Right"]
+position = Vector2(51.5933, 51.5933)
+rotation = 1.5708
+scale = Vector2(5.78815, 5.78815)
+sprite_frames = SubResource("SpriteFrames_gkga1")
+animation = &"hit"
+
+[node name="Control3" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1141.0
+offset_top = 550.0
+offset_right = 1141.0
+offset_bottom = 650.0
+script = ExtResource("4_ntwfq")
+
+[node name="Up" type="Button" parent="Control3"]
+offset_left = -45.0
+offset_top = -14.0
+offset_right = 59.0
+offset_bottom = 90.0
+focus_mode = 0
+flat = true
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control3/Up"]
+position = Vector2(51.7501, 51.75)
+scale = Vector2(5.80554, 5.80555)
+sprite_frames = SubResource("SpriteFrames_gkga1")
+animation = &"hit"
