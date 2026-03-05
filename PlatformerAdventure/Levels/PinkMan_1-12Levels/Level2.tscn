@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_nq6at"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="5_nn04n"]
 [ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="6_4jjeu"]
-[ext_resource type="PackedScene" uid="uid://dqpsbv83pd5a1" path="res://Levels/canvas_layer.tscn" id="6_l21dc"]
+[ext_resource type="PackedScene" uid="uid://dqpsbv83pd5a1" path="res://Entities/Level/UI/control.tscn" id="6_l21dc"]
 [ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="7_5mlkt"]
 [ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="8_gbnyl"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="8_oxc05"]
@@ -312,6 +312,8 @@ texture = ExtResource("4_nq6at")
 
 [sub_resource type="TileSet" id="TileSet_l4j0s"]
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "is_deadly"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_bgei7")
 
 [node name="LevelConstructor" type="Node2D"]

@@ -504,6 +504,8 @@ texture = ExtResource("3_ry7jm")
 
 [sub_resource type="TileSet" id="TileSet_cm0pq"]
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "is_deadly"
+custom_data_layer_0/type = 1
 sources/3 = SubResource("TileSetAtlasSource_r0du0")
 
 [node name="LevelN" type="Node2D"]

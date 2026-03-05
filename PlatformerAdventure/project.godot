@@ -15,7 +15,7 @@ config/features=PackedStringArray("4.4", "Mobile")
 
 [autoload]
 
-SoundManager="*res://Levels/Sounds/SoundManager.tscn"
+SoundManager="*res://Entities/Level/Sounds/SoundManager.tscn"
 
 [display]
 
