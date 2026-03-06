@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=4 uid="uid://m8vymuv18nrh"]
+
+[ext_resource type="Texture2D" uid="uid://yuwf5al2lqxy" path="res://Assets/Textures/Traps/Spikes/Idle.png" id="1_823eb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7q0mb"]
+texture = ExtResource("1_823eb")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -4.67018, 1.42136, -1.31983, 8)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(0.304576, 8, 3.35034, 1.72593, 6.19306, 8)
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_0bhfx"]
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "is_deadly"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_7q0mb")
+
+[node name="Spikes" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAAVABkAAAAAAAAAAAAWABkAAAAAAAAAAAAXABkAAAAAAAAAAAAYABkAAAAAAAAAAAAZABkAAAAAAAAAAAAaABkAAAAAAAAAAAAbABkAAAAAAAAAAAAcABkAAAAAAAAAAAARABkAAAAAAAAAAAASABkAAAAAAAAAAAATABkAAAAAAAAAAAAUABkAAAAAAAAAAAAdABkAAAAAAAAAAAAeABkAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_0bhfx")

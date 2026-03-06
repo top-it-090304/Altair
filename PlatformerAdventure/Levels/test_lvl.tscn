@@ -383,19 +383,19 @@ position = Vector2(468, 353.333)
 position = Vector2(424, 353.333)
 
 [node name="Node2D5" parent="Entities/Traps" instance=ExtResource("10_2b0q3")]
-position = Vector2(456, 310)
+position = Vector2(420, 286.667)
 direction = 1
 
 [node name="Node2D6" parent="Entities/Traps" instance=ExtResource("10_2b0q3")]
-position = Vector2(322.667, 274)
+position = Vector2(268, 254.667)
 rotation_speed = 150.0
 
 [node name="Node2D7" parent="Entities/Traps" instance=ExtResource("10_2b0q3")]
-position = Vector2(392, 286.667)
+position = Vector2(344.667, 255.333)
 pause_duration = 4.0
 
 [node name="Node2D8" parent="Entities/Traps" instance=ExtResource("10_2b0q3")]
-position = Vector2(260, 250.667)
+position = Vector2(198.667, 254.667)
 
 [node name="Flag" parent="Entities" instance=ExtResource("8_g6ca4")]
 position = Vector2(636, 142.667)

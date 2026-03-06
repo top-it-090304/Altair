@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://bljm38ot20br2"]
+
+[ext_resource type="Script" uid="uid://bgfr8hmndvdcl" path="res://Entities/Level/UI/touch_controls.gd" id="1_6pg8p"]
+[ext_resource type="Texture2D" uid="uid://dvsg6181c2aru" path="res://Assets/Textures/Traps/Arrow/Hit (18x18).png" id="2_pxyie"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfiyp"]
+atlas = ExtResource("2_pxyie")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbyyq"]
+atlas = ExtResource("2_pxyie")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf55q"]
+atlas = ExtResource("2_pxyie")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k85cv"]
+atlas = ExtResource("2_pxyie")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc0xq"]
+atlas = ExtResource("2_pxyie")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsj0n"]
+atlas = ExtResource("2_pxyie")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjbqc"]
+atlas = ExtResource("2_pxyie")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfolm"]
+atlas = ExtResource("2_pxyie")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5uim"]
+atlas = ExtResource("2_pxyie")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrqe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfiyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbyyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf55q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k85cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc0xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsj0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjbqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfolm")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5uim")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="TouchControls" type="CanvasLayer"]
+script = ExtResource("1_6pg8p")
+
+[node name="GhostLeft" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+rotation = -1.5708
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_hrqe7")
+animation = &"hit"
+frame_progress = 0.641408
+
+[node name="GhostRight" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-24, -16)
+rotation = 1.5708
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_hrqe7")
+animation = &"hit"
+
+[node name="GhostJump" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(24, -16)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_hrqe7")
+animation = &"hit"
+frame_progress = 0.392571

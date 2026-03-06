@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bc35jpsx8tm1o"]
+[gd_scene load_steps=21 format=4 uid="uid://bc35jpsx8tm1o"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_xcayt"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_5g41i"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://h8i67qnod2am" path="res://Entities/Fruits/strawberry.tscn" id="17_4maxe"]
 [ext_resource type="PackedScene" uid="uid://lxxadfoc1hv7" path="res://Entities/Fruits/orange.tscn" id="17_otj4g"]
 [ext_resource type="PackedScene" uid="uid://dqpsbv83pd5a1" path="res://Entities/Level/UI/control.tscn" id="18_4maxe"]
-[ext_resource type="Texture2D" uid="uid://yuwf5al2lqxy" path="res://Assets/Textures/Traps/Spikes/Idle.png" id="18_tvs4k"]
+[ext_resource type="PackedScene" uid="uid://m8vymuv18nrh" path="res://Entities/Traps/Spike/TileSpikes.tscn" id="18_tvs4k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgei7"]
 texture = ExtResource("4_p5226")
@@ -316,22 +316,6 @@ custom_data_layer_0/name = "is_deadly"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_bgei7")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7q0mb"]
-texture = ExtResource("18_tvs4k")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -4.67018, 1.42136, -1.31983, 8)
-0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(0.304576, 8, 3.35034, 1.72593, 6.19306, 8)
-0:0/0/custom_data_0 = true
-1:0/0 = 0
-1:1/0 = 0
-0:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_0bhfx"]
-physics_layer_0/collision_layer = 1
-custom_data_layer_0/name = "is_deadly"
-custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_7q0mb")
-
 [node name="LevelConstructor" type="Node2D"]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
@@ -421,8 +405,6 @@ position = Vector2(629.333, 192)
 [node name="strawberry5" parent="Entities/Fruits" instance=ExtResource("17_4maxe")]
 position = Vector2(298.667, 85.3333)
 
-[node name="Spikes" type="TileMapLayer" parent="Entities"]
-tile_map_data = PackedByteArray("AAAVABkAAAAAAAAAAAAWABkAAAAAAAAAAAAXABkAAAAAAAAAAAAYABkAAAAAAAAAAAAZABkAAAAAAAAAAAAaABkAAAAAAAAAAAAbABkAAAAAAAAAAAAcABkAAAAAAAAAAAARABkAAAAAAAAAAAASABkAAAAAAAAAAAATABkAAAAAAAAAAAAUABkAAAAAAAAAAAAdABkAAAAAAAAAAAAeABkAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_0bhfx")
+[node name="Spikes" parent="Entities" instance=ExtResource("18_tvs4k")]
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
