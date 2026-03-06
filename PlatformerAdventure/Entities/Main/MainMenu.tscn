@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://co1ws314r8c86"]
+[gd_scene load_steps=86 format=3 uid="uid://co1ws314r8c86"]
 
 [ext_resource type="Script" uid="uid://bjdi8sxlppvp0" path="res://Entities/Main/main_menu.gd" id="1_dva7d"]
 [ext_resource type="Texture2D" uid="uid://ctb42q3cq7ilg" path="res://Assets/Textures/Menu/3ea433ad-2c40-4e0f-a133-fe0fc67e0716.png" id="2_dva7d"]
@@ -12,9 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://daeysea26c1qu" path="res://Assets/Textures/Main Characters/Virtual Guy/Idle_reverse (32x32).png" id="6_umweh"]
 [ext_resource type="Texture2D" uid="uid://c82xia4e1gjdc" path="res://Assets/Buttons Vector Animation Pack/play/342 px/play05.png" id="7_12pmw"]
 [ext_resource type="Texture2D" uid="uid://qmxi7ayo35df" path="res://Assets/Textures/Traps/Rock Head/Idle.png" id="7_cfroj"]
+[ext_resource type="Texture2D" uid="uid://b674gu6tumxqi" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store01.png" id="8_1otou"]
 [ext_resource type="Texture2D" uid="uid://cdha073lmpbei" path="res://Assets/Textures/Traps/Rock Head/Blink (42x42).png" id="8_umweh"]
+[ext_resource type="Texture2D" uid="uid://cp3jeg3ev36i6" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store02.png" id="9_tejh6"]
 [ext_resource type="Texture2D" uid="uid://dc0d6v4r81u6n" path="res://Assets/Textures/Traps/Fire/On (16x32).png" id="9_xt4qc"]
 [ext_resource type="Texture2D" uid="uid://dy6qv56t10teo" path="res://Assets/Textures/Traps/Fire/On_small (16x32).png" id="10_6och1"]
+[ext_resource type="Texture2D" uid="uid://dq5tnwfx85le3" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store03.png" id="10_t3ix7"]
+[ext_resource type="Texture2D" uid="uid://x1u2lpui3xr3" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store04.png" id="11_huydx"]
+[ext_resource type="Texture2D" uid="uid://dsqxxjhytkgmr" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store05.png" id="12_h1gie"]
 [ext_resource type="Texture2D" uid="uid://cvrpveh0jxjut" path="res://Assets/Textures/Menu/Gemini_Generated_Image_s2hpprs2hpprs2hp.png" id="16_drt3r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7ipb"]
@@ -491,15 +496,28 @@ expand_mode = 1
 texture_filter = 1
 layout_mode = 0
 offset_left = 544.0
-offset_top = 612.0
+offset_top = 616.0
 offset_right = 1334.0
-offset_bottom = 954.0
+offset_bottom = 958.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("3_mugbs")
 texture_pressed = ExtResource("4_15s63")
 texture_hover = ExtResource("5_drt3r")
 texture_disabled = ExtResource("6_luk2h")
 texture_focused = ExtResource("7_12pmw")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 616.0
+offset_right = 1558.0
+offset_bottom = 958.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("8_1otou")
+texture_pressed = ExtResource("9_tejh6")
+texture_hover = ExtResource("10_t3ix7")
+texture_disabled = ExtResource("11_huydx")
+texture_focused = ExtResource("12_h1gie")
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -577,3 +595,4 @@ scale = Vector2(0.392415, 0.417132)
 texture = ExtResource("16_drt3r")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]

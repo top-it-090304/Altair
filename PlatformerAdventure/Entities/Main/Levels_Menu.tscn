@@ -44,7 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://hb0dapk0bne1" path="res://Assets/Textures/Menu/Levels/12.12.png" id="39_d0sv2"]
 [ext_resource type="Texture2D" uid="uid://2rfu3ko8sita" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="42_ukpqh"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gg4wx"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukpqh"]
 texture = ExtResource("3_2iq8x")
 0:0/0 = 0
 1:0/0 = 0
@@ -289,7 +289,7 @@ texture = ExtResource("3_2iq8x")
 13:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_k0xnw"]
-sources/0 = SubResource("TileSetAtlasSource_gg4wx")
+sources/0 = SubResource("TileSetAtlasSource_ukpqh")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocsj8"]
 atlas = ExtResource("4_b1fw8")
@@ -525,10 +525,10 @@ stretch_mode = 0
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 95.0
-offset_right = 221.0
-offset_bottom = 175.0
+offset_left = 120.0
+offset_top = 88.0
+offset_right = 200.0
+offset_bottom = 168.0
 texture_normal = ExtResource("17_q38h2")
 texture_pressed = ExtResource("42_ukpqh")
 texture_hover = ExtResource("30_u2hxe")

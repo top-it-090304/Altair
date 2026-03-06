@@ -5,7 +5,7 @@ func _ready() -> void:
 	$PauseLayer/Background.hide() 
 	get_tree().paused = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func open_pause_menu():

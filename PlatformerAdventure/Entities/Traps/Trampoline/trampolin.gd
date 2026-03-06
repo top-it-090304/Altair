@@ -11,7 +11,7 @@ func _ready() -> void:
 	detector.body_entered.connect(_on_body_entered)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
 
 func _on_body_entered(body):

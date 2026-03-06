@@ -12,8 +12,7 @@ func _on_body_entered(body: Node2D):
 	if body.is_in_group("player"):  
 		collision_shape.set_deferred("disabled", true)  
 		animated_sprite.play("collected")  
-		SoundManager.play_collect() 
-		await get_tree().create_timer(0.5).timeout  
+		SoundManager.play_collect()
+		await get_tree().create_timer(0.5).timeout
 		collected.emit()
 		queue_free()
-  
