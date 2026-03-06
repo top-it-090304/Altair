@@ -15,8 +15,8 @@ func _ready() -> void:
 func update_count(count: int) -> void:
 	collected_count = count
 
-	var tens: int = collected_count / 10
-	var ones: int = collected_count % 10
+	var tens = collected_count / 10
+	var ones = collected_count % 10
 
 	tens_sprite.frame = tens
 	ones_sprite.frame = ones
