@@ -582,7 +582,6 @@ tile_map_data = PackedByteArray("AAAVABkAAAAAAAAAAAAWABkAAAAAAAAAAAAXABkAAAAAAAA
 
 [node name="Player" parent="Entities" instance=ExtResource("5_dmtuf")]
 position = Vector2(-296, 190)
-scale = Vector2(1.7, 1.7)
 
 [node name="SpawnPoint" type="Marker2D" parent="Entities"]
 position = Vector2(-293, 199)

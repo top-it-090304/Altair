@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c8h6n6c2qavgu"]
+[gd_scene load_steps=19 format=4 uid="uid://c8h6n6c2qavgu"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_x4t0p"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_fa704"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="4_lup5o"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="5_r14sr"]
 [ext_resource type="PackedScene" uid="uid://syd6r3uiupkp" path="res://Entities/Traps/Cube/cube.tscn" id="6_8hvyo"]
+[ext_resource type="PackedScene" uid="uid://bljm38ot20br2" path="res://Entities/Level/UI/touch_controls.tscn" id="6_fa704"]
 [ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="7_e6tii"]
 [ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="8_vat53"]
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="9_14oby"]
@@ -337,6 +338,8 @@ offset_left = -80.0
 offset_top = 24.0
 offset_right = 430.0
 offset_bottom = 534.0
+
+[node name="TouchControls" parent="UI" instance=ExtResource("6_fa704")]
 
 [node name="Entities" type="Node2D" parent="."]
 
