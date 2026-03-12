@@ -361,27 +361,31 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0ahki")
-animation = &"walljump"
+animation = &"idle"
 offset = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 5)
 shape = SubResource("CapsuleShape2D_yl1jr")
 
-[node name="RayCastUp" type="RayCast2D" parent="."]
-target_position = Vector2(-13.4351, 13.4349)
-
-[node name="RayCastDown" type="RayCast2D" parent="."]
-target_position = Vector2(21.2133, -21.2131)
-
-[node name="RayCastLeft" type="RayCast2D" parent="."]
-target_position = Vector2(12.7279, 12.728)
-
-[node name="RayCastRight" type="RayCast2D" parent="."]
-target_position = Vector2(-13.435, -13.4351)
-
 [node name="SoundJump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_vnxse")
 
 [node name="SoundHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_2r1nl")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(-19.3278, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(18.4874, 0)
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(0, 26.8908)
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+scale = Vector2(0.9, 0.9)
+target_position = Vector2(0, -11.7647)

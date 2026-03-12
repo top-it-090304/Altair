@@ -357,12 +357,11 @@ coyote_time = 0.15
 jump_buffer_time = 0.15
 wall_mechanics_enabled = true
 wall_jump_velocity = Vector2(600, -600)
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_62utx")
-animation = &"doublejump"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -375,13 +374,13 @@ stream = ExtResource("9_g6y6q")
 stream = ExtResource("10_fjkec")
 
 [node name="RayCastUp" type="RayCast2D" parent="."]
-target_position = Vector2(-13.4351, 13.4349)
+target_position = Vector2(0, -10.5882)
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
-target_position = Vector2(21.2133, -21.2131)
+target_position = Vector2(0, 18.8235)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
-target_position = Vector2(12.7279, 12.728)
+target_position = Vector2(-14.1176, 0)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
-target_position = Vector2(-13.435, -13.4351)
+target_position = Vector2(14.7059, 0)
