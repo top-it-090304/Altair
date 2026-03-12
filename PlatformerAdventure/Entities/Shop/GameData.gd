@@ -20,9 +20,10 @@ const PRICE_SLOWMO: int = 20
 const PRICE_MAGNET: int = 20
 
 func _ready() -> void:
-	#ВРЕМЕННО
-	purchased_slowmo = true 
+	##ВРЕМЕННО
+	
 	load_data()
+	purchased_slowmo = true 
 
 # ФРУКТЫ
 

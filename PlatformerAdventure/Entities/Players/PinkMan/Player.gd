@@ -48,6 +48,7 @@ class_name PlayerBase
 
 # STATE
 var is_dead: bool = false
+var animation_speed_compensate: float = 1.0
 
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
@@ -310,7 +311,7 @@ func _update_animation() -> void:
 		return
 
 	if abs(velocity.x) > 10.0:
-		animated_sprite.speed_scale = clamp(abs(velocity.x) / 150.0, 0.5, 2.5)
+		animated_sprite.speed_scale = clamp(abs(velocity.x) / 150.0, 0.5, 2.5) * animation_speed_compensate
 		animated_sprite.play("run")
 	else:
 		animated_sprite.speed_scale = 1.0

@@ -39,7 +39,7 @@ func _ready() -> void:
 		flag.level_completed.connect(_on_level_completed)
 
 	_activate_bonuses()
-	#ВРЕМЕННО
+	##ВРЕМЕННО
 	player.activate_shield()
 	player.activate_magnet()
 	
@@ -56,14 +56,18 @@ func _activate_bonuses() -> void:
 	# ЗАМЕДЛЕНИЕ ВРЕМЕНИ
 	if allow_slowmo and GameData.purchased_slowmo:
 		Engine.time_scale = slowmo_scale
-		#Компенсация скорости игрока
-		player.speed *= (1.0 / slowmo_scale)
-		player.acceleration *= (1.0 / slowmo_scale)
-		player.friction *= (1.0 / slowmo_scale)
+		var compensate: float = 1.0 / slowmo_scale  # = 2.0 при slowmo 0.5
 
-	# МАГНИТ
-	if allow_magnet and GameData.purchased_magnet:
-		player.activate_magnet()
+		player.speed *= compensate
+		player.acceleration *= compensate
+		player.friction *= compensate
+
+		player.gravity_fall *= compensate
+		player.gravity_rise *= compensate
+		player.max_fall_speed *= compensate
+		player.jump_velocity *= compensate
+	
+		player.animated_sprite.speed_scale = compensate
 
 # ЗАВЕРШЕНИЕ УРОВНЯ — сбрасываем Engine.time_scale
 
