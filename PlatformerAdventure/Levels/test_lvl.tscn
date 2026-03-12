@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cjtgg6g8lkup2"]
+[gd_scene load_steps=16 format=4 uid="uid://cjtgg6g8lkup2"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_1d5ma"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_mgupv"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://uyawx8kco8am" path="res://Entities/Traps/Fan/fan.tscn" id="8_mgupv"]
 [ext_resource type="PackedScene" uid="uid://c1p5iyietsr4y" path="res://Entities/Traps/FallingPlatform/falling_platform.tscn" id="9_4ac25"]
 [ext_resource type="PackedScene" uid="uid://bchxc4gq32ppd" path="res://Entities/Traps/Spinner/spinner.tscn" id="10_2b0q3"]
+[ext_resource type="Texture2D" uid="uid://glkxiasai55r" path="res://Assets/pixil-frame-0 (1).png" id="12_4ho3b"]
+[ext_resource type="Texture2D" uid="uid://x3h2wvgn4gby" path="res://Assets/pixil-frame-0 (3).png" id="13_mu0j0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgei7"]
 texture = ExtResource("4_2b0q3")
@@ -323,6 +325,10 @@ offset_bottom = 479.0
 [node name="PauseMenu" parent="UI" instance=ExtResource("3_4ac25")]
 anchors_preset = 9
 anchor_right = 0.0
+offset_left = 26.6667
+offset_top = 0.666667
+offset_right = 26.6667
+offset_bottom = 0.666667
 grow_horizontal = 1
 
 [node name="Textures" type="TileMapLayer" parent="UI"]
@@ -402,5 +408,13 @@ position = Vector2(636, 142.667)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
 position = Vector2(138.667, 81.3333)
+
+[node name="Pixil-frame-0(1)" type="Sprite2D" parent="."]
+position = Vector2(168, 321.333)
+texture = ExtResource("12_4ho3b")
+
+[node name="Pixil-frame-0(3)" type="Sprite2D" parent="."]
+position = Vector2(662, 372)
+texture = ExtResource("13_mu0j0")
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
