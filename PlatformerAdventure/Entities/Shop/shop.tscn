@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://devcekijygut2"]
+[gd_scene load_steps=13 format=4 uid="uid://devcekijygut2"]
 
 [ext_resource type="PackedScene" uid="uid://drjs448xj6ar5" path="res://Entities/Shop/shop_counter.tscn" id="1_1v5yy"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_dbxhb"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://2rfu3ko8sita" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="3_dbxhb"]
 [ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_wloi4"]
 [ext_resource type="Texture2D" uid="uid://cr6jwf2ncyffi" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="4_wloi4"]
+[ext_resource type="Texture2D" uid="uid://diun5q23o3cjo" path="res://Assets/Textures/Store Items/blue-and-white-shield-in-pixel-art-style-vector-Photoroom.png" id="8_a1g1l"]
+[ext_resource type="Texture2D" uid="uid://dx84l66kbkfcg" path="res://Assets/Textures/Store Items/pixel-art-hourglass-sand-clock-item-for-game-bit_360488-76 (1)-Photoroom.png" id="9_mucb8"]
+[ext_resource type="Texture2D" uid="uid://bgsdmlgy8wu8t" path="res://Assets/Textures/Store Items/pixel-art-magnet-red-and-blue-magnetism-icon-for-8bit-game-on-white-background-vector-Photoroom.png" id="10_452da"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pvgl"]
 texture = ExtResource("3_wloi4")
@@ -293,5 +296,20 @@ texture_normal = ExtResource("2_pm1ah")
 texture_pressed = ExtResource("3_dbxhb")
 texture_hover = ExtResource("4_wloi4")
 stretch_mode = 0
+
+[node name="Blue-and-white-shield-in-pixel-art-style-vector-photoroom" type="Sprite2D" parent="."]
+position = Vector2(280, 368)
+scale = Vector2(0.559694, 0.561735)
+texture = ExtResource("8_a1g1l")
+
+[node name="Pixel-art-hourglass-sand-clock-item-for-game-bit360488-76(1)-photoroom" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(0.4, 0.344)
+texture = ExtResource("9_mucb8")
+
+[node name="Pixel-art-magnet-red-and-blue-magnetism-icon-for-8Bit-game-on-white-background-vector-photoroom" type="Sprite2D" parent="."]
+position = Vector2(1008, 352)
+scale = Vector2(0.195111, 0.215434)
+texture = ExtResource("10_452da")
 
 [connection signal="pressed" from="TextureButton" to="Сounter" method="_on_texture_button_pressed"]
