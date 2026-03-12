@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="3_7fl83"]
 [ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_p5226"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="5_tuji2"]
+[ext_resource type="PackedScene" uid="uid://bljm38ot20br2" path="res://Entities/Level/UI/touch_controls.tscn" id="6_4maxe"]
 [ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="6_f5cpa"]
 [ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="7_104vp"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="8_3momc"]
@@ -16,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://52x52oidtims" path="res://Entities/Fruits/kiwi.tscn" id="16_otj4g"]
 [ext_resource type="PackedScene" uid="uid://h8i67qnod2am" path="res://Entities/Fruits/strawberry.tscn" id="17_4maxe"]
 [ext_resource type="PackedScene" uid="uid://lxxadfoc1hv7" path="res://Entities/Fruits/orange.tscn" id="17_otj4g"]
-[ext_resource type="PackedScene" uid="uid://dqpsbv83pd5a1" path="res://Entities/Level/UI/control.tscn" id="18_4maxe"]
 [ext_resource type="PackedScene" uid="uid://m8vymuv18nrh" path="res://Entities/Traps/Spike/TileSpikes.tscn" id="18_tvs4k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgei7"]
@@ -346,7 +346,7 @@ offset_top = 30.6667
 offset_right = 542.667
 offset_bottom = 540.667
 
-[node name="Buttons" parent="UI" instance=ExtResource("18_4maxe")]
+[node name="TouchControls" parent="UI" instance=ExtResource("6_4maxe")]
 
 [node name="Entities" type="Node2D" parent="."]
 
