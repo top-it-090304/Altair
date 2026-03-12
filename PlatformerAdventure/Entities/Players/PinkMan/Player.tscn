@@ -343,41 +343,44 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxa28"]
-radius = 17.0001
-height = 42.0002
+height = 25.8823
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(714, 458)
-rotation = 2.35619
+scale = Vector2(1.7, 1.7)
 script = ExtResource("1_dl81w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0.236979, -0.330986)
-rotation = -2.35619
-scale = Vector2(1.7, 1.726)
+scale = Vector2(1, 1.015)
 sprite_frames = SubResource("SpriteFrames_dk10w")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.24268, -5.65686)
-rotation = 0.785397
+position = Vector2(0.588232, 0.588236)
 shape = SubResource("CapsuleShape2D_hxa28")
-
-[node name="RayCastUp" type="RayCast2D" parent="."]
-target_position = Vector2(-13.4351, 13.4349)
-
-[node name="RayCastDown" type="RayCast2D" parent="."]
-target_position = Vector2(21.2133, -21.2131)
-
-[node name="RayCastLeft" type="RayCast2D" parent="."]
-target_position = Vector2(12.7279, 12.728)
-
-[node name="RayCastRight" type="RayCast2D" parent="."]
-target_position = Vector2(-13.435, -13.4351)
 
 [node name="SoundJump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_76idj")
 
 [node name="SoundHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_vrhuf")
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+scale = Vector2(0.9, 0.9)
+target_position = Vector2(0, -16.3399)
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(0, 22.6891)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="RayCastLeft" type="RayCast2D" parent="Node2D"]
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(-19.3278, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="Node2D"]
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(18.4874, 0)

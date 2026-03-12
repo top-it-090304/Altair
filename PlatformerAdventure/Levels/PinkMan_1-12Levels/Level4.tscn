@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="3_0jjkx"]
 [ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_1hbhh"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="5_bgmhn"]
-[ext_resource type="PackedScene" uid="uid://dqpsbv83pd5a1" path="res://Entities/Level/UI/control.tscn" id="6_bygee"]
+[ext_resource type="PackedScene" uid="uid://bljm38ot20br2" path="res://Entities/Level/UI/touch_controls.tscn" id="6_bygee"]
 [ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="6_xx5ea"]
 [ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="7_xk66o"]
 [ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="8_t6ais"]
@@ -340,7 +340,7 @@ offset_top = 30.6667
 offset_right = 542.667
 offset_bottom = 540.667
 
-[node name="Buttons" parent="UI" instance=ExtResource("6_bygee")]
+[node name="TouchControls" parent="UI" instance=ExtResource("6_bygee")]
 
 [node name="Entities" type="Node2D" parent="."]
 
