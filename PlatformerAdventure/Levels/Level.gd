@@ -39,6 +39,10 @@ func _ready() -> void:
 		flag.level_completed.connect(_on_level_completed)
 
 	_activate_bonuses()
+	#ВРЕМЕННО
+	player.activate_shield()
+	player.activate_magnet()
+	
 	
 # АКТИВАЦИЯ БОНУСОВ
 

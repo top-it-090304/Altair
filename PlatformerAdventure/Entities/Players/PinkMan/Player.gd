@@ -32,8 +32,11 @@ class_name PlayerBase
 @export var magnet_radius_y: float = 80.0
 @export var magnet_pull_speed: float = 300.0
 
-# NODES
+@export_group("Shield")
 
+@export var shield_invincibility_duration: float = 1.0
+
+# NODES
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D  = $CollisionShape2D
 @onready var ray_up: RayCast2D    = $RayCastUp
@@ -44,7 +47,6 @@ class_name PlayerBase
 @onready var sound_hit: AudioStreamPlayer2D  = $SoundHit
 
 # STATE
-
 var is_dead: bool = false
 
 var coyote_timer: float = 0.0
@@ -58,17 +60,21 @@ var facing_right: bool = true
 var double_jump_available: bool = false
 var is_double_jumping: bool = false
 
-# БОНУСЫ (выставляет Level.gd при старте уровня)
-
+# БОНУСЫ
 var shield_active: bool = false
 var magnet_active: bool = false
 var _shield_visual: Node2D = null
+
+var _invincibility_timer: float = 0.0
 
 # PHYSICS
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
+
+	if _invincibility_timer > 0.0:
+		_invincibility_timer -= delta
 
 	_update_timers(delta)
 	_apply_gravity(delta)
@@ -95,30 +101,23 @@ func activate_shield() -> void:
 func _create_shield_visual() -> void:
 	if _shield_visual != null:
 		_shield_visual.queue_free()
-
 	_shield_visual = ShieldVisual.new()
 	add_child(_shield_visual)
 
 func activate_magnet() -> void:
 	magnet_active = true
 
-# МАГНИТ — притягиваем фрукты
+# МАГНИТ
 
 func _attract_fruits(delta: float) -> void:
-	# Получаем все фрукты в сцене через группу
 	var fruits = get_tree().get_nodes_in_group("fruits")
 	for fruit in fruits:
 		if not is_instance_valid(fruit):
 			continue
-
 		var diff: Vector2 = global_position - fruit.global_position
-		# Нормализуем разницу относительно эллипса магнита
 		var nx: float = diff.x / magnet_radius_x
 		var ny: float = diff.y / magnet_radius_y
-
-		# Если фрукт внутри эллипса притяжения
 		if nx * nx + ny * ny <= 1.0:
-			# Двигаем фрукт к игроку
 			var direction: Vector2 = diff.normalized()
 			fruit.global_position += direction * magnet_pull_speed * delta
 
@@ -126,6 +125,9 @@ func _attract_fruits(delta: float) -> void:
 
 func hit() -> void:
 	if is_dead:
+		return
+
+	if _invincibility_timer > 0.0:
 		return
 
 	if shield_active:
@@ -136,10 +138,26 @@ func hit() -> void:
 	_die_sequence()
 
 func _break_shield() -> void:
+	_invincibility_timer = shield_invincibility_duration
+
 	if _shield_visual != null:
 		_shield_visual.queue_free()
 		_shield_visual = null
-	# TODO: Добавить звук и вспышку
+
+	sound_hit.play()
+
+	_flash_break()
+
+func _flash_break() -> void:
+	animated_sprite.play("hit")
+
+	for i in range(4):
+		animated_sprite.modulate.a = 0.0
+		await get_tree().create_timer(0.05).timeout
+		animated_sprite.modulate.a = 1.0
+		await get_tree().create_timer(0.05).timeout
+
+	animated_sprite.modulate.a = 1.0
 
 func _die_sequence() -> void:
 	is_dead = true
@@ -187,43 +205,33 @@ func _update_timers(delta: float) -> void:
 func _apply_gravity(delta: float) -> void:
 	if is_on_floor():
 		return
-
 	if is_wall_sliding:
 		velocity.y = min(velocity.y + gravity_fall * delta, wall_slide_speed)
 		return
-
 	var grav := gravity_fall if velocity.y > 0 else gravity_rise
 	velocity.y = min(velocity.y + grav * delta, max_fall_speed)
-
+	
 # WALL SLIDE
 
 func _handle_wall_slide() -> void:
 	is_wall_sliding = false
-
 	if not (is_on_wall() and not is_on_floor() and velocity.y > 0.0):
 		return
-
 	var input_x := Input.get_axis("move_left", "move_right")
 	var wall_normal := get_wall_normal()
-
 	if input_x == 0.0 or sign(input_x) == sign(wall_normal.x):
 		return
-
 	is_wall_sliding = true
 
 func _is_valid_wall_contact(wall_normal: Vector2) -> bool:
 	var ray := ray_left if wall_normal.x > 0.0 else ray_right
 	ray.force_raycast_update()
-
 	if not ray.is_colliding():
 		return false
-
 	var contact_y := ray.get_collision_point().y
 	var center_y  := global_position.y
-
 	if contact_y > center_y + wall_min_contact_height:
 		return false
-
 	return true
 
 # JUMP
@@ -271,11 +279,9 @@ func _do_wall_jump() -> void:
 
 func _handle_movement(delta: float) -> void:
 	var input_x := Input.get_axis("move_left", "move_right")
-
 	if wall_jump_lock_timer > 0.0:
 		velocity.x = move_toward(velocity.x, 0.0, friction * 0.1 * delta)
 		return
-
 	if input_x != 0.0:
 		velocity.x = move_toward(velocity.x, input_x * speed, acceleration * delta)
 		if wall_jump_lock_timer <= 0.0:
@@ -319,11 +325,9 @@ func is_wall_in_direction(dir: Vector2) -> bool:
 	elif dir.x < -0.5: ray = ray_left
 	elif dir.x >  0.5: ray = ray_right
 	else: return false
-
 	ray.force_raycast_update()
 	if not ray.is_colliding():
 		return false
-
 	var c = ray.get_collider()
 	return c is StaticBody2D or c is TileMapLayer or c is AnimatableBody2D
 

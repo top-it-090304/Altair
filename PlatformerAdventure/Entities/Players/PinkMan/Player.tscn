@@ -364,20 +364,24 @@ position = Vector2(4.24268, -5.65686)
 rotation = 0.785397
 shape = SubResource("CapsuleShape2D_hxa28")
 
-[node name="RayCastUp" type="RayCast2D" parent="."]
-target_position = Vector2(-13.4351, 13.4349)
-
-[node name="RayCastDown" type="RayCast2D" parent="."]
-target_position = Vector2(21.2133, -21.2131)
-
-[node name="RayCastLeft" type="RayCast2D" parent="."]
-target_position = Vector2(12.7279, 12.728)
-
-[node name="RayCastRight" type="RayCast2D" parent="."]
-target_position = Vector2(-13.435, -13.4351)
-
 [node name="SoundJump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_76idj")
 
 [node name="SoundHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_vrhuf")
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+scale = Vector2(1, 1)
+target_position = Vector2(-13.4351, 13.4349)
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+scale = Vector2(1, 1)
+target_position = Vector2(21.2133, -21.2131)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+scale = Vector2(1, 1)
+target_position = Vector2(-13.435, -13.4351)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+scale = Vector2(1, 1)
+target_position = Vector2(12.7279, 12.728)
