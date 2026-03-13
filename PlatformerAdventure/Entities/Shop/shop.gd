@@ -16,10 +16,9 @@ func _ready() -> void:
 
 func _refresh_buttons() -> void:
 	var balance := GameData.get_balance()
-
-	btn_shield.disabled = GameData.purchased_shield or balance < GameData.PRICE_SHIELD
-	btn_slowmo.disabled = GameData.purchased_slowmo or balance < GameData.PRICE_SLOWMO
-	btn_magnet.disabled = GameData.purchased_magnet or balance < GameData.PRICE_MAGNET
+	btn_shield.disabled = balance < GameData.PRICE_SHIELD
+	btn_slowmo.disabled = balance < GameData.PRICE_SLOWMO
+	btn_magnet.disabled = balance < GameData.PRICE_MAGNET
 
 
 func _on_buy_shield() -> void:
