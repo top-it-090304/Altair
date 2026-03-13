@@ -167,9 +167,11 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -103.0
+offset_left = -120.0
+offset_right = -17.0
 offset_bottom = 91.0
 grow_horizontal = 0
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite_10s2" type="AnimatedSprite2D" parent="Control"]
 texture_filter = 1

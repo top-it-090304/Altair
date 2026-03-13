@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtnt0bcigkql1"]
+
+[ext_resource type="Script" uid="uid://xsh68nnjeb70" path="res://Entities/Shop/Bonushud.gd" id="1_cs7qh"]
+[ext_resource type="Texture2D" uid="uid://b871wwkw3n03l" path="res://Assets/Textures/Store Items/blue-and-white-shielbutton.png" id="2_xj46j"]
+[ext_resource type="Texture2D" uid="uid://c2wl1240towiu" path="res://Assets/Textures/Store Items/blue-agrey.png" id="3_64qri"]
+[ext_resource type="Texture2D" uid="uid://dx84l66kbkfcg" path="res://Assets/Textures/Store Items/pixel-art-hourglass-sand-clock-item-for-game-bit_360488-76 (1)-Photoroom.png" id="3_t1alb"]
+[ext_resource type="Texture2D" uid="uid://bgsdmlgy8wu8t" path="res://Assets/Textures/Store Items/pixel-art-magnet-red-and-blue-magnetism-icon-for-8bit-game-on-white-background-vector-Photoroom.png" id="4_a3ds0"]
+[ext_resource type="Texture2D" uid="uid://c7nm2gn4l47ir" path="res://Assets/Textures/Store Items/pixel-agrey.png" id="5_ikhpt"]
+[ext_resource type="Texture2D" uid="uid://dcbndscsvy0gp" path="res://Assets/Textures/Store Items/pixel-art-grey.png" id="7_xhxq6"]
+[ext_resource type="Texture2D" uid="uid://bxi7heg88tr7n" path="res://Assets/Textures/Store Items/IMG_1915-Photoroom.png" id="8_ikhpt"]
+
+[node name="BonusHUD" type="CanvasLayer"]
+script = ExtResource("1_cs7qh")
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1176.0
+offset_top = 80.0
+offset_right = 1208.0
+offset_bottom = 104.0
+
+[node name="BtnShield" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 78.0
+offset_right = 382.0
+offset_bottom = 502.0
+scale = Vector2(0.105, 0.105)
+texture_normal = ExtResource("2_xj46j")
+texture_disabled = ExtResource("3_64qri")
+
+[node name="BtnSlowmo" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 81.0
+offset_right = 501.0
+offset_bottom = 707.0
+scale = Vector2(0.065, 0.065)
+texture_normal = ExtResource("3_t1alb")
+texture_disabled = ExtResource("5_ikhpt")
+
+[node name="BtnMagnet" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 83.0
+offset_right = 879.0
+offset_bottom = 1063.0
+scale = Vector2(0.04, 0.04)
+texture_normal = ExtResource("4_a3ds0")
+texture_disabled = ExtResource("7_xhxq6")
+
+[node name="Image-photoroom(2)" type="Sprite2D" parent="Panel"]
+position = Vector2(36, 61)
+scale = Vector2(0.114063, 0.121575)
+texture = ExtResource("8_ikhpt")
