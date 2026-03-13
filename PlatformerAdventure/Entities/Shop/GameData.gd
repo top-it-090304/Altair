@@ -2,30 +2,34 @@ extends Node
 
 const SAVE_PATH = "user://save.cfg"
 
-# Фрукты 
+
 var level_records: Dictionary = {}
 var total_fruits: int = 0
 var _spent: int = 0
 
 signal fruits_changed(new_total: int)
 
-# --- Покупки в магазине ---
+
 var purchased_shield: bool = false
 var purchased_slowmo: bool = false
 var purchased_magnet: bool = false
 
-# Цены бонусов
-const PRICE_SHIELD: int = 20
-const PRICE_SLOWMO: int = 20
-const PRICE_MAGNET: int = 20
+
+const PRICE_SHIELD: int = 10
+const PRICE_SLOWMO: int = 10
+const PRICE_MAGNET: int = 10
 
 func _ready() -> void:
-	##ВРЕМЕННО
+	
 	
 	load_data()
-	purchased_slowmo = true 
+	#purchased_slowmo = true 
+	print("balance: ", get_balance())
+	print("total_fruits: ", total_fruits)
+	print("spent: ", _spent)
+	print("records: ", level_records)
 
-# ФРУКТЫ
+
 
 func submit_level_result(level_name: String, collected: int) -> void:
 	var old_record = level_records.get(level_name, 0)
@@ -51,7 +55,7 @@ func spend_fruits(amount: int) -> bool:
 func get_balance() -> int:
 	return total_fruits - _spent
 
-# МАГАЗИН — покупка бонусов
+
 
 func buy_shield() -> bool:
 	if purchased_shield:
@@ -80,7 +84,7 @@ func buy_magnet() -> bool:
 	save_data()
 	return true
 
-# СОХРАНЕНИЕ / ЗАГРУЗКА
+
 
 func save_data() -> void:
 	var config = ConfigFile.new()
