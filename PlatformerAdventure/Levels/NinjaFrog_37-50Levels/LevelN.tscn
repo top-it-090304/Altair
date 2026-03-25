@@ -516,7 +516,6 @@ script = ExtResource("1_q7jnw")
 next_level_path = "uid://dxmc53wv1psbe"
 manual_fruit_count = 12
 allow_shield = true
-allow_slowmo = true
 allow_magnet = true
 metadata/_edit_group_ = true
 

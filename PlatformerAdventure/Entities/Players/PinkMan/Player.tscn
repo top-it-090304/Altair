@@ -375,12 +375,10 @@ target_position = Vector2(0, -16.3399)
 scale = Vector2(0.7, 0.7)
 target_position = Vector2(0, 22.6891)
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="RayCastLeft" type="RayCast2D" parent="Node2D"]
+[node name="RayCastLeft" type="RayCast2D" parent="."]
 scale = Vector2(0.7, 0.7)
 target_position = Vector2(-19.3278, 0)
 
-[node name="RayCastRight" type="RayCast2D" parent="Node2D"]
+[node name="RayCastRight" type="RayCast2D" parent="."]
 scale = Vector2(0.7, 0.7)
 target_position = Vector2(18.4874, 0)

@@ -495,10 +495,10 @@ expand_mode = 1
 [node name="TextureButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 544.0
-offset_top = 616.0
-offset_right = 1334.0
-offset_bottom = 958.0
+offset_left = 536.0
+offset_top = 301.0
+offset_right = 1326.0
+offset_bottom = 643.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("3_mugbs")
 texture_pressed = ExtResource("4_15s63")
@@ -508,10 +508,10 @@ texture_focused = ExtResource("7_12pmw")
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 768.0
-offset_top = 616.0
-offset_right = 1558.0
-offset_bottom = 958.0
+offset_left = 538.0
+offset_top = 401.0
+offset_right = 1328.0
+offset_bottom = 743.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("8_1otou")
 texture_pressed = ExtResource("9_tejh6")
