@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://csi2o7cdfg3gs"]
+[gd_scene load_steps=19 format=4 uid="uid://csi2o7cdfg3gs"]
 
 [ext_resource type="Script" uid="uid://r4ibm3cywsgn" path="res://Entities/Shop/shop.gd" id="1_tvgwm"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_jubmu"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://t008h6wkbb0k" path="res://Assets/Textures/Settings/polzunok(16x16).png" id="12_q06dr"]
 [ext_resource type="Texture2D" uid="uid://cmnk7axn308b3" path="res://Assets/Textures/Settings/music.png" id="13_quyqh"]
 [ext_resource type="Texture2D" uid="uid://b4smf6yeq7x8i" path="res://Assets/Textures/Settings/sounds_effects.png" id="14_5walj"]
+[ext_resource type="Texture2D" uid="uid://7ybfoe2cv4m" path="res://Assets/Textures/Settings/show_control.png" id="15_plwyx"]
+[ext_resource type="Texture2D" uid="uid://bnncpfrgwt05s" path="res://Assets/Textures/Settings/reset.png" id="16_qp4b8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pvgl"]
 texture = ExtResource("4_qp4b8")
@@ -273,9 +275,9 @@ script = ExtResource("1_tvgwm")
 [node name="BgTexture" parent="." instance=ExtResource("2_jubmu")]
 layout_mode = 1
 offset_left = 0.0
-offset_top = -3.0
+offset_top = -8.0
 offset_right = 1237.0
-offset_bottom = 687.0
+offset_bottom = 682.0
 texture = ExtResource("3_plwyx")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -358,12 +360,25 @@ position = Vector2(276, 259)
 scale = Vector2(2, 2)
 texture = ExtResource("12_q06dr")
 
-[node name="Music" type="Sprite2D" parent="."]
-position = Vector2(368, 200)
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(760, 328)
+
+[node name="SoundsEffects" type="Sprite2D" parent="Node2D2"]
+position = Vector2(-402, 119)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("14_5walj")
+
+[node name="Music" type="Sprite2D" parent="Node2D2"]
+position = Vector2(-392, -128)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("13_quyqh")
 
-[node name="SoundsEffects" type="Sprite2D" parent="."]
-position = Vector2(358, 447)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("14_5walj")
+[node name="ShowControl" type="Sprite2D" parent="Node2D2"]
+position = Vector2(152, 104)
+scale = Vector2(0.40625, 0.485894)
+texture = ExtResource("15_plwyx")
+
+[node name="Reset" type="Sprite2D" parent="Node2D2"]
+position = Vector2(152, -128)
+scale = Vector2(0.435156, 0.305505)
+texture = ExtResource("16_qp4b8")
