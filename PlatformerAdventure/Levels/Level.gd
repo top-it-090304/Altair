@@ -1,3 +1,6 @@
+# Level.gd
+# Путь: res://Levels/Level.gd
+
 extends Node2D
 
 @onready var spawn_marker = $Entities/SpawnPoint
@@ -8,9 +11,9 @@ extends Node2D
 @export var manual_fruit_count: int = 0
 
 @export_group("Level Bonuses")
-@export var allow_shield: bool = false
-@export var allow_slowmo: bool = false
-@export var allow_magnet: bool = false
+@export var allow_shield: bool = true
+@export var allow_slowmo: bool = true
+@export var allow_magnet: bool = true
 
 @export_range(0.1, 1.0, 0.05) var slowmo_scale: float = 0.5
 
@@ -20,6 +23,8 @@ var collected_count: int = 0
 @onready var fruit_counter = preload("res://Entities/Level/Buttons/сounter.tscn").instantiate()
 
 func _ready() -> void:
+	add_to_group("level")  # ← нужно для BonusHUD
+
 	if player and spawn_marker:
 		player.global_position = spawn_marker.global_position
 
@@ -38,48 +43,42 @@ func _ready() -> void:
 	if flag:
 		flag.level_completed.connect(_on_level_completed)
 
-	_activate_bonuses()
-	##ВРЕМЕННО
-	player.activate_shield()
-	player.activate_magnet()
-	
-	
-# АКТИВАЦИЯ БОНУСОВ
 
-func _activate_bonuses() -> void:
-	if player == null:
-		return
-	# ЩИТ
-	if allow_shield and GameData.purchased_shield:
+# ── БОНУСЫ — вызываются из BonusHUD ──────────
+
+func activate_shield_bonus() -> void:
+	if allow_shield and player:
 		player.activate_shield()
 
-	# ЗАМЕДЛЕНИЕ ВРЕМЕНИ
-	if allow_slowmo and GameData.purchased_slowmo:
-		Engine.time_scale = slowmo_scale
-		var compensate: float = 1.0 / slowmo_scale  # = 2.0 при slowmo 0.5
+func activate_slowmo_bonus() -> void:
+	if not allow_slowmo or player == null:
+		return
+	Engine.time_scale = slowmo_scale
+	var c: float = 1.0 / slowmo_scale
+	player.speed          *= c
+	player.acceleration   *= c
+	player.friction       *= c
+	player.gravity_fall   *= c
+	player.gravity_rise   *= c
+	player.max_fall_speed *= c
+	player.jump_velocity  *= c
+	player.animated_sprite.speed_scale = c
 
-		player.speed *= compensate
-		player.acceleration *= compensate
-		player.friction *= compensate
+func activate_magnet_bonus() -> void:
+	if allow_magnet and player:
+		player.activate_magnet()
 
-		player.gravity_fall *= compensate
-		player.gravity_rise *= compensate
-		player.max_fall_speed *= compensate
-		player.jump_velocity *= compensate
-	
-		player.animated_sprite.speed_scale = compensate
 
-# ЗАВЕРШЕНИЕ УРОВНЯ — сбрасываем Engine.time_scale
+# ── ЗАВЕРШЕНИЕ УРОВНЯ ─────────────────────────
 
 func _on_level_completed() -> void:
-	# !!! всегда возвращаем скорость времени к норме при выходе с уровня
 	Engine.time_scale = 1.0
-
 	var level_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	GameData.submit_level_result(level_name, collected_count)
 	get_tree().call_deferred("change_scene_to_file", next_level_path)
 
-# ФРУКТЫ
+
+# ── ФРУКТЫ ───────────────────────────────────
 
 func _on_fruit_collected() -> void:
 	collected_count += 1
@@ -89,11 +88,8 @@ func _on_fruit_collected() -> void:
 			flag.activate()
 
 func _on_button_pressed() -> void:
-	Engine.time_scale = 1.0  # Сбрасываем при рестарте тоже
+	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()
-
-# !!! сбрасываем time_scale если сцена выгружается
-# (например через паузу → выход в меню)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST or what == NOTIFICATION_EXIT_TREE:
