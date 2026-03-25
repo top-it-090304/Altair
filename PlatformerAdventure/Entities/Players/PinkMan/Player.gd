@@ -41,8 +41,8 @@ class_name PlayerBase
 @onready var collision_shape: CollisionShape2D  = $CollisionShape2D
 @onready var ray_up: RayCast2D    = $RayCastUp
 @onready var ray_down: RayCast2D  = $RayCastDown
-@onready var ray_left: RayCast2D  = $Node2D/RayCastLeft
-@onready var ray_right: RayCast2D = $Node2D/RayCastRight
+@onready var ray_left: RayCast2D  = $RayCastLeft
+@onready var ray_right: RayCast2D = $RayCastRight
 @onready var sound_jump: AudioStreamPlayer2D = $SoundJump
 @onready var sound_hit: AudioStreamPlayer2D  = $SoundHit
 

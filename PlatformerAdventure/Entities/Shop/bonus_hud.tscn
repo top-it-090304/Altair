@@ -30,6 +30,7 @@ offset_right = 21.505
 offset_bottom = 121.22
 rotation = -1.5708
 scale = Vector2(3.56764, 3.67246)
+focus_mode = 0
 texture_normal = ExtResource("2_ikhpt")
 texture_pressed = ExtResource("3_xhxq6")
 stretch_mode = 0
@@ -46,6 +47,7 @@ theme_override_constants/separation = 215
 [node name="BtnShield" type="TextureButton" parent="PanelContainer/BonusList"]
 custom_minimum_size = Vector2(600, 900)
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("2_xj46j")
 texture_disabled = ExtResource("3_64qri")
 ignore_texture_size = true
@@ -54,6 +56,7 @@ stretch_mode = 0
 [node name="BtnSlowmo" type="TextureButton" parent="PanelContainer/BonusList"]
 custom_minimum_size = Vector2(64, 900)
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("3_t1alb")
 texture_disabled = ExtResource("5_ikhpt")
 ignore_texture_size = true
@@ -62,6 +65,7 @@ stretch_mode = 0
 [node name="BtnMagnet" type="TextureButton" parent="PanelContainer/BonusList"]
 custom_minimum_size = Vector2(64, 900)
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("4_a3ds0")
 texture_disabled = ExtResource("7_xhxq6")
 ignore_texture_size = true
