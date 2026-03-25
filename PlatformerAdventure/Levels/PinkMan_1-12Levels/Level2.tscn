@@ -347,6 +347,7 @@ offset_right = 542.667
 offset_bottom = 540.667
 
 [node name="TouchControls" parent="UI" instance=ExtResource("6_l21dc")]
+show_zone_hints = false
 
 [node name="Entities" type="Node2D" parent="."]
 
