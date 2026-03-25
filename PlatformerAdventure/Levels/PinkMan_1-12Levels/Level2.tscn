@@ -321,8 +321,6 @@ texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_e04ax")
 next_level_path = "uid://c8h6n6c2qavgu"
-allow_shield = true
-allow_magnet = true
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -446,4 +444,5 @@ position = Vector2(368, 90.6667)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
 
+[editable path="UI/TouchControls"]
 [editable path="Entities/Traps/Area2D"]
