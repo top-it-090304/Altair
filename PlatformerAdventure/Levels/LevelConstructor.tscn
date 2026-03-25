@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq8f414k5s5bo"]
+[gd_scene load_steps=13 format=4 uid="uid://cq8f414k5s5bo"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_ffm0y"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_0widg"]
 [ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="3_v1krg"]
 [ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_cfib4"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="5_lp82p"]
-[ext_resource type="PackedScene" uid="uid://dqpsbv83pd5a1" path="res://Entities/Level/UI/control.tscn" id="6_0widg"]
+[ext_resource type="PackedScene" uid="uid://bljm38ot20br2" path="res://Entities/Level/UI/touch_controls.tscn" id="6_0widg"]
 [ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="6_xhpvw"]
 [ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="7_rvgpq"]
+[ext_resource type="PackedScene" uid="uid://dtnt0bcigkql1" path="res://Entities/Shop/bonus_hud.tscn" id="7_v1krg"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="8_n5eg6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgei7"]
@@ -323,6 +324,7 @@ offset_bottom = 479.0
 [node name="PauseMenu" parent="UI" instance=ExtResource("3_v1krg")]
 
 [node name="Textures" type="TileMapLayer" parent="UI"]
+tile_map_data = PackedByteArray("AAARABgAAAAGAAAAAAARABkAAAAGAAEAAAARABoAAAAGAAIAAAASABgAAAAHAAAAAAASABkAAAAHAAEAAAASABoAAAAHAAIAAAATABgAAAAIAAAAAAATABkAAAAIAAEAAAATABoAAAAIAAIAAAAUABgAAAAGAAAAAAAUABkAAAAGAAEAAAAUABoAAAAGAAIAAAAVABgAAAAHAAAAAAAVABkAAAAHAAEAAAAVABoAAAAHAAIAAAAWABgAAAAIAAAAAAAWABkAAAAIAAEAAAAWABoAAAAIAAIAAAAXABgAAAAGAAAAAAAXABkAAAAGAAEAAAAXABoAAAAGAAIAAAAYABgAAAAHAAAAAAAYABkAAAAHAAEAAAAYABoAAAAHAAIAAAAZABgAAAAIAAAAAAAZABkAAAAIAAEAAAAZABoAAAAIAAIAAAAaABgAAAAGAAAAAAAaABkAAAAGAAEAAAAaABoAAAAGAAIAAAAbABgAAAAHAAAAAAAbABkAAAAHAAEAAAAbABoAAAAHAAIAAAAcABgAAAAIAAAAAAAcABkAAAAIAAEAAAAcABoAAAAIAAIAAAAdABgAAAAGAAAAAAAdABkAAAAGAAEAAAAdABoAAAAGAAIAAAAeABgAAAAHAAAAAAAeABkAAAAHAAEAAAAeABoAAAAHAAIAAAAfABgAAAAIAAAAAAAfABkAAAAIAAEAAAAfABoAAAAIAAIAAAAgABgAAAAGAAAAAAAgABkAAAAGAAEAAAAgABoAAAAGAAIAAAAhABgAAAAHAAAAAAAhABkAAAAHAAEAAAAhABoAAAAHAAIAAAAiABgAAAAIAAAAAAAiABkAAAAIAAEAAAAiABoAAAAIAAIAAAAjABgAAAAGAAAAAAAjABkAAAAGAAEAAAAjABoAAAAGAAIAAAAkABgAAAAHAAAAAAAkABkAAAAHAAEAAAAkABoAAAAHAAIAAAAlABgAAAAIAAAAAAAlABkAAAAIAAEAAAAlABoAAAAIAAIAAAAmABgAAAAGAAAAAAAmABkAAAAGAAEAAAAmABoAAAAGAAIAAAAnABgAAAAHAAAAAAAnABkAAAAHAAEAAAAnABoAAAAHAAIAAAAoABgAAAAIAAAAAAAoABkAAAAIAAEAAAAoABoAAAAIAAIAAAApABgAAAAGAAAAAAApABkAAAAGAAEAAAApABoAAAAGAAIAAAAqABgAAAAHAAAAAAAqABkAAAAHAAEAAAAqABoAAAAHAAIAAAArABgAAAAIAAAAAAArABkAAAAIAAEAAAArABoAAAAIAAIAAAAsABgAAAAGAAAAAAAsABkAAAAGAAEAAAAsABoAAAAGAAIAAAAtABgAAAAHAAAAAAAtABkAAAAHAAEAAAAtABoAAAAHAAIAAAAuABgAAAAIAAAAAAAuABkAAAAIAAEAAAAuABoAAAAIAAIAAAAvABgAAAAGAAAAAAAvABkAAAAGAAEAAAAvABoAAAAGAAIAAAAwABgAAAAHAAAAAAAwABkAAAAHAAEAAAAwABoAAAAHAAIAAAAxABgAAAAIAAAAAAAxABkAAAAIAAEAAAAxABoAAAAIAAIAAAAyABgAAAAGAAAAAAAyABkAAAAGAAEAAAAyABoAAAAGAAIAAAAzABgAAAAHAAAAAAAzABkAAAAHAAEAAAAzABoAAAAHAAIAAAA0ABgAAAAIAAAAAAA0ABkAAAAIAAEAAAA0ABoAAAAIAAIAAAA=")
 tile_set = SubResource("TileSet_l4j0s")
 
 [node name="PauseButton" parent="UI" instance=ExtResource("5_lp82p")]
@@ -331,7 +333,9 @@ offset_top = 30.6667
 offset_right = 542.667
 offset_bottom = 540.667
 
-[node name="Buttons" parent="UI" instance=ExtResource("6_0widg")]
+[node name="TouchControls" parent="UI" instance=ExtResource("6_0widg")]
+
+[node name="BonusHUD" parent="UI" instance=ExtResource("7_v1krg")]
 
 [node name="Entities" type="Node2D" parent="."]
 

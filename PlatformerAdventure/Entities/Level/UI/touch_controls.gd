@@ -12,8 +12,12 @@ var _finger_jump: int = -1
 @onready var ghost_right: AnimatedSprite2D = $GhostRight
 @onready var ghost_jump: AnimatedSprite2D = $GhostJump
 
+@export var show_zone_hints: bool = true
+@onready var _hints: Node2D = $TouchZoneHints
+
 func _ready() -> void:
 	
+	_hints.show_hints = show_zone_hints
 	ghost_left.visible = false
 	ghost_right.visible = false
 	ghost_jump.visible = false

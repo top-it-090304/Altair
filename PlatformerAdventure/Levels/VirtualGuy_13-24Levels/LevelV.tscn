@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dxmc53wv1psbe"]
+[gd_scene load_steps=20 format=4 uid="uid://dxmc53wv1psbe"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_nroux"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_fxvhl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dyds15vnjstj6" path="res://Entities/Players/VirtualGuy/VirtualGuy.tscn" id="5_dmtuf"]
 [ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="6_fsrwk"]
 [ext_resource type="PackedScene" uid="uid://bljm38ot20br2" path="res://Entities/Level/UI/touch_controls.tscn" id="7_nroux"]
+[ext_resource type="PackedScene" uid="uid://dtnt0bcigkql1" path="res://Entities/Shop/bonus_hud.tscn" id="8_npf3m"]
 [ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="10_tnb5d"]
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="11_sidmk"]
 [ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="12_wpthx"]
@@ -436,9 +437,6 @@ position = Vector2(674, 352)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nroux")
 next_level_path = "uid://cjoso4k6j67y0"
-allow_shield = true
-allow_slowmo = true
-allow_magnet = true
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -463,6 +461,10 @@ offset_bottom = 299.333
 [node name="PauseMenu" parent="UI" instance=ExtResource("15_45e66")]
 
 [node name="TouchControls" parent="UI" instance=ExtResource("7_nroux")]
+
+[node name="BonusHUD" parent="UI" instance=ExtResource("8_npf3m")]
+
+[node name="BonusHUD2" parent="UI" instance=ExtResource("8_npf3m")]
 
 [node name="Entities" type="Node2D" parent="."]
 

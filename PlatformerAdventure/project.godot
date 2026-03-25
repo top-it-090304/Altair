@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "Mobile")
 
 SoundManager="*res://Entities/Level/Sounds/SoundManager.tscn"
 GameData="*res://Entities/Shop/GameData.gd"
+AppFocus="*res://autoload/app_focus.gd"
 
 [display]
 

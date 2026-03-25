@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://devcekijygut2"]
+[gd_scene load_steps=23 format=4 uid="uid://devcekijygut2"]
 
 [ext_resource type="PackedScene" uid="uid://drjs448xj6ar5" path="res://Entities/Shop/shop_counter.tscn" id="1_1v5yy"]
+[ext_resource type="Script" uid="uid://r4ibm3cywsgn" path="res://Entities/Shop/shop.gd" id="1_yv4tu"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_dbxhb"]
 [ext_resource type="Texture2D" uid="uid://bpumwdrcaq3pf" path="res://Assets/Textures/Background/Yellow.png" id="2_mucb8"]
 [ext_resource type="Texture2D" uid="uid://bqptt8sdeja6r" path="res://Assets/Textures/Menu/Buttons/Back.png" id="2_pm1ah"]
@@ -11,13 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://dx84l66kbkfcg" path="res://Assets/Textures/Store Items/pixel-art-hourglass-sand-clock-item-for-game-bit_360488-76 (1)-Photoroom.png" id="9_mucb8"]
 [ext_resource type="Texture2D" uid="uid://bgsdmlgy8wu8t" path="res://Assets/Textures/Store Items/pixel-art-magnet-red-and-blue-magnetism-icon-for-8bit-game-on-white-background-vector-Photoroom.png" id="10_452da"]
 [ext_resource type="Texture2D" uid="uid://c7ttic1h1npln" path="res://Assets/Textures/Store Items/image-Photoroom.png" id="10_mucb8"]
+[ext_resource type="Texture2D" uid="uid://bwp252fxqbr58" path="res://Assets/Textures/Store Items/buy_gray.png" id="12_n7p4w"]
 [ext_resource type="Texture2D" uid="uid://jbuvlqnd6ck0" path="res://Assets/Textures/Store Items/buy_defolt.png" id="12_nt5y3"]
 [ext_resource type="Texture2D" uid="uid://bayun6l75su50" path="res://Assets/Textures/Store Items/buy_pressed.png" id="13_tl2qy"]
 [ext_resource type="Texture2D" uid="uid://5p8gj81eeinw" path="res://Assets/Textures/Store Items/buy_lite.png" id="14_skhbe"]
 [ext_resource type="Texture2D" uid="uid://k37ay1w7ubai" path="res://Assets/Textures/Store Items/IMG_1902-Photoroom.png" id="15_an677"]
 [ext_resource type="Texture2D" uid="uid://55dere3vdq18" path="res://Assets/Textures/Store Items/IMG_1902-Photoroo11111m.png" id="16_an677"]
-[ext_resource type="Texture2D" uid="uid://csl7iag0fx0cw" path="res://Assets/Textures/Store Items/2.png" id="17_yv4tu"]
 [ext_resource type="Texture2D" uid="uid://d28b32wecsdcf" path="res://Assets/Textures/Store Items/0.png" id="18_n7p4w"]
+[ext_resource type="Texture2D" uid="uid://c14nj4osjvtwc" path="res://Assets/Textures/Store Items/1.png" id="19_n7p4w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pvgl"]
 texture = ExtResource("3_wloi4")
@@ -272,6 +274,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_yv4tu")
 
 [node name="BgTexture" parent="." instance=ExtResource("2_dbxhb")]
 layout_mode = 1
@@ -314,6 +317,7 @@ scale = Vector2(2.3, 2.3)
 texture_normal = ExtResource("12_nt5y3")
 texture_pressed = ExtResource("13_tl2qy")
 texture_hover = ExtResource("14_skhbe")
+texture_disabled = ExtResource("12_n7p4w")
 
 [node name="TextureButton3" type="TextureButton" parent="."]
 texture_filter = 1
@@ -326,6 +330,7 @@ scale = Vector2(2.3, 2.3)
 texture_normal = ExtResource("12_nt5y3")
 texture_pressed = ExtResource("13_tl2qy")
 texture_hover = ExtResource("14_skhbe")
+texture_disabled = ExtResource("12_n7p4w")
 
 [node name="TextureButton4" type="TextureButton" parent="."]
 texture_filter = 1
@@ -338,6 +343,7 @@ scale = Vector2(2.3, 2.3)
 texture_normal = ExtResource("12_nt5y3")
 texture_pressed = ExtResource("13_tl2qy")
 texture_hover = ExtResource("14_skhbe")
+texture_disabled = ExtResource("12_n7p4w")
 
 [node name="Node2D5" type="Node2D" parent="."]
 
@@ -389,10 +395,10 @@ metadata/_edit_group_ = true
 [node name="2" type="Sprite2D" parent="Node2D5/Node2D2"]
 position = Vector2(272, 576)
 scale = Vector2(0.446296, 0.470001)
-texture = ExtResource("17_yv4tu")
+texture = ExtResource("19_n7p4w")
 
 [node name="0" type="Sprite2D" parent="Node2D5/Node2D2"]
-position = Vector2(296, 576)
+position = Vector2(288, 576)
 scale = Vector2(0.445454, 0.461689)
 texture = ExtResource("18_n7p4w")
 
@@ -403,10 +409,10 @@ metadata/_edit_group_ = true
 [node name="2" type="Sprite2D" parent="Node2D5/Node2D3"]
 position = Vector2(272, 576)
 scale = Vector2(0.446296, 0.470001)
-texture = ExtResource("17_yv4tu")
+texture = ExtResource("19_n7p4w")
 
 [node name="0" type="Sprite2D" parent="Node2D5/Node2D3"]
-position = Vector2(296, 576)
+position = Vector2(288, 576)
 scale = Vector2(0.445454, 0.461689)
 texture = ExtResource("18_n7p4w")
 
@@ -417,10 +423,10 @@ metadata/_edit_group_ = true
 [node name="2" type="Sprite2D" parent="Node2D5/Node2D4"]
 position = Vector2(272, 576)
 scale = Vector2(0.446296, 0.470001)
-texture = ExtResource("17_yv4tu")
+texture = ExtResource("19_n7p4w")
 
 [node name="0" type="Sprite2D" parent="Node2D5/Node2D4"]
-position = Vector2(296, 576)
+position = Vector2(288, 576)
 scale = Vector2(0.445454, 0.461689)
 texture = ExtResource("18_n7p4w")
 
