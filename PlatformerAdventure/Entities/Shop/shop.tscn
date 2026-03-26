@@ -268,7 +268,7 @@ texture = ExtResource("3_wloi4")
 [sub_resource type="TileSet" id="TileSet_ydw2f"]
 sources/0 = SubResource("TileSetAtlasSource_7pvgl")
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0

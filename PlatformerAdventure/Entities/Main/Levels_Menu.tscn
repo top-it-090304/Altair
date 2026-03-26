@@ -376,7 +376,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0

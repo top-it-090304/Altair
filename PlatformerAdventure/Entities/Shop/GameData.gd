@@ -17,6 +17,13 @@ const PRICE_SHIELD: int = 10
 const PRICE_SLOWMO: int = 10
 const PRICE_MAGNET: int = 10
 
+var purchased_shield: bool:
+	get: return count_shield > 0
+var purchased_slowmo: bool:
+	get: return count_slowmo > 0
+var purchased_magnet: bool:
+	get: return count_magnet > 0
+
 func _ready() -> void:
 	load_data()
 	apply_audio_settings() # Применяем звук при старте

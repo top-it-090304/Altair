@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://idmtdn4k1ns6"]
 
 [ext_resource type="Script" uid="uid://dt2u5kfudwv7y" path="res://Entities/Fruits/Fruits.gd" id="1_df4c0"]
-[ext_resource type="Texture2D" uid="uid://dbs4vj2cpl3mp" path="res://Assets/Textures/Items/Fruits/Cherries.png" id="2_ac2ya"]
-[ext_resource type="Texture2D" uid="uid://ck7imgg40w8ma" path="res://Assets/Textures/Items/Fruits/Collected.png" id="2_kxxvi"]
+[ext_resource type="Texture2D" uid="uid://dtyus2f4jeff0" path="res://Assets/Textures/Items/Fruits/Cherries.png" id="2_ac2ya"]
+[ext_resource type="Texture2D" uid="uid://ctrfpw3dn072" path="res://Assets/Textures/Items/Fruits/Collected.png" id="2_kxxvi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uaj2q"]
 atlas = ExtResource("2_kxxvi")

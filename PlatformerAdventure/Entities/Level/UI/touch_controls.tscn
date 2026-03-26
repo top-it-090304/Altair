@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bljm38ot20br2"]
 
 [ext_resource type="Script" uid="uid://bgfr8hmndvdcl" path="res://Entities/Level/UI/touch_controls.gd" id="1_6pg8p"]
-[ext_resource type="Texture2D" uid="uid://dvsg6181c2aru" path="res://Assets/Textures/Traps/Arrow/Hit (18x18).png" id="2_pxyie"]
+[ext_resource type="Texture2D" uid="uid://b4jwg0w66p7fw" path="res://Assets/Textures/Traps/Arrow/Hit (18x18).png" id="2_pxyie"]
 [ext_resource type="Script" uid="uid://ckbbwgcpce4su" path="res://Entities/Level/UI/touch_zone_hints.gd" id="3_wfiyp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfiyp"]

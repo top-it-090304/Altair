@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://j3gtc24oaakm"]
 
-[ext_resource type="Texture2D" uid="uid://lvk4u8ar1dld" path="res://Assets/Textures/Menu/Buttons/Pause.png" id="1_tmfuu"]
+[ext_resource type="Texture2D" uid="uid://vr85efn01wou" path="res://Assets/Textures/Menu/Buttons/Pause.png" id="1_tmfuu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f8d8"]
 bg_color = Color(0.177536, 0.17059, 0.209806, 1)

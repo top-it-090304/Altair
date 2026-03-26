@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://clq4ekldmr2a"]
 
-[ext_resource type="Texture2D" uid="uid://rda7j6p3x2p0" path="res://Assets/Textures/Items/Fruits/Melon.png" id="1_nmjdo"]
+[ext_resource type="Texture2D" uid="uid://djcvrmlhmx55i" path="res://Assets/Textures/Items/Fruits/Melon.png" id="1_nmjdo"]
 [ext_resource type="Script" uid="uid://dt2u5kfudwv7y" path="res://Entities/Fruits/Fruits.gd" id="1_resih"]
-[ext_resource type="Texture2D" uid="uid://ck7imgg40w8ma" path="res://Assets/Textures/Items/Fruits/Collected.png" id="2_4rhwb"]
+[ext_resource type="Texture2D" uid="uid://ctrfpw3dn072" path="res://Assets/Textures/Items/Fruits/Collected.png" id="2_4rhwb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_resih"]
 size = Vector2(16, 11)

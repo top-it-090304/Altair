@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://bchxc4gq32ppd"]
 
 [ext_resource type="Script" uid="uid://coo40myblprci" path="res://Entities/Traps/Spinner/spinner.gd" id="1_eoees"]
-[ext_resource type="Texture2D" uid="uid://s6yj8dai4bbl" path="res://Assets/Textures/Traps/Platforms/Brown Off.png" id="2_vbsrv"]
-[ext_resource type="Texture2D" uid="uid://eg2tf17ovrnp" path="res://Assets/Textures/Traps/Platforms/Brown On (32x8).png" id="3_ionno"]
+[ext_resource type="Texture2D" uid="uid://d2q7y82wl7rgi" path="res://Assets/Textures/Traps/Platforms/Brown Off.png" id="2_vbsrv"]
+[ext_resource type="Texture2D" uid="uid://dqq6n0668i2ot" path="res://Assets/Textures/Traps/Platforms/Brown On (32x8).png" id="3_ionno"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_judof"]
 atlas = ExtResource("2_vbsrv")
