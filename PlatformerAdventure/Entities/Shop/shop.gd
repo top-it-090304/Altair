@@ -1,9 +1,9 @@
 
 extends Control
 
-@onready var btn_shield: TextureButton = $TextureButton2
-@onready var btn_slowmo: TextureButton = $TextureButton4
-@onready var btn_magnet: TextureButton = $TextureButton3
+@onready var btn_shield: TextureButton = %TextureButton2
+@onready var btn_slowmo: TextureButton = %TextureButton4
+@onready var btn_magnet: TextureButton = %TextureButton3
 
 func _ready() -> void:
 	btn_shield.pressed.connect(_on_buy_shield)
