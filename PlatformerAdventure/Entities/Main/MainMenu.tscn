@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://co1ws314r8c86"]
+[gd_scene load_steps=91 format=3 uid="uid://co1ws314r8c86"]
 
 [ext_resource type="Script" uid="uid://bjdi8sxlppvp0" path="res://Entities/Main/main_menu.gd" id="1_dva7d"]
 [ext_resource type="Texture2D" uid="uid://ctb42q3cq7ilg" path="res://Assets/Textures/Menu/3ea433ad-2c40-4e0f-a133-fe0fc67e0716.png" id="2_dva7d"]
@@ -20,7 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://dq5tnwfx85le3" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store03.png" id="10_t3ix7"]
 [ext_resource type="Texture2D" uid="uid://x1u2lpui3xr3" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store04.png" id="11_huydx"]
 [ext_resource type="Texture2D" uid="uid://dsqxxjhytkgmr" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store05.png" id="12_h1gie"]
+[ext_resource type="Texture2D" uid="uid://dr85yxntbbjay" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options01.png" id="13_6arad"]
+[ext_resource type="Texture2D" uid="uid://dtcxbw8f4ky2q" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options02.png" id="14_y0v30"]
+[ext_resource type="Texture2D" uid="uid://bo1g2n6riam8h" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options03.png" id="15_e4dpk"]
 [ext_resource type="Texture2D" uid="uid://cvrpveh0jxjut" path="res://Assets/Textures/Menu/Gemini_Generated_Image_s2hpprs2hpprs2hp.png" id="16_drt3r"]
+[ext_resource type="Texture2D" uid="uid://bhfputtrgosg2" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options04.png" id="16_pdd02"]
+[ext_resource type="Texture2D" uid="uid://ccenh6rto0c82" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options05.png" id="17_giv72"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7ipb"]
 atlas = ExtResource("3_dva7d")
@@ -519,6 +524,19 @@ texture_hover = ExtResource("10_t3ix7")
 texture_disabled = ExtResource("11_huydx")
 texture_focused = ExtResource("12_h1gie")
 
+[node name="BtnSettings" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 503.0
+offset_right = 1331.0
+offset_bottom = 845.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("13_6arad")
+texture_pressed = ExtResource("14_y0v30")
+texture_hover = ExtResource("15_e4dpk")
+texture_disabled = ExtResource("16_pdd02")
+texture_focused = ExtResource("17_giv72")
+
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="mask_dude" type="AnimatedSprite2D" parent="Node2D"]
@@ -596,3 +614,4 @@ texture = ExtResource("16_drt3r")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="BtnSettings" to="." method="_on_btn_settings_pressed"]
