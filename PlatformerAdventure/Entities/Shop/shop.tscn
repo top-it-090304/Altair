@@ -307,6 +307,7 @@ texture_hover = ExtResource("4_wloi4")
 stretch_mode = 0
 
 [node name="TextureButton2" type="TextureButton" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 237.0
@@ -320,6 +321,7 @@ texture_hover = ExtResource("14_skhbe")
 texture_disabled = ExtResource("12_n7p4w")
 
 [node name="TextureButton3" type="TextureButton" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 878.0
@@ -333,6 +335,7 @@ texture_hover = ExtResource("14_skhbe")
 texture_disabled = ExtResource("12_n7p4w")
 
 [node name="TextureButton4" type="TextureButton" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 557.0
