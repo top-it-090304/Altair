@@ -488,6 +488,7 @@ texture_hover = ExtResource("20_yyg4m")
 stretch_mode = 0
 
 [node name="Button9" type="TextureButton" parent="CenterContainer/GridContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
@@ -497,6 +498,7 @@ texture_hover = ExtResource("22_s0ood")
 stretch_mode = 0
 
 [node name="Button10" type="TextureButton" parent="CenterContainer/GridContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
@@ -506,6 +508,7 @@ texture_hover = ExtResource("24_8asrn")
 stretch_mode = 0
 
 [node name="Button11" type="TextureButton" parent="CenterContainer/GridContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
@@ -515,6 +518,7 @@ texture_hover = ExtResource("26_66e7k")
 stretch_mode = 0
 
 [node name="Button12" type="TextureButton" parent="CenterContainer/GridContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
