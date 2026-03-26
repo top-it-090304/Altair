@@ -6,3 +6,7 @@ func _on_texture_button_button_down() -> void:
 
 func _on_texture_button_2_button_down() -> void:
 	get_tree().change_scene_to_file("res://Entities/Shop/Shop.tscn")
+
+
+func _on_btn_settings_pressed() -> void:
+	get_tree().change_scene_to_file("res://Entities/Settings/setting.tscn")

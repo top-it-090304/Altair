@@ -1,20 +1,20 @@
 [gd_scene load_steps=19 format=4 uid="uid://csi2o7cdfg3gs"]
 
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_jubmu"]
-[ext_resource type="Texture2D" uid="uid://dw0vbkd3pk17t" path="res://Assets/Textures/Background/Blue.png" id="3_plwyx"]
-[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_qp4b8"]
-[ext_resource type="Texture2D" uid="uid://bqptt8sdeja6r" path="res://Assets/Textures/Menu/Buttons/Back.png" id="5_y6nnx"]
-[ext_resource type="Texture2D" uid="uid://2rfu3ko8sita" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="6_jqpad"]
-[ext_resource type="Texture2D" uid="uid://cr6jwf2ncyffi" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="7_m75j8"]
-[ext_resource type="Texture2D" uid="uid://ba0ovogne7cel" path="res://Assets/Textures/Menu/Buttons/Volume.png" id="8_w0bmm"]
-[ext_resource type="Texture2D" uid="uid://byr37vrb0cceg" path="res://Assets/Textures/Menu/numbers_black(8x10).png" id="9_3c2vg"]
-[ext_resource type="Texture2D" uid="uid://bhtewl0iejuqv" path="res://Assets/Textures/Menu/Text/numbers_black1(8x10).png" id="10_0piyy"]
-[ext_resource type="Texture2D" uid="uid://cl10j02klj44b" path="res://Assets/Textures/Menu/Text/numbers_black0(8x10).png" id="11_vgwex"]
-[ext_resource type="Texture2D" uid="uid://t008h6wkbb0k" path="res://Assets/Textures/Settings/polzunok(16x16).png" id="12_q06dr"]
-[ext_resource type="Texture2D" uid="uid://cmnk7axn308b3" path="res://Assets/Textures/Settings/music.png" id="13_quyqh"]
-[ext_resource type="Texture2D" uid="uid://b4smf6yeq7x8i" path="res://Assets/Textures/Settings/sounds_effects.png" id="14_5walj"]
-[ext_resource type="Texture2D" uid="uid://7ybfoe2cv4m" path="res://Assets/Textures/Settings/show_control.png" id="15_plwyx"]
-[ext_resource type="Texture2D" uid="uid://bnncpfrgwt05s" path="res://Assets/Textures/Settings/reset.png" id="16_qp4b8"]
+[ext_resource type="Texture2D" uid="uid://dphss4v8xjpbi" path="res://Assets/Textures/Background/Blue.png" id="3_plwyx"]
+[ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_qp4b8"]
+[ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="5_y6nnx"]
+[ext_resource type="Texture2D" uid="uid://cwfj1w3c77gq1" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="6_jqpad"]
+[ext_resource type="Texture2D" uid="uid://o05nvamef1vh" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="7_m75j8"]
+[ext_resource type="Texture2D" uid="uid://bhc8ocm1j3dav" path="res://Assets/Textures/Menu/Buttons/Volume.png" id="8_w0bmm"]
+[ext_resource type="Texture2D" uid="uid://b3bb326povybs" path="res://Assets/Textures/Menu/numbers_black(8x10).png" id="9_3c2vg"]
+[ext_resource type="Texture2D" uid="uid://ccbpa2jrttea1" path="res://Assets/Textures/Menu/Text/numbers_black1(8x10).png" id="10_0piyy"]
+[ext_resource type="Texture2D" uid="uid://dm4awsgc2tgpn" path="res://Assets/Textures/Menu/Text/numbers_black0(8x10).png" id="11_vgwex"]
+[ext_resource type="Texture2D" uid="uid://blp2m4pvj0nr7" path="res://Assets/Textures/Settings/polzunok(16x16).png" id="12_q06dr"]
+[ext_resource type="Texture2D" uid="uid://ctxmf1cffr4ud" path="res://Assets/Textures/Settings/music.png" id="13_quyqh"]
+[ext_resource type="Texture2D" uid="uid://6r6f8ghqsfjb" path="res://Assets/Textures/Settings/sounds_effects.png" id="14_5walj"]
+[ext_resource type="Texture2D" uid="uid://b5coj3fiy7uf4" path="res://Assets/Textures/Settings/show_control.png" id="15_plwyx"]
+[ext_resource type="Texture2D" uid="uid://bxlxdrva8rcq3" path="res://Assets/Textures/Settings/reset.png" id="16_qp4b8"]
 [ext_resource type="Script" uid="uid://bo7e5rjs0pw2k" path="res://Entities/Settings/sfx_volume_slider.gd" id="16_y6nnx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pvgl"]
@@ -381,8 +381,11 @@ script = ExtResource("16_y6nnx")
 
 [node name="Knob" type="TextureRect" parent="SFXVolumeSlider"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 513.0
 offset_top = 486.0
 offset_right = 544.0
 offset_bottom = 582.0
 texture = ExtResource("12_q06dr")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
