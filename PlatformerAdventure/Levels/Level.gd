@@ -75,6 +75,7 @@ func _on_level_completed() -> void:
 	Engine.time_scale = 1.0
 	var level_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	GameData.submit_level_result(level_name, collected_count)
+	Input.flush_buffered_events()
 	get_tree().call_deferred("change_scene_to_file", next_level_path)
 
 
