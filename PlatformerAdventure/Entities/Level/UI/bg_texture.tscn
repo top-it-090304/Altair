@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4yu7d0wdp5mf"]
 
 [ext_resource type="Shader" uid="uid://cbraoprsctj22" path="res://Entities/Level/UI/AnimatedBack.gdshader" id="1_pl10r"]
-[ext_resource type="Texture2D" uid="uid://byvxidmfjtjfa" path="res://Assets/Textures/Background/Green.png" id="2_qbrvq"]
+[ext_resource type="Texture2D" uid="uid://bj7b55rnrte64" path="res://Assets/Textures/Background/Green.png" id="2_qbrvq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fd6op"]
 shader = ExtResource("1_pl10r")

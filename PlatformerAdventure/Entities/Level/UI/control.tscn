@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsv87wppkkesp" path="res://Entities/Level/UI/control.gd" id="1_c5nvv"]
 [ext_resource type="Script" uid="uid://bhhmc2k28bmot" path="res://Entities/Level/UI/left.gd" id="2_muowi"]
-[ext_resource type="Texture2D" uid="uid://bcjfjrymis770" path="res://Assets/Textures/Traps/Arrow/Idle (18x18).png" id="3_ntwfq"]
+[ext_resource type="Texture2D" uid="uid://cykh3nk7ienrq" path="res://Assets/Textures/Traps/Arrow/Idle (18x18).png" id="3_ntwfq"]
 [ext_resource type="Script" uid="uid://dwhj42fl28esl" path="res://Entities/Level/UI/levelbutton.gd" id="4_ntwfq"]
 [ext_resource type="Script" uid="uid://dkbqu02n4w2b5" path="res://Entities/Level/UI/right.gd" id="5_e2je6"]
 

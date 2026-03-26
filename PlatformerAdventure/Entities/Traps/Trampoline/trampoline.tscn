@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://ielkwmhy36io"]
 
 [ext_resource type="Script" uid="uid://dhdut6shtqqab" path="res://Entities/Traps/Trampoline/trampolin.gd" id="1_i65o3"]
-[ext_resource type="Texture2D" uid="uid://fugvi4mfvqho" path="res://Assets/Textures/Traps/Trampoline/Idle.png" id="2_q7cwl"]
-[ext_resource type="Texture2D" uid="uid://cfjx5dhnomuhn" path="res://Assets/Textures/Traps/Trampoline/Jump (28x28).png" id="3_e8yfb"]
+[ext_resource type="Texture2D" uid="uid://drsahc4lqqsbr" path="res://Assets/Textures/Traps/Trampoline/Idle.png" id="2_q7cwl"]
+[ext_resource type="Texture2D" uid="uid://bxn73f6f4s41h" path="res://Assets/Textures/Traps/Trampoline/Jump (28x28).png" id="3_e8yfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwies"]
 size = Vector2(25, 11)

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_nroux"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_fxvhl"]
-[ext_resource type="Texture2D" uid="uid://eqnhicopj6xe" path="res://Assets/Textures/Background/Brown.png" id="2_npf3m"]
-[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_mvs25"]
-[ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="4_fxvhl"]
+[ext_resource type="Texture2D" uid="uid://dtygh7e3bbmky" path="res://Assets/Textures/Background/Brown.png" id="2_npf3m"]
+[ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_mvs25"]
+[ext_resource type="Texture2D" uid="uid://do6sfmljgcobn" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="4_fxvhl"]
 [ext_resource type="PackedScene" uid="uid://dyds15vnjstj6" path="res://Entities/Players/VirtualGuy/VirtualGuy.tscn" id="5_dmtuf"]
 [ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="6_fsrwk"]
 [ext_resource type="PackedScene" uid="uid://bljm38ot20br2" path="res://Entities/Level/UI/touch_controls.tscn" id="7_nroux"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1jblx5m8pguj"]
 
 [ext_resource type="Script" uid="uid://dolhbxyy6sihk" path="res://Entities/Traps/Spike/spike.gd" id="1_rd0f0"]
-[ext_resource type="Texture2D" uid="uid://yuwf5al2lqxy" path="res://Assets/Textures/Traps/Spikes/Idle.png" id="2_0xph0"]
+[ext_resource type="Texture2D" uid="uid://bouw3uv5t78t2" path="res://Assets/Textures/Traps/Spikes/Idle.png" id="2_0xph0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rd0f0"]
 resource_local_to_scene = true

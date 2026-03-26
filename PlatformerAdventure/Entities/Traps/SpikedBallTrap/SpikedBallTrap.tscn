@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dw14iccai2ksv" path="res://Entities/Traps/SpikedBallTrap/pivot.gd" id="1_eoys1"]
 [ext_resource type="Script" uid="uid://c4a42nswxuv0q" path="res://Entities/Traps/SpikedBallTrap/spiked_ball_trap.gd" id="1_n4b56"]
-[ext_resource type="Texture2D" uid="uid://cmxudq3sxab43" path="res://Assets/Textures/Traps/Spiked Ball/Chain.png" id="1_okdjn"]
-[ext_resource type="Texture2D" uid="uid://cb3sbwsntii4k" path="res://Assets/Textures/Traps/Spiked Ball/Spiked Ball.png" id="2_eoys1"]
+[ext_resource type="Texture2D" uid="uid://3whjjeuue2yp" path="res://Assets/Textures/Traps/Spiked Ball/Chain.png" id="1_okdjn"]
+[ext_resource type="Texture2D" uid="uid://cylf5xxalofkx" path="res://Assets/Textures/Traps/Spiked Ball/Spiked Ball.png" id="2_eoys1"]
 [ext_resource type="Script" uid="uid://w3af3m71wt0o" path="res://Entities/Traps/SpikedBallTrap/chain.gd" id="4_ouv43"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_24ysb"]

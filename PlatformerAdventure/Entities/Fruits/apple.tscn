@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://dw5gh4fc4isun"]
 
 [ext_resource type="Script" uid="uid://dt2u5kfudwv7y" path="res://Entities/Fruits/Fruits.gd" id="1_krysu"]
-[ext_resource type="Texture2D" uid="uid://ck7imgg40w8ma" path="res://Assets/Textures/Items/Fruits/Collected.png" id="2_xjnh2"]
-[ext_resource type="Texture2D" uid="uid://cdjprvw08yrib" path="res://Assets/Textures/Items/Fruits/Apple.png" id="3_wdeqt"]
+[ext_resource type="Texture2D" uid="uid://ctrfpw3dn072" path="res://Assets/Textures/Items/Fruits/Collected.png" id="2_xjnh2"]
+[ext_resource type="Texture2D" uid="uid://cfnxs2mfb8mu8" path="res://Assets/Textures/Items/Fruits/Apple.png" id="3_wdeqt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6okh"]
 radius = 6.08276

@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://dtnt0bcigkql1"]
 
 [ext_resource type="Script" uid="uid://xsh68nnjeb70" path="res://Entities/Shop/Bonushud.gd" id="1_cs7qh"]
-[ext_resource type="Texture2D" uid="uid://2rfu3ko8sita" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="2_ikhpt"]
-[ext_resource type="Texture2D" uid="uid://b871wwkw3n03l" path="res://Assets/Textures/Store Items/blue-and-white-shielbutton.png" id="2_xj46j"]
-[ext_resource type="Texture2D" uid="uid://c2wl1240towiu" path="res://Assets/Textures/Store Items/blue-agrey.png" id="3_64qri"]
-[ext_resource type="Texture2D" uid="uid://dx84l66kbkfcg" path="res://Assets/Textures/Store Items/pixel-art-hourglass-sand-clock-item-for-game-bit_360488-76 (1)-Photoroom.png" id="3_t1alb"]
-[ext_resource type="Texture2D" uid="uid://bqptt8sdeja6r" path="res://Assets/Textures/Menu/Buttons/Back.png" id="3_xhxq6"]
-[ext_resource type="Texture2D" uid="uid://bgsdmlgy8wu8t" path="res://Assets/Textures/Store Items/pixel-art-magnet-red-and-blue-magnetism-icon-for-8bit-game-on-white-background-vector-Photoroom.png" id="4_a3ds0"]
-[ext_resource type="Texture2D" uid="uid://c7nm2gn4l47ir" path="res://Assets/Textures/Store Items/pixel-agrey.png" id="5_ikhpt"]
-[ext_resource type="Texture2D" uid="uid://dcbndscsvy0gp" path="res://Assets/Textures/Store Items/pixel-art-grey.png" id="7_xhxq6"]
+[ext_resource type="Texture2D" uid="uid://cwfj1w3c77gq1" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="2_ikhpt"]
+[ext_resource type="Texture2D" uid="uid://bh7hd1yubvv8q" path="res://Assets/Textures/Store Items/blue-and-white-shielbutton.png" id="2_xj46j"]
+[ext_resource type="Texture2D" uid="uid://c20720ldyouq7" path="res://Assets/Textures/Store Items/blue-agrey.png" id="3_64qri"]
+[ext_resource type="Texture2D" uid="uid://clg6wdjtnhd8u" path="res://Assets/Textures/Store Items/pixel-art-hourglass-sand-clock-item-for-game-bit_360488-76 (1)-Photoroom.png" id="3_t1alb"]
+[ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="3_xhxq6"]
+[ext_resource type="Texture2D" uid="uid://ta2bjhiaobcv" path="res://Assets/Textures/Store Items/pixel-art-magnet-red-and-blue-magnetism-icon-for-8bit-game-on-white-background-vector-Photoroom.png" id="4_a3ds0"]
+[ext_resource type="Texture2D" uid="uid://qprmq5mythgo" path="res://Assets/Textures/Store Items/pixel-agrey.png" id="5_ikhpt"]
+[ext_resource type="Texture2D" uid="uid://8bb60gdn0u8r" path="res://Assets/Textures/Store Items/pixel-art-grey.png" id="7_xhxq6"]
 
 [node name="BonusHUD" type="CanvasLayer"]
 script = ExtResource("1_cs7qh")

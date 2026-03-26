@@ -1,48 +1,48 @@
 [gd_scene load_steps=58 format=4 uid="uid://cqwsg5tv5sij1"]
 
 [ext_resource type="Script" uid="uid://b6hqe2265jpct" path="res://Entities/Main/level_menu.gd" id="1_c2qxo"]
-[ext_resource type="Texture2D" uid="uid://cc4ncm41fk5vu" path="res://Assets/Textures/Menu/Levels/01.png" id="2_2aape"]
+[ext_resource type="Texture2D" uid="uid://0uykomg4bsaq" path="res://Assets/Textures/Menu/Levels/01.png" id="2_2aape"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_q38h2"]
-[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_2iq8x"]
-[ext_resource type="Texture2D" uid="uid://c2hpnl7ikcp6i" path="res://Assets/Textures/Menu/Levels/02.png" id="3_65cti"]
-[ext_resource type="Texture2D" uid="uid://d3n5nvbdxjud6" path="res://Assets/Textures/Main Characters/Pink Man/Idle_reverse (32x32).png" id="4_b1fw8"]
-[ext_resource type="Texture2D" uid="uid://b0hduhv3iqihh" path="res://Assets/Textures/Menu/Levels/03.png" id="4_taoa4"]
-[ext_resource type="Texture2D" uid="uid://0kvbstxohsp5" path="res://Assets/Textures/Menu/Levels/04.png" id="5_2iq8x"]
-[ext_resource type="Texture2D" uid="uid://ch5lq0c10kwtf" path="res://Assets/Textures/Menu/Levels/05.png" id="6_b1fw8"]
-[ext_resource type="Texture2D" uid="uid://bj1fkrn74ws1j" path="res://Assets/Textures/Menu/Levels/1(1).png" id="6_khx3b"]
-[ext_resource type="Texture2D" uid="uid://b267p210cmitl" path="res://Assets/Textures/Menu/Levels/01_.png" id="6_n5nrx"]
-[ext_resource type="Texture2D" uid="uid://bj2amv1q3wg5r" path="res://Assets/Textures/Menu/Levels/06.png" id="7_gg4wx"]
-[ext_resource type="Texture2D" uid="uid://bdnndtlxx038l" path="res://Assets/Textures/Menu/Levels/07.png" id="8_k0xnw"]
-[ext_resource type="Texture2D" uid="uid://rrful2hsn0a6" path="res://Assets/Textures/Menu/Levels/02_.png" id="8_ltx6g"]
-[ext_resource type="Texture2D" uid="uid://cf835vel8sdqo" path="res://Assets/Textures/Menu/Levels/08.png" id="9_ocsj8"]
-[ext_resource type="Texture2D" uid="uid://1hi0j2sjn30l" path="res://Assets/Textures/Menu/Levels/2 (1)-Photoroom.png" id="9_rca0y"]
-[ext_resource type="Texture2D" uid="uid://dpqtowyi6d1vy" path="res://Assets/Textures/Menu/Levels/09.png" id="10_k1eq5"]
-[ext_resource type="Texture2D" uid="uid://b5k5cgj4apxpo" path="res://Assets/Textures/Menu/Levels/03_.png" id="10_u2hxe"]
-[ext_resource type="Texture2D" uid="uid://cwivk2gh32uve" path="res://Assets/Textures/Menu/Levels/10.png" id="11_xkix1"]
-[ext_resource type="Texture2D" uid="uid://bhac3fay6wuby" path="res://Assets/Textures/Menu/Levels/3.3.png" id="12_gsf7w"]
-[ext_resource type="Texture2D" uid="uid://dr8mwv7gnv83i" path="res://Assets/Textures/Menu/Levels/04_.png" id="12_khx3b"]
-[ext_resource type="Texture2D" uid="uid://b2f57ftnusu8l" path="res://Assets/Textures/Menu/Levels/11.png" id="12_letmk"]
-[ext_resource type="Texture2D" uid="uid://busbexb0v2m5i" path="res://Assets/Textures/Menu/Levels/12.png" id="13_beo34"]
-[ext_resource type="Texture2D" uid="uid://d0rs7e7b5evnr" path="res://Assets/Textures/Menu/Levels/05_.png" id="14_2es18"]
-[ext_resource type="Texture2D" uid="uid://cbfik8gnfxd5o" path="res://Assets/Textures/Menu/Levels/4.4.png" id="15_wm7dl"]
-[ext_resource type="Texture2D" uid="uid://dyh52s21qcrp3" path="res://Assets/Textures/Menu/Levels/06_.png" id="16_rca0y"]
-[ext_resource type="Texture2D" uid="uid://bqptt8sdeja6r" path="res://Assets/Textures/Menu/Buttons/Back.png" id="17_q38h2"]
-[ext_resource type="Texture2D" uid="uid://bnajr3517lvs2" path="res://Assets/Textures/Menu/Levels/07_.png" id="18_gsf7w"]
-[ext_resource type="Texture2D" uid="uid://5ou6qwg1drs1" path="res://Assets/Textures/Menu/Levels/5.5.png" id="18_ukpqh"]
-[ext_resource type="Texture2D" uid="uid://dvepjmdjnakcn" path="res://Assets/Textures/Menu/Levels/08_.png" id="20_yyg4m"]
-[ext_resource type="Texture2D" uid="uid://d2uhkbdg1ogq5" path="res://Assets/Textures/Menu/Levels/6.6.png" id="21_d5ggg"]
-[ext_resource type="Texture2D" uid="uid://bucg0kws6r53v" path="res://Assets/Textures/Menu/Levels/09_.png" id="22_s0ood"]
-[ext_resource type="Texture2D" uid="uid://d2x8kcf5tcwmk" path="res://Assets/Textures/Menu/Levels/10_.png" id="24_8asrn"]
-[ext_resource type="Texture2D" uid="uid://blsxmpsebiqvc" path="res://Assets/Textures/Menu/Levels/7.7.png" id="24_uaues"]
-[ext_resource type="Texture2D" uid="uid://b6wq0lvgqxb0p" path="res://Assets/Textures/Menu/Levels/11_.png" id="26_66e7k"]
-[ext_resource type="Texture2D" uid="uid://qu1cfisxa3wa" path="res://Assets/Textures/Menu/Levels/8.8.png" id="27_yalyu"]
-[ext_resource type="Texture2D" uid="uid://dmxpiobkcop2b" path="res://Assets/Textures/Menu/Levels/12_.png" id="28_it63q"]
-[ext_resource type="Texture2D" uid="uid://c7lbtrxkl5of4" path="res://Assets/Textures/Menu/Levels/9.9.png" id="30_cb88q"]
-[ext_resource type="Texture2D" uid="uid://cr6jwf2ncyffi" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="30_u2hxe"]
-[ext_resource type="Texture2D" uid="uid://248wpm222jk0" path="res://Assets/Textures/Menu/Levels/10.10.png" id="33_ck707"]
-[ext_resource type="Texture2D" uid="uid://dp7lfcqotg8b5" path="res://Assets/Textures/Menu/Levels/11.11.png" id="36_2ox7x"]
-[ext_resource type="Texture2D" uid="uid://hb0dapk0bne1" path="res://Assets/Textures/Menu/Levels/12.12.png" id="39_d0sv2"]
-[ext_resource type="Texture2D" uid="uid://2rfu3ko8sita" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="42_ukpqh"]
+[ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_2iq8x"]
+[ext_resource type="Texture2D" uid="uid://ctrlyvsix2njk" path="res://Assets/Textures/Menu/Levels/02.png" id="3_65cti"]
+[ext_resource type="Texture2D" uid="uid://d1y85jp64ykw8" path="res://Assets/Textures/Main Characters/Pink Man/Idle_reverse (32x32).png" id="4_b1fw8"]
+[ext_resource type="Texture2D" uid="uid://blgfd073t4vw6" path="res://Assets/Textures/Menu/Levels/03.png" id="4_taoa4"]
+[ext_resource type="Texture2D" uid="uid://dkye3lknb0ag4" path="res://Assets/Textures/Menu/Levels/04.png" id="5_2iq8x"]
+[ext_resource type="Texture2D" uid="uid://dlapchktxj38b" path="res://Assets/Textures/Menu/Levels/05.png" id="6_b1fw8"]
+[ext_resource type="Texture2D" uid="uid://b11bhgrjkuhap" path="res://Assets/Textures/Menu/Levels/1(1).png" id="6_khx3b"]
+[ext_resource type="Texture2D" uid="uid://bcu30rk7i3mww" path="res://Assets/Textures/Menu/Levels/01_.png" id="6_n5nrx"]
+[ext_resource type="Texture2D" uid="uid://bdosjsytdn14l" path="res://Assets/Textures/Menu/Levels/06.png" id="7_gg4wx"]
+[ext_resource type="Texture2D" uid="uid://cclxwqg27h1wg" path="res://Assets/Textures/Menu/Levels/07.png" id="8_k0xnw"]
+[ext_resource type="Texture2D" uid="uid://c1n3pg3pjyk6q" path="res://Assets/Textures/Menu/Levels/02_.png" id="8_ltx6g"]
+[ext_resource type="Texture2D" uid="uid://defnd7cal0kvv" path="res://Assets/Textures/Menu/Levels/08.png" id="9_ocsj8"]
+[ext_resource type="Texture2D" uid="uid://bitne85mrotok" path="res://Assets/Textures/Menu/Levels/2 (1)-Photoroom.png" id="9_rca0y"]
+[ext_resource type="Texture2D" uid="uid://b56bkjtertnd2" path="res://Assets/Textures/Menu/Levels/09.png" id="10_k1eq5"]
+[ext_resource type="Texture2D" uid="uid://dm382kvvcktj0" path="res://Assets/Textures/Menu/Levels/03_.png" id="10_u2hxe"]
+[ext_resource type="Texture2D" uid="uid://dl7awgqlu8vml" path="res://Assets/Textures/Menu/Levels/10.png" id="11_xkix1"]
+[ext_resource type="Texture2D" uid="uid://b6ler3sqhhk0p" path="res://Assets/Textures/Menu/Levels/3.3.png" id="12_gsf7w"]
+[ext_resource type="Texture2D" uid="uid://b41xhmdbt7lap" path="res://Assets/Textures/Menu/Levels/04_.png" id="12_khx3b"]
+[ext_resource type="Texture2D" uid="uid://ck8y10rxtc2wp" path="res://Assets/Textures/Menu/Levels/11.png" id="12_letmk"]
+[ext_resource type="Texture2D" uid="uid://dyyd7a5h5otg1" path="res://Assets/Textures/Menu/Levels/12.png" id="13_beo34"]
+[ext_resource type="Texture2D" uid="uid://b1dghijcim066" path="res://Assets/Textures/Menu/Levels/05_.png" id="14_2es18"]
+[ext_resource type="Texture2D" uid="uid://ccaoy0rlnxr77" path="res://Assets/Textures/Menu/Levels/4.4.png" id="15_wm7dl"]
+[ext_resource type="Texture2D" uid="uid://c25cn6vl1fmhy" path="res://Assets/Textures/Menu/Levels/06_.png" id="16_rca0y"]
+[ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="17_q38h2"]
+[ext_resource type="Texture2D" uid="uid://cyiqarobanpc6" path="res://Assets/Textures/Menu/Levels/07_.png" id="18_gsf7w"]
+[ext_resource type="Texture2D" uid="uid://x7eu6tjd7ckp" path="res://Assets/Textures/Menu/Levels/5.5.png" id="18_ukpqh"]
+[ext_resource type="Texture2D" uid="uid://ctbgiundktmkq" path="res://Assets/Textures/Menu/Levels/08_.png" id="20_yyg4m"]
+[ext_resource type="Texture2D" uid="uid://dgogtj1rqahkx" path="res://Assets/Textures/Menu/Levels/6.6.png" id="21_d5ggg"]
+[ext_resource type="Texture2D" uid="uid://d2jefe6gqbl06" path="res://Assets/Textures/Menu/Levels/09_.png" id="22_s0ood"]
+[ext_resource type="Texture2D" uid="uid://ddpk1gfn45781" path="res://Assets/Textures/Menu/Levels/10_.png" id="24_8asrn"]
+[ext_resource type="Texture2D" uid="uid://bbhwmt7j51fvu" path="res://Assets/Textures/Menu/Levels/7.7.png" id="24_uaues"]
+[ext_resource type="Texture2D" uid="uid://c7p2qu1x6fggd" path="res://Assets/Textures/Menu/Levels/11_.png" id="26_66e7k"]
+[ext_resource type="Texture2D" uid="uid://dv1vpqnhyt0mb" path="res://Assets/Textures/Menu/Levels/8.8.png" id="27_yalyu"]
+[ext_resource type="Texture2D" uid="uid://cdn4dmkqv85p6" path="res://Assets/Textures/Menu/Levels/12_.png" id="28_it63q"]
+[ext_resource type="Texture2D" uid="uid://cbn0ys2vblunw" path="res://Assets/Textures/Menu/Levels/9.9.png" id="30_cb88q"]
+[ext_resource type="Texture2D" uid="uid://o05nvamef1vh" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="30_u2hxe"]
+[ext_resource type="Texture2D" uid="uid://c0x8udni6pctt" path="res://Assets/Textures/Menu/Levels/10.10.png" id="33_ck707"]
+[ext_resource type="Texture2D" uid="uid://b31k1ytwqi4h5" path="res://Assets/Textures/Menu/Levels/11.11.png" id="36_2ox7x"]
+[ext_resource type="Texture2D" uid="uid://b8pfhdy1vvchd" path="res://Assets/Textures/Menu/Levels/12.12.png" id="39_d0sv2"]
+[ext_resource type="Texture2D" uid="uid://cwfj1w3c77gq1" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="42_ukpqh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukpqh"]
 texture = ExtResource("3_2iq8x")
@@ -376,7 +376,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
@@ -488,6 +488,7 @@ texture_hover = ExtResource("20_yyg4m")
 stretch_mode = 0
 
 [node name="Button9" type="TextureButton" parent="CenterContainer/GridContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
@@ -497,6 +498,7 @@ texture_hover = ExtResource("22_s0ood")
 stretch_mode = 0
 
 [node name="Button10" type="TextureButton" parent="CenterContainer/GridContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
@@ -506,6 +508,7 @@ texture_hover = ExtResource("24_8asrn")
 stretch_mode = 0
 
 [node name="Button11" type="TextureButton" parent="CenterContainer/GridContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
@@ -515,6 +518,7 @@ texture_hover = ExtResource("26_66e7k")
 stretch_mode = 0
 
 [node name="Button12" type="TextureButton" parent="CenterContainer/GridContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2

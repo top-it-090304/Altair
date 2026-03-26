@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://bucmpsokcopt"]
 
 [ext_resource type="Script" uid="uid://bgf3s7na6vd8h" path="res://Entities/Traps/Saw/gear.gd" id="1_rfbxv"]
-[ext_resource type="Texture2D" uid="uid://csrwrm6neu61c" path="res://Assets/Textures/Traps/Saw/Off.png" id="2_er6ly"]
-[ext_resource type="Texture2D" uid="uid://c3ncktn3n34t4" path="res://Assets/Textures/Traps/Saw/On (38x38).png" id="3_l5nwt"]
+[ext_resource type="Texture2D" uid="uid://j5p4ebaf1bgr" path="res://Assets/Textures/Traps/Saw/Off.png" id="2_er6ly"]
+[ext_resource type="Texture2D" uid="uid://c6srijiflqkid" path="res://Assets/Textures/Traps/Saw/On (38x38).png" id="3_l5nwt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6whqt"]
 atlas = ExtResource("3_l5nwt")
