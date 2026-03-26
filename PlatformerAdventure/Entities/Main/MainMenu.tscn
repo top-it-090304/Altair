@@ -479,9 +479,11 @@ animations = [{
 
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dva7d")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -489,6 +491,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
+mouse_filter = 2
 texture = ExtResource("2_dva7d")
 expand_mode = 1
 
@@ -594,5 +597,5 @@ position = Vector2(645, 144)
 scale = Vector2(0.392415, 0.417132)
 texture = ExtResource("16_drt3r")
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="button_down" from="TextureButton2" to="." method="_on_texture_button_2_button_down"]
