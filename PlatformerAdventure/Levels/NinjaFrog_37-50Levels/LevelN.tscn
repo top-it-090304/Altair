@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_q7jnw"]
 [ext_resource type="PackedScene" uid="uid://diylqawxkwomj" path="res://Entities/Level/UI/texture_rect.tscn" id="2_emcyy"]
-[ext_resource type="Texture2D" uid="uid://dy83s56j1fxb7" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_ry7jm"]
+[ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_ry7jm"]
 [ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="4_r3ltv"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="5_ah48e"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="6_adj5d"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b1jblx5m8pguj" path="res://Entities/Traps/Spike/spikes6.tscn" id="11_kaq1m"]
 [ext_resource type="PackedScene" uid="uid://bhayftv1kvke6" path="res://Entities/Traps/Spike/spike.tscn" id="12_kkd4p"]
 [ext_resource type="PackedScene" uid="uid://csj274ngayvn7" path="res://Entities/Players/NinjaFrog/NinjaFrog.tscn" id="13_5gia3"]
-[ext_resource type="Texture2D" uid="uid://dbi12myb4ew1i" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="14_nrkty"]
+[ext_resource type="Texture2D" uid="uid://do6sfmljgcobn" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="14_nrkty"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0du0"]
 texture = ExtResource("3_ry7jm")

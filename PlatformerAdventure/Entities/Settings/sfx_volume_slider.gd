@@ -26,9 +26,15 @@ func _ready():
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			dragging = event.pressed
-			if dragging:
-				update_from_mouse(event.position.x)
+			if event.pressed:
+				# ПРОВЕРКА: нажата ли мышь именно в границах слайдера?
+				var slider_rect = Rect2(Vector2(min_x - 20, knob_y - 50), Vector2(slider_width + 40, 100))
+				if slider_rect.has_point(event.position):
+					dragging = true
+					update_from_mouse(event.position.x)
+			else:
+				dragging = false
+				
 	elif event is InputEventMouseMotion and dragging:
 		update_from_mouse(event.position.x)
 

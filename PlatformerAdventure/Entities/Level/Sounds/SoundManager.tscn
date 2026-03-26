@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dys85kssarx4l"]
 
 [ext_resource type="Script" uid="uid://cyfk1o2ofacey" path="res://Entities/Level/Sounds/sounds_fruits.gd" id="1_dry7n"]
-[ext_resource type="AudioStream" uid="uid://bndsdvhox3q2m" path="res://Assets/audio/collect_fruit.wav" id="2_opqsy"]
+[ext_resource type="AudioStream" uid="uid://c4s6kw5yhm42q" path="res://Assets/audio/collect_fruit.wav" id="2_opqsy"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_dry7n")
