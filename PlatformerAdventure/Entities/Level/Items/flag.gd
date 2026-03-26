@@ -14,7 +14,6 @@ func _ready() -> void:
 func activate():
 	is_active = true
 	monitoring = true
-	$AnimatedSprite2D.play("Out")
 	await $AnimatedSprite2D.animation_finished
 	$AnimatedSprite2D.play("Idle")
 
