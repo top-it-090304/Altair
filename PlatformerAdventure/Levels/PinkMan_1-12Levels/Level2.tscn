@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bc35jpsx8tm1o"]
+[gd_scene load_steps=22 format=4 uid="uid://bc35jpsx8tm1o"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_e04ax"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_gbnyl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="6_4jjeu"]
 [ext_resource type="PackedScene" uid="uid://bljm38ot20br2" path="res://Entities/Level/UI/touch_controls.tscn" id="6_l21dc"]
 [ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="7_5mlkt"]
+[ext_resource type="PackedScene" uid="uid://dtnt0bcigkql1" path="res://Entities/Shop/bonus_hud.tscn" id="7_ssbi6"]
 [ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="8_gbnyl"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="8_oxc05"]
 [ext_resource type="PackedScene" uid="uid://c3dtup05erfjm" path="res://Entities/Traps/Spike/spikes10.tscn" id="9_12qpy"]
@@ -347,7 +348,8 @@ offset_right = 542.667
 offset_bottom = 540.667
 
 [node name="TouchControls" parent="UI" instance=ExtResource("6_l21dc")]
-show_zone_hints = false
+
+[node name="BonusHUD" parent="UI" instance=ExtResource("7_ssbi6")]
 
 [node name="Entities" type="Node2D" parent="."]
 
