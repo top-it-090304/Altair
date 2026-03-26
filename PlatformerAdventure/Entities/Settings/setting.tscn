@@ -386,3 +386,5 @@ offset_top = 486.0
 offset_right = 544.0
 offset_bottom = 582.0
 texture = ExtResource("12_q06dr")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
