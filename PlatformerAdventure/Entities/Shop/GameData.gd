@@ -1,3 +1,6 @@
+# GameData.gd
+# Путь: res://Entities/Shop/GameData.gd
+
 extends Node
 
 const SAVE_PATH = "user://save.cfg"
@@ -5,7 +8,7 @@ const SAVE_PATH = "user://save.cfg"
 var level_records: Dictionary = {}
 var total_fruits: int = 0
 var _spent: int = 0
-var sfx_volume: int = 10 # Переменная для звука
+
 signal fruits_changed(new_total: int)
 
 # Количество в инвентаре
@@ -17,26 +20,14 @@ const PRICE_SHIELD: int = 10
 const PRICE_SLOWMO: int = 10
 const PRICE_MAGNET: int = 10
 
-var purchased_shield: bool:
-	get: return count_shield > 0
-var purchased_slowmo: bool:
-	get: return count_slowmo > 0
-var purchased_magnet: bool:
-	get: return count_magnet > 0
+# Настройки звука (0.0 - 1.0)
+var volume_master: float = 1.0
+var volume_music: float = 1.0
+var volume_sfx: float = 1.0
 
 func _ready() -> void:
 	load_data()
-	apply_audio_settings() # Применяем звук при старте
-
-# ── ЗВУК (НОВОЕ) ─────────────────────────────
-
-func apply_audio_settings() -> void:
-	var bus_index = AudioServer.get_bus_index("SFX")
-	if bus_index != -1:
-		var normalized = sfx_volume / 10.0
-		AudioServer.set_bus_mute(bus_index, sfx_volume <= 0)
-		if sfx_volume > 0:
-			AudioServer.set_bus_volume_db(bus_index, linear_to_db(normalized))
+	_apply_volumes()
 
 # ── ФРУКТЫ ───────────────────────────────────
 
@@ -51,7 +42,7 @@ func _recalculate_total() -> void:
 	total_fruits = 0
 	for record in level_records.values():
 		total_fruits += record
-	fruits_changed.emit(get_balance())
+	fruits_changed.emit(total_fruits)
 
 func spend_fruits(amount: int) -> bool:
 	if get_balance() < amount:
@@ -64,22 +55,25 @@ func spend_fruits(amount: int) -> bool:
 func get_balance() -> int:
 	return total_fruits - _spent
 
-# ── ПОКУПКА ──────────────────────────────────
+# ── ПОКУПКА ───────────────────────────────────
 
 func buy_shield() -> bool:
-	if not spend_fruits(PRICE_SHIELD): return false
+	if not spend_fruits(PRICE_SHIELD):
+		return false
 	count_shield += 1
 	save_data()
 	return true
 
 func buy_slowmo() -> bool:
-	if not spend_fruits(PRICE_SLOWMO): return false
+	if not spend_fruits(PRICE_SLOWMO):
+		return false
 	count_slowmo += 1
 	save_data()
 	return true
 
 func buy_magnet() -> bool:
-	if not spend_fruits(PRICE_MAGNET): return false
+	if not spend_fruits(PRICE_MAGNET):
+		return false
 	count_magnet += 1
 	save_data()
 	return true
@@ -87,32 +81,84 @@ func buy_magnet() -> bool:
 # ── ИСПОЛЬЗОВАНИЕ ────────────────────────────
 
 func use_shield() -> bool:
-	if count_shield <= 0: return false
+	if count_shield <= 0:
+		return false
 	count_shield -= 1
 	save_data()
 	return true
 
 func use_slowmo() -> bool:
-	if count_slowmo <= 0: return false
+	if count_slowmo <= 0:
+		return false
 	count_slowmo -= 1
 	save_data()
 	return true
 
 func use_magnet() -> bool:
-	if count_magnet <= 0: return false
+	if count_magnet <= 0:
+		return false
 	count_magnet -= 1
 	save_data()
 	return true
+
+# Совместимость с shop.gd
+var purchased_shield: bool:
+	get: return count_shield > 0
+
+var purchased_slowmo: bool:
+	get: return count_slowmo > 0
+
+var purchased_magnet: bool:
+	get: return count_magnet > 0
+
+# ── ГРОМКОСТЬ ────────────────────────────────
+
+func set_volume_master(value: float) -> void:
+	volume_master = clamp(value, 0.0, 1.0)
+	_apply_volumes()
+	save_data()
+
+func set_volume_music(value: float) -> void:
+	volume_music = clamp(value, 0.0, 1.0)
+	_apply_volumes()
+	save_data()
+
+func set_volume_sfx(value: float) -> void:
+	volume_sfx = clamp(value, 0.0, 1.0)
+	_apply_volumes()
+	save_data()
+
+func _apply_volumes() -> void:
+	# Применяем громкость через AudioServer
+	# Шина "Master" — индекс 0
+	var master_idx = AudioServer.get_bus_index("Master")
+	if master_idx >= 0:
+		AudioServer.set_bus_volume_db(master_idx, linear_to_db(volume_master))
+		AudioServer.set_bus_mute(master_idx, volume_master <= 0.0)
+
+	# Шина "Music" — если есть
+	var music_idx = AudioServer.get_bus_index("Music")
+	if music_idx >= 0:
+		AudioServer.set_bus_volume_db(music_idx, linear_to_db(volume_music))
+		AudioServer.set_bus_mute(music_idx, volume_music <= 0.0)
+
+	# Шина "SFX" — если есть
+	var sfx_idx = AudioServer.get_bus_index("SFX")
+	if sfx_idx >= 0:
+		AudioServer.set_bus_volume_db(sfx_idx, linear_to_db(volume_sfx))
+		AudioServer.set_bus_mute(sfx_idx, volume_sfx <= 0.0)
 
 # ── СОХРАНЕНИЕ / ЗАГРУЗКА ────────────────────
 
 func save_data() -> void:
 	var config = ConfigFile.new()
 	config.set_value("player", "spent", _spent)
-	config.set_value("audio", "sfx_volume", sfx_volume) # Сохраняем звук
 	config.set_value("shop", "shield", count_shield)
 	config.set_value("shop", "slowmo", count_slowmo)
 	config.set_value("shop", "magnet", count_magnet)
+	config.set_value("audio", "volume_master", volume_master)
+	config.set_value("audio", "volume_music", volume_music)
+	config.set_value("audio", "volume_sfx", volume_sfx)
 	for level_name in level_records:
 		config.set_value("records", level_name, level_records[level_name])
 	config.save(SAVE_PATH)
@@ -122,12 +168,13 @@ func load_data() -> void:
 	if config.load(SAVE_PATH) != OK:
 		return
 	_spent = config.get_value("player", "spent", 0)
-	sfx_volume = config.get_value("audio", "sfx_volume", 10) # Загружаем звук
 	count_shield = config.get_value("shop", "shield", 0)
 	count_slowmo = config.get_value("shop", "slowmo", 0)
 	count_magnet = config.get_value("shop", "magnet", 0)
+	volume_master = config.get_value("audio", "volume_master", 1.0)
+	volume_music  = config.get_value("audio", "volume_music",  1.0)
+	volume_sfx    = config.get_value("audio", "volume_sfx",    1.0)
 	if config.has_section("records"):
 		for key in config.get_section_keys("records"):
 			level_records[key] = config.get_value("records", key, 0)
 	_recalculate_total()
-	apply_audio_settings() # Сразу применяем загруженный звук

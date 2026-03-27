@@ -1,62 +1,63 @@
+# setting.gd
+# Путь: res://Entities/Settings/setting.gd
+
 extends Control
 
-@onready var knob = %Knob
+const SLIDER_LEFT_X:  float = 160.0
+const SLIDER_RIGHT_X: float = 514.0
 
-var volume_level: int:
-	get:
-		return GameData.sfx_volume
-	set(value):
-		GameData.sfx_volume = value
+@onready var knob: TextureRect = $SFXVolumeSlider/Knob
 
-		GameData.apply_audio_settings()
-		GameData.save_data()
+var _dragging: bool = false
+var _drag_offset_x: float = 0.0
 
-var dragging := false
+func _ready() -> void:
+	_update_knob_position(GameData.volume_master)
 
-var min_x := 165.0
-var max_x := 530.0
-var knob_y := 487.0
-var slider_width := 0.0
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			_try_start_drag(event.global_position)
+		else:
+			_dragging = false
 
-func _ready():
-	slider_width = max_x - min_x
-	
-	update_knob_visual()
+	elif event is InputEventMouseMotion and _dragging:
+		_on_drag(event.global_position)
 
-func _gui_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				# ПРОВЕРКА: нажата ли мышь именно в границах слайдера?
-				var slider_rect = Rect2(Vector2(min_x - 20, knob_y - 50), Vector2(slider_width + 40, 100))
-				if slider_rect.has_point(event.position):
-					dragging = true
-					update_from_mouse(event.position.x)
-			else:
-				dragging = false
-				
-	elif event is InputEventMouseMotion and dragging:
-		update_from_mouse(event.position.x)
+	elif event is InputEventScreenTouch:
+		if event.pressed:
+			_try_start_drag(event.position)
+		else:
+			_dragging = false
 
-func update_from_mouse(mouse_x: float):
-	var local_x = clamp(mouse_x, min_x, max_x)
-	var step_size = slider_width / 10.0
+	elif event is InputEventScreenDrag and _dragging:
+		_on_drag(event.position)
 
-	volume_level = round((local_x - min_x) / step_size)
-	volume_level = clamp(volume_level, 0, 10)
+func _try_start_drag(global_pos: Vector2) -> void:
+	if knob == null:
+		return
+	var knob_global := knob.global_position
+	var knob_size   := knob.size
+	var hit_rect    := Rect2(knob_global - Vector2(10, 10), knob_size + Vector2(20, 20))
+	if hit_rect.has_point(global_pos):
+		_dragging = true
+		_drag_offset_x = global_pos.x - knob_global.x
 
-	update_knob_visual()
+func _on_drag(global_pos: Vector2) -> void:
+	var new_global_x := global_pos.x - _drag_offset_x
+	var local_x := new_global_x - global_position.x
+	local_x = clamp(local_x, SLIDER_LEFT_X, SLIDER_RIGHT_X)
+	knob.position.x = local_x
 
-func update_knob_visual():
-	var step_size = slider_width / 10.0
-	var knob_x = min_x + (volume_level * step_size)
-	
-	if knob:
+	var value := (local_x - SLIDER_LEFT_X) / (SLIDER_RIGHT_X - SLIDER_LEFT_X)
+	GameData.set_volume_master(value)
 
-		knob.position.x = knob_x - knob.size.x / 2.0
-		knob.position.y = knob_y
+func _update_knob_position(value: float) -> void:
+	if knob == null:
+		return
+	knob.position.x = SLIDER_LEFT_X + value * (SLIDER_RIGHT_X - SLIDER_LEFT_X)
+
 
 
 func _on_texture_button_pressed() -> void:
-
 	get_tree().change_scene_to_file("res://Entities/Main/MainMenu.tscn")

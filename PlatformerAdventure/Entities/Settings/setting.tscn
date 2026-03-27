@@ -377,15 +377,14 @@ texture = ExtResource("16_qp4b8")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("16_y6nnx")
 
 [node name="Knob" type="TextureRect" parent="SFXVolumeSlider"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 513.0
-offset_top = 486.0
-offset_right = 544.0
-offset_bottom = 582.0
+offset_left = 514.0
+offset_top = 488.0
+offset_right = 545.0
+offset_bottom = 584.0
 texture = ExtResource("12_q06dr")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
