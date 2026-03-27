@@ -370,9 +370,11 @@ shape = SubResource("CapsuleShape2D_yl1jr")
 
 [node name="SoundJump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_vnxse")
+bus = &"SFX"
 
 [node name="SoundHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_2r1nl")
+bus = &"SFX"
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 scale = Vector2(0.7, 0.7)

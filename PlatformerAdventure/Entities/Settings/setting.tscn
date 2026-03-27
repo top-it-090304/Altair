@@ -354,12 +354,12 @@ texture = ExtResource("11_vgwex")
 position = Vector2(760, 328)
 
 [node name="SoundsEffects" type="Sprite2D" parent="Node2D2"]
-position = Vector2(-408, -144)
+position = Vector2(-415, 126)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("14_5walj")
 
 [node name="Music" type="Sprite2D" parent="Node2D2"]
-position = Vector2(-408, 128)
+position = Vector2(-407, -122)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("13_quyqh")
 
@@ -385,6 +385,19 @@ offset_left = 514.0
 offset_top = 488.0
 offset_right = 545.0
 offset_bottom = 584.0
+texture = ExtResource("12_q06dr")
+
+[node name="MusicVolumeSlider" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Knob" type="TextureRect" parent="MusicVolumeSlider"]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 231.0
+offset_right = 544.0
+offset_bottom = 327.0
 texture = ExtResource("12_q06dr")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

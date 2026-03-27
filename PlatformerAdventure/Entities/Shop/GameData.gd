@@ -129,20 +129,13 @@ func set_volume_sfx(value: float) -> void:
 	save_data()
 
 func _apply_volumes() -> void:
-	# Применяем громкость через AudioServer
-	# Шина "Master" — индекс 0
-	var master_idx = AudioServer.get_bus_index("Master")
-	if master_idx >= 0:
-		AudioServer.set_bus_volume_db(master_idx, linear_to_db(volume_master))
-		AudioServer.set_bus_mute(master_idx, volume_master <= 0.0)
-
-	# Шина "Music" — если есть
+	# Шина "Music"
 	var music_idx = AudioServer.get_bus_index("Music")
 	if music_idx >= 0:
 		AudioServer.set_bus_volume_db(music_idx, linear_to_db(volume_music))
 		AudioServer.set_bus_mute(music_idx, volume_music <= 0.0)
 
-	# Шина "SFX" — если есть
+	# Шина "SFX"
 	var sfx_idx = AudioServer.get_bus_index("SFX")
 	if sfx_idx >= 0:
 		AudioServer.set_bus_volume_db(sfx_idx, linear_to_db(volume_sfx))
