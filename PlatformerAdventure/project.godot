@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Новый игровой проект"
+config/name="Platformer Adventure"
 run/main_scene="uid://co1ws314r8c86"
 config/features=PackedStringArray("4.4", "Mobile")
+config/icon="uid://b15q7vbftqbrl"
 
 [autoload]
 
