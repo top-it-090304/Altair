@@ -8,7 +8,7 @@ const SAVE_PATH = "user://save.cfg"
 var level_records: Dictionary = {}
 var total_fruits: int = 0
 var _spent: int = 0
-
+var show_ctrl_hits: bool = true
 signal fruits_changed(new_total: int)
 
 # Количество в инвентаре
@@ -129,20 +129,13 @@ func set_volume_sfx(value: float) -> void:
 	save_data()
 
 func _apply_volumes() -> void:
-	# Применяем громкость через AudioServer
-	# Шина "Master" — индекс 0
-	var master_idx = AudioServer.get_bus_index("Master")
-	if master_idx >= 0:
-		AudioServer.set_bus_volume_db(master_idx, linear_to_db(volume_master))
-		AudioServer.set_bus_mute(master_idx, volume_master <= 0.0)
-
-	# Шина "Music" — если есть
+	# Шина "Music"
 	var music_idx = AudioServer.get_bus_index("Music")
 	if music_idx >= 0:
 		AudioServer.set_bus_volume_db(music_idx, linear_to_db(volume_music))
 		AudioServer.set_bus_mute(music_idx, volume_music <= 0.0)
 
-	# Шина "SFX" — если есть
+	# Шина "SFX"
 	var sfx_idx = AudioServer.get_bus_index("SFX")
 	if sfx_idx >= 0:
 		AudioServer.set_bus_volume_db(sfx_idx, linear_to_db(volume_sfx))
@@ -159,6 +152,7 @@ func save_data() -> void:
 	config.set_value("audio", "volume_master", volume_master)
 	config.set_value("audio", "volume_music", volume_music)
 	config.set_value("audio", "volume_sfx", volume_sfx)
+	config.set_value("settings", "show_ctrl_hits", show_ctrl_hits)
 	for level_name in level_records:
 		config.set_value("records", level_name, level_records[level_name])
 	config.save(SAVE_PATH)
@@ -174,6 +168,7 @@ func load_data() -> void:
 	volume_master = config.get_value("audio", "volume_master", 1.0)
 	volume_music  = config.get_value("audio", "volume_music",  1.0)
 	volume_sfx    = config.get_value("audio", "volume_sfx",    1.0)
+	show_ctrl_hits = config.get_value("settings", "show_ctrl_hits", true)
 	if config.has_section("records"):
 		for key in config.get_section_keys("records"):
 			level_records[key] = config.get_value("records", key, 0)

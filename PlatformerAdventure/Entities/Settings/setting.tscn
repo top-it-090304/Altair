@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://csi2o7cdfg3gs"]
+[gd_scene load_steps=20 format=4 uid="uid://csi2o7cdfg3gs"]
 
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_jubmu"]
 [ext_resource type="Texture2D" uid="uid://dphss4v8xjpbi" path="res://Assets/Textures/Background/Blue.png" id="3_plwyx"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b5coj3fiy7uf4" path="res://Assets/Textures/Settings/show_control.png" id="15_plwyx"]
 [ext_resource type="Texture2D" uid="uid://bxlxdrva8rcq3" path="res://Assets/Textures/Settings/reset.png" id="16_qp4b8"]
 [ext_resource type="Script" uid="uid://bo7e5rjs0pw2k" path="res://Entities/Settings/sfx_volume_slider.gd" id="16_y6nnx"]
+[ext_resource type="Script" uid="uid://dwmpevdo3yn55" path="res://Entities/Settings/ctrl_hits_toggle.gd" id="17_ctrlhits"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pvgl"]
 texture = ExtResource("4_qp4b8")
@@ -354,17 +355,17 @@ texture = ExtResource("11_vgwex")
 position = Vector2(760, 328)
 
 [node name="SoundsEffects" type="Sprite2D" parent="Node2D2"]
-position = Vector2(-408, -144)
+position = Vector2(-415, 126)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("14_5walj")
 
 [node name="Music" type="Sprite2D" parent="Node2D2"]
-position = Vector2(-408, 128)
+position = Vector2(-407, -122)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("13_quyqh")
 
 [node name="ShowControl" type="Sprite2D" parent="Node2D2"]
-position = Vector2(152, 104)
+position = Vector2(152, 112)
 scale = Vector2(0.40625, 0.485894)
 texture = ExtResource("15_plwyx")
 
@@ -387,4 +388,40 @@ offset_right = 545.0
 offset_bottom = 584.0
 texture = ExtResource("12_q06dr")
 
+[node name="MusicVolumeSlider" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Knob" type="TextureRect" parent="MusicVolumeSlider"]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 231.0
+offset_right = 544.0
+offset_bottom = 327.0
+texture = ExtResource("12_q06dr")
+
+[node name="CtrlHitsToggle" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 852.0
+offset_top = 253.0
+offset_right = 932.0
+offset_bottom = 294.0
+script = ExtResource("17_ctrlhits")
+
+[node name="TextureButton" type="TextureButton" parent="CtrlHitsToggle"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 5.927
+anchor_right = 0.25
+anchor_bottom = 5.927
+offset_top = -0.00700378
+offset_right = 176.0
+offset_bottom = 109.993
+scale = Vector2(0.5, 0.5)
+stretch_mode = 0
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CtrlHitsToggle/TextureButton" to="CtrlHitsToggle" method="_on_pressed"]
