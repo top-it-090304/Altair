@@ -390,17 +390,15 @@ texture = ExtResource("12_q06dr")
 
 [node name="MusicVolumeSlider" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 72.0
-offset_top = 44.0
-offset_right = 112.0
-offset_bottom = 84.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Knob" type="TextureRect" parent="MusicVolumeSlider"]
 layout_mode = 0
-offset_left = 441.0
-offset_top = 187.0
-offset_right = 472.0
-offset_bottom = 283.0
+offset_left = 513.0
+offset_top = 231.0
+offset_right = 544.0
+offset_bottom = 327.0
 texture = ExtResource("12_q06dr")
 
 [node name="CtrlHitsToggle" type="Control" parent="."]
