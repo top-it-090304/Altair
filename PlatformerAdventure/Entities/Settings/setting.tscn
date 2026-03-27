@@ -274,10 +274,10 @@ script = ExtResource("16_y6nnx")
 
 [node name="BgTexture" parent="." instance=ExtResource("2_jubmu")]
 layout_mode = 1
-offset_left = 0.0
-offset_top = -8.0
-offset_right = 1237.0
-offset_bottom = 682.0
+offset_left = 8.0
+offset_top = 0.0
+offset_right = 1245.0
+offset_bottom = 690.0
 texture = ExtResource("3_plwyx")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -354,12 +354,12 @@ texture = ExtResource("11_vgwex")
 position = Vector2(760, 328)
 
 [node name="SoundsEffects" type="Sprite2D" parent="Node2D2"]
-position = Vector2(-402, 119)
+position = Vector2(-408, -144)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("14_5walj")
 
 [node name="Music" type="Sprite2D" parent="Node2D2"]
-position = Vector2(-392, -128)
+position = Vector2(-408, 128)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("13_quyqh")
 

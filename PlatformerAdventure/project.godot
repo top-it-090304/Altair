@@ -20,6 +20,7 @@ SoundManager="*res://Entities/Level/Sounds/SoundManager.tscn"
 GameData="*res://Entities/Shop/GameData.gd"
 AppFocus="*res://autoload/app_focus.gd"
 MusicManager="*res://Entities/Music/MusicManager.tscn"
+SceneManager="*res://Entities/Level/Buttons/SceneManager.gd"
 
 [display]
 
