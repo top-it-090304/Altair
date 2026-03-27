@@ -17,7 +17,8 @@ var _finger_jump: int = -1
 
 func _ready() -> void:
 	
-	_hints.show_hints = show_zone_hints
+	_hints.show_hints = GameData.show_ctrl_hits
+	_hints.queue_redraw()
 	ghost_left.visible = false
 	ghost_right.visible = false
 	ghost_jump.visible = false

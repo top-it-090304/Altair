@@ -13,9 +13,10 @@ const ZONE_JUMP  := Rect2(970, 480, 295, 220)
 var _scale := Vector2.ONE
 
 func _ready() -> void:
+	show_hints = GameData.show_ctrl_hits  # читаем из сохранения
 	get_viewport().size_changed.connect(_on_resize)
 	_on_resize()
-
+	
 func _on_resize() -> void:
 	var vp := get_viewport().get_visible_rect().size
 	_scale = Vector2(vp.x / 1280.0, vp.y / 720.0)
