@@ -24,7 +24,7 @@ func _on_button_4_pressed() -> void:
 
 
 func _on_button_5_pressed() -> void:
-	get_tree().change_scene_to_file("res://NinjaFrog_37-50Levels/LevelN.tscn") #Ниндзяфрог цепи
+	get_tree().change_scene_to_file("res://Levels/PinkMan_1-12Levels/Level_n.tscn") #Ниндзяфрог цепи
 
 
 func _on_button_6_pressed() -> void:
