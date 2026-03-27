@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://1tn3gc22ckwr"]
+
+[node name="ResetConfirm" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Panel" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="QuestionSprite" type="Sprite2D" parent="CanvasLayer/Panel"]
+
+[node name="CheckButton" type="TextureButton" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CrossButton" type="TextureButton" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
