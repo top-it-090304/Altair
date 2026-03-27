@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://co1ws314r8c86"]
+[gd_scene load_steps=96 format=3 uid="uid://co1ws314r8c86"]
 
 [ext_resource type="Script" uid="uid://bjdi8sxlppvp0" path="res://Entities/Main/main_menu.gd" id="1_dva7d"]
 [ext_resource type="Texture2D" uid="uid://gcubxkgjn1yk" path="res://Assets/Textures/Menu/3ea433ad-2c40-4e0f-a133-fe0fc67e0716.png" id="2_dva7d"]
@@ -21,11 +21,16 @@
 [ext_resource type="Texture2D" uid="uid://dyegmg8w34gsl" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store04.png" id="11_huydx"]
 [ext_resource type="Texture2D" uid="uid://3y43kiaob4op" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store05.png" id="12_h1gie"]
 [ext_resource type="Texture2D" uid="uid://br6jobpp2bm05" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options01.png" id="13_6arad"]
+[ext_resource type="Texture2D" uid="uid://c1qtevbfj20ur" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back01.png" id="13_ixvsi"]
+[ext_resource type="Texture2D" uid="uid://omty0emf15uo" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back02.png" id="14_crcoo"]
 [ext_resource type="Texture2D" uid="uid://c316i7er8pay" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options02.png" id="14_y0v30"]
 [ext_resource type="Texture2D" uid="uid://touiui4ffpit" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options03.png" id="15_e4dpk"]
+[ext_resource type="Texture2D" uid="uid://b7jbry6pjlyr8" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back03.png" id="15_p01wl"]
+[ext_resource type="Texture2D" uid="uid://b2vm5lfks8fmo" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back04.png" id="16_8pdeq"]
 [ext_resource type="Texture2D" uid="uid://c8u2auffwc12l" path="res://Assets/Textures/Menu/Gemini_Generated_Image_s2hpprs2hpprs2hp.png" id="16_drt3r"]
 [ext_resource type="Texture2D" uid="uid://b5k0brvbclxbt" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options04.png" id="16_pdd02"]
 [ext_resource type="Texture2D" uid="uid://dmmgmy5dcsyb7" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options05.png" id="17_giv72"]
+[ext_resource type="Texture2D" uid="uid://b0axrnahq1817" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back05.png" id="17_xn2ct"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7ipb"]
 atlas = ExtResource("3_dva7d")
@@ -504,9 +509,9 @@ stretch_mode = 6
 texture_filter = 1
 layout_mode = 0
 offset_left = 536.0
-offset_top = 301.0
+offset_top = 264.0
 offset_right = 1326.0
-offset_bottom = 643.0
+offset_bottom = 606.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("3_mugbs")
 texture_pressed = ExtResource("4_15s63")
@@ -516,10 +521,10 @@ texture_focused = ExtResource("7_12pmw")
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 538.0
-offset_top = 401.0
-offset_right = 1328.0
-offset_bottom = 743.0
+offset_left = 536.0
+offset_top = 352.0
+offset_right = 1326.0
+offset_bottom = 694.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("8_1otou")
 texture_pressed = ExtResource("9_tejh6")
@@ -527,12 +532,25 @@ texture_hover = ExtResource("10_t3ix7")
 texture_disabled = ExtResource("11_huydx")
 texture_focused = ExtResource("12_h1gie")
 
+[node name="TextureButton3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 544.0
+offset_right = 1326.0
+offset_bottom = 886.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("13_ixvsi")
+texture_pressed = ExtResource("14_crcoo")
+texture_hover = ExtResource("15_p01wl")
+texture_disabled = ExtResource("16_8pdeq")
+texture_focused = ExtResource("17_xn2ct")
+
 [node name="BtnSettings" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 541.0
-offset_top = 503.0
-offset_right = 1331.0
-offset_bottom = 845.0
+offset_left = 536.0
+offset_top = 448.0
+offset_right = 1326.0
+offset_bottom = 790.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("13_6arad")
 texture_pressed = ExtResource("14_y0v30")
@@ -552,7 +570,7 @@ autoplay = "idle"
 
 [node name="pepe" type="AnimatedSprite2D" parent="Node2D"]
 texture_filter = 1
-position = Vector2(515, 543)
+position = Vector2(488, 544)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6arad")
 animation = &"idle"
@@ -617,4 +635,5 @@ texture = ExtResource("16_drt3r")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="TextureButton3" to="." method="_on_texture_button_3_pressed"]
 [connection signal="pressed" from="BtnSettings" to="." method="_on_btn_settings_pressed"]
