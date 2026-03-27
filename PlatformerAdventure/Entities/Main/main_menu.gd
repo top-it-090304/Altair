@@ -1,11 +1,11 @@
 extends Control
 
 
-
 func _on_btn_settings_pressed() -> void:
 	get_tree().change_scene_to_file("res://Entities/Settings/setting.tscn")
 	
 func _ready() -> void:
+	MusicManager.play_music(preload("res://Assets/audio/For_Levels/MainMenu.mp3"))
 	get_tree().get_root().size_changed.connect(_on_viewport_resize)
 	_on_viewport_resize()
 

@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	MusicManager.play_music(preload("res://Assets/audio/For_Levels/MainMenu.mp3"))
+
 func _on_texture_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Entities/Main/MainMenu.tscn") # Выход в мейн
 

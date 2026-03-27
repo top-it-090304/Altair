@@ -12,6 +12,7 @@ var _dragging: bool = false
 var _drag_offset_x: float = 0.0
 
 func _ready() -> void:
+	MusicManager.play_music(preload("res://Assets/audio/For_Levels/MainMenu.mp3"))
 	_update_knob_position(GameData.volume_master)
 
 func _input(event: InputEvent) -> void:
