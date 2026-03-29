@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://csi2o7cdfg3gs"]
+[gd_scene load_steps=21 format=4 uid="uid://csi2o7cdfg3gs"]
 
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_jubmu"]
 [ext_resource type="Texture2D" uid="uid://dphss4v8xjpbi" path="res://Assets/Textures/Background/Blue.png" id="3_plwyx"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ctxmf1cffr4ud" path="res://Assets/Textures/Settings/music.png" id="13_quyqh"]
 [ext_resource type="Texture2D" uid="uid://6r6f8ghqsfjb" path="res://Assets/Textures/Settings/sounds_effects.png" id="14_5walj"]
 [ext_resource type="Texture2D" uid="uid://b5coj3fiy7uf4" path="res://Assets/Textures/Settings/show_control.png" id="15_plwyx"]
+[ext_resource type="Texture2D" uid="uid://ct207nfaaph3k" path="res://Assets/Textures/Menu/Buttons/Restart.png" id="15_y6nnx"]
 [ext_resource type="Texture2D" uid="uid://bxlxdrva8rcq3" path="res://Assets/Textures/Settings/reset.png" id="16_qp4b8"]
 [ext_resource type="Script" uid="uid://bo7e5rjs0pw2k" path="res://Entities/Settings/sfx_volume_slider.gd" id="16_y6nnx"]
 [ext_resource type="Script" uid="uid://dwmpevdo3yn55" path="res://Entities/Settings/ctrl_hits_toggle.gd" id="17_ctrlhits"]
@@ -275,10 +276,10 @@ script = ExtResource("16_y6nnx")
 
 [node name="BgTexture" parent="." instance=ExtResource("2_jubmu")]
 layout_mode = 1
-offset_left = 8.0
-offset_top = 0.0
-offset_right = 1245.0
-offset_bottom = 690.0
+offset_left = -8.0
+offset_top = -5.0
+offset_right = 1229.0
+offset_bottom = 685.0
 texture = ExtResource("3_plwyx")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -369,10 +370,16 @@ position = Vector2(152, 112)
 scale = Vector2(0.40625, 0.485894)
 texture = ExtResource("15_plwyx")
 
-[node name="Reset" type="Sprite2D" parent="Node2D2"]
-position = Vector2(152, -128)
-scale = Vector2(0.435156, 0.305505)
-texture = ExtResource("16_qp4b8")
+[node name="ResetButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 905.0
+offset_top = 249.0
+offset_right = 1105.0
+offset_bottom = 429.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("15_y6nnx")
+stretch_mode = 0
 
 [node name="SFXVolumeSlider" type="Control" parent="."]
 anchors_preset = 0
@@ -403,25 +410,31 @@ texture = ExtResource("12_q06dr")
 
 [node name="CtrlHitsToggle" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 852.0
-offset_top = 253.0
-offset_right = 932.0
-offset_bottom = 294.0
+offset_left = 915.0
+offset_top = 345.0
+offset_right = 979.0
+offset_bottom = 401.0
 script = ExtResource("17_ctrlhits")
 
 [node name="TextureButton" type="TextureButton" parent="CtrlHitsToggle"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 5.927
-anchor_right = 0.25
-anchor_bottom = 5.927
-offset_top = -0.00700378
+anchor_left = -0.375
+anchor_top = 2.929
+anchor_right = -0.375
+anchor_bottom = 2.929
+offset_top = -0.0240326
 offset_right = 176.0
-offset_bottom = 109.993
+offset_bottom = 109.976
 scale = Vector2(0.5, 0.5)
 stretch_mode = 0
 
+[node name="Reset" type="Sprite2D" parent="."]
+position = Vector2(927, 206)
+scale = Vector2(0.3875, 0.319381)
+texture = ExtResource("16_qp4b8")
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="CtrlHitsToggle/TextureButton" to="CtrlHitsToggle" method="_on_pressed"]

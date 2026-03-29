@@ -157,6 +157,16 @@ func save_data() -> void:
 		config.set_value("records", level_name, level_records[level_name])
 	config.save(SAVE_PATH)
 
+func reset_progress() -> void:
+	level_records.clear()
+	total_fruits = 0
+	_spent = 0
+	count_shield = 0
+	count_slowmo = 0
+	count_magnet = 0
+	fruits_changed.emit(0)
+	save_data()
+
 func load_data() -> void:
 	var config = ConfigFile.new()
 	if config.load(SAVE_PATH) != OK:

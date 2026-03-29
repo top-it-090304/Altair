@@ -3,6 +3,7 @@
 
 extends Control
 
+const _RESET_CONFIRM = preload("res://Entities/Settings/reset_confirm.tscn")
 const SLIDER_LEFT_X:  float = 160.0
 const SLIDER_RIGHT_X: float = 514.0
 
@@ -66,3 +67,6 @@ func _update_knob_position(knob: TextureRect, value: float) -> void:
 
 func _on_texture_button_pressed() -> void:
 	SceneManager.go_back()
+
+func _on_reset_button_pressed() -> void:
+	add_child(_RESET_CONFIRM.instantiate())
