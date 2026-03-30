@@ -23,6 +23,7 @@ var collected_count: int = 0
 @onready var fruit_counter = preload("res://Entities/Level/Buttons/сounter.tscn").instantiate()
 
 func _ready() -> void:
+	MusicManager.play_music(preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3"))
 	add_to_group("level")  # ← нужно для BonusHUD
 
 	if player and spawn_marker:

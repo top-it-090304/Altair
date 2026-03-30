@@ -10,22 +10,25 @@ config_version=5
 
 [application]
 
-config/name="Новый игровой проект"
+config/name="Platformer Adventure"
 run/main_scene="uid://co1ws314r8c86"
 config/features=PackedStringArray("4.4", "Mobile")
+config/icon="uid://b15q7vbftqbrl"
 
 [autoload]
 
 SoundManager="*res://Entities/Level/Sounds/SoundManager.tscn"
 GameData="*res://Entities/Shop/GameData.gd"
 AppFocus="*res://autoload/app_focus.gd"
+MusicManager="*res://Entities/Music/MusicManager.tscn"
+SceneManager="*res://Entities/Level/Buttons/SceneManager.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
 
 [global_group]
 

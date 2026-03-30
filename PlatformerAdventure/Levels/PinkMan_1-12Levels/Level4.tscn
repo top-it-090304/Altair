@@ -431,9 +431,6 @@ position = Vector2(672, 224)
 [node name="apple5" parent="Entities/Fruits" instance=ExtResource("13_twmc3")]
 position = Vector2(656, 181.333)
 
-[node name="apple4" parent="Entities/Fruits" instance=ExtResource("13_twmc3")]
-position = Vector2(770, 399.333)
-
 [node name="kiwi" parent="Entities/Fruits" instance=ExtResource("14_dlfa6")]
 position = Vector2(304, 133.333)
 

@@ -133,4 +133,5 @@ expand_icon = true
 
 [connection signal="pressed" from="PauseLayer/Background/CenterContainer/VBoxContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PauseLayer/Background/CenterContainer/VBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="PauseLayer/Background/CenterContainer/VBoxContainer/HBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="PauseLayer/Background/CenterContainer/VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]

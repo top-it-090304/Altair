@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bc35jpsx8tm1o"]
+[gd_scene load_steps=22 format=4 uid="uid://d08w2f7pgtaav"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_e04ax"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_gbnyl"]
@@ -403,26 +403,14 @@ position = Vector2(208, 277.333)
 [node name="apple" parent="Entities/Fruits" instance=ExtResource("11_nn04n")]
 position = Vector2(426.667, 106.667)
 
-[node name="apple2" parent="Entities/Fruits" instance=ExtResource("11_nn04n")]
-position = Vector2(506.667, 85.3333)
-
-[node name="apple3" parent="Entities/Fruits" instance=ExtResource("11_nn04n")]
-position = Vector2(453.333, 85.3333)
-
 [node name="apple4" parent="Entities/Fruits" instance=ExtResource("11_nn04n")]
 position = Vector2(485.333, 106.667)
 
-[node name="apple5" parent="Entities/Fruits" instance=ExtResource("11_nn04n")]
-position = Vector2(405.333, 85.3333)
-
 [node name="melon" parent="Entities/Fruits" instance=ExtResource("12_4jjeu")]
-position = Vector2(691.333, 177.333)
+position = Vector2(688, 186.667)
 
 [node name="melon2" parent="Entities/Fruits" instance=ExtResource("12_4jjeu")]
-position = Vector2(648, 177.333)
-
-[node name="melon3" parent="Entities/Fruits" instance=ExtResource("12_4jjeu")]
-position = Vector2(670, 195.333)
+position = Vector2(650.667, 186.667)
 
 [node name="pineapple" parent="Entities/Fruits" instance=ExtResource("15_o7hm1")]
 position = Vector2(334, 387.333)
