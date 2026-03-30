@@ -354,7 +354,7 @@ offset_bottom = 540.667
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("7_5mlkt")]
-position = Vector2(127.333, 294)
+position = Vector2(122.667, 320)
 
 [node name="Player" parent="Entities" instance=ExtResource("6_4jjeu")]
 position = Vector2(119.333, 291.333)

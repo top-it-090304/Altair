@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dtui2n0lpseag"]
+[gd_scene load_steps=10 format=4 uid="uid://828mdfcmflwm"]
 
 [ext_resource type="PackedScene" uid="uid://cq8f414k5s5bo" path="res://Levels/LevelConstructor.tscn" id="1_ij17b"]
 [ext_resource type="PackedScene" uid="uid://bchxc4gq32ppd" path="res://Entities/Traps/Spinner/spinner.tscn" id="2_lko7d"]
