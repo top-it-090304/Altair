@@ -5,8 +5,8 @@ const LEVEL_PATHS: Array = [
 	"res://Levels/PinkMan_1-12Levels/Level2.tscn",
 	"res://Levels/PinkMan_1-12Levels/Level3.tscn",
 	"res://Levels/PinkMan_1-12Levels/Level4.tscn",
-	"res://Levels/PinkMan_1-12Levels/Level_n.tscn",
-	"res://Levels/VirtualGuy_13-24Levels/LevelV.tscn",
+	"res://Levels/PinkMan_1-12Levels/Level5.tscn",
+	"res://Levels/PinkMan_1-12Levels/Level6.tscn",
 	"res://Levels/PinkMan_1-12Levels/Level7.tscn",
 	"res://Levels/PinkMan_1-12Levels/Level8.tscn",
 ]

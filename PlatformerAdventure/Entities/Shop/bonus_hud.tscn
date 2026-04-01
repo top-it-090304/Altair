@@ -257,12 +257,12 @@ offset_bottom = 104.0
 
 [node name="BonusList" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 0
-offset_left = 6.1
-offset_top = 80.375
-offset_right = 897.1
-offset_bottom = 3210.38
+offset_left = 7.0
+offset_top = 80.0
+offset_right = 885.0
+offset_bottom = 3409.0
 scale = Vector2(0.07, 0.07)
-theme_override_constants/separation = 215
+theme_override_constants/separation = 380
 
 [node name="BtnShield" type="TextureButton" parent="PanelContainer/BonusList"]
 custom_minimum_size = Vector2(600, 900)
@@ -275,7 +275,7 @@ stretch_mode = 0
 
 [node name="CountShield" type="AnimatedSprite2D" parent="PanelContainer/BonusList/BtnShield"]
 texture_filter = 1
-position = Vector2(712.857, 908.929)
+position = Vector2(742.857, 971.429)
 scale = Vector2(31, 29)
 sprite_frames = SubResource("BH_SF_sh")
 animation = &"numbers"
@@ -291,7 +291,7 @@ stretch_mode = 0
 
 [node name="CountSlowmo" type="AnimatedSprite2D" parent="PanelContainer/BonusList/BtnSlowmo"]
 texture_filter = 1
-position = Vector2(712.857, 936.786)
+position = Vector2(771.428, 1062.86)
 scale = Vector2(31, 29)
 sprite_frames = SubResource("BH_SF_sl")
 animation = &"numbers"
@@ -307,7 +307,7 @@ stretch_mode = 0
 
 [node name="CountMagnet" type="AnimatedSprite2D" parent="PanelContainer/BonusList/BtnMagnet"]
 texture_filter = 1
-position = Vector2(712.857, 964.643)
+position = Vector2(757.142, 982.857)
 scale = Vector2(31, 29)
 sprite_frames = SubResource("BH_SF_mg")
 animation = &"numbers"

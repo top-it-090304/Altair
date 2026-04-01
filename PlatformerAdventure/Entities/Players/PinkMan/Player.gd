@@ -30,8 +30,8 @@ signal died
 @export var max_fall_speed: float = 900.0
 
 @export_group("Magnet")
-@export var magnet_radius_x: float = 120.0
-@export var magnet_radius_y: float = 80.0
+@export var magnet_radius_x: float = 120.0 * 1.5
+@export var magnet_radius_y: float = 80.0 * 1.5
 @export var magnet_pull_speed: float = 300.0
 
 @export_group("Shield")
