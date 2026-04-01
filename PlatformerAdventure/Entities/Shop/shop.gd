@@ -1,4 +1,3 @@
-
 extends Control
 
 @onready var btn_shield: TextureButton = %TextureButton2
@@ -9,17 +8,14 @@ func _ready() -> void:
 	btn_shield.pressed.connect(_on_buy_shield)
 	btn_slowmo.pressed.connect(_on_buy_slowmo)
 	btn_magnet.pressed.connect(_on_buy_magnet)
-
 	_refresh_buttons()
 	GameData.fruits_changed.connect(func(_v): _refresh_buttons())
-
 
 func _refresh_buttons() -> void:
 	var balance := GameData.get_balance()
 	btn_shield.disabled = balance < GameData.PRICE_SHIELD
 	btn_slowmo.disabled = balance < GameData.PRICE_SLOWMO
 	btn_magnet.disabled = balance < GameData.PRICE_MAGNET
-
 
 func _on_buy_shield() -> void:
 	GameData.buy_shield()

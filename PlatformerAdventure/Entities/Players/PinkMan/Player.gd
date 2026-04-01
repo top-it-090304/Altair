@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name PlayerBase
 
+signal died
+
 @export_group("Movement")
 @export var speed = 300.0
 @export var acceleration: float = 2000.0
@@ -161,6 +163,7 @@ func _flash_break() -> void:
 	animated_sprite.modulate.a = 1.0
 
 func _die_sequence() -> void:
+	died.emit()
 	is_dead = true
 	velocity = Vector2.ZERO
 	set_physics_process(false)
