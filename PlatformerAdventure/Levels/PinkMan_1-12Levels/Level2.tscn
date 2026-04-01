@@ -322,7 +322,7 @@ sources/0 = SubResource("TileSetAtlasSource_bgei7")
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_e04ax")
-next_level_path = "uid://c8h6n6c2qavgu"
+next_level_path = "res://Levels/PinkMan_1-12Levels/Level3.tscn"
 
 [node name="UI" type="Node2D" parent="."]
 
