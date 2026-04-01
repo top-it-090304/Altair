@@ -11,14 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://bjwrmco2q4yer" path="res://Assets/Textures/Store Items/blue-and-white-shield-in-pixel-art-style-vector-Photoroom.png" id="8_a1g1l"]
 [ext_resource type="Texture2D" uid="uid://clg6wdjtnhd8u" path="res://Assets/Textures/Store Items/pixel-art-hourglass-sand-clock-item-for-game-bit_360488-76 (1)-Photoroom.png" id="9_mucb8"]
 [ext_resource type="Texture2D" uid="uid://ta2bjhiaobcv" path="res://Assets/Textures/Store Items/pixel-art-magnet-red-and-blue-magnetism-icon-for-8bit-game-on-white-background-vector-Photoroom.png" id="10_452da"]
-[ext_resource type="Texture2D" uid="uid://b3o5dnm6448b7" path="res://Assets/Textures/Store Items/image-Photoroom.png" id="10_mucb8"]
 [ext_resource type="Texture2D" uid="uid://b0kyhc7gmys7g" path="res://Assets/Textures/Store Items/buy_gray.png" id="12_n7p4w"]
 [ext_resource type="Texture2D" uid="uid://76lc80x5q0h4" path="res://Assets/Textures/Store Items/buy_defolt.png" id="12_nt5y3"]
 [ext_resource type="Texture2D" uid="uid://bgra2vvesl58f" path="res://Assets/Textures/Store Items/buy_pressed.png" id="13_tl2qy"]
 [ext_resource type="Texture2D" uid="uid://dvw3xdvmdobj7" path="res://Assets/Textures/Store Items/buy_lite.png" id="14_skhbe"]
-[ext_resource type="Texture2D" uid="uid://drwnj23oix4a2" path="res://Assets/Textures/Store Items/IMG_1902-Photoroom.png" id="15_an677"]
-[ext_resource type="Texture2D" uid="uid://bchtj3ebkr53f" path="res://Assets/Textures/Store Items/IMG_1902-Photoroo11111m.png" id="16_an677"]
+[ext_resource type="Texture2D" uid="uid://db40rjmh26uef" path="res://Assets/Textures/Store Items/Gemini_Generated_Image_fzdc7cfzdc7cfzdc-Photoroom.png" id="16_pg3ak"]
+[ext_resource type="Texture2D" uid="uid://cv2cxl1ec5ah" path="res://Assets/Textures/Store Items/Gemini_Generated_Image_j1q85jj1q85jj1q8-Photoroom.png" id="17_pg3ak"]
 [ext_resource type="Texture2D" uid="uid://c6nib2c8qyn3j" path="res://Assets/Textures/Store Items/0.png" id="18_n7p4w"]
+[ext_resource type="Texture2D" uid="uid://bcw8ynvti4vym" path="res://Assets/Textures/Store Items/Gemini_Generated_Image_y5yq4yy5yq4yy5yq-Photoroom.png" id="18_p0y7o"]
 [ext_resource type="Texture2D" uid="uid://dap5fav0k5ygu" path="res://Assets/Textures/Store Items/1.png" id="19_n7p4w"]
 [ext_resource type="Texture2D" uid="uid://jewokallnx1q" path="res://Assets/Textures/Store Items/numbers.png" id="20_nums"]
 
@@ -513,10 +513,10 @@ script = ExtResource("1_yv4tu")
 
 [node name="BgTexture" parent="." instance=ExtResource("2_dbxhb")]
 layout_mode = 1
-offset_left = 12.0
-offset_top = 1.0
-offset_right = 1232.0
-offset_bottom = 693.0
+offset_left = 16.0
+offset_top = 0.0
+offset_right = 1236.0
+offset_bottom = 692.0
 texture = ExtResource("2_mucb8")
 
 [node name="Сounter" parent="." instance=ExtResource("1_1v5yy")]
@@ -603,28 +603,28 @@ texture = ExtResource("10_452da")
 [node name="store" type="Sprite2D" parent="Node2D5"]
 texture_filter = 1
 position = Vector2(640, 144)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_mucb8")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_pg3ak")
 
 [node name="Img1900-photoroom" type="Sprite2D" parent="Node2D5"]
-position = Vector2(990, 130)
-scale = Vector2(0.126172, 0.198222)
-texture = ExtResource("15_an677")
+position = Vector2(981, 138)
+scale = Vector2(0.15, 0.215)
+texture = ExtResource("17_pg3ak")
 
 [node name="Img1900-photoro1Om3" type="Sprite2D" parent="Node2D5"]
 position = Vector2(344, 552)
 scale = Vector2(0.0691402, 0.118462)
-texture = ExtResource("16_an677")
+texture = ExtResource("18_p0y7o")
 
 [node name="Img1900-photoro1Om4" type="Sprite2D" parent="Node2D5"]
 position = Vector2(984, 552)
 scale = Vector2(0.0691402, 0.118462)
-texture = ExtResource("16_an677")
+texture = ExtResource("18_p0y7o")
 
 [node name="Img1900-photoro1Om5" type="Sprite2D" parent="Node2D5"]
 position = Vector2(664, 552)
 scale = Vector2(0.0691402, 0.118462)
-texture = ExtResource("16_an677")
+texture = ExtResource("18_p0y7o")
 
 [node name="Node2D2" type="Node2D" parent="Node2D5"]
 position = Vector2(0, -24)
