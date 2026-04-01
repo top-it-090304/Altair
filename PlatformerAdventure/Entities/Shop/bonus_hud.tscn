@@ -275,8 +275,8 @@ stretch_mode = 0
 
 [node name="CountShield" type="AnimatedSprite2D" parent="PanelContainer/BonusList/BtnShield"]
 texture_filter = 1
-position = Vector2(540, 800)
-scale = Vector2(3, 3)
+position = Vector2(712.857, 908.929)
+scale = Vector2(31, 29)
 sprite_frames = SubResource("BH_SF_sh")
 animation = &"numbers"
 
@@ -291,8 +291,8 @@ stretch_mode = 0
 
 [node name="CountSlowmo" type="AnimatedSprite2D" parent="PanelContainer/BonusList/BtnSlowmo"]
 texture_filter = 1
-position = Vector2(50, 800)
-scale = Vector2(3, 3)
+position = Vector2(712.857, 936.786)
+scale = Vector2(31, 29)
 sprite_frames = SubResource("BH_SF_sl")
 animation = &"numbers"
 
@@ -307,7 +307,7 @@ stretch_mode = 0
 
 [node name="CountMagnet" type="AnimatedSprite2D" parent="PanelContainer/BonusList/BtnMagnet"]
 texture_filter = 1
-position = Vector2(50, 800)
-scale = Vector2(3, 3)
+position = Vector2(712.857, 964.643)
+scale = Vector2(31, 29)
 sprite_frames = SubResource("BH_SF_mg")
 animation = &"numbers"
