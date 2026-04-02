@@ -4,28 +4,16 @@
 [ext_resource type="Script" uid="uid://cvlr4l8nskod5" path="res://Entities/Level/UI/pause_menu.gd" id="1_atd2j"]
 [ext_resource type="Texture2D" uid="uid://bb7soxx714856" path="res://Assets/Textures/Menu/Text/Text (White) (8x10).png" id="1_m34iv"]
 [ext_resource type="Texture2D" uid="uid://dahpic8afr1" path="res://Assets/Textures/Menu/Buttons/Settings.png" id="2_m34iv"]
+[ext_resource type="Texture2D" uid="uid://dqvg766s7py3o" path="res://Assets/Textures/Settings/p.png" id="2_uj12p"]
 [ext_resource type="PackedScene" uid="uid://c1agu3vccxwvg" path="res://Entities/Level/Buttons/restart.tscn" id="3_4s5y1"]
 [ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="3_atd2j"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_atd2j"]
-atlas = ExtResource("1_m34iv")
-region = Rect2(41, 11, 6, 8)
+[ext_resource type="Texture2D" uid="uid://1j1df1ma077p" path="res://Assets/Textures/Settings/y.png" id="4_c8ba3"]
+[ext_resource type="Texture2D" uid="uid://dgs4lp10b1ccl" path="res://Assets/Textures/Settings/z.png" id="5_kn3vn"]
+[ext_resource type="Texture2D" uid="uid://i66ums262ic0" path="res://Assets/Textures/Settings/a.png" id="6_i44cc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s5y1"]
 atlas = ExtResource("1_m34iv")
 region = Rect2(1, 1, 6, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q6isp"]
-atlas = ExtResource("1_m34iv")
-region = Rect2(1, 21, 6, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7gdso"]
-atlas = ExtResource("1_m34iv")
-region = Rect2(65, 11, 6, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p1vov"]
-atlas = ExtResource("1_m34iv")
-region = Rect2(33, 1, 6, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m34iv"]
 atlas = ExtResource("3_atd2j")
@@ -76,7 +64,7 @@ custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_atd2j")
+texture = ExtResource("2_uj12p")
 
 [node name="A" type="TextureRect" parent="PauseLayer/Background/CenterContainer/VBoxContainer/PauseText"]
 custom_minimum_size = Vector2(20, 25)
@@ -90,21 +78,21 @@ custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_q6isp")
+texture = ExtResource("4_c8ba3")
 
 [node name="S" type="TextureRect" parent="PauseLayer/Background/CenterContainer/VBoxContainer/PauseText"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_7gdso")
+texture = ExtResource("5_kn3vn")
 
 [node name="E" type="TextureRect" parent="PauseLayer/Background/CenterContainer/VBoxContainer/PauseText"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_p1vov")
+texture = ExtResource("6_i44cc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseLayer/Background/CenterContainer/VBoxContainer"]
 layout_mode = 2
