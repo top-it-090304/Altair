@@ -331,7 +331,7 @@ point_count = 7
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_mup8u")
-next_level_path = "uid://c8h6n6c2qavgu"
+next_level_path = "uid://cqwsg5tv5sij1"
 
 [node name="UI" type="Node2D" parent="."]
 
