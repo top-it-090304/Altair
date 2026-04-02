@@ -15,10 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://76lc80x5q0h4" path="res://Assets/Textures/Store Items/buy_defolt.png" id="12_nt5y3"]
 [ext_resource type="Texture2D" uid="uid://bgra2vvesl58f" path="res://Assets/Textures/Store Items/buy_pressed.png" id="13_tl2qy"]
 [ext_resource type="Texture2D" uid="uid://dvw3xdvmdobj7" path="res://Assets/Textures/Store Items/buy_lite.png" id="14_skhbe"]
-[ext_resource type="Texture2D" uid="uid://db40rjmh26uef" path="res://Assets/Textures/Store Items/Gemini_Generated_Image_fzdc7cfzdc7cfzdc-Photoroom.png" id="16_pg3ak"]
-[ext_resource type="Texture2D" uid="uid://cv2cxl1ec5ah" path="res://Assets/Textures/Store Items/Gemini_Generated_Image_j1q85jj1q85jj1q8-Photoroom.png" id="17_pg3ak"]
+[ext_resource type="Texture2D" uid="uid://drkwsl1vn47mx" path="res://Assets/Textures/Store Items/pixil-frame-0 (20)-Photoroom.png" id="16_f7dtw"]
+[ext_resource type="Texture2D" uid="uid://kfsax5ry7d" path="res://Assets/Textures/Store Items/balance_fruits.png" id="17_1k572"]
+[ext_resource type="Texture2D" uid="uid://ca2xjdu43asxg" path="res://Assets/Textures/Store Items/fruits (2).png" id="18_1k572"]
 [ext_resource type="Texture2D" uid="uid://c6nib2c8qyn3j" path="res://Assets/Textures/Store Items/0.png" id="18_n7p4w"]
-[ext_resource type="Texture2D" uid="uid://bcw8ynvti4vym" path="res://Assets/Textures/Store Items/Gemini_Generated_Image_y5yq4yy5yq4yy5yq-Photoroom.png" id="18_p0y7o"]
 [ext_resource type="Texture2D" uid="uid://dap5fav0k5ygu" path="res://Assets/Textures/Store Items/1.png" id="19_n7p4w"]
 [ext_resource type="Texture2D" uid="uid://c8meto2134m8u" path="res://Assets/Textures/Store Items/2.png" id="21_f7dtw"]
 [ext_resource type="Texture2D" uid="uid://cobb1rdfhntt2" path="res://Assets/Textures/Store Items/3.png" id="22_1k572"]
@@ -521,9 +521,9 @@ script = ExtResource("1_yv4tu")
 [node name="BgTexture" parent="." instance=ExtResource("2_dbxhb")]
 layout_mode = 1
 offset_left = 16.0
-offset_top = 0.0
+offset_top = 8.0
 offset_right = 1236.0
-offset_bottom = 692.0
+offset_bottom = 700.0
 texture = ExtResource("2_mucb8")
 
 [node name="Сounter" parent="." instance=ExtResource("1_1v5yy")]
@@ -610,28 +610,28 @@ texture = ExtResource("10_452da")
 [node name="store" type="Sprite2D" parent="Node2D5"]
 texture_filter = 1
 position = Vector2(640, 144)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("16_pg3ak")
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("16_f7dtw")
 
 [node name="Img1900-photoroom" type="Sprite2D" parent="Node2D5"]
-position = Vector2(981, 138)
-scale = Vector2(0.15, 0.215)
-texture = ExtResource("17_pg3ak")
+position = Vector2(1048, 128)
+scale = Vector2(0.219238, 0.249579)
+texture = ExtResource("17_1k572")
 
 [node name="Img1900-photoro1Om3" type="Sprite2D" parent="Node2D5"]
-position = Vector2(344, 552)
-scale = Vector2(0.0691402, 0.118462)
-texture = ExtResource("18_p0y7o")
+position = Vector2(349, 555)
+scale = Vector2(0.106164, 0.127562)
+texture = ExtResource("18_1k572")
 
 [node name="Img1900-photoro1Om4" type="Sprite2D" parent="Node2D5"]
-position = Vector2(984, 552)
-scale = Vector2(0.0691402, 0.118462)
-texture = ExtResource("18_p0y7o")
+position = Vector2(989, 554)
+scale = Vector2(0.106164, 0.127562)
+texture = ExtResource("18_1k572")
 
 [node name="Img1900-photoro1Om5" type="Sprite2D" parent="Node2D5"]
-position = Vector2(664, 552)
-scale = Vector2(0.0691402, 0.118462)
-texture = ExtResource("18_p0y7o")
+position = Vector2(669, 554)
+scale = Vector2(0.106164, 0.127562)
+texture = ExtResource("18_1k572")
 
 [node name="Node2D2" type="Node2D" parent="Node2D5"]
 position = Vector2(-16, -24)
