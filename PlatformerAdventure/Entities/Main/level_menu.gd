@@ -16,6 +16,39 @@ const LEVEL_NAMES: Array = [
 	"LevelV", "Level7", "Level8"
 ]
 
+const GREEN_TEXTURES: Array = [
+	"res://Assets/Textures/Menu/Levels/1green.png",
+	"res://Assets/Textures/Menu/Levels/2green.png",
+	"res://Assets/Textures/Menu/Levels/3green.png",
+	"res://Assets/Textures/Menu/Levels/4green.png",
+	"res://Assets/Textures/Menu/Levels/5green.png",
+	"res://Assets/Textures/Menu/Levels/6green.png",
+	"res://Assets/Textures/Menu/Levels/7green.png",
+	"res://Assets/Textures/Menu/Levels/8green.png",
+]
+
+const GREEN_HOVER_TEXTURES: Array = [
+	"res://Assets/Textures/Menu/Levels/1green_light.png",
+	"res://Assets/Textures/Menu/Levels/2green_light.png",
+	"res://Assets/Textures/Menu/Levels/3green_light.png",
+	"res://Assets/Textures/Menu/Levels/4green_light.png",
+	"res://Assets/Textures/Menu/Levels/5green_light.png",
+	"res://Assets/Textures/Menu/Levels/6green_light.png",
+	"res://Assets/Textures/Menu/Levels/7green_light.png",
+	"res://Assets/Textures/Menu/Levels/8green_light.png",
+]
+
+const GREEN_PRESSED_TEXTURES: Array = [
+	"res://Assets/Textures/Menu/Levels/1green_grey.png",
+	"res://Assets/Textures/Menu/Levels/2green_grey.png",
+	"res://Assets/Textures/Menu/Levels/3green_grey.png",
+	"res://Assets/Textures/Menu/Levels/4green_grey.png",
+	"res://Assets/Textures/Menu/Levels/5green_grey.png",
+	"res://Assets/Textures/Menu/Levels/6green_grey.png",
+	"res://Assets/Textures/Menu/Levels/7green_grey.png",
+	"res://Assets/Textures/Menu/Levels/8green_grey.png",
+]
+
 var buttons: Array = []
 
 func _ready() -> void:
@@ -50,7 +83,9 @@ func _refresh_buttons() -> void:
 			btn.disabled = true
 		elif completed:
 			btn.disabled = false
-			btn.modulate = Color(0.5, 1.0, 0.5)
+			btn.texture_normal = load(GREEN_TEXTURES[i])
+			btn.texture_hover = load(GREEN_HOVER_TEXTURES[i])
+			btn.texture_pressed = load(GREEN_PRESSED_TEXTURES[i])
 		else:
 			btn.disabled = false
 
