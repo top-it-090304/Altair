@@ -5,6 +5,11 @@ extends Node
 
 const SAVE_PATH = "user://save.cfg"
 
+const LEVEL_ORDER: Array = [
+	"Level1", "Level2", "Level3", "Level4", "Level_n",
+	"LevelV", "Level7", "Level8"
+]
+
 var level_records: Dictionary = {}
 var total_fruits: int = 0
 var _spent: int = 0
@@ -183,3 +188,14 @@ func load_data() -> void:
 		for key in config.get_section_keys("records"):
 			level_records[key] = config.get_value("records", key, 0)
 	_recalculate_total()
+
+# ── ПРОГРЕСС УРОВНЕЙ ─────────────────────────
+
+func is_level_completed(level_name: String) -> bool:
+	return level_records.has(level_name) and level_records[level_name] > 0
+
+func is_level_unlocked(level_index: int) -> bool:
+	if level_index == 0:
+		return true
+	var prev_level = LEVEL_ORDER[level_index - 1]
+	return is_level_completed(prev_level)

@@ -27,10 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://touiui4ffpit" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options03.png" id="15_e4dpk"]
 [ext_resource type="Texture2D" uid="uid://b7jbry6pjlyr8" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back03.png" id="15_p01wl"]
 [ext_resource type="Texture2D" uid="uid://b2vm5lfks8fmo" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back04.png" id="16_8pdeq"]
-[ext_resource type="Texture2D" uid="uid://c8u2auffwc12l" path="res://Assets/Textures/Menu/Gemini_Generated_Image_s2hpprs2hpprs2hp.png" id="16_drt3r"]
 [ext_resource type="Texture2D" uid="uid://b5k0brvbclxbt" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options04.png" id="16_pdd02"]
 [ext_resource type="Texture2D" uid="uid://dmmgmy5dcsyb7" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options05.png" id="17_giv72"]
 [ext_resource type="Texture2D" uid="uid://b0axrnahq1817" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back05.png" id="17_xn2ct"]
+[ext_resource type="Texture2D" uid="uid://dkcilx52gue1g" path="res://Assets/Textures/Menu/logo_pixel.png" id="31_ixvsi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7ipb"]
 atlas = ExtResource("3_dva7d")
@@ -630,9 +630,9 @@ autoplay = "default"
 
 [node name="logo" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(645, 144)
-scale = Vector2(0.392415, 0.417132)
-texture = ExtResource("16_drt3r")
+position = Vector2(632, 144)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("31_ixvsi")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]

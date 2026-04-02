@@ -1,35 +1,119 @@
 extends Control
 
-func _ready():
+const LEVEL_PATHS: Array = [
+	"res://Levels/PinkMan_1-12Levels/Level1.tscn",
+	"res://Levels/PinkMan_1-12Levels/Level2.tscn",
+	"res://Levels/PinkMan_1-12Levels/Level3.tscn",
+	"res://Levels/PinkMan_1-12Levels/Level4.tscn",
+	"res://Levels/PinkMan_1-12Levels/Level5.tscn",
+	"res://Levels/PinkMan_1-12Levels/Level6.tscn",
+	"res://Levels/PinkMan_1-12Levels/Level7.tscn",
+	"res://Levels/PinkMan_1-12Levels/Level8.tscn",
+]
+
+const LEVEL_NAMES: Array = [
+	"Level1", "Level2", "Level3", "Level4", "Level_n",
+	"LevelV", "Level7", "Level8"
+]
+
+const GREEN_TEXTURES: Array = [
+	"res://Assets/Textures/Menu/Levels/1green.png",
+	"res://Assets/Textures/Menu/Levels/2green.png",
+	"res://Assets/Textures/Menu/Levels/3green.png",
+	"res://Assets/Textures/Menu/Levels/4green.png",
+	"res://Assets/Textures/Menu/Levels/5green.png",
+	"res://Assets/Textures/Menu/Levels/6green.png",
+	"res://Assets/Textures/Menu/Levels/7green.png",
+	"res://Assets/Textures/Menu/Levels/8green.png",
+]
+
+const GREEN_HOVER_TEXTURES: Array = [
+	"res://Assets/Textures/Menu/Levels/1green_light.png",
+	"res://Assets/Textures/Menu/Levels/2green_light.png",
+	"res://Assets/Textures/Menu/Levels/3green_light.png",
+	"res://Assets/Textures/Menu/Levels/4green_light.png",
+	"res://Assets/Textures/Menu/Levels/5green_light.png",
+	"res://Assets/Textures/Menu/Levels/6green_light.png",
+	"res://Assets/Textures/Menu/Levels/7green_light.png",
+	"res://Assets/Textures/Menu/Levels/8green_light.png",
+]
+
+const GREEN_PRESSED_TEXTURES: Array = [
+	"res://Assets/Textures/Menu/Levels/1green_grey.png",
+	"res://Assets/Textures/Menu/Levels/2green_grey.png",
+	"res://Assets/Textures/Menu/Levels/3green_grey.png",
+	"res://Assets/Textures/Menu/Levels/4green_grey.png",
+	"res://Assets/Textures/Menu/Levels/5green_grey.png",
+	"res://Assets/Textures/Menu/Levels/6green_grey.png",
+	"res://Assets/Textures/Menu/Levels/7green_grey.png",
+	"res://Assets/Textures/Menu/Levels/8green_grey.png",
+]
+
+var buttons: Array = []
+
+func _ready() -> void:
 	MusicManager.play_music(preload("res://Assets/audio/For_Levels/MainMenu.mp3"))
 
+	var grid = $CenterContainer/GridContainer
+	buttons = [
+		grid.get_node("Button"),
+		grid.get_node("Button2"),
+		grid.get_node("Button3"),
+		grid.get_node("Button4"),
+		grid.get_node("Button5"),
+		grid.get_node("Button6"),
+		grid.get_node("Button7"),
+		grid.get_node("Button8"),
+	]
+
+	# Button8 не имеет сигнала в .tscn — подключаем вручную
+	buttons[7].pressed.connect(func(): _on_level_pressed(7))
+
+	_refresh_buttons()
+
+func _refresh_buttons() -> void:
+	for i in range(buttons.size()):
+		var btn: TextureButton = buttons[i]
+		var unlocked = GameData.is_level_unlocked(i)
+		var completed = GameData.is_level_completed(LEVEL_NAMES[i])
+
+		btn.modulate = Color(1, 1, 1)
+
+		if not unlocked:
+			btn.disabled = true
+		elif completed:
+			btn.disabled = false
+			btn.texture_normal = load(GREEN_TEXTURES[i])
+			btn.texture_hover = load(GREEN_HOVER_TEXTURES[i])
+			btn.texture_pressed = load(GREEN_PRESSED_TEXTURES[i])
+		else:
+			btn.disabled = false
+
+func _on_level_pressed(index: int) -> void:
+	get_tree().change_scene_to_file(LEVEL_PATHS[index])
+
+# Кнопка «Назад»
 func _on_texture_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Entities/Main/MainMenu.tscn") # Выход в мейн
+	get_tree().change_scene_to_file("res://Entities/Main/MainMenu.tscn")
 
-
+# Сигналы из Levels_Menu.tscn (Button – Button7)
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/PinkMan_1-12Levels/Level1.tscn") # Просто пропрыгать
-
+	_on_level_pressed(0)
 
 func _on_button_2_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/PinkMan_1-12Levels/Level2.tscn") # Платформа
-
+	_on_level_pressed(1)
 
 func _on_button_3_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/PinkMan_1-12Levels/Level3.tscn") # Кубы
-
+	_on_level_pressed(2)
 
 func _on_button_4_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/PinkMan_1-12Levels/Level4.tscn") # Тот который андрей делает с огнем
-
+	_on_level_pressed(3)
 
 func _on_button_5_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/PinkMan_1-12Levels/Level_n.tscn") #Ниндзяфрог цепи
-
+	_on_level_pressed(4)
 
 func _on_button_6_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/VirtualGuy_13-24Levels/LevelV.tscn") # ВиартуалГай шипы 
-
+	_on_level_pressed(5)
 
 func _on_button_7_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/PinkMan_1-12Levels/Level7.tscn") # Пинкмен шестерни
+	_on_level_pressed(6)

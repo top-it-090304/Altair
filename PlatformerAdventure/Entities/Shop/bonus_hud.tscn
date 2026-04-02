@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtnt0bcigkql1"]
+[gd_scene load_steps=42 format=3 uid="uid://dtnt0bcigkql1"]
 
 [ext_resource type="Script" uid="uid://xsh68nnjeb70" path="res://Entities/Shop/Bonushud.gd" id="1_cs7qh"]
 [ext_resource type="Texture2D" uid="uid://bh7hd1yubvv8q" path="res://Assets/Textures/Store Items/blue-and-white-shielbutton.png" id="2_xj46j"]
@@ -7,6 +7,241 @@
 [ext_resource type="Texture2D" uid="uid://ta2bjhiaobcv" path="res://Assets/Textures/Store Items/pixel-art-magnet-red-and-blue-magnetism-icon-for-8bit-game-on-white-background-vector-Photoroom.png" id="4_a3ds0"]
 [ext_resource type="Texture2D" uid="uid://qprmq5mythgo" path="res://Assets/Textures/Store Items/pixel-agrey.png" id="5_ikhpt"]
 [ext_resource type="Texture2D" uid="uid://8bb60gdn0u8r" path="res://Assets/Textures/Store Items/pixel-art-grey.png" id="7_xhxq6"]
+[ext_resource type="Texture2D" uid="uid://b4ejhn5621plb" path="res://Assets/Textures/Menu/Text/numbers(8x10).png" id="8_nums_sm"]
+
+[sub_resource type="AtlasTexture" id="BH_sh0"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(0, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sh1"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(8, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sh2"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(16, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sh3"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(24, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sh4"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(32, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sh5"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(40, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sh6"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(48, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sh7"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(56, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sh8"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(64, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sh9"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(72, 0, 8, 10)
+
+[sub_resource type="SpriteFrames" id="BH_SF_sh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("BH_sh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sh9")
+}],
+"loop": false,
+"name": &"numbers",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="BH_sl0"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(0, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sl1"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(8, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sl2"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(16, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sl3"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(24, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sl4"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(32, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sl5"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(40, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sl6"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(48, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sl7"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(56, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sl8"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(64, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_sl9"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(72, 0, 8, 10)
+
+[sub_resource type="SpriteFrames" id="BH_SF_sl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("BH_sl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_sl9")
+}],
+"loop": false,
+"name": &"numbers",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="BH_mg0"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(0, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_mg1"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(8, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_mg2"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(16, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_mg3"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(24, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_mg4"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(32, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_mg5"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(40, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_mg6"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(48, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_mg7"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(56, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_mg8"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(64, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="BH_mg9"]
+atlas = ExtResource("8_nums_sm")
+region = Rect2(72, 0, 8, 10)
+
+[sub_resource type="SpriteFrames" id="BH_SF_mg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("BH_mg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_mg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_mg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_mg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_mg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_mg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_mg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_mg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_mg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("BH_mg9")
+}],
+"loop": false,
+"name": &"numbers",
+"speed": 5.0
+}]
 
 [node name="BonusHUD" type="CanvasLayer"]
 script = ExtResource("1_cs7qh")
@@ -22,12 +257,12 @@ offset_bottom = 104.0
 
 [node name="BonusList" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 0
-offset_left = 6.1
-offset_top = 80.375
-offset_right = 897.1
-offset_bottom = 3210.38
+offset_left = 7.0
+offset_top = 80.0
+offset_right = 885.0
+offset_bottom = 3409.0
 scale = Vector2(0.07, 0.07)
-theme_override_constants/separation = 215
+theme_override_constants/separation = 380
 
 [node name="BtnShield" type="TextureButton" parent="PanelContainer/BonusList"]
 custom_minimum_size = Vector2(600, 900)
@@ -38,6 +273,13 @@ texture_disabled = ExtResource("3_64qri")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="CountShield" type="AnimatedSprite2D" parent="PanelContainer/BonusList/BtnShield"]
+texture_filter = 1
+position = Vector2(742.857, 971.429)
+scale = Vector2(31, 29)
+sprite_frames = SubResource("BH_SF_sh")
+animation = &"numbers"
+
 [node name="BtnSlowmo" type="TextureButton" parent="PanelContainer/BonusList"]
 custom_minimum_size = Vector2(64, 900)
 layout_mode = 2
@@ -47,6 +289,13 @@ texture_disabled = ExtResource("5_ikhpt")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="CountSlowmo" type="AnimatedSprite2D" parent="PanelContainer/BonusList/BtnSlowmo"]
+texture_filter = 1
+position = Vector2(771.428, 1062.86)
+scale = Vector2(31, 29)
+sprite_frames = SubResource("BH_SF_sl")
+animation = &"numbers"
+
 [node name="BtnMagnet" type="TextureButton" parent="PanelContainer/BonusList"]
 custom_minimum_size = Vector2(64, 900)
 layout_mode = 2
@@ -55,3 +304,10 @@ texture_normal = ExtResource("4_a3ds0")
 texture_disabled = ExtResource("7_xhxq6")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="CountMagnet" type="AnimatedSprite2D" parent="PanelContainer/BonusList/BtnMagnet"]
+texture_filter = 1
+position = Vector2(757.142, 982.857)
+scale = Vector2(31, 29)
+sprite_frames = SubResource("BH_SF_mg")
+animation = &"numbers"

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name PlayerBase
 
+signal died
+
 @export_group("Movement")
 @export var speed = 300.0
 @export var acceleration: float = 2000.0
@@ -28,8 +30,8 @@ class_name PlayerBase
 @export var max_fall_speed: float = 900.0
 
 @export_group("Magnet")
-@export var magnet_radius_x: float = 120.0
-@export var magnet_radius_y: float = 80.0
+@export var magnet_radius_x: float = 120.0 * 1.5
+@export var magnet_radius_y: float = 80.0 * 1.5
 @export var magnet_pull_speed: float = 300.0
 
 @export_group("Shield")
@@ -74,24 +76,26 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 
-	if _invincibility_timer > 0.0:
-		_invincibility_timer -= delta
+	var real_delta: float = delta / Engine.time_scale
 
-	_update_timers(delta)
-	_apply_gravity(delta)
+	if _invincibility_timer > 0.0:
+		_invincibility_timer -= real_delta
+
+	_update_timers(real_delta)
+	_apply_gravity(real_delta)
 
 	if wall_mechanics_enabled:
 		_handle_wall_slide()
 
 	_handle_jump()
-	_handle_movement(delta)
+	_handle_movement(real_delta)
 	_update_animation()
 
 	move_and_slide()
 	_check_deadly_tiles()
 
 	if magnet_active:
-		_attract_fruits(delta)
+		_attract_fruits(real_delta)
 
 # ЩИТ
 
@@ -161,6 +165,7 @@ func _flash_break() -> void:
 	animated_sprite.modulate.a = 1.0
 
 func _die_sequence() -> void:
+	died.emit()
 	is_dead = true
 	velocity = Vector2.ZERO
 	set_physics_process(false)

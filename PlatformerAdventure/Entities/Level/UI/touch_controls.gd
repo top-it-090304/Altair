@@ -107,3 +107,21 @@ func _to_base(pos: Vector2) -> Vector2:
 		pos.x * 1280.0 / viewport_size.x,
 		pos.y * 720.0 / viewport_size.y
 	)
+
+func release_all() -> void:
+	if _finger_left != -1:
+		_finger_left = -1
+		_release("move_left")
+		ghost_left.visible = false
+	if _finger_rigjt != -1:
+		_finger_rigjt = -1
+		_release("move_right")
+		ghost_right.visible = false
+	if _finger_jump != -1:
+		_finger_jump = -1
+		_release("move_up")
+		ghost_jump.visible = false
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		release_all()

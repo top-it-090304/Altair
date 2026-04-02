@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://devcekijygut2"]
+[gd_scene load_steps=64 format=4 uid="uid://devcekijygut2"]
 
 [ext_resource type="PackedScene" uid="uid://drjs448xj6ar5" path="res://Entities/Shop/shop_counter.tscn" id="1_1v5yy"]
 [ext_resource type="Script" uid="uid://r4ibm3cywsgn" path="res://Entities/Shop/shop.gd" id="1_yv4tu"]
@@ -11,15 +11,23 @@
 [ext_resource type="Texture2D" uid="uid://bjwrmco2q4yer" path="res://Assets/Textures/Store Items/blue-and-white-shield-in-pixel-art-style-vector-Photoroom.png" id="8_a1g1l"]
 [ext_resource type="Texture2D" uid="uid://clg6wdjtnhd8u" path="res://Assets/Textures/Store Items/pixel-art-hourglass-sand-clock-item-for-game-bit_360488-76 (1)-Photoroom.png" id="9_mucb8"]
 [ext_resource type="Texture2D" uid="uid://ta2bjhiaobcv" path="res://Assets/Textures/Store Items/pixel-art-magnet-red-and-blue-magnetism-icon-for-8bit-game-on-white-background-vector-Photoroom.png" id="10_452da"]
-[ext_resource type="Texture2D" uid="uid://b3o5dnm6448b7" path="res://Assets/Textures/Store Items/image-Photoroom.png" id="10_mucb8"]
 [ext_resource type="Texture2D" uid="uid://b0kyhc7gmys7g" path="res://Assets/Textures/Store Items/buy_gray.png" id="12_n7p4w"]
 [ext_resource type="Texture2D" uid="uid://76lc80x5q0h4" path="res://Assets/Textures/Store Items/buy_defolt.png" id="12_nt5y3"]
 [ext_resource type="Texture2D" uid="uid://bgra2vvesl58f" path="res://Assets/Textures/Store Items/buy_pressed.png" id="13_tl2qy"]
 [ext_resource type="Texture2D" uid="uid://dvw3xdvmdobj7" path="res://Assets/Textures/Store Items/buy_lite.png" id="14_skhbe"]
-[ext_resource type="Texture2D" uid="uid://drwnj23oix4a2" path="res://Assets/Textures/Store Items/IMG_1902-Photoroom.png" id="15_an677"]
-[ext_resource type="Texture2D" uid="uid://bchtj3ebkr53f" path="res://Assets/Textures/Store Items/IMG_1902-Photoroo11111m.png" id="16_an677"]
+[ext_resource type="Texture2D" uid="uid://drkwsl1vn47mx" path="res://Assets/Textures/Store Items/pixil-frame-0 (20)-Photoroom.png" id="16_f7dtw"]
+[ext_resource type="Texture2D" uid="uid://kfsax5ry7d" path="res://Assets/Textures/Store Items/balance_fruits.png" id="17_1k572"]
+[ext_resource type="Texture2D" uid="uid://ca2xjdu43asxg" path="res://Assets/Textures/Store Items/fruits (2).png" id="18_1k572"]
 [ext_resource type="Texture2D" uid="uid://c6nib2c8qyn3j" path="res://Assets/Textures/Store Items/0.png" id="18_n7p4w"]
 [ext_resource type="Texture2D" uid="uid://dap5fav0k5ygu" path="res://Assets/Textures/Store Items/1.png" id="19_n7p4w"]
+[ext_resource type="Texture2D" uid="uid://c8meto2134m8u" path="res://Assets/Textures/Store Items/2.png" id="21_f7dtw"]
+[ext_resource type="Texture2D" uid="uid://cobb1rdfhntt2" path="res://Assets/Textures/Store Items/3.png" id="22_1k572"]
+[ext_resource type="Texture2D" uid="uid://djurjg8urqj3q" path="res://Assets/Textures/Store Items/4.png" id="23_js10p"]
+[ext_resource type="Texture2D" uid="uid://8jf6dwgbqwfe" path="res://Assets/Textures/Store Items/5.png" id="24_gmrs3"]
+[ext_resource type="Texture2D" uid="uid://ch1awu4c46pj2" path="res://Assets/Textures/Store Items/6.png" id="25_wjwph"]
+[ext_resource type="Texture2D" uid="uid://rcb0b0mbne08" path="res://Assets/Textures/Store Items/7.png" id="26_ya2e0"]
+[ext_resource type="Texture2D" uid="uid://c2i4vlsx1ml6w" path="res://Assets/Textures/Store Items/8.png" id="27_mjlgg"]
+[ext_resource type="Texture2D" uid="uid://wcu0ku87ak8k" path="res://Assets/Textures/Store Items/9.png" id="28_0ifva"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pvgl"]
 texture = ExtResource("3_wloi4")
@@ -268,6 +276,240 @@ texture = ExtResource("3_wloi4")
 [sub_resource type="TileSet" id="TileSet_ydw2f"]
 sources/0 = SubResource("TileSetAtlasSource_7pvgl")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2go7l"]
+atlas = ExtResource("18_n7p4w")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7dtw"]
+atlas = ExtResource("19_n7p4w")
+region = Rect2(0, 0, 34, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k6u1"]
+atlas = ExtResource("21_f7dtw")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8jx8"]
+atlas = ExtResource("22_1k572")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smv3"]
+atlas = ExtResource("23_js10p")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luwgv"]
+atlas = ExtResource("24_gmrs3")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2jbo"]
+atlas = ExtResource("25_wjwph")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ir4"]
+atlas = ExtResource("26_ya2e0")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy2dw"]
+atlas = ExtResource("27_mjlgg")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snsx0"]
+atlas = ExtResource("28_0ifva")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="SpriteFrames" id="SF_shield"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2go7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7dtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k6u1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8jx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3smv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luwgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2jbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0ir4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy2dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snsx0")
+}],
+"loop": false,
+"name": &"numbers",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfupe"]
+atlas = ExtResource("18_n7p4w")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k572"]
+atlas = ExtResource("19_n7p4w")
+region = Rect2(0, 0, 34, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cykxp"]
+atlas = ExtResource("21_f7dtw")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehs1f"]
+atlas = ExtResource("22_1k572")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_774ot"]
+atlas = ExtResource("23_js10p")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fobev"]
+atlas = ExtResource("24_gmrs3")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlgmj"]
+atlas = ExtResource("25_wjwph")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d81ak"]
+atlas = ExtResource("26_ya2e0")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5jep"]
+atlas = ExtResource("27_mjlgg")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjupv"]
+atlas = ExtResource("28_0ifva")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="SpriteFrames" id="SF_slowmo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfupe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k572")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cykxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehs1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_774ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fobev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlgmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d81ak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5jep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjupv")
+}],
+"loop": false,
+"name": &"numbers",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag4ex"]
+atlas = ExtResource("18_n7p4w")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js10p"]
+atlas = ExtResource("19_n7p4w")
+region = Rect2(0, 0, 34, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfs3x"]
+atlas = ExtResource("21_f7dtw")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyyao"]
+atlas = ExtResource("22_1k572")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3lid"]
+atlas = ExtResource("23_js10p")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj04q"]
+atlas = ExtResource("24_gmrs3")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djv0q"]
+atlas = ExtResource("25_wjwph")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lauq"]
+atlas = ExtResource("26_ya2e0")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs3a1"]
+atlas = ExtResource("27_mjlgg")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vkqx"]
+atlas = ExtResource("28_0ifva")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="SpriteFrames" id="SF_magnet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag4ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js10p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfs3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyyao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3lid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj04q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djv0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lauq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs3a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vkqx")
+}],
+"loop": false,
+"name": &"numbers",
+"speed": 5.0
+}]
+
 [node name="Control2" type="Control"]
 texture_filter = 1
 layout_mode = 3
@@ -278,10 +520,10 @@ script = ExtResource("1_yv4tu")
 
 [node name="BgTexture" parent="." instance=ExtResource("2_dbxhb")]
 layout_mode = 1
-offset_left = 12.0
-offset_top = 1.0
-offset_right = 1232.0
-offset_bottom = 693.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 1236.0
+offset_bottom = 700.0
 texture = ExtResource("2_mucb8")
 
 [node name="Сounter" parent="." instance=ExtResource("1_1v5yy")]
@@ -351,7 +593,7 @@ texture_disabled = ExtResource("12_n7p4w")
 [node name="Node2D5" type="Node2D" parent="."]
 
 [node name="shit" type="Sprite2D" parent="Node2D5"]
-position = Vector2(320, 408)
+position = Vector2(320, 400)
 scale = Vector2(0.415625, 0.397258)
 texture = ExtResource("8_a1g1l")
 
@@ -368,69 +610,93 @@ texture = ExtResource("10_452da")
 [node name="store" type="Sprite2D" parent="Node2D5"]
 texture_filter = 1
 position = Vector2(640, 144)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_mucb8")
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("16_f7dtw")
 
 [node name="Img1900-photoroom" type="Sprite2D" parent="Node2D5"]
-position = Vector2(990, 130)
-scale = Vector2(0.126172, 0.198222)
-texture = ExtResource("15_an677")
+position = Vector2(1048, 128)
+scale = Vector2(0.219238, 0.249579)
+texture = ExtResource("17_1k572")
 
 [node name="Img1900-photoro1Om3" type="Sprite2D" parent="Node2D5"]
-position = Vector2(344, 552)
-scale = Vector2(0.0691402, 0.118462)
-texture = ExtResource("16_an677")
+position = Vector2(349, 555)
+scale = Vector2(0.106164, 0.127562)
+texture = ExtResource("18_1k572")
 
 [node name="Img1900-photoro1Om4" type="Sprite2D" parent="Node2D5"]
-position = Vector2(984, 552)
-scale = Vector2(0.0691402, 0.118462)
-texture = ExtResource("16_an677")
+position = Vector2(989, 554)
+scale = Vector2(0.106164, 0.127562)
+texture = ExtResource("18_1k572")
 
 [node name="Img1900-photoro1Om5" type="Sprite2D" parent="Node2D5"]
-position = Vector2(664, 552)
-scale = Vector2(0.0691402, 0.118462)
-texture = ExtResource("16_an677")
+position = Vector2(669, 554)
+scale = Vector2(0.106164, 0.127562)
+texture = ExtResource("18_1k572")
 
 [node name="Node2D2" type="Node2D" parent="Node2D5"]
-position = Vector2(0, -24)
+position = Vector2(-16, -24)
 metadata/_edit_group_ = true
 
 [node name="2" type="Sprite2D" parent="Node2D5/Node2D2"]
-position = Vector2(272, 576)
+position = Vector2(277, 579)
 scale = Vector2(0.446296, 0.470001)
 texture = ExtResource("19_n7p4w")
 
 [node name="0" type="Sprite2D" parent="Node2D5/Node2D2"]
-position = Vector2(288, 576)
+position = Vector2(301, 579)
 scale = Vector2(0.445454, 0.461689)
 texture = ExtResource("18_n7p4w")
 
 [node name="Node2D3" type="Node2D" parent="Node2D5"]
-position = Vector2(320, -24)
+position = Vector2(305, -25)
 metadata/_edit_group_ = true
 
 [node name="2" type="Sprite2D" parent="Node2D5/Node2D3"]
-position = Vector2(272, 576)
+position = Vector2(277, 579)
 scale = Vector2(0.446296, 0.470001)
 texture = ExtResource("19_n7p4w")
 
 [node name="0" type="Sprite2D" parent="Node2D5/Node2D3"]
-position = Vector2(288, 576)
+position = Vector2(301, 579)
 scale = Vector2(0.445454, 0.461689)
 texture = ExtResource("18_n7p4w")
 
 [node name="Node2D4" type="Node2D" parent="Node2D5"]
-position = Vector2(640, -24)
+position = Vector2(624, -25)
 metadata/_edit_group_ = true
 
 [node name="2" type="Sprite2D" parent="Node2D5/Node2D4"]
-position = Vector2(272, 576)
+position = Vector2(277, 579)
 scale = Vector2(0.446296, 0.470001)
 texture = ExtResource("19_n7p4w")
 
 [node name="0" type="Sprite2D" parent="Node2D5/Node2D4"]
-position = Vector2(288, 576)
+position = Vector2(301, 579)
 scale = Vector2(0.445454, 0.461689)
 texture = ExtResource("18_n7p4w")
+
+[node name="CountShield" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(376, 472)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SF_shield")
+animation = &"numbers"
+
+[node name="CountSlowmo" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(696, 472)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SF_slowmo")
+animation = &"numbers"
+
+[node name="CountMagnet" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(1016, 472)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SF_magnet")
+animation = &"numbers"
 
 [connection signal="pressed" from="TextureButton" to="Сounter" method="_on_texture_button_pressed"]

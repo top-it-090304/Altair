@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://cqwsg5tv5sij1"]
+[gd_scene load_steps=66 format=4 uid="uid://cqwsg5tv5sij1"]
 
 [ext_resource type="Script" uid="uid://b6hqe2265jpct" path="res://Entities/Main/level_menu.gd" id="1_c2qxo"]
 [ext_resource type="Texture2D" uid="uid://0uykomg4bsaq" path="res://Assets/Textures/Menu/Levels/01.png" id="2_2aape"]
@@ -9,37 +9,45 @@
 [ext_resource type="Texture2D" uid="uid://blgfd073t4vw6" path="res://Assets/Textures/Menu/Levels/03.png" id="4_taoa4"]
 [ext_resource type="Texture2D" uid="uid://dkye3lknb0ag4" path="res://Assets/Textures/Menu/Levels/04.png" id="5_2iq8x"]
 [ext_resource type="Texture2D" uid="uid://dlapchktxj38b" path="res://Assets/Textures/Menu/Levels/05.png" id="6_b1fw8"]
-[ext_resource type="Texture2D" uid="uid://b11bhgrjkuhap" path="res://Assets/Textures/Menu/Levels/1(1).png" id="6_khx3b"]
+[ext_resource type="Texture2D" uid="uid://wwnqddfktfhv" path="res://Assets/Textures/Menu/Levels/01pressed.png" id="6_iohge"]
 [ext_resource type="Texture2D" uid="uid://bcu30rk7i3mww" path="res://Assets/Textures/Menu/Levels/01_.png" id="6_n5nrx"]
 [ext_resource type="Texture2D" uid="uid://bdosjsytdn14l" path="res://Assets/Textures/Menu/Levels/06.png" id="7_gg4wx"]
+[ext_resource type="Texture2D" uid="uid://c436bgi4b1e08" path="res://Assets/Textures/Menu/Levels/01_gray.png" id="8_iohge"]
 [ext_resource type="Texture2D" uid="uid://cclxwqg27h1wg" path="res://Assets/Textures/Menu/Levels/07.png" id="8_k0xnw"]
 [ext_resource type="Texture2D" uid="uid://c1n3pg3pjyk6q" path="res://Assets/Textures/Menu/Levels/02_.png" id="8_ltx6g"]
 [ext_resource type="Texture2D" uid="uid://defnd7cal0kvv" path="res://Assets/Textures/Menu/Levels/08.png" id="9_ocsj8"]
-[ext_resource type="Texture2D" uid="uid://bitne85mrotok" path="res://Assets/Textures/Menu/Levels/2 (1)-Photoroom.png" id="9_rca0y"]
+[ext_resource type="Texture2D" uid="uid://b5p65lngws7et" path="res://Assets/Textures/Menu/Levels/02pressed.png" id="10_iohge"]
 [ext_resource type="Texture2D" uid="uid://b56bkjtertnd2" path="res://Assets/Textures/Menu/Levels/09.png" id="10_k1eq5"]
 [ext_resource type="Texture2D" uid="uid://dm382kvvcktj0" path="res://Assets/Textures/Menu/Levels/03_.png" id="10_u2hxe"]
 [ext_resource type="Texture2D" uid="uid://dl7awgqlu8vml" path="res://Assets/Textures/Menu/Levels/10.png" id="11_xkix1"]
-[ext_resource type="Texture2D" uid="uid://b6ler3sqhhk0p" path="res://Assets/Textures/Menu/Levels/3.3.png" id="12_gsf7w"]
 [ext_resource type="Texture2D" uid="uid://b41xhmdbt7lap" path="res://Assets/Textures/Menu/Levels/04_.png" id="12_khx3b"]
 [ext_resource type="Texture2D" uid="uid://ck8y10rxtc2wp" path="res://Assets/Textures/Menu/Levels/11.png" id="12_letmk"]
+[ext_resource type="Texture2D" uid="uid://dl4ciwclejqsl" path="res://Assets/Textures/Menu/Levels/02_gray.png" id="12_unjsg"]
 [ext_resource type="Texture2D" uid="uid://dyyd7a5h5otg1" path="res://Assets/Textures/Menu/Levels/12.png" id="13_beo34"]
 [ext_resource type="Texture2D" uid="uid://b1dghijcim066" path="res://Assets/Textures/Menu/Levels/05_.png" id="14_2es18"]
-[ext_resource type="Texture2D" uid="uid://ccaoy0rlnxr77" path="res://Assets/Textures/Menu/Levels/4.4.png" id="15_wm7dl"]
+[ext_resource type="Texture2D" uid="uid://beouy1jfm0a2t" path="res://Assets/Textures/Menu/Levels/03pressed.png" id="14_unjsg"]
 [ext_resource type="Texture2D" uid="uid://c25cn6vl1fmhy" path="res://Assets/Textures/Menu/Levels/06_.png" id="16_rca0y"]
+[ext_resource type="Texture2D" uid="uid://chvdj8e35caih" path="res://Assets/Textures/Menu/Levels/03_gray.png" id="16_x8fnh"]
 [ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="17_q38h2"]
 [ext_resource type="Texture2D" uid="uid://cyiqarobanpc6" path="res://Assets/Textures/Menu/Levels/07_.png" id="18_gsf7w"]
-[ext_resource type="Texture2D" uid="uid://x7eu6tjd7ckp" path="res://Assets/Textures/Menu/Levels/5.5.png" id="18_ukpqh"]
+[ext_resource type="Texture2D" uid="uid://dystiepauwl0d" path="res://Assets/Textures/Menu/Levels/04pressed.png" id="18_x8fnh"]
+[ext_resource type="Texture2D" uid="uid://cy0yfc12c2pud" path="res://Assets/Textures/Menu/Levels/04_gray.png" id="20_p7f38"]
 [ext_resource type="Texture2D" uid="uid://ctbgiundktmkq" path="res://Assets/Textures/Menu/Levels/08_.png" id="20_yyg4m"]
-[ext_resource type="Texture2D" uid="uid://dgogtj1rqahkx" path="res://Assets/Textures/Menu/Levels/6.6.png" id="21_d5ggg"]
+[ext_resource type="Texture2D" uid="uid://bqeh3xuuvnr8f" path="res://Assets/Textures/Menu/Levels/05pressed.png" id="22_p7f38"]
 [ext_resource type="Texture2D" uid="uid://d2jefe6gqbl06" path="res://Assets/Textures/Menu/Levels/09_.png" id="22_s0ood"]
 [ext_resource type="Texture2D" uid="uid://ddpk1gfn45781" path="res://Assets/Textures/Menu/Levels/10_.png" id="24_8asrn"]
-[ext_resource type="Texture2D" uid="uid://bbhwmt7j51fvu" path="res://Assets/Textures/Menu/Levels/7.7.png" id="24_uaues"]
+[ext_resource type="Texture2D" uid="uid://b0dfmj68uby31" path="res://Assets/Textures/Menu/Levels/05_gray.png" id="24_dw8pg"]
 [ext_resource type="Texture2D" uid="uid://c7p2qu1x6fggd" path="res://Assets/Textures/Menu/Levels/11_.png" id="26_66e7k"]
-[ext_resource type="Texture2D" uid="uid://dv1vpqnhyt0mb" path="res://Assets/Textures/Menu/Levels/8.8.png" id="27_yalyu"]
+[ext_resource type="Texture2D" uid="uid://b10rklsggf388" path="res://Assets/Textures/Menu/Levels/06pressed.png" id="26_dw8pg"]
+[ext_resource type="Texture2D" uid="uid://y7vjfkly46pa" path="res://Assets/Textures/Menu/Levels/06_gray.png" id="28_8th4m"]
 [ext_resource type="Texture2D" uid="uid://cdn4dmkqv85p6" path="res://Assets/Textures/Menu/Levels/12_.png" id="28_it63q"]
+[ext_resource type="Texture2D" uid="uid://c0ngx41qbfqu1" path="res://Assets/Textures/Menu/Levels/07pressed.png" id="30_8th4m"]
 [ext_resource type="Texture2D" uid="uid://cbn0ys2vblunw" path="res://Assets/Textures/Menu/Levels/9.9.png" id="30_cb88q"]
 [ext_resource type="Texture2D" uid="uid://o05nvamef1vh" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="30_u2hxe"]
+[ext_resource type="Texture2D" uid="uid://bsp18b1g8ius4" path="res://Assets/Textures/Menu/Levels/07_gray.png" id="32_cph7w"]
 [ext_resource type="Texture2D" uid="uid://c0x8udni6pctt" path="res://Assets/Textures/Menu/Levels/10.10.png" id="33_ck707"]
+[ext_resource type="Texture2D" uid="uid://cdceoequ2ssgj" path="res://Assets/Textures/Menu/Levels/08pressed.png" id="34_cph7w"]
+[ext_resource type="Texture2D" uid="uid://dlqjwf8x1glak" path="res://Assets/Textures/Menu/Levels/08_gray.png" id="36_1ass4"]
 [ext_resource type="Texture2D" uid="uid://b31k1ytwqi4h5" path="res://Assets/Textures/Menu/Levels/11.11.png" id="36_2ox7x"]
 [ext_resource type="Texture2D" uid="uid://b8pfhdy1vvchd" path="res://Assets/Textures/Menu/Levels/12.12.png" id="39_d0sv2"]
 [ext_resource type="Texture2D" uid="uid://cwfj1w3c77gq1" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="42_ukpqh"]
@@ -420,8 +428,9 @@ texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 texture_normal = ExtResource("2_2aape")
-texture_pressed = ExtResource("6_khx3b")
+texture_pressed = ExtResource("6_iohge")
 texture_hover = ExtResource("6_n5nrx")
+texture_disabled = ExtResource("8_iohge")
 stretch_mode = 0
 
 [node name="Button2" type="TextureButton" parent="CenterContainer/GridContainer"]
@@ -429,8 +438,9 @@ texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 texture_normal = ExtResource("3_65cti")
-texture_pressed = ExtResource("9_rca0y")
+texture_pressed = ExtResource("10_iohge")
 texture_hover = ExtResource("8_ltx6g")
+texture_disabled = ExtResource("12_unjsg")
 stretch_mode = 0
 
 [node name="Button3" type="TextureButton" parent="CenterContainer/GridContainer"]
@@ -438,8 +448,9 @@ texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 texture_normal = ExtResource("4_taoa4")
-texture_pressed = ExtResource("12_gsf7w")
+texture_pressed = ExtResource("14_unjsg")
 texture_hover = ExtResource("10_u2hxe")
+texture_disabled = ExtResource("16_x8fnh")
 stretch_mode = 0
 
 [node name="Button4" type="TextureButton" parent="CenterContainer/GridContainer"]
@@ -447,8 +458,9 @@ texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 texture_normal = ExtResource("5_2iq8x")
-texture_pressed = ExtResource("15_wm7dl")
+texture_pressed = ExtResource("18_x8fnh")
 texture_hover = ExtResource("12_khx3b")
+texture_disabled = ExtResource("20_p7f38")
 stretch_mode = 0
 
 [node name="Button5" type="TextureButton" parent="CenterContainer/GridContainer"]
@@ -456,8 +468,9 @@ texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 texture_normal = ExtResource("6_b1fw8")
-texture_pressed = ExtResource("18_ukpqh")
+texture_pressed = ExtResource("22_p7f38")
 texture_hover = ExtResource("14_2es18")
+texture_disabled = ExtResource("24_dw8pg")
 stretch_mode = 0
 
 [node name="Button6" type="TextureButton" parent="CenterContainer/GridContainer"]
@@ -465,8 +478,9 @@ texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 texture_normal = ExtResource("7_gg4wx")
-texture_pressed = ExtResource("21_d5ggg")
+texture_pressed = ExtResource("26_dw8pg")
 texture_hover = ExtResource("16_rca0y")
+texture_disabled = ExtResource("28_8th4m")
 stretch_mode = 0
 
 [node name="Button7" type="TextureButton" parent="CenterContainer/GridContainer"]
@@ -474,8 +488,9 @@ texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 texture_normal = ExtResource("8_k0xnw")
-texture_pressed = ExtResource("24_uaues")
+texture_pressed = ExtResource("30_8th4m")
 texture_hover = ExtResource("18_gsf7w")
+texture_disabled = ExtResource("32_cph7w")
 stretch_mode = 0
 
 [node name="Button8" type="TextureButton" parent="CenterContainer/GridContainer"]
@@ -483,8 +498,9 @@ texture_filter = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 texture_normal = ExtResource("9_ocsj8")
-texture_pressed = ExtResource("27_yalyu")
+texture_pressed = ExtResource("34_cph7w")
 texture_hover = ExtResource("20_yyg4m")
+texture_disabled = ExtResource("36_1ass4")
 stretch_mode = 0
 
 [node name="Button9" type="TextureButton" parent="CenterContainer/GridContainer"]
