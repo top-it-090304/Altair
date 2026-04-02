@@ -76,24 +76,26 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 
-	if _invincibility_timer > 0.0:
-		_invincibility_timer -= delta
+	var real_delta: float = delta / Engine.time_scale
 
-	_update_timers(delta)
-	_apply_gravity(delta)
+	if _invincibility_timer > 0.0:
+		_invincibility_timer -= real_delta
+
+	_update_timers(real_delta)
+	_apply_gravity(real_delta)
 
 	if wall_mechanics_enabled:
 		_handle_wall_slide()
 
 	_handle_jump()
-	_handle_movement(delta)
+	_handle_movement(real_delta)
 	_update_animation()
 
 	move_and_slide()
 	_check_deadly_tiles()
 
 	if magnet_active:
-		_attract_fruits(delta)
+		_attract_fruits(real_delta)
 
 # ЩИТ
 
