@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://b5k0brvbclxbt" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options04.png" id="16_pdd02"]
 [ext_resource type="Texture2D" uid="uid://dmmgmy5dcsyb7" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options05.png" id="17_giv72"]
 [ext_resource type="Texture2D" uid="uid://b0axrnahq1817" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back05.png" id="17_xn2ct"]
-[ext_resource type="Texture2D" uid="uid://dkcilx52gue1g" path="res://Assets/Textures/Menu/logo_pixel.png" id="31_ixvsi"]
+[ext_resource type="Texture2D" uid="uid://qirtvg4ne1v2" path="res://Assets/Textures/Menu/logo_pixel.png" id="31_ixvsi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7ipb"]
 atlas = ExtResource("3_dva7d")
