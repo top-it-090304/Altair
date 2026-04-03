@@ -12,8 +12,8 @@ const LEVEL_PATHS: Array = [
 ]
 
 const LEVEL_NAMES: Array = [
-	"Level1", "Level2", "Level3", "Level4", "Level_n",
-	"LevelV", "Level7", "Level8"
+	"Level1", "Level2", "Level3", "Level4", "Level5",
+	"Level6", "Level7", "Level8"
 ]
 
 const GREEN_TEXTURES: Array = [

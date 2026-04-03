@@ -6,8 +6,8 @@ extends Node
 const SAVE_PATH = "user://save.cfg"
 
 const LEVEL_ORDER: Array = [
-	"Level1", "Level2", "Level3", "Level4", "Level_n",
-	"LevelV", "Level7", "Level8"
+	"Level1", "Level2", "Level3", "Level4", "Level5",
+	"Level6", "Level7", "Level8"
 ]
 
 var level_records: Dictionary = {}
@@ -37,10 +37,13 @@ func _ready() -> void:
 # ── ФРУКТЫ ───────────────────────────────────
 
 func submit_level_result(level_name: String, collected: int) -> void:
-	var old_record = level_records.get(level_name, 0)
+	var old_record = level_records.get(level_name, -1)
 	if collected > old_record:
 		level_records[level_name] = collected
 		_recalculate_total()
+		save_data()
+	elif not level_records.has(level_name):
+		level_records[level_name] = 0
 		save_data()
 
 func _recalculate_total() -> void:
@@ -192,7 +195,7 @@ func load_data() -> void:
 # ── ПРОГРЕСС УРОВНЕЙ ─────────────────────────
 
 func is_level_completed(level_name: String) -> bool:
-	return level_records.has(level_name) and level_records[level_name] > 0
+	return level_records.has(level_name)
 
 func is_level_unlocked(level_index: int) -> bool:
 	if level_index == 0:
