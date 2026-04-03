@@ -1,11 +1,11 @@
 extends Control
 
-const TEX_ON       := preload("res://Assets/Textures/Settings/on.png")
-const TEX_ON_LIGHT := preload("res://Assets/Textures/Settings/on_light.png")
-const TEX_ON_DARK  := preload("res://Assets/Textures/Settings/on_dark.png")
-const TEX_OFF      := preload("res://Assets/Textures/Settings/off.png")
-const TEX_OFF_LIGHT := preload("res://Assets/Textures/Settings/off_light.png")
-const TEX_OFF_DARK  := preload("res://Assets/Textures/Settings/off_dark.png")
+const TEX_ON       := preload("res://Assets/Buttons/on_off/on_normal.png")
+const TEX_ON_LIGHT := preload("res://Assets/Buttons/on_off/on_hover.png")
+const TEX_ON_DARK  := preload("res://Assets/Buttons/on_off/on_pressed.png")
+const TEX_OFF      := preload("res://Assets/Buttons/on_off/off_normal.png")
+const TEX_OFF_LIGHT := preload("res://Assets/Buttons/on_off/off_hover.png")
+const TEX_OFF_DARK  := preload("res://Assets/Buttons/on_off/off_pressed.png")
 
 @onready var btn: TextureButton = $TextureButton
 

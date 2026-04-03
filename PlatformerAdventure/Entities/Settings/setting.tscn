@@ -424,9 +424,10 @@ anchor_left = -0.375
 anchor_top = 2.929
 anchor_right = -0.375
 anchor_bottom = 2.929
-offset_top = -0.0240326
-offset_right = 176.0
-offset_bottom = 109.976
+offset_left = -11.0
+offset_top = -5.02397
+offset_right = 229.0
+offset_bottom = 122.976
 scale = Vector2(0.5, 0.5)
 stretch_mode = 0
 
