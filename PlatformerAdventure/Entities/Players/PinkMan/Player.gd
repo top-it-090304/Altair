@@ -43,10 +43,12 @@ signal died
 # NODES
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D  = $CollisionShape2D
-@onready var ray_up: RayCast2D    = $RayCastUp
-@onready var ray_down: RayCast2D  = $RayCastDown
-@onready var ray_left: RayCast2D  = $RayCastLeft
-@onready var ray_right: RayCast2D = $RayCastRight
+@onready var ray_up: RayCast2D        = $RayCastUp
+@onready var ray_down: RayCast2D      = $RayCastDown
+@onready var ray_left: RayCast2D      = $RayCastLeft
+@onready var ray_right: RayCast2D     = $RayCastRight
+@onready var ray_left_top: RayCast2D  = $RayCastLeftTop
+@onready var ray_right_top: RayCast2D = $RayCastRightTop
 @onready var sound_jump: AudioStreamPlayer2D = $SoundJump
 @onready var sound_hit: AudioStreamPlayer2D  = $SoundHit
 
@@ -243,8 +245,14 @@ func _handle_wall_slide() -> void:
 		_was_wall_sliding = false
 		return
 
-	var input_x := Input.get_axis("move_left", "move_right")
 	var wall_normal := get_wall_normal()
+	var wall_dir := -int(sign(wall_normal.x))  # -1 = left wall, +1 = right wall
+	if not is_valid_wall(wall_dir):
+		wall_cling_timer = 0.0
+		_was_wall_sliding = false
+		return
+
+	var input_x := Input.get_axis("move_left", "move_right")
 	if input_x == 0.0 or sign(input_x) == sign(wall_normal.x):
 		wall_cling_timer = 0.0
 		_was_wall_sliding = false
@@ -262,16 +270,35 @@ func _handle_wall_slide() -> void:
 		wall_cling_timer = wall_cling_time
 	_was_wall_sliding = true
 
-func _is_valid_wall_contact(wall_normal: Vector2) -> bool:
-	var ray := ray_left if wall_normal.x > 0.0 else ray_right
-	ray.force_raycast_update()
-	if not ray.is_colliding():
+# Returns true only when all three validation layers pass:
+#   Layer 1 — at least one slide collision on this side has a near-vertical normal (abs Y < 0.15)
+#   Layer 2 — BOTH the bottom and top raycasts on this side are colliding (rules out corners/steps)
+#   Layer 3 — player is airborne (wall mechanics never fire while grounded)
+# direction: -1 = left wall, +1 = right wall
+func is_valid_wall(direction: int) -> bool:
+	# Layer 3: airborne only
+	if is_on_floor():
 		return false
-	var contact_y := ray.get_collision_point().y
-	var center_y  := global_position.y
-	if contact_y > center_y + wall_min_contact_height:
+
+	# Layer 2: dual-raycast requirement — both bottom and top must hit
+	var ray_bot: RayCast2D = ray_left     if direction == -1 else ray_right
+	var ray_top: RayCast2D = ray_left_top if direction == -1 else ray_right_top
+	ray_bot.force_raycast_update()
+	ray_top.force_raycast_update()
+	if not ray_bot.is_colliding() or not ray_top.is_colliding():
 		return false
-	return true
+
+	# Layer 1: find a slide collision on this side with a near-vertical normal
+	for i in get_slide_collision_count():
+		var col    := get_slide_collision(i)
+		var normal := col.get_normal()
+		# Normal points away from wall; for left wall normal.x > 0, right wall normal.x < 0
+		if sign(normal.x) != -direction:
+			continue
+		if abs(normal.y) < 0.15:
+			return true
+
+	return false
 
 # JUMP
 
@@ -286,13 +313,15 @@ func _handle_jump() -> void:
 	if wall_mechanics_enabled and is_on_wall() and not is_on_floor():
 		if jump_buffer_timer > 0.0:
 			var wall_normal := get_wall_normal()
-			# Используем буферизованный инпут: игрок мог отпустить кнопку
-			# чуть раньше прыжка — буфер даёт лениентность в wall_jump_direction_buffer_time сек.
-			var effective_input_x: float = _last_input_x if _last_input_x_timer > 0.0 else 0.0
-			var pressing_toward_wall: bool = sign(effective_input_x) == -sign(wall_normal.x)
-			if pressing_toward_wall:
-				_do_wall_jump()
-				return
+			var wall_dir    := -int(sign(wall_normal.x))
+			if is_valid_wall(wall_dir):
+				# Используем буферизованный инпут: игрок мог отпустить кнопку
+				# чуть раньше прыжка — буфер даёт лениентность в wall_jump_direction_buffer_time сек.
+				var effective_input_x: float = _last_input_x if _last_input_x_timer > 0.0 else 0.0
+				var pressing_toward_wall: bool = sign(effective_input_x) == -sign(wall_normal.x)
+				if pressing_toward_wall:
+					_do_wall_jump()
+					return
 
 	if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
 		velocity.y = jump_velocity

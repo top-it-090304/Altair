@@ -342,11 +342,11 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_stfe1"]
-radius = 11.0
-height = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahb1e"]
+size = Vector2(20.5882, 26.4706)
 
 [node name="maskdude" type="CharacterBody2D" groups=["player"]]
+position = Vector2(17, 19)
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_a2kkq")
 speed = 350.0
@@ -357,17 +357,29 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u5ups")
-animation = &"walljump"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("CapsuleShape2D_stfe1")
+position = Vector2(0.294117, 2.05883)
+shape = SubResource("RectangleShape2D_ahb1e")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)
 target_position = Vector2(-19.3278, 0)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(18.4874, 0)
+
+[node name="RayCastLeftTop" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(-19.3278, 0)
+
+[node name="RayCastRightTop" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
 scale = Vector2(0.7, 0.7)
 target_position = Vector2(18.4874, 0)
 
