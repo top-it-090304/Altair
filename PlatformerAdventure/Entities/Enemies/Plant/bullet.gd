@@ -23,7 +23,7 @@ const MAX_LIFETIME: float = 5.0  # авто-удаление через 5 сек
 #  ИНИЦИАЛИЗАЦИЯ
 # ──────────────────────────────────────────────
 func _ready() -> void:
-	anim.play("fly")
+	anim.play("bullet")
 	body_entered.connect(_on_body_entered)
 	anim.animation_finished.connect(_on_animation_finished)
 

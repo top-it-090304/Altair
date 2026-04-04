@@ -29,7 +29,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v2rum")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 5.0
 }]
@@ -41,7 +41,6 @@ radius = 4.0
 texture_filter = 1
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_stxir")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_skoxs")

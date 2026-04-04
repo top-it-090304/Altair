@@ -252,8 +252,12 @@ func _handle_jump() -> void:
 
 	if wall_mechanics_enabled and is_on_wall() and not is_on_floor():
 		if jump_buffer_timer > 0.0:
-			_do_wall_jump()
-			return
+			var input_x := Input.get_axis("move_left", "move_right")
+			var wall_normal := get_wall_normal()
+			var pressing_toward_wall: bool = sign(input_x) == -sign(wall_normal.x)
+			if pressing_toward_wall:
+				_do_wall_jump()
+				return
 
 	if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
 		velocity.y = jump_velocity
