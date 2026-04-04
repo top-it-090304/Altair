@@ -63,7 +63,7 @@ var is_jumping: bool = false
 var is_wall_sliding: bool = false
 var facing_right: bool = true
 
-var _was_on_wall: bool = false
+var _was_wall_sliding: bool = false
 var _last_input_x: float = 0.0
 var _last_input_x_timer: float = 0.0
 
@@ -213,23 +213,17 @@ func _update_timers(delta: float) -> void:
 	if wall_jump_lock_timer > 0.0:
 		wall_jump_lock_timer -= delta
 
-	# Цепляние за стену: при первом касании стены запускаем cling timer
-	var on_wall_now: bool = is_on_wall() and not is_on_floor()
-	if on_wall_now and not _was_on_wall:
-		wall_cling_timer = wall_cling_time
-	elif not on_wall_now:
-		wall_cling_timer = 0.0
-	elif wall_cling_timer > 0.0:
+	if wall_cling_timer > 0.0:
 		wall_cling_timer -= delta
-	_was_on_wall = on_wall_now
 
 # GRAVITY
 
 func _apply_gravity(delta: float) -> void:
 	if is_on_floor():
 		return
-	# Цепляние за стену — удерживаем позицию пока работает cling timer
-	if wall_cling_timer > 0.0 and is_on_wall():
+	# Цепляние за стену — удерживаем позицию пока активен cling timer.
+	# Срабатывает только во время слайда, не при обычном прыжке у стены.
+	if is_wall_sliding and wall_cling_timer > 0.0:
 		velocity.y = 0.0
 		return
 	if is_wall_sliding:
@@ -242,13 +236,31 @@ func _apply_gravity(delta: float) -> void:
 
 func _handle_wall_slide() -> void:
 	is_wall_sliding = false
-	if not (is_on_wall() and not is_on_floor() and velocity.y > 0.0):
+
+	# Базовые условия: у стены и не на полу
+	if not is_on_wall() or is_on_floor():
+		wall_cling_timer = 0.0
+		_was_wall_sliding = false
 		return
+
 	var input_x := Input.get_axis("move_left", "move_right")
 	var wall_normal := get_wall_normal()
 	if input_x == 0.0 or sign(input_x) == sign(wall_normal.x):
+		wall_cling_timer = 0.0
+		_was_wall_sliding = false
 		return
+
+	# Входим в слайд только если падаем (velocity.y > 0).
+	# Продолжаем слайд если уже скользили — это покрывает cling hold,
+	# когда velocity.y = 0 из-за _apply_gravity, и не даёт осцилляции.
+	if not _was_wall_sliding and velocity.y <= 0.0:
+		return
+
 	is_wall_sliding = true
+	# Взводим cling timer только в первый кадр слайда
+	if not _was_wall_sliding:
+		wall_cling_timer = wall_cling_time
+	_was_wall_sliding = true
 
 func _is_valid_wall_contact(wall_normal: Vector2) -> bool:
 	var ray := ray_left if wall_normal.x > 0.0 else ray_right
