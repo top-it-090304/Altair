@@ -285,13 +285,14 @@ func _do_wall_jump() -> void:
 
 func _handle_movement(delta: float) -> void:
 	var input_x := Input.get_axis("move_left", "move_right")
+
+	# Во время wall jump lock — полностью игнорируем инпут, velocity.x не трогаем
 	if wall_jump_lock_timer > 0.0:
-		velocity.x = move_toward(velocity.x, 0.0, friction * 0.1 * delta)
 		return
+
 	if input_x != 0.0:
 		velocity.x = move_toward(velocity.x, input_x * speed, acceleration * delta)
-		if wall_jump_lock_timer <= 0.0:
-			facing_right = input_x > 0.0
+		facing_right = input_x > 0.0
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 
