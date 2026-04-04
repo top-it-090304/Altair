@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_cfib4"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="5_lp82p"]
 [ext_resource type="PackedScene" uid="uid://bljm38ot20br2" path="res://Entities/Level/UI/touch_controls.tscn" id="6_0widg"]
-[ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="6_xhpvw"]
 [ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="7_rvgpq"]
 [ext_resource type="PackedScene" uid="uid://dtnt0bcigkql1" path="res://Entities/Shop/bonus_hud.tscn" id="7_v1krg"]
 [ext_resource type="PackedScene" uid="uid://m8vymuv18nrh" path="res://Entities/Traps/Spike/TileSpikes.tscn" id="8_cfib4"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="8_n5eg6"]
+[ext_resource type="PackedScene" uid="uid://cuixn1nfqfiya" path="res://Entities/Players/MaskDude/MaskDude.tscn" id="11_cfib4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgei7"]
 texture = ExtResource("4_cfib4")
@@ -313,6 +313,7 @@ sources/0 = SubResource("TileSetAtlasSource_bgei7")
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ffm0y")
+metadata/_edit_vertical_guides_ = [346.0]
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -344,9 +345,6 @@ tile_map_data = PackedByteArray()
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="Player" parent="Entities" instance=ExtResource("6_xhpvw")]
-position = Vector2(585.333, 340.667)
-
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("7_rvgpq")]
 position = Vector2(616, 344)
 
@@ -356,5 +354,8 @@ position = Vector2(616, 344)
 position = Vector2(636, 142.667)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
+
+[node name="maskdude" parent="Entities" instance=ExtResource("11_cfib4")]
+position = Vector2(490, 356.667)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
