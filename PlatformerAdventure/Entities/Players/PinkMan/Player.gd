@@ -20,6 +20,8 @@ signal died
 @export var wall_jump_input_lock_time: float = 0.25
 @export var wall_slide_speed: float = 80.0
 @export var wall_min_contact_height: float = 8.0
+@export var wall_cling_time: float = 0.4
+@export var wall_jump_direction_buffer_time: float = 0.3
 
 @export_group("Double Jump")
 @export var double_jump_enabled: bool = true
@@ -55,10 +57,15 @@ var animation_speed_compensate: float = 1.0
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 var wall_jump_lock_timer: float = 0.0
+var wall_cling_timer: float = 0.0
 
 var is_jumping: bool = false
 var is_wall_sliding: bool = false
 var facing_right: bool = true
+
+var _was_on_wall: bool = false
+var _last_input_x: float = 0.0
+var _last_input_x_timer: float = 0.0
 
 var double_jump_available: bool = false
 var is_double_jumping: bool = false
@@ -206,10 +213,24 @@ func _update_timers(delta: float) -> void:
 	if wall_jump_lock_timer > 0.0:
 		wall_jump_lock_timer -= delta
 
+	# Цепляние за стену: при первом касании стены запускаем cling timer
+	var on_wall_now: bool = is_on_wall() and not is_on_floor()
+	if on_wall_now and not _was_on_wall:
+		wall_cling_timer = wall_cling_time
+	elif not on_wall_now:
+		wall_cling_timer = 0.0
+	elif wall_cling_timer > 0.0:
+		wall_cling_timer -= delta
+	_was_on_wall = on_wall_now
+
 # GRAVITY
 
 func _apply_gravity(delta: float) -> void:
 	if is_on_floor():
+		return
+	# Цепляние за стену — удерживаем позицию пока работает cling timer
+	if wall_cling_timer > 0.0 and is_on_wall():
+		velocity.y = 0.0
 		return
 	if is_wall_sliding:
 		velocity.y = min(velocity.y + gravity_fall * delta, wall_slide_speed)
@@ -252,9 +273,11 @@ func _handle_jump() -> void:
 
 	if wall_mechanics_enabled and is_on_wall() and not is_on_floor():
 		if jump_buffer_timer > 0.0:
-			var input_x := Input.get_axis("move_left", "move_right")
 			var wall_normal := get_wall_normal()
-			var pressing_toward_wall: bool = sign(input_x) == -sign(wall_normal.x)
+			# Используем буферизованный инпут: игрок мог отпустить кнопку
+			# чуть раньше прыжка — буфер даёт лениентность в wall_jump_direction_buffer_time сек.
+			var effective_input_x: float = _last_input_x if _last_input_x_timer > 0.0 else 0.0
+			var pressing_toward_wall: bool = sign(effective_input_x) == -sign(wall_normal.x)
 			if pressing_toward_wall:
 				_do_wall_jump()
 				return
@@ -289,6 +312,13 @@ func _do_wall_jump() -> void:
 
 func _handle_movement(delta: float) -> void:
 	var input_x := Input.get_axis("move_left", "move_right")
+
+	# Буфер последнего направления — для wall jump direction check
+	if input_x != 0.0:
+		_last_input_x = input_x
+		_last_input_x_timer = wall_jump_direction_buffer_time
+	elif _last_input_x_timer > 0.0:
+		_last_input_x_timer -= delta
 
 	# Во время wall jump lock — полностью игнорируем инпут, velocity.x не трогаем
 	if wall_jump_lock_timer > 0.0:
