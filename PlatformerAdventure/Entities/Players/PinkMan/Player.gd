@@ -318,6 +318,11 @@ func _do_wall_jump() -> void:
 	coyote_timer = 0.0
 	is_jumping = true
 	jump_buffer_timer = 0.0
+	# Сбрасываем cling-состояние немедленно, иначе в следующем кадре
+	# _apply_gravity увидит стale is_wall_sliding=true + wall_cling_timer>0
+	# и обнулит velocity.y, убив импульс прыжка.
+	wall_cling_timer = 0.0
+	_was_wall_sliding = false
 	sound_jump.play()
 
 # MOVEMENT
