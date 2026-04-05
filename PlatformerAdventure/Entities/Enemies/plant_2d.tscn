@@ -204,6 +204,7 @@ texture_filter = 1
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_q305o")
 bullet_scene = ExtResource("2_oatfv")
+shoot_frame = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0k6bt")
@@ -225,6 +226,6 @@ shape = SubResource("RectangleShape2D_stomp")
 [node name="ShootTimer" type="Timer" parent="."]
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-7.5, -5.83333)
+position = Vector2(-18.3333, -2.5)
 
 [connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]

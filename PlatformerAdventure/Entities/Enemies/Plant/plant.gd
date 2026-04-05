@@ -8,6 +8,7 @@ signal stomped
 @export var shoot_interval: float = 2.0          # интервал стрельбы — редактируется в инспекторе
 @export var bullet_scene: PackedScene            # перетащить Bullet.tscn в инспекторе
 @export var shoot_direction: Vector2 = Vector2(-1, 0)  # направление пули
+@export var shoot_frame: int = 0                 # кадр анимации attack, на котором спавнится пуля
 
 # ──────────────────────────────────────────────
 #  ССЫЛКИ НА ДОЧЕРНИЕ УЗЛЫ
@@ -35,6 +36,7 @@ func _ready() -> void:
 
 	anim.animation_finished.connect(_on_attack_complete)
 	anim.animation_looped.connect(_on_attack_complete)
+	anim.frame_changed.connect(_on_frame_changed)
 
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 	shoot_timer.start(shoot_interval)
@@ -52,13 +54,19 @@ func _on_shoot_timer_timeout() -> void:
 	anim.play("attack")
 
 # ──────────────────────────────────────────────
+#  СПАВН НА НУЖНОМ КАДРЕ АНИМАЦИИ
+# ──────────────────────────────────────────────
+func _on_frame_changed() -> void:
+	if _is_attacking and anim.animation == "attack" and anim.frame == shoot_frame:
+		_spawn_bullet()
+
+# ──────────────────────────────────────────────
 #  КОНЕЦ АНИМАЦИИ АТАКИ
 # ──────────────────────────────────────────────
 func _on_attack_complete() -> void:
 	if not _is_attacking or anim.animation != "attack":
 		return
 
-	_spawn_bullet()
 	_is_attacking = false
 	anim.play("idle")
 
@@ -85,9 +93,10 @@ func _on_stomp_area_body_entered(body: Node2D) -> void:
 		return
 	if not body.has_method("stomp_bounce"):
 		return
-	# body_entered срабатывает ПОСЛЕ move_and_slide, поэтому velocity.y уже обнулён.
-	# Читаем velocity_before_slide — скорость, сохранённую до физического шага.
-	if body.velocity_before_slide.y <= 0.0:
+	# Стомп засчитывается только если игрок входит сверху.
+	# Проверка по позиции надёжнее velocity — сигнал body_entered может
+	# прийти уже после того как move_and_slide обнулил velocity.y.
+	if body.global_position.y >= stomp_area.global_position.y:
 		return
 
 	_die(body)

@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="13_twmc3"]
 
 [node name="LevelConstructor" instance=ExtResource("1_lk5e1")]
-next_level_path = "uid://c8h6n6c2qavgu"
+next_level_path = "res://Levels/PinkMan_1-12Levels/Level5.tscn"
 
 [node name="BgTexture" parent="UI" index="0"]
 texture = ExtResource("2_3uolr")

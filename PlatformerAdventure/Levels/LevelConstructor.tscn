@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cq8f414k5s5bo"]
+[gd_scene load_steps=22 format=4 uid="uid://cq8f414k5s5bo"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_ffm0y"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_0widg"]
@@ -11,6 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://dtnt0bcigkql1" path="res://Entities/Shop/bonus_hud.tscn" id="7_v1krg"]
 [ext_resource type="PackedScene" uid="uid://m8vymuv18nrh" path="res://Entities/Traps/Spike/TileSpikes.tscn" id="8_cfib4"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="8_n5eg6"]
+[ext_resource type="PackedScene" uid="uid://brstsdqgjh4vs" path="res://Entities/Fruits/pineapple.tscn" id="11_slmic"]
+[ext_resource type="PackedScene" uid="uid://h8i67qnod2am" path="res://Entities/Fruits/strawberry.tscn" id="12_2acbb"]
+[ext_resource type="PackedScene" uid="uid://52x52oidtims" path="res://Entities/Fruits/kiwi.tscn" id="13_o00se"]
+[ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="14_6thqf"]
+[ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="15_ea4tc"]
+[ext_resource type="PackedScene" uid="uid://lxxadfoc1hv7" path="res://Entities/Fruits/orange.tscn" id="16_14uru"]
+[ext_resource type="PackedScene" uid="uid://idmtdn4k1ns6" path="res://Entities/Fruits/cherries.tscn" id="17_4a3pk"]
+[ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="18_gi0bt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgei7"]
 texture = ExtResource("4_cfib4")
@@ -354,6 +362,38 @@ position = Vector2(616, 344)
 position = Vector2(636, 142.667)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
+
+[node name="pineapple" parent="Entities/Fruits" instance=ExtResource("11_slmic")]
+visible = false
+position = Vector2(176, 21.3333)
+
+[node name="strawberry" parent="Entities/Fruits" instance=ExtResource("12_2acbb")]
+visible = false
+position = Vector2(197.333, 21.3333)
+
+[node name="kiwi" parent="Entities/Fruits" instance=ExtResource("13_o00se")]
+visible = false
+position = Vector2(218.667, 21.3333)
+
+[node name="banana" parent="Entities/Fruits" instance=ExtResource("14_6thqf")]
+visible = false
+position = Vector2(240, 21.3333)
+
+[node name="apple" parent="Entities/Fruits" instance=ExtResource("15_ea4tc")]
+visible = false
+position = Vector2(261.333, 21.3333)
+
+[node name="orange" parent="Entities/Fruits" instance=ExtResource("16_14uru")]
+visible = false
+position = Vector2(282.667, 21.3333)
+
+[node name="cherries" parent="Entities/Fruits" instance=ExtResource("17_4a3pk")]
+visible = false
+position = Vector2(304, 21.3333)
+
+[node name="melon" parent="Entities/Fruits" instance=ExtResource("18_gi0bt")]
+visible = false
+position = Vector2(325.333, 21.3333)
 
 [node name="Player" parent="Entities" instance=ExtResource("6_xhpvw")]
 position = Vector2(523.333, 353.333)
