@@ -409,7 +409,7 @@ position = Vector2(80, 192)
 rotation = 0.0
 
 [node name="Node2D" parent="Entities/Traps" instance=ExtResource("13_yybob")]
-position = Vector2(656.667, 268.667)
+position = Vector2(666, 268.667)
 air_height = 100.0
 
 [node name="Flag" parent="Entities" instance=ExtResource("14_ia3os")]

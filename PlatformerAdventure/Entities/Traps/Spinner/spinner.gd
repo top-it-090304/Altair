@@ -19,8 +19,13 @@ func _ready() -> void:
 	animated_sprite.play("on")
 
 func _physics_process(delta: float) -> void:
+	# Компенсируем time_scale: гравитация игрока работает в реальном времени,
+	# поэтому и спиннер должен вращаться в реальном времени — иначе в slow-motion
+	# его толчок слишком слаб и гравитация его перекрывает.
+	var real_delta: float = delta / Engine.time_scale
+
 	if _is_paused:
-		_pause_timer -= delta
+		_pause_timer -= real_delta
 		if _pause_timer <= 0.0:
 			_is_paused = false
 			_rotated = 0.0
@@ -28,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var speed = rotation_speed if direction == Direction.CLOCKWISE else -rotation_speed
-	var step = speed * delta
+	var step = speed * real_delta
 	rotation_degrees += step
 	_rotated += abs(step)
 
