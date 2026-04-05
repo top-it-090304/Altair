@@ -17,10 +17,10 @@ func _ready() -> void:
 
 func _init_chars() -> void:
 	var configs = [
-		{ "node": $Node2D/mask_dude, "speed": 175.0, "jump_interval": 3.2, "jump_power": -380.0 },
-		{ "node": $Node2D/pepe,      "speed": 215.0, "jump_interval": 2.6, "jump_power": -350.0 },
-		{ "node": $Node2D/pink,      "speed": 160.0, "jump_interval": 4.0, "jump_power": -410.0 },
-		{ "node": $Node2D/vr_guy,    "speed": 200.0, "jump_interval": 3.7, "jump_power": -365.0 },
+		{ "node": $Node2D/mask_dude, "speed": 210.0, "jump_interval": 3.2, "jump_power": -380.0, "left_bound": 230.0, "right_bound": 1080.0 },
+		{ "node": $Node2D/pepe,      "speed": 215.0, "jump_interval": 1.6, "jump_power": -450.0, "left_bound": 230.0, "right_bound": 1080.0 },
+		{ "node": $Node2D/pink,      "speed": 190.0, "jump_interval": 4.5, "jump_power": -300.0, "left_bound": 230.0, "right_bound": 1080.0 },
+		{ "node": $Node2D/vr_guy,    "speed": 250.0, "jump_interval": 4.0, "jump_power": -365.0, "left_bound": 230.0, "right_bound": 1080.0 },
 	]
 	for cfg in configs:
 		var sprite: AnimatedSprite2D = cfg.node
@@ -29,6 +29,8 @@ func _init_chars() -> void:
 			"sprite":        sprite,
 			"speed":         cfg.speed,
 			"dir":           dir,
+			"left_bound":    cfg.left_bound,
+			"right_bound":   cfg.right_bound,
 			"ground_y":      sprite.position.y,
 			"vel_y":         0.0,
 			"airborne":      false,
@@ -47,10 +49,10 @@ func _process(delta: float) -> void:
 		sprite.position.x += c.speed * c.dir * delta
 
 		# разворот у края
-		if c.dir > 0.0 and sprite.position.x >= SCREEN_RIGHT:
+		if sprite.position.x > c.right_bound:
 			c.dir = -1.0
 			sprite.flip_h = true
-		elif c.dir < 0.0 and sprite.position.x <= SCREEN_LEFT:
+		elif sprite.position.x < c.left_bound:
 			c.dir = 1.0
 			sprite.flip_h = false
 
