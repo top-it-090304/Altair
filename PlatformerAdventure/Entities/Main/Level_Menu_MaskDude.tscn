@@ -1,6 +1,6 @@
-[gd_scene load_steps=59 format=4 uid="uid://dxqtbmndsvd4x"]
+[gd_scene load_steps=62 format=4 uid="uid://dxqtbmndsvd4x"]
 
-[ext_resource type="Script" path="res://Entities/Main/level_menu_maskdude.gd" id="1_ppbo6"]
+[ext_resource type="Script" uid="uid://dm1gfn45781mk" path="res://Entities/Main/level_menu_maskdude.gd" id="1_ppbo6"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_sjjoc"]
 [ext_resource type="Texture2D" uid="uid://dtygh7e3bbmky" path="res://Assets/Textures/Background/Brown.png" id="3_l4j44"]
 [ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_udsft"]
@@ -34,14 +34,17 @@
 [ext_resource type="Texture2D" uid="uid://dl7awgqlu8vml" path="res://Assets/Textures/Menu/Levels/10.png" id="40_hv0bj"]
 [ext_resource type="Texture2D" uid="uid://c0x8udni6pctt" path="res://Assets/Textures/Menu/Levels/10.10.png" id="41_1p1ms"]
 [ext_resource type="Texture2D" uid="uid://ddpk1gfn45781" path="res://Assets/Textures/Menu/Levels/10_.png" id="42_71vq3"]
+[ext_resource type="Texture2D" uid="uid://bjlg8k71tfaee" path="res://Assets/Textures/Menu/Buttons/Back_pressed.png" id="42_d37hy"]
 [ext_resource type="Texture2D" uid="uid://ck8y10rxtc2wp" path="res://Assets/Textures/Menu/Levels/11.png" id="43_t2bjw"]
 [ext_resource type="Texture2D" uid="uid://b31k1ytwqi4h5" path="res://Assets/Textures/Menu/Levels/11.11.png" id="44_b3stt"]
+[ext_resource type="Texture2D" uid="uid://b3ck33r0kde2a" path="res://Assets/Textures/Menu/Buttons/next_normal.png" id="45_d37hy"]
 [ext_resource type="Texture2D" uid="uid://c7p2qu1x6fggd" path="res://Assets/Textures/Menu/Levels/11_.png" id="45_nj4xh"]
 [ext_resource type="Texture2D" uid="uid://dyyd7a5h5otg1" path="res://Assets/Textures/Menu/Levels/12.png" id="46_2weea"]
+[ext_resource type="Texture2D" uid="uid://cfc3ydk6pdxml" path="res://Assets/Textures/Menu/Buttons/next_pressed.png" id="46_kadik"]
 [ext_resource type="Texture2D" uid="uid://b8pfhdy1vvchd" path="res://Assets/Textures/Menu/Levels/12.12.png" id="47_t5nv7"]
+[ext_resource type="Texture2D" uid="uid://c0whyj0t7wajv" path="res://Assets/Textures/Menu/Buttons/next_hover.png" id="47_um63m"]
 [ext_resource type="Texture2D" uid="uid://cdn4dmkqv85p6" path="res://Assets/Textures/Menu/Levels/12_.png" id="48_20lft"]
 [ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="49_wtdbf"]
-[ext_resource type="Texture2D" uid="uid://cwfj1w3c77gq1" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="50_sp7k0"]
 [ext_resource type="Texture2D" uid="uid://o05nvamef1vh" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="51_65yeq"]
 [ext_resource type="Texture2D" uid="uid://ch5vy6hg72m40" path="res://Assets/Textures/Main Characters/Mask Dude/Idle (32x32).png" id="52_sjjoc"]
 
@@ -401,8 +404,8 @@ tile_set = SubResource("TileSet_k0xnw")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
-offset_right = 1282.0
-offset_bottom = 724.0
+offset_right = 1280.0
+offset_bottom = 720.0
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer"]
 layout_mode = 2
@@ -532,12 +535,12 @@ stretch_mode = 0
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 88.0
-offset_right = 200.0
-offset_bottom = 168.0
+offset_left = 128.0
+offset_top = 96.0
+offset_right = 208.0
+offset_bottom = 176.0
 texture_normal = ExtResource("49_wtdbf")
-texture_pressed = ExtResource("50_sp7k0")
+texture_pressed = ExtResource("42_d37hy")
 texture_hover = ExtResource("51_65yeq")
 stretch_mode = 0
 
@@ -546,6 +549,17 @@ position = Vector2(140, 465)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_qp66j")
 autoplay = "default"
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1080.0
+offset_top = 96.0
+offset_right = 1095.0
+offset_bottom = 112.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("45_d37hy")
+texture_pressed = ExtResource("46_kadik")
+texture_hover = ExtResource("47_um63m")
 
 [connection signal="pressed" from="CenterContainer/GridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
