@@ -48,6 +48,9 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if _hit:
 		return
+	# Пуля не реагирует на тела врагов (StaticBody2D растения и т.п.)
+	if body.is_in_group("enemies"):
+		return
 	_hit = true
 
 	# Наносим урон игроку

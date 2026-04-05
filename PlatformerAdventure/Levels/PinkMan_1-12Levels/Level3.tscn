@@ -118,52 +118,52 @@ autoplay = "default"
 [node name="Flag" parent="Entities" index="2"]
 position = Vector2(266, 384)
 
-[node name="apple" parent="Entities/Fruits" index="0" instance=ExtResource("9_14oby")]
+[node name="apple2" parent="Entities/Fruits" index="0" instance=ExtResource("9_14oby")]
 position = Vector2(549.333, 218.667)
 
-[node name="apple2" parent="Entities/Fruits" index="1" instance=ExtResource("9_14oby")]
+[node name="apple3" parent="Entities/Fruits" index="1" instance=ExtResource("9_14oby")]
 position = Vector2(576, 218.667)
 
-[node name="pineapple" parent="Entities/Fruits" index="2" instance=ExtResource("8_i7f3o")]
+[node name="pineapple2" parent="Entities/Fruits" index="2" instance=ExtResource("8_i7f3o")]
 position = Vector2(358, 128)
 
-[node name="banana" parent="Entities/Fruits" index="3" instance=ExtResource("7_e6tii")]
+[node name="banana2" parent="Entities/Fruits" index="3" instance=ExtResource("7_e6tii")]
 position = Vector2(342, 208)
 
-[node name="apple3" parent="Entities/Fruits" index="4" instance=ExtResource("9_14oby")]
+[node name="apple4" parent="Entities/Fruits" index="4" instance=ExtResource("9_14oby")]
 position = Vector2(480.667, 206)
 
-[node name="orange" parent="Entities/Fruits" index="5" instance=ExtResource("10_lup5o")]
+[node name="orange2" parent="Entities/Fruits" index="5" instance=ExtResource("10_lup5o")]
 position = Vector2(330, 278)
 
-[node name="banana2" parent="Entities/Fruits" index="6" instance=ExtResource("7_e6tii")]
+[node name="banana3" parent="Entities/Fruits" index="6" instance=ExtResource("7_e6tii")]
 position = Vector2(480.667, 229.333)
 
-[node name="pineapple2" parent="Entities/Fruits" index="7" instance=ExtResource("8_i7f3o")]
+[node name="pineapple3" parent="Entities/Fruits" index="7" instance=ExtResource("8_i7f3o")]
 position = Vector2(274, 136.667)
 
-[node name="orange2" parent="Entities/Fruits" index="8" instance=ExtResource("10_lup5o")]
+[node name="orange3" parent="Entities/Fruits" index="8" instance=ExtResource("10_lup5o")]
 position = Vector2(216, 106)
 
-[node name="orange3" parent="Entities/Fruits" index="9" instance=ExtResource("10_lup5o")]
+[node name="orange4" parent="Entities/Fruits" index="9" instance=ExtResource("10_lup5o")]
 position = Vector2(181.333, 106)
 
-[node name="kiwi" parent="Entities/Fruits" index="10" instance=ExtResource("11_r14sr")]
+[node name="kiwi2" parent="Entities/Fruits" index="10" instance=ExtResource("11_r14sr")]
 position = Vector2(102, 208)
 
-[node name="kiwi2" parent="Entities/Fruits" index="11" instance=ExtResource("11_r14sr")]
+[node name="kiwi3" parent="Entities/Fruits" index="11" instance=ExtResource("11_r14sr")]
 position = Vector2(102, 258)
 
-[node name="kiwi3" parent="Entities/Fruits" index="12" instance=ExtResource("11_r14sr")]
+[node name="kiwi4" parent="Entities/Fruits" index="12" instance=ExtResource("11_r14sr")]
 position = Vector2(102, 311.333)
 
-[node name="apple4" parent="Entities/Fruits" index="13" instance=ExtResource("9_14oby")]
+[node name="apple5" parent="Entities/Fruits" index="13" instance=ExtResource("9_14oby")]
 position = Vector2(181.333, 392.667)
 
 [node name="Flag" parent="Entities/Fruits" index="14" instance=ExtResource("13_1qpor")]
 position = Vector2(266, 384)
 
-[node name="apple5" parent="Entities/Fruits" index="15" instance=ExtResource("9_14oby")]
+[node name="apple6" parent="Entities/Fruits" index="15" instance=ExtResource("9_14oby")]
 position = Vector2(216, 392.667)
 
 [node name="Player" parent="Entities" index="4"]

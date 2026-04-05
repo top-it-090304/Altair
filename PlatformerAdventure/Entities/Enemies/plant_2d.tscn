@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bumyw757kma2e"]
+[gd_scene load_steps=33 format=3 uid="uid://bumyw757kma2e"]
 
 [ext_resource type="Script" uid="uid://btr4je7c6jb1h" path="res://Entities/Enemies/Plant/plant.gd" id="1_q305o"]
 [ext_resource type="Texture2D" uid="uid://ottlkwsr7ywl" path="res://Assets/Textures/Enemies/Plant/Attack (44x42).png" id="1_qmmfp"]
@@ -195,21 +195,37 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_st63o"]
 size = Vector2(29, 38)
 
-[node name="Plant2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stomp"]
+size = Vector2(26, 8)
+
+[node name="Plant2D" type="Node2D" groups=["enemies"]]
+z_index = 1
 texture_filter = 1
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_q305o")
 bullet_scene = ExtResource("2_oatfv")
+shoot_frame = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0k6bt")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(4.5, 2)
 shape = SubResource("RectangleShape2D_st63o")
+
+[node name="StompArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
+position = Vector2(4.16667, -15)
+shape = SubResource("RectangleShape2D_stomp")
 
 [node name="ShootTimer" type="Timer" parent="."]
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-7.5, -5.83333)
+position = Vector2(-18.3333, -2.5)
+
+[connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]

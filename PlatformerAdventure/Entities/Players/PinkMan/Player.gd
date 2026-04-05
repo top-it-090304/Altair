@@ -21,6 +21,7 @@ signal died
 @export var wall_slide_speed: float = 80.0
 @export var wall_min_contact_height: float = 8.0
 @export var wall_cling_time: float = 0.4
+@export var wall_cling_grace_time: float = 0.3
 @export var wall_jump_direction_buffer_time: float = 0.3
 
 @export_group("Double Jump")
@@ -60,6 +61,7 @@ var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 var wall_jump_lock_timer: float = 0.0
 var wall_cling_timer: float = 0.0
+var wall_grace_timer: float = 0.0
 
 var is_jumping: bool = false
 var is_wall_sliding: bool = false
@@ -78,6 +80,32 @@ var magnet_active: bool = false
 var _shield_visual: Node2D = null
 
 var _invincibility_timer: float = 0.0
+
+# INIT
+
+func _ready() -> void:
+	# Подключаемся к сигналам всех врагов, которые уже есть на сцене.
+	# call_deferred гарантирует, что все _ready() на сцене уже отработали.
+	call_deferred("_connect_enemy_signals")
+
+func _connect_enemy_signals() -> void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if enemy.has_signal("stomped") and not enemy.stomped.is_connected(_on_enemy_stomped):
+			enemy.stomped.connect(_on_enemy_stomped)
+
+func _on_enemy_stomped() -> void:
+	# Сигнал stomped не несёт ссылки на игрока — bounce вызывается напрямую из plant._die(),
+	# здесь обработчик оставлен для внешних подписчиков (UI, счётчик убийств и т.п.).
+	pass
+
+# STOMP BOUNCE
+
+# Скорость ДО move_and_slide() — нужна врагам для проверки стомпа,
+# потому что body_entered срабатывает уже после того, как move_and_slide обнулил velocity.y
+var velocity_before_slide: Vector2 = Vector2.ZERO
+
+func stomp_bounce() -> void:
+	velocity.y = -350.0
 
 # PHYSICS
 
@@ -100,6 +128,7 @@ func _physics_process(delta: float) -> void:
 	_handle_movement(real_delta)
 	_update_animation()
 
+	velocity_before_slide = velocity
 	move_and_slide()
 	_check_deadly_tiles()
 
@@ -218,6 +247,9 @@ func _update_timers(delta: float) -> void:
 	if wall_cling_timer > 0.0:
 		wall_cling_timer -= delta
 
+	if wall_grace_timer > 0.0:
+		wall_grace_timer -= delta
+
 # GRAVITY
 
 func _apply_gravity(delta: float) -> void:
@@ -242,6 +274,7 @@ func _handle_wall_slide() -> void:
 	# Базовые условия: у стены и не на полу
 	if not is_on_wall() or is_on_floor():
 		wall_cling_timer = 0.0
+		wall_grace_timer = 0.0
 		_was_wall_sliding = false
 		return
 
@@ -249,12 +282,21 @@ func _handle_wall_slide() -> void:
 	var wall_dir := -int(sign(wall_normal.x))  # -1 = left wall, +1 = right wall
 	if not is_valid_wall(wall_dir):
 		wall_cling_timer = 0.0
+		wall_grace_timer = 0.0
 		_was_wall_sliding = false
 		return
 
 	var input_x := Input.get_axis("move_left", "move_right")
-	if input_x == 0.0 or sign(input_x) == sign(wall_normal.x):
-		wall_cling_timer = 0.0
+	var pressing_toward_wall: bool = input_x != 0.0 and sign(input_x) != sign(wall_normal.x)
+
+	if not pressing_toward_wall:
+		# Игрок отпустил кнопку или жмёт от стены.
+		# Если до этого скользили — даём grace period: is_wall_sliding остаётся true,
+		# игрок может успеть нажать прыжок от стены.
+		if _was_wall_sliding and wall_grace_timer > 0.0:
+			is_wall_sliding = true
+			return
+		# Grace period истёк или слайда не было — сбрасываем полностью.
 		_was_wall_sliding = false
 		return
 
@@ -268,6 +310,9 @@ func _handle_wall_slide() -> void:
 	# Взводим cling timer только в первый кадр слайда
 	if not _was_wall_sliding:
 		wall_cling_timer = wall_cling_time
+	# Пока жмём к стене — держим grace timer заряженным.
+	# Начнёт убывать только когда игрок отпустит кнопку.
+	wall_grace_timer = wall_cling_grace_time
 	_was_wall_sliding = true
 
 # Returns true only when all three validation layers pass:
@@ -351,6 +396,7 @@ func _do_wall_jump() -> void:
 	# _apply_gravity увидит стale is_wall_sliding=true + wall_cling_timer>0
 	# и обнулит velocity.y, убив импульс прыжка.
 	wall_cling_timer = 0.0
+	wall_grace_timer = 0.0
 	_was_wall_sliding = false
 	sound_jump.play()
 

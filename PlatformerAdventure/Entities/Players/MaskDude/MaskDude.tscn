@@ -343,9 +343,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahb1e"]
-size = Vector2(20.5882, 26.4706)
+size = Vector2(19.4118, 26.4706)
 
-[node name="maskdude" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(17, 19)
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_a2kkq")

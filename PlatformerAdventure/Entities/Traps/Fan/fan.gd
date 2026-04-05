@@ -36,7 +36,14 @@ func _update_air_height() -> void:
 	collision_shape.position.y = -(air_height / 2.0)
 
 func _physics_process(delta: float) -> void:
-	cycle_timer -= delta
+	# При slow-mo Level.gd умножает player.gravity_fall на c = 1/time_scale,
+	# и игрок применяет её через real_delta = delta/ts.
+	# Итого гравитация за кадр = gravity_fall * c * real_delta = gravity_fall * delta / ts^2.
+	# Фан должен масштабироваться так же — иначе gravity_fall(×c) всегда побеждает lift_force.
+	var ts: float = maxf(Engine.time_scale, 0.001)
+	var real_delta: float = delta / ts
+
+	cycle_timer -= real_delta
 	if cycle_timer <= 0.0:
 		is_on = !is_on
 		cycle_timer = time_on if is_on else time_off
@@ -47,8 +54,8 @@ func _physics_process(delta: float) -> void:
 
 	for player in players_in_zone:
 		if is_instance_valid(player) and not player.is_dead:
-			player.velocity.y -= lift_force * delta
-			player.velocity.y = max(player.velocity.y, -max_lift_speed)
+			player.velocity.y -= lift_force * real_delta / ts
+			player.velocity.y = max(player.velocity.y, -max_lift_speed / ts)
 
 func _apply_state() -> void:
 	if is_on:

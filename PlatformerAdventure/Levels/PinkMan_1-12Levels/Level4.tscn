@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="13_twmc3"]
 
 [node name="LevelConstructor" instance=ExtResource("1_lk5e1")]
-next_level_path = "uid://c8h6n6c2qavgu"
+next_level_path = "res://Levels/PinkMan_1-12Levels/Level5.tscn"
 
 [node name="BgTexture" parent="UI" index="0"]
 texture = ExtResource("2_3uolr")
@@ -79,10 +79,10 @@ position = Vector2(117.333, 384)
 [node name="Fruits" parent="Entities" index="3"]
 position = Vector2(133.333, 250.667)
 
-[node name="banana" parent="Entities/Fruits" index="0" instance=ExtResource("8_bygee")]
+[node name="banana2" parent="Entities/Fruits" index="0" instance=ExtResource("8_bygee")]
 position = Vector2(416.667, 52.6667)
 
-[node name="banana2" parent="Entities/Fruits" index="1" instance=ExtResource("8_bygee")]
+[node name="banana3" parent="Entities/Fruits" index="1" instance=ExtResource("8_bygee")]
 position = Vector2(208, 138.667)
 
 [node name="banana4" parent="Entities/Fruits" index="2" instance=ExtResource("8_bygee")]
@@ -94,31 +94,31 @@ position = Vector2(378.667, -122.667)
 [node name="banana6" parent="Entities/Fruits" index="4" instance=ExtResource("8_bygee")]
 position = Vector2(432, -122.667)
 
-[node name="banana3" parent="Entities/Fruits" index="5" instance=ExtResource("8_bygee")]
+[node name="banana7" parent="Entities/Fruits" index="5" instance=ExtResource("8_bygee")]
 position = Vector2(80, 138.667)
 
-[node name="cherries" parent="Entities/Fruits" index="6" instance=ExtResource("9_0jjkx")]
+[node name="cherries2" parent="Entities/Fruits" index="6" instance=ExtResource("9_0jjkx")]
 position = Vector2(205.333, -69.3333)
 
-[node name="apple" parent="Entities/Fruits" index="7" instance=ExtResource("13_twmc3")]
+[node name="apple2" parent="Entities/Fruits" index="7" instance=ExtResource("13_twmc3")]
 position = Vector2(624, 117.333)
 
-[node name="apple2" parent="Entities/Fruits" index="8" instance=ExtResource("13_twmc3")]
+[node name="apple3" parent="Entities/Fruits" index="8" instance=ExtResource("13_twmc3")]
 position = Vector2(576, 117.333)
 
-[node name="apple3" parent="Entities/Fruits" index="9" instance=ExtResource("13_twmc3")]
+[node name="apple4" parent="Entities/Fruits" index="9" instance=ExtResource("13_twmc3")]
 position = Vector2(600.667, 106)
 
-[node name="apple4" parent="Entities/Fruits" index="10" instance=ExtResource("13_twmc3")]
+[node name="apple5" parent="Entities/Fruits" index="10" instance=ExtResource("13_twmc3")]
 position = Vector2(377.333, 138.667)
 
-[node name="apple5" parent="Entities/Fruits" index="11" instance=ExtResource("13_twmc3")]
+[node name="apple6" parent="Entities/Fruits" index="11" instance=ExtResource("13_twmc3")]
 position = Vector2(461.333, 138.667)
 
-[node name="cherries2" parent="Entities/Fruits" index="12" instance=ExtResource("9_0jjkx")]
+[node name="cherries3" parent="Entities/Fruits" index="12" instance=ExtResource("9_0jjkx")]
 position = Vector2(283.333, -118)
 
-[node name="cherries3" parent="Entities/Fruits" index="13" instance=ExtResource("9_0jjkx")]
+[node name="cherries4" parent="Entities/Fruits" index="13" instance=ExtResource("9_0jjkx")]
 position = Vector2(122.667, -118)
 
 [node name="Player" parent="Entities" index="4"]
