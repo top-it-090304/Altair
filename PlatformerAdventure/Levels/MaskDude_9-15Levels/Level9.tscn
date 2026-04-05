@@ -374,5 +374,7 @@ position = Vector2(90.6667, 384)
 
 [node name="maskdude" parent="Entities" instance=ExtResource("11_o6hxu")]
 position = Vector2(580.667, 389.333)
+wall_cling_time = 1.0
+wall_jump_direction_buffer_time = 0.15
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]

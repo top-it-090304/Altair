@@ -21,6 +21,7 @@ signal died
 @export var wall_slide_speed: float = 80.0
 @export var wall_min_contact_height: float = 8.0
 @export var wall_cling_time: float = 0.4
+@export var wall_cling_grace_time: float = 0.3
 @export var wall_jump_direction_buffer_time: float = 0.3
 
 @export_group("Double Jump")
@@ -60,6 +61,7 @@ var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 var wall_jump_lock_timer: float = 0.0
 var wall_cling_timer: float = 0.0
+var wall_grace_timer: float = 0.0
 
 var is_jumping: bool = false
 var is_wall_sliding: bool = false
@@ -245,6 +247,9 @@ func _update_timers(delta: float) -> void:
 	if wall_cling_timer > 0.0:
 		wall_cling_timer -= delta
 
+	if wall_grace_timer > 0.0:
+		wall_grace_timer -= delta
+
 # GRAVITY
 
 func _apply_gravity(delta: float) -> void:
@@ -269,6 +274,7 @@ func _handle_wall_slide() -> void:
 	# Базовые условия: у стены и не на полу
 	if not is_on_wall() or is_on_floor():
 		wall_cling_timer = 0.0
+		wall_grace_timer = 0.0
 		_was_wall_sliding = false
 		return
 
@@ -276,6 +282,7 @@ func _handle_wall_slide() -> void:
 	var wall_dir := -int(sign(wall_normal.x))  # -1 = left wall, +1 = right wall
 	if not is_valid_wall(wall_dir):
 		wall_cling_timer = 0.0
+		wall_grace_timer = 0.0
 		_was_wall_sliding = false
 		return
 
@@ -284,9 +291,9 @@ func _handle_wall_slide() -> void:
 
 	if not pressing_toward_wall:
 		# Игрок отпустил кнопку или жмёт от стены.
-		# Если до этого скользили — даём 300 мс grace period:
-		# is_wall_sliding остаётся true, игрок может успеть нажать прыжок.
-		if _was_wall_sliding and wall_cling_timer > 0.0:
+		# Если до этого скользили — даём grace period: is_wall_sliding остаётся true,
+		# игрок может успеть нажать прыжок от стены.
+		if _was_wall_sliding and wall_grace_timer > 0.0:
 			is_wall_sliding = true
 			return
 		# Grace period истёк или слайда не было — сбрасываем полностью.
@@ -303,9 +310,9 @@ func _handle_wall_slide() -> void:
 	# Взводим cling timer только в первый кадр слайда
 	if not _was_wall_sliding:
 		wall_cling_timer = wall_cling_time
-	# Пока жмём к стене — держим таймер заряженным (grace period начнётся при отпускании)
-	else:
-		wall_cling_timer = 0.3
+	# Пока жмём к стене — держим grace timer заряженным.
+	# Начнёт убывать только когда игрок отпустит кнопку.
+	wall_grace_timer = wall_cling_grace_time
 	_was_wall_sliding = true
 
 # Returns true only when all three validation layers pass:
@@ -389,6 +396,7 @@ func _do_wall_jump() -> void:
 	# _apply_gravity увидит стale is_wall_sliding=true + wall_cling_timer>0
 	# и обнулит velocity.y, убив импульс прыжка.
 	wall_cling_timer = 0.0
+	wall_grace_timer = 0.0
 	_was_wall_sliding = false
 	sound_jump.play()
 
