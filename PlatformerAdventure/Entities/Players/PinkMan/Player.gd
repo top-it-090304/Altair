@@ -280,8 +280,16 @@ func _handle_wall_slide() -> void:
 		return
 
 	var input_x := Input.get_axis("move_left", "move_right")
-	if input_x == 0.0 or sign(input_x) == sign(wall_normal.x):
-		wall_cling_timer = 0.0
+	var pressing_toward_wall: bool = input_x != 0.0 and sign(input_x) != sign(wall_normal.x)
+
+	if not pressing_toward_wall:
+		# Игрок отпустил кнопку или жмёт от стены.
+		# Если до этого скользили — даём 300 мс grace period:
+		# is_wall_sliding остаётся true, игрок может успеть нажать прыжок.
+		if _was_wall_sliding and wall_cling_timer > 0.0:
+			is_wall_sliding = true
+			return
+		# Grace period истёк или слайда не было — сбрасываем полностью.
 		_was_wall_sliding = false
 		return
 
@@ -295,6 +303,9 @@ func _handle_wall_slide() -> void:
 	# Взводим cling timer только в первый кадр слайда
 	if not _was_wall_sliding:
 		wall_cling_timer = wall_cling_time
+	# Пока жмём к стене — держим таймер заряженным (grace period начнётся при отпускании)
+	else:
+		wall_cling_timer = 0.3
 	_was_wall_sliding = true
 
 # Returns true only when all three validation layers pass:
