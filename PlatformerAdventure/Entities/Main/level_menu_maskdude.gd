@@ -95,11 +95,11 @@ func _refresh_buttons() -> void:
 func _on_level_pressed(index: int) -> void:
 	var path = LEVEL_PATHS[index]
 	if ResourceLoader.exists(path):
-		get_tree().change_scene_to_file(path)
+		SceneManager.go_to(path)
 
 # Кнопка «Назад»
 func _on_texture_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Entities/Main/Levels_Menu.tscn")
+	SceneManager.go_to("res://Entities/Main/Levels_Menu.tscn")
 
 # Сигналы из Level_Menu_MaskDude.tscn (Button – Button7)
 func _on_button_pressed() -> void:

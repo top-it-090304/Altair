@@ -90,11 +90,11 @@ func _refresh_buttons() -> void:
 			btn.disabled = false
 
 func _on_level_pressed(index: int) -> void:
-	get_tree().change_scene_to_file(LEVEL_PATHS[index])
+	SceneManager.go_to(LEVEL_PATHS[index])
 
 # Кнопка «Назад»
 func _on_texture_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Entities/Main/MainMenu.tscn")
+	SceneManager.go_to("res://Entities/Main/MainMenu.tscn")
 
 # Сигналы из Levels_Menu.tscn (Button – Button7)
 func _on_button_pressed() -> void:
@@ -120,4 +120,4 @@ func _on_button_7_pressed() -> void:
 
 
 func _on_texture_button_2_pressed() -> void:
-	get_tree().change_scene_to_file("res://Entities/Main/Level_Menu_MaskDude.tscn")
+	SceneManager.go_to("res://Entities/Main/Level_Menu_MaskDude.tscn")

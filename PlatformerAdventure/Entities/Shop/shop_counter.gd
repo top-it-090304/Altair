@@ -24,4 +24,4 @@ func _update_count(count: int) -> void:
 	tens_sprite.frame = tens
 	ones_sprite.frame = ones
 func _on_texture_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Entities/Main/MainMenu.tscn")
+	SceneManager.go_to("res://Entities/Main/MainMenu.tscn")
