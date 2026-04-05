@@ -8,6 +8,7 @@ signal stomped
 @export var shoot_interval: float = 2.0          # интервал стрельбы — редактируется в инспекторе
 @export var bullet_scene: PackedScene            # перетащить Bullet.tscn в инспекторе
 @export var shoot_direction: Vector2 = Vector2(-1, 0)  # направление пули
+@export var shoot_frame: int = 0                 # кадр анимации attack, на котором спавнится пуля
 
 # ──────────────────────────────────────────────
 #  ССЫЛКИ НА ДОЧЕРНИЕ УЗЛЫ
@@ -35,6 +36,7 @@ func _ready() -> void:
 
 	anim.animation_finished.connect(_on_attack_complete)
 	anim.animation_looped.connect(_on_attack_complete)
+	anim.frame_changed.connect(_on_frame_changed)
 
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 	shoot_timer.start(shoot_interval)
@@ -52,13 +54,19 @@ func _on_shoot_timer_timeout() -> void:
 	anim.play("attack")
 
 # ──────────────────────────────────────────────
+#  СПАВН НА НУЖНОМ КАДРЕ АНИМАЦИИ
+# ──────────────────────────────────────────────
+func _on_frame_changed() -> void:
+	if _is_attacking and anim.animation == "attack" and anim.frame == shoot_frame:
+		_spawn_bullet()
+
+# ──────────────────────────────────────────────
 #  КОНЕЦ АНИМАЦИИ АТАКИ
 # ──────────────────────────────────────────────
 func _on_attack_complete() -> void:
 	if not _is_attacking or anim.animation != "attack":
 		return
 
-	_spawn_bullet()
 	_is_attacking = false
 	anim.play("idle")
 
