@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=4 uid="uid://bs002bf0ttix5"]
+
+[ext_resource type="Script" path="res://Entities/Main/cloud_spawner.gd" id="1_cldspwn"]
+
+[node name="CloudSpawner" type="Node2D"]
+script = ExtResource("1_cldspwn")
