@@ -79,6 +79,32 @@ var _shield_visual: Node2D = null
 
 var _invincibility_timer: float = 0.0
 
+# INIT
+
+func _ready() -> void:
+	# Подключаемся к сигналам всех врагов, которые уже есть на сцене.
+	# call_deferred гарантирует, что все _ready() на сцене уже отработали.
+	call_deferred("_connect_enemy_signals")
+
+func _connect_enemy_signals() -> void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if enemy.has_signal("stomped") and not enemy.stomped.is_connected(_on_enemy_stomped):
+			enemy.stomped.connect(_on_enemy_stomped)
+
+func _on_enemy_stomped() -> void:
+	# Сигнал stomped не несёт ссылки на игрока — bounce вызывается напрямую из plant._die(),
+	# здесь обработчик оставлен для внешних подписчиков (UI, счётчик убийств и т.п.).
+	pass
+
+# STOMP BOUNCE
+
+# Скорость ДО move_and_slide() — нужна врагам для проверки стомпа,
+# потому что body_entered срабатывает уже после того, как move_and_slide обнулил velocity.y
+var velocity_before_slide: Vector2 = Vector2.ZERO
+
+func stomp_bounce() -> void:
+	velocity.y = -350.0
+
 # PHYSICS
 
 func _physics_process(delta: float) -> void:
@@ -100,6 +126,7 @@ func _physics_process(delta: float) -> void:
 	_handle_movement(real_delta)
 	_update_animation()
 
+	velocity_before_slide = velocity
 	move_and_slide()
 	_check_deadly_tiles()
 
