@@ -345,7 +345,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahb1e"]
 size = Vector2(19.4118, 26.4706)
 
-[node name="maskdude" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(17, 19)
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_a2kkq")
@@ -361,7 +361,6 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.294117, 2.05883)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ahb1e")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]

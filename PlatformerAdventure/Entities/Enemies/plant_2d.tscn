@@ -208,9 +208,7 @@ shoot_frame = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0k6bt")
-animation = &"attack"
-frame = 4
-frame_progress = 0.643234
+animation = &"idle"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

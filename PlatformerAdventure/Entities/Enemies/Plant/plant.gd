@@ -93,9 +93,10 @@ func _on_stomp_area_body_entered(body: Node2D) -> void:
 		return
 	if not body.has_method("stomp_bounce"):
 		return
-	# body_entered срабатывает ПОСЛЕ move_and_slide, поэтому velocity.y уже обнулён.
-	# Читаем velocity_before_slide — скорость, сохранённую до физического шага.
-	if body.velocity_before_slide.y <= 0.0:
+	# Стомп засчитывается только если игрок входит сверху.
+	# Проверка по позиции надёжнее velocity — сигнал body_entered может
+	# прийти уже после того как move_and_slide обнулил velocity.y.
+	if body.global_position.y >= stomp_area.global_position.y:
 		return
 
 	_die(body)
