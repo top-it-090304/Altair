@@ -104,7 +104,7 @@ func _on_level_completed() -> void:
 	_release_all_input()
 	var level_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	GameData.submit_level_result(level_name, collected_count)
-	get_tree().call_deferred("change_scene_to_file", next_level_path)
+	SceneManager.go_to(next_level_path)
 
 func _release_all_input() -> void:
 	for action in ["move_left", "move_right", "move_up"]:

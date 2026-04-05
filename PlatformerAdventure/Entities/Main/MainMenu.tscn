@@ -1,36 +1,28 @@
-[gd_scene load_steps=96 format=3 uid="uid://co1ws314r8c86"]
+[gd_scene load_steps=88 format=3 uid="uid://co1ws314r8c86"]
 
 [ext_resource type="Script" uid="uid://bjdi8sxlppvp0" path="res://Entities/Main/main_menu.gd" id="1_dva7d"]
 [ext_resource type="Texture2D" uid="uid://gcubxkgjn1yk" path="res://Assets/Textures/Menu/3ea433ad-2c40-4e0f-a133-fe0fc67e0716.png" id="2_dva7d"]
 [ext_resource type="Texture2D" uid="uid://ch5vy6hg72m40" path="res://Assets/Textures/Main Characters/Mask Dude/Idle (32x32).png" id="3_dva7d"]
-[ext_resource type="Texture2D" uid="uid://b0wnc20k1hho2" path="res://Assets/Buttons Vector Animation Pack/play/342 px/play01.png" id="3_mugbs"]
-[ext_resource type="Texture2D" uid="uid://bjoffwu32ov63" path="res://Assets/Buttons Vector Animation Pack/play/342 px/play02.png" id="4_15s63"]
+[ext_resource type="Texture2D" uid="uid://3fmkanogt4l2" path="res://Assets/Buttons/play/play_normal.png" id="3_t3ix7"]
+[ext_resource type="Texture2D" uid="uid://mem3h7dmd7fi" path="res://Assets/Buttons/play/play_pressed.png" id="4_huydx"]
 [ext_resource type="Texture2D" uid="uid://dr771pghv6j0r" path="res://Assets/Textures/Main Characters/Ninja Frog/Idle (32x32).png" id="4_kyksg"]
 [ext_resource type="Texture2D" uid="uid://d1y85jp64ykw8" path="res://Assets/Textures/Main Characters/Pink Man/Idle_reverse (32x32).png" id="5_cfroj"]
-[ext_resource type="Texture2D" uid="uid://cl3f3yidyiq5n" path="res://Assets/Buttons Vector Animation Pack/play/342 px/play03.png" id="5_drt3r"]
-[ext_resource type="Texture2D" uid="uid://bbvqg7fhhm4og" path="res://Assets/Buttons Vector Animation Pack/play/342 px/play04.png" id="6_luk2h"]
+[ext_resource type="Texture2D" uid="uid://w5a5fcyeh7q0" path="res://Assets/Buttons/play/play_hover.png" id="5_h1gie"]
+[ext_resource type="Texture2D" uid="uid://cawgwixlont3m" path="res://Assets/Buttons/shop/shop_normal.png" id="6_6arad"]
 [ext_resource type="Texture2D" uid="uid://bkyuaylyunrul" path="res://Assets/Textures/Main Characters/Virtual Guy/Idle_reverse (32x32).png" id="6_umweh"]
-[ext_resource type="Texture2D" uid="uid://cveonlc04gy7o" path="res://Assets/Buttons Vector Animation Pack/play/342 px/play05.png" id="7_12pmw"]
 [ext_resource type="Texture2D" uid="uid://dtabinlsrqqk" path="res://Assets/Textures/Traps/Rock Head/Idle.png" id="7_cfroj"]
-[ext_resource type="Texture2D" uid="uid://68ftmc0hybv3" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store01.png" id="8_1otou"]
+[ext_resource type="Texture2D" uid="uid://bbif3b8mbwddm" path="res://Assets/Buttons/shop/shop_pressed.png" id="7_y0v30"]
+[ext_resource type="Texture2D" uid="uid://c2am160h7m532" path="res://Assets/Buttons/shop/shop_hover.png" id="8_e4dpk"]
 [ext_resource type="Texture2D" uid="uid://d1816iu6s15um" path="res://Assets/Textures/Traps/Rock Head/Blink (42x42).png" id="8_umweh"]
-[ext_resource type="Texture2D" uid="uid://crn4xutwnlm1p" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store02.png" id="9_tejh6"]
+[ext_resource type="Texture2D" uid="uid://dvn2ytre2w0ki" path="res://Assets/Buttons/exit/exit_normal.png" id="9_pdd02"]
 [ext_resource type="Texture2D" uid="uid://drk52kgmrd81n" path="res://Assets/Textures/Traps/Fire/On (16x32).png" id="9_xt4qc"]
 [ext_resource type="Texture2D" uid="uid://cdn1vsvct7rpb" path="res://Assets/Textures/Traps/Fire/On_small (16x32).png" id="10_6och1"]
-[ext_resource type="Texture2D" uid="uid://beoiq3q2escnh" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store03.png" id="10_t3ix7"]
-[ext_resource type="Texture2D" uid="uid://dyegmg8w34gsl" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store04.png" id="11_huydx"]
-[ext_resource type="Texture2D" uid="uid://3y43kiaob4op" path="res://Assets/Buttons Vector Animation Pack/store/342 px/store05.png" id="12_h1gie"]
-[ext_resource type="Texture2D" uid="uid://br6jobpp2bm05" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options01.png" id="13_6arad"]
-[ext_resource type="Texture2D" uid="uid://c1qtevbfj20ur" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back01.png" id="13_ixvsi"]
-[ext_resource type="Texture2D" uid="uid://omty0emf15uo" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back02.png" id="14_crcoo"]
-[ext_resource type="Texture2D" uid="uid://c316i7er8pay" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options02.png" id="14_y0v30"]
-[ext_resource type="Texture2D" uid="uid://touiui4ffpit" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options03.png" id="15_e4dpk"]
-[ext_resource type="Texture2D" uid="uid://b7jbry6pjlyr8" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back03.png" id="15_p01wl"]
-[ext_resource type="Texture2D" uid="uid://b2vm5lfks8fmo" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back04.png" id="16_8pdeq"]
-[ext_resource type="Texture2D" uid="uid://b5k0brvbclxbt" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options04.png" id="16_pdd02"]
-[ext_resource type="Texture2D" uid="uid://dmmgmy5dcsyb7" path="res://Assets/Buttons Vector Animation Pack/options/342 px/options05.png" id="17_giv72"]
-[ext_resource type="Texture2D" uid="uid://b0axrnahq1817" path="res://Assets/Buttons Vector Animation Pack/back/342 px/back05.png" id="17_xn2ct"]
-[ext_resource type="Texture2D" uid="uid://dkcilx52gue1g" path="res://Assets/Textures/Menu/logo_pixel.png" id="31_ixvsi"]
+[ext_resource type="Texture2D" uid="uid://bbb22cy267osa" path="res://Assets/Buttons/exit/exit_pressed.png" id="10_giv72"]
+[ext_resource type="Texture2D" uid="uid://kh47fo6a5x5x" path="res://Assets/Buttons/exit/exit_hover.png" id="11_ixvsi"]
+[ext_resource type="Texture2D" uid="uid://baq3q4tr2qpl4" path="res://Assets/Buttons/settigs/settings_normal.png" id="12_crcoo"]
+[ext_resource type="Texture2D" uid="uid://cc0gjoddhr605" path="res://Assets/Buttons/settigs/settings_pressed.png" id="13_p01wl"]
+[ext_resource type="Texture2D" uid="uid://dfq1xqlg0414t" path="res://Assets/Buttons/settigs/settings_hover.png" id="14_8pdeq"]
+[ext_resource type="Texture2D" uid="uid://7212u2ucbsvq" path="res://Assets/Textures/Menu/logo_pixel.png" id="31_ixvsi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7ipb"]
 atlas = ExtResource("3_dva7d")
@@ -509,55 +501,47 @@ stretch_mode = 6
 [node name="TextureButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 536.0
-offset_top = 264.0
-offset_right = 1326.0
-offset_bottom = 606.0
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("3_mugbs")
-texture_pressed = ExtResource("4_15s63")
-texture_hover = ExtResource("5_drt3r")
-texture_disabled = ExtResource("6_luk2h")
-texture_focused = ExtResource("7_12pmw")
+offset_left = 544.0
+offset_top = 328.0
+offset_right = 622.0
+offset_bottom = 358.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("3_t3ix7")
+texture_pressed = ExtResource("4_huydx")
+texture_hover = ExtResource("5_h1gie")
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 536.0
-offset_top = 352.0
-offset_right = 1326.0
-offset_bottom = 694.0
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("8_1otou")
-texture_pressed = ExtResource("9_tejh6")
-texture_hover = ExtResource("10_t3ix7")
-texture_disabled = ExtResource("11_huydx")
-texture_focused = ExtResource("12_h1gie")
+offset_left = 544.0
+offset_top = 424.0
+offset_right = 622.0
+offset_bottom = 454.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("6_6arad")
+texture_pressed = ExtResource("7_y0v30")
+texture_hover = ExtResource("8_e4dpk")
 
 [node name="TextureButton3" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 536.0
-offset_top = 544.0
-offset_right = 1326.0
-offset_bottom = 886.0
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("13_ixvsi")
-texture_pressed = ExtResource("14_crcoo")
-texture_hover = ExtResource("15_p01wl")
-texture_disabled = ExtResource("16_8pdeq")
-texture_focused = ExtResource("17_xn2ct")
+offset_left = 544.0
+offset_top = 520.0
+offset_right = 622.0
+offset_bottom = 550.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("9_pdd02")
+texture_pressed = ExtResource("10_giv72")
+texture_hover = ExtResource("11_ixvsi")
 
 [node name="BtnSettings" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 536.0
-offset_top = 448.0
-offset_right = 1326.0
-offset_bottom = 790.0
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("13_6arad")
-texture_pressed = ExtResource("14_y0v30")
-texture_hover = ExtResource("15_e4dpk")
-texture_disabled = ExtResource("16_pdd02")
-texture_focused = ExtResource("17_giv72")
+offset_left = 528.0
+offset_top = 616.0
+offset_right = 622.0
+offset_bottom = 646.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("12_crcoo")
+texture_pressed = ExtResource("13_p01wl")
+texture_hover = ExtResource("14_8pdeq")
 
 [node name="Node2D" type="Node2D" parent="."]
 

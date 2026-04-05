@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cuixn1nfqfiya"]
+[gd_scene load_steps=54 format=3 uid="uid://cuixn1nfqfiya"]
 
 [ext_resource type="Script" uid="uid://dl4x2rxmic3pr" path="res://Entities/Players/PinkMan/Player.gd" id="1_a2kkq"]
 [ext_resource type="Texture2D" uid="uid://dxv4a3f77yi7c" path="res://Assets/Textures/Main Characters/Mask Dude/Double Jump (32x32).png" id="1_stfe1"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cg81fx0xvlxht" path="res://Assets/Textures/Main Characters/Mask Dude/Jump (32x32).png" id="5_jblbh"]
 [ext_resource type="Texture2D" uid="uid://dhgreiwc8u3ja" path="res://Assets/Textures/Main Characters/Mask Dude/Run (32x32).png" id="6_nsi07"]
 [ext_resource type="Texture2D" uid="uid://tgr4ps4p48b8" path="res://Assets/Textures/Main Characters/Mask Dude/Wall Jump (32x32).png" id="7_gg8tr"]
+[ext_resource type="AudioStream" uid="uid://yta0jaw4eeh3" path="res://Assets/audio/jump.wav" id="9_ahb1e"]
+[ext_resource type="AudioStream" uid="uid://cbjssvjhlw06y" path="res://Assets/audio/hit.wav" id="10_imm7q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_78cmg"]
 atlas = ExtResource("1_stfe1")
@@ -340,30 +342,44 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_stfe1"]
-radius = 11.0
-height = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahb1e"]
+size = Vector2(20.5882, 26.4706)
 
 [node name="maskdude" type="CharacterBody2D" groups=["player"]]
+position = Vector2(17, 19)
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_a2kkq")
 speed = 350.0
+wall_mechanics_enabled = true
+wall_jump_velocity = Vector2(400, -500)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u5ups")
-animation = &"walljump"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("CapsuleShape2D_stfe1")
+position = Vector2(0.294117, 2.05883)
+shape = SubResource("RectangleShape2D_ahb1e")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)
 target_position = Vector2(-19.3278, 0)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(18.4874, 0)
+
+[node name="RayCastLeftTop" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(-19.3278, 0)
+
+[node name="RayCastRightTop" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
 scale = Vector2(0.7, 0.7)
 target_position = Vector2(18.4874, 0)
 
@@ -374,3 +390,11 @@ target_position = Vector2(0, 22.6891)
 [node name="RayCastUp" type="RayCast2D" parent="."]
 scale = Vector2(0.9, 0.9)
 target_position = Vector2(0, -18.9542)
+
+[node name="SoundJump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ahb1e")
+bus = &"SFX"
+
+[node name="SoundHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_imm7q")
+bus = &"SFX"

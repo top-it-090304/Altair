@@ -26,7 +26,7 @@ func _on_restart_pressed() -> void:
 
 func _on_back_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Entities/Main/Levels_Menu.tscn")
+	SceneManager.go_to("res://Entities/Main/Levels_Menu.tscn")
 
 
 func _on_settings_pressed() -> void:

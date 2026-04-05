@@ -23,10 +23,7 @@ tile_map_data = PackedByteArray("AAAiABgAAAAPAAUAAAAiABkAAAAPAAYAAAAyABgAAAABAAE
 [node name="Spikes" parent="UI" index="6"]
 tile_map_data = PackedByteArray("AAAMAAwAAAAAAAAAAAANAA0AAAAAAAAAAAAOAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAATAA0AAAAAAAAAAAAUAA0AAAAAAAAAAAAVAA0AAAAAAAAAAAAWAA0AAAAAAAAAAAAXAA0AAAAAAAAAAAAYAA0AAAAAAAAAAAAZAA0AAAAAAAAAAAAaAA0AAAAAAAAAAAAbAA0AAAAAAAAAAAAcAA0AAAAAAAAAAAAdAAwAAAAAAAAAAAAsABkAAAAAAAAAAAAtABkAAAAAAAAAAAArABkAAAAAAAAAAAAuABkAAAAAAAAAAAAvABkAAAAAAAAAAAAwABkAAAAAAAAAAAA=")
 
-[node name="Player" parent="Entities" index="0"]
-position = Vector2(117.333, 122.667)
-
-[node name="SpawnPoint" parent="Entities" index="1"]
+[node name="SpawnPoint" parent="Entities" index="0"]
 position = Vector2(112, 144)
 
 [node name="spinner" parent="Entities/Traps" index="0" instance=ExtResource("3_r5d88")]
@@ -76,10 +73,10 @@ position = Vector2(271.333, 392)
 position = Vector2(202, 278.667)
 move_mode = 1
 
-[node name="Flag" parent="Entities" index="3"]
+[node name="Flag" parent="Entities" index="2"]
 position = Vector2(117.333, 384)
 
-[node name="Fruits" parent="Entities" index="4"]
+[node name="Fruits" parent="Entities" index="3"]
 position = Vector2(133.333, 250.667)
 
 [node name="banana" parent="Entities/Fruits" index="0" instance=ExtResource("8_bygee")]
@@ -123,3 +120,6 @@ position = Vector2(283.333, -118)
 
 [node name="cherries3" parent="Entities/Fruits" index="13" instance=ExtResource("9_0jjkx")]
 position = Vector2(122.667, -118)
+
+[node name="Player" parent="Entities" index="4"]
+position = Vector2(117.333, 122.667)

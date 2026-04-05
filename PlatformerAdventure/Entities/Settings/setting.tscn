@@ -11,13 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://ccbpa2jrttea1" path="res://Assets/Textures/Menu/Text/numbers_black1(8x10).png" id="10_0piyy"]
 [ext_resource type="Texture2D" uid="uid://dm4awsgc2tgpn" path="res://Assets/Textures/Menu/Text/numbers_black0(8x10).png" id="11_vgwex"]
 [ext_resource type="Texture2D" uid="uid://blp2m4pvj0nr7" path="res://Assets/Textures/Settings/polzunok(16x16).png" id="12_q06dr"]
-[ext_resource type="Texture2D" uid="uid://nn0ovkrc4pal" path="res://Assets/Textures/Settings/Gemini_Generated_Image_r9tnl9r9tnl9r9tn-Photoroom.png" id="12_y6nnx"]
-[ext_resource type="Texture2D" uid="uid://bhndp7e30sxk6" path="res://Assets/Textures/Settings/Gemini_Generated_Image_9tt6pf9tt6pf9tt6-Photoroom.png" id="13_jqpad"]
-[ext_resource type="Texture2D" uid="uid://dc8e0jcci3af2" path="res://Assets/Textures/Settings/Gemini_Generated_Image_sddsosddsosddsos-Photoroom.png" id="14_m75j8"]
+[ext_resource type="Texture2D" uid="uid://ct4cryl36plvm" path="res://Assets/Textures/Settings/Gemini_Generated_Image_r9tnl9r9tnl9r9tn-Photoroom.png" id="12_y6nnx"]
+[ext_resource type="Texture2D" uid="uid://dmhp5uy3k1c85" path="res://Assets/Textures/Settings/Gemini_Generated_Image_9tt6pf9tt6pf9tt6-Photoroom.png" id="13_jqpad"]
+[ext_resource type="Texture2D" uid="uid://dunhwrw1vklrl" path="res://Assets/Textures/Settings/Gemini_Generated_Image_sddsosddsosddsos-Photoroom.png" id="14_m75j8"]
 [ext_resource type="Texture2D" uid="uid://ct207nfaaph3k" path="res://Assets/Textures/Menu/Buttons/Restart.png" id="15_y6nnx"]
 [ext_resource type="Script" uid="uid://bo7e5rjs0pw2k" path="res://Entities/Settings/sfx_volume_slider.gd" id="16_y6nnx"]
 [ext_resource type="Script" uid="uid://dwmpevdo3yn55" path="res://Entities/Settings/ctrl_hits_toggle.gd" id="17_ctrlhits"]
-[ext_resource type="Texture2D" uid="uid://btmqhpudryq1k" path="res://Assets/Textures/Settings/Gemini_Generated_Image_tyk8zotyk8zotyk8-Photoroom.png" id="18_w0bmm"]
+[ext_resource type="Texture2D" uid="uid://c7u33p4uog1x" path="res://Assets/Textures/Settings/Gemini_Generated_Image_tyk8zotyk8zotyk8-Photoroom.png" id="18_w0bmm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pvgl"]
 texture = ExtResource("4_qp4b8")
@@ -424,9 +424,10 @@ anchor_left = -0.375
 anchor_top = 2.929
 anchor_right = -0.375
 anchor_bottom = 2.929
-offset_top = -0.0240326
-offset_right = 176.0
-offset_bottom = 109.976
+offset_left = -11.0
+offset_top = -5.02397
+offset_right = 229.0
+offset_bottom = 122.976
 scale = Vector2(0.5, 0.5)
 stretch_mode = 0
 

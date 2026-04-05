@@ -89,10 +89,7 @@ tile_map_data = PackedByteArray("AAATABgAAAANAAUAAAATABkAAAANAAYAAAAUABgAAAAOAAU
 [node name="Spikes" parent="UI" index="6"]
 tile_map_data = PackedByteArray("AAAWABMAAAAAAAAAAAAXABMAAAAAAAAAAAAYABMAAAAAAAAAAAAZABMAAAAAAAAAAAAVABMAAAAAAAAAAAAUABMAAAAAAAAAAAATABMAAAAAAAAAAAASABMAAAAAAAAAAAAEABkAAAAAAAAAAAAFABkAAAAAAAAAAAAGABkAAAAAAAAAAAAHABkAAAAAAAAAAAAwABkAAAAAAAAAAAAvABkAAAAAAAAAAAAuABkAAAAAAAAAAAA=")
 
-[node name="Player" parent="Entities" index="0"]
-position = Vector2(400, 389.333)
-
-[node name="SpawnPoint" parent="Entities" index="1"]
+[node name="SpawnPoint" parent="Entities" index="0"]
 position = Vector2(434, 416.667)
 
 [node name="AnimatableBody2D2" parent="Entities/Traps" index="0" instance=ExtResource("2_36uva")]
@@ -118,7 +115,7 @@ scale = Vector2(1.54038, 1.52847)
 sprite_frames = SubResource("SpriteFrames_soqsj")
 autoplay = "default"
 
-[node name="Flag" parent="Entities" index="3"]
+[node name="Flag" parent="Entities" index="2"]
 position = Vector2(266, 384)
 
 [node name="apple" parent="Entities/Fruits" index="0" instance=ExtResource("9_14oby")]
@@ -168,3 +165,6 @@ position = Vector2(266, 384)
 
 [node name="apple5" parent="Entities/Fruits" index="15" instance=ExtResource("9_14oby")]
 position = Vector2(216, 392.667)
+
+[node name="Player" parent="Entities" index="4"]
+position = Vector2(400, 389.333)

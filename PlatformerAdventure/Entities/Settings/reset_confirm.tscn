@@ -1,15 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://1tn3gc22ckwr"]
 
-[ext_resource type="Script" path="res://Entities/Settings/reset_confirm.gd" id="0_rcscript"]
-[ext_resource type="Texture2D" uid="uid://cnokvmfkfmpx0" path="res://Assets/Textures/Settings/resetprogress.png" id="1_o0sge"]
-[ext_resource type="Texture2D" uid="uid://7rl7d0mpmsqk" path="res://Assets/Textures/Settings/no-Photoroom.png" id="3_qcx1j"]
-[ext_resource type="Texture2D" uid="uid://cxiqcfw3iyv4p" path="res://Assets/Textures/Settings/no_dark-Photoroom.png" id="4_qcx1j"]
-[ext_resource type="Texture2D" uid="uid://bhenfvh8ka35n" path="res://Assets/Textures/Settings/yes.png" id="5_mbqt7"]
-[ext_resource type="Texture2D" uid="uid://dtwgl6mtlu08y" path="res://Assets/Textures/Settings/no_light-Photoroom.png" id="5_tpbxu"]
-[ext_resource type="Texture2D" uid="uid://d2otgrhtrjasu" path="res://Assets/Textures/Settings/yes_dark.png" id="6_ul4e8"]
-[ext_resource type="Texture2D" uid="uid://chb73sjbx6246" path="res://Assets/Textures/Settings/yes_light.png" id="7_py5mo"]
+[ext_resource type="Script" uid="uid://bvouknts3va2e" path="res://Entities/Settings/reset_confirm.gd" id="0_rcscript"]
+[ext_resource type="Texture2D" uid="uid://bxmnqc6x82lce" path="res://Assets/Textures/Settings/resetprogress.png" id="1_o0sge"]
+[ext_resource type="Texture2D" uid="uid://bowin2akbga6" path="res://Assets/Buttons/yes_no/no_normal.png" id="3_qcx1j"]
+[ext_resource type="Texture2D" uid="uid://cwykbttoe8p8m" path="res://Assets/Buttons/yes_no/no_pressed.png" id="4_tpbxu"]
+[ext_resource type="Texture2D" uid="uid://3u0431eiy8h1" path="res://Assets/Buttons/yes_no/no_hover.png" id="5_dn65u"]
+[ext_resource type="Texture2D" uid="uid://p234jupmvbsa" path="res://Assets/Buttons/yes_no/yes_normal.png" id="6_mbqt7"]
+[ext_resource type="Texture2D" uid="uid://bdw61jo7ja4g1" path="res://Assets/Buttons/yes_no/yes_pressed.png" id="7_ul4e8"]
+[ext_resource type="Texture2D" uid="uid://dqv2b1bgsuq8m" path="res://Assets/Buttons/yes_no/yes_hover.png" id="8_py5mo"]
 
 [node name="ResetConfirm" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -35,26 +36,28 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_o0sge")
 
 [node name="no" type="TextureButton" parent="CanvasLayer/Panel"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 512.0
-offset_top = 328.0
-offset_right = 1579.0
-offset_bottom = 1336.0
-scale = Vector2(0.1, 0.1)
+offset_left = 464.0
+offset_top = 312.0
+offset_right = 526.0
+offset_bottom = 342.0
+scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("3_qcx1j")
-texture_pressed = ExtResource("4_qcx1j")
-texture_hover = ExtResource("5_tpbxu")
+texture_pressed = ExtResource("4_tpbxu")
+texture_hover = ExtResource("5_dn65u")
 
 [node name="yes" type="TextureButton" parent="CanvasLayer/Panel"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 664.0
-offset_top = 328.0
-offset_right = 1081.0
-offset_bottom = 722.0
-scale = Vector2(0.26, 0.26)
-texture_normal = ExtResource("5_mbqt7")
-texture_pressed = ExtResource("6_ul4e8")
-texture_hover = ExtResource("7_py5mo")
+offset_top = 312.0
+offset_right = 726.0
+offset_bottom = 342.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("6_mbqt7")
+texture_pressed = ExtResource("7_ul4e8")
+texture_hover = ExtResource("8_py5mo")
 
 [connection signal="pressed" from="CanvasLayer/Panel/no" to="." method="_on_no_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/yes" to="." method="_on_yes_pressed"]
