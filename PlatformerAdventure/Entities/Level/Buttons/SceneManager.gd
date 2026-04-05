@@ -23,6 +23,7 @@ func go_back(fallback: String = "res://Entities/Main/MainMenu.tscn") -> void:
 func _fade_in() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(_overlay, "modulate:a", 0.0, 0.3)
+	tween.tween_callback(func(): _overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE)
 
 func _fade_out_then_go(scene_path: String) -> void:
 	_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -30,7 +31,8 @@ func _fade_out_then_go(scene_path: String) -> void:
 	tween.tween_property(_overlay, "modulate:a", 1.0, 0.3)
 	tween.tween_callback(func():
 		get_tree().change_scene_to_file(scene_path)
-		await get_tree().process_frame
-		_fade_in()
-		_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	)
+	).set_delay(0.0)
+	get_tree().root.child_entered_tree.connect(_on_new_scene_ready, CONNECT_ONE_SHOT)
+
+func _on_new_scene_ready(_node: Node) -> void:
+	_fade_in()
