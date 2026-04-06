@@ -201,6 +201,7 @@ size = Vector2(26, 8)
 [node name="Plant2D" type="Node2D" groups=["enemies"]]
 z_index = 1
 texture_filter = 1
+position = Vector2(-9, -12)
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_q305o")
 bullet_scene = ExtResource("2_oatfv")
