@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="19_1slb4"]
 [ext_resource type="PackedScene" uid="uid://cuixn1nfqfiya" path="res://Entities/Players/MaskDude/MaskDude.tscn" id="20_1m5b0"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgei7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmsh5"]
 texture = ExtResource("5_lemvh")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -316,7 +316,7 @@ texture = ExtResource("5_lemvh")
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "is_deadly"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_bgei7")
+sources/0 = SubResource("TileSetAtlasSource_jmsh5")
 
 [node name="LevelConstructorForMaskDude" type="Node2D"]
 texture_filter = 1
