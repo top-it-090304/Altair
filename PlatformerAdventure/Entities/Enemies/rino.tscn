@@ -216,10 +216,10 @@ radius = 14.0
 height = 50.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
-size = Vector2(44, 28)
+size = Vector2(14, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stomp"]
-size = Vector2(44, 8)
+size = Vector2(48, 10)
 
 [node name="Rino" type="CharacterBody2D" groups=["enemies"]]
 texture_filter = 1
@@ -236,17 +236,16 @@ shape = SubResource("CapsuleShape2D_eueei")
 
 [node name="BodyArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
+position = Vector2(-22, 0)
 shape = SubResource("RectangleShape2D_body")
 
 [node name="StompArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
-position = Vector2(0, -17)
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_stomp")
 
 [connection signal="body_entered" from="BodyArea" to="." method="_on_body_area_body_entered"]

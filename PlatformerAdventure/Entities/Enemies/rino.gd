@@ -16,6 +16,7 @@ var wall_check_cooldown: float = 0.0
 @onready var body_area: Area2D = $BodyArea
 @onready var stomp_area: Area2D = $StompArea
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var horn_shape: CollisionShape2D = $BodyArea/CollisionShape2D
 
 
 func _ready() -> void:
@@ -23,6 +24,11 @@ func _ready() -> void:
 	body_area.body_entered.connect(_on_body_area_body_entered)
 	stomp_area.body_entered.connect(_on_stomp_area_body_entered)
 	animated_sprite.play("run")
+	_update_horn_position()
+
+
+func _update_horn_position() -> void:
+	horn_shape.position.x = 22.0 * direction
 
 
 func _physics_process(delta: float) -> void:
@@ -35,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.flip_h = direction > 0
 			if wall_check_cooldown > 0.0:
 				wall_check_cooldown -= delta
-			elif is_on_wall():
+			elif is_on_wall() and _is_real_wall():
 				velocity.x = 0
 				animated_sprite.play("hitwall")
 				state = State.HITWALL
@@ -51,12 +57,22 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.flip_h = direction > 0
 				animated_sprite.play("run")
 				wall_check_cooldown = 0.2
+				_update_horn_position()
 				state = State.RUN
 
 		State.DEAD:
 			pass
 
 	move_and_slide()
+
+
+func _is_real_wall() -> bool:
+	for i in get_slide_collision_count():
+		var col := get_slide_collision(i)
+		if abs(col.get_normal().x) > 0.5:
+			if not col.get_collider().is_in_group("player"):
+				return true
+	return false
 
 
 func _on_animation_finished() -> void:
