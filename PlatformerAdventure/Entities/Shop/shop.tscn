@@ -5,29 +5,29 @@
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_dbxhb"]
 [ext_resource type="Texture2D" uid="uid://bl8w06homesw1" path="res://Assets/Textures/Background/Yellow.png" id="2_mucb8"]
 [ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="2_pm1ah"]
-[ext_resource type="Texture2D" uid="uid://cwfj1w3c77gq1" path="res://Assets/Textures/Menu/Buttons/Back_ grey.png" id="3_dbxhb"]
 [ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_wloi4"]
 [ext_resource type="Texture2D" uid="uid://o05nvamef1vh" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="4_wloi4"]
+[ext_resource type="Texture2D" uid="uid://bjlg8k71tfaee" path="res://Assets/Textures/Menu/Buttons/Back_pressed.png" id="7_f7dtw"]
 [ext_resource type="Texture2D" uid="uid://bjwrmco2q4yer" path="res://Assets/Textures/Store Items/blue-and-white-shield-in-pixel-art-style-vector-Photoroom.png" id="8_a1g1l"]
-[ext_resource type="Texture2D" uid="uid://e77efawdwrnt" path="res://Assets/Buttons/buy/buy_normal.png" id="9_f7dtw"]
+[ext_resource type="Texture2D" uid="uid://cv52upwyi8cpc" path="res://Assets/Buttons/buy/buy_normal.png" id="9_f7dtw"]
 [ext_resource type="Texture2D" uid="uid://clg6wdjtnhd8u" path="res://Assets/Textures/Store Items/pixel-art-hourglass-sand-clock-item-for-game-bit_360488-76 (1)-Photoroom.png" id="9_mucb8"]
-[ext_resource type="Texture2D" uid="uid://coiwdkpk462k2" path="res://Assets/Buttons/buy/buy_pressed.png" id="10_1k572"]
+[ext_resource type="Texture2D" uid="uid://m0npudt5hju2" path="res://Assets/Buttons/buy/buy_pressed.png" id="10_1k572"]
 [ext_resource type="Texture2D" uid="uid://ta2bjhiaobcv" path="res://Assets/Textures/Store Items/pixel-art-magnet-red-and-blue-magnetism-icon-for-8bit-game-on-white-background-vector-Photoroom.png" id="10_452da"]
-[ext_resource type="Texture2D" uid="uid://cjrsmcodforu6" path="res://Assets/Buttons/buy/buy_hover.png" id="11_js10p"]
-[ext_resource type="Texture2D" uid="uid://3tt2gfgxxptl" path="res://Assets/Buttons/buy/buy_disabled.png" id="12_gmrs3"]
-[ext_resource type="Texture2D" uid="uid://dtti7a4hiw57h" path="res://Assets/Textures/Store Items/pixil-frame-0 (20)-Photoroom.png" id="16_f7dtw"]
-[ext_resource type="Texture2D" uid="uid://db4p0ptnc15pl" path="res://Assets/Textures/Store Items/balance_fruits.png" id="17_1k572"]
-[ext_resource type="Texture2D" uid="uid://h37dxr0s1yc5" path="res://Assets/Textures/Store Items/fruits (2).png" id="18_1k572"]
+[ext_resource type="Texture2D" uid="uid://ttyhvwc5v44p" path="res://Assets/Buttons/buy/buy_hover.png" id="11_js10p"]
+[ext_resource type="Texture2D" uid="uid://cfio7ci43ylwl" path="res://Assets/Buttons/buy/buy_disabled.png" id="12_gmrs3"]
+[ext_resource type="Texture2D" uid="uid://cfs2mxrp3nykw" path="res://Assets/Textures/Store Items/pixil-frame-0 (20)-Photoroom.png" id="16_f7dtw"]
+[ext_resource type="Texture2D" uid="uid://cb6yoir8uxrhu" path="res://Assets/Textures/Store Items/balance_fruits.png" id="17_1k572"]
+[ext_resource type="Texture2D" uid="uid://c00js6u3semxh" path="res://Assets/Textures/Store Items/fruits (2).png" id="18_1k572"]
 [ext_resource type="Texture2D" uid="uid://c6nib2c8qyn3j" path="res://Assets/Textures/Store Items/0.png" id="18_n7p4w"]
 [ext_resource type="Texture2D" uid="uid://dap5fav0k5ygu" path="res://Assets/Textures/Store Items/1.png" id="19_n7p4w"]
 [ext_resource type="Texture2D" uid="uid://c8meto2134m8u" path="res://Assets/Textures/Store Items/2.png" id="21_f7dtw"]
-[ext_resource type="Texture2D" uid="uid://bwyysh8ukrk1e" path="res://Assets/Textures/Store Items/3.png" id="22_1k572"]
-[ext_resource type="Texture2D" uid="uid://cww1gshbyb0o7" path="res://Assets/Textures/Store Items/4.png" id="23_js10p"]
-[ext_resource type="Texture2D" uid="uid://cjidmv55qvyqw" path="res://Assets/Textures/Store Items/5.png" id="24_gmrs3"]
-[ext_resource type="Texture2D" uid="uid://chlwip433138f" path="res://Assets/Textures/Store Items/6.png" id="25_wjwph"]
-[ext_resource type="Texture2D" uid="uid://qy2ccsa28vnp" path="res://Assets/Textures/Store Items/7.png" id="26_ya2e0"]
-[ext_resource type="Texture2D" uid="uid://bsgb8ksewg6ig" path="res://Assets/Textures/Store Items/8.png" id="27_mjlgg"]
-[ext_resource type="Texture2D" uid="uid://clry0ki6uigws" path="res://Assets/Textures/Store Items/9.png" id="28_0ifva"]
+[ext_resource type="Texture2D" uid="uid://dhrliqjtheah4" path="res://Assets/Textures/Store Items/3.png" id="22_1k572"]
+[ext_resource type="Texture2D" uid="uid://c1uj5tynnid1c" path="res://Assets/Textures/Store Items/4.png" id="23_js10p"]
+[ext_resource type="Texture2D" uid="uid://dt72hsxa1o6vm" path="res://Assets/Textures/Store Items/5.png" id="24_gmrs3"]
+[ext_resource type="Texture2D" uid="uid://bvgq6ryiun0l5" path="res://Assets/Textures/Store Items/6.png" id="25_wjwph"]
+[ext_resource type="Texture2D" uid="uid://bbxcbvai0hb1e" path="res://Assets/Textures/Store Items/7.png" id="26_ya2e0"]
+[ext_resource type="Texture2D" uid="uid://dlnjy6gk242g4" path="res://Assets/Textures/Store Items/8.png" id="27_mjlgg"]
+[ext_resource type="Texture2D" uid="uid://ciughw44oi6bo" path="res://Assets/Textures/Store Items/9.png" id="28_0ifva"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pvgl"]
 texture = ExtResource("3_wloi4")
@@ -544,7 +544,7 @@ offset_top = 88.0
 offset_right = 200.0
 offset_bottom = 168.0
 texture_normal = ExtResource("2_pm1ah")
-texture_pressed = ExtResource("3_dbxhb")
+texture_pressed = ExtResource("7_f7dtw")
 texture_hover = ExtResource("4_wloi4")
 stretch_mode = 0
 

@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://hpffre755v8e"]
+
+[ext_resource type="Script" path="res://Entities/Main/RecordingScene.gd" id="1_recscr"]
+[ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="2_4wx5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(3000, 32)
+
+[node name="RecordingScene" type="Node2D"]
+script = ExtResource("1_recscr")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(0, 416)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(3, -17)
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Visual" type="Polygon2D" parent="Platform"]
+position = Vector2(0, -17)
+color = Color(0.22, 0.22, 0.22, 1)
+polygon = PackedVector2Array(-1500, -16, 1500, -16, 1500, 16, -1500, 16)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="VBox" type="VBoxContainer" parent="UI"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 420.0
+offset_bottom = 240.0
+
+[node name="StatusLabel" type="Label" parent="UI/VBox"]
+layout_mode = 2
+text = "Ready — press Start Recording"
+
+[node name="FrameLabel" type="Label" parent="UI/VBox"]
+layout_mode = 2
+text = "Frames: 0"
+
+[node name="CharBtn" type="Button" parent="UI/VBox"]
+layout_mode = 2
+text = "Character: mask_dude   [click to cycle]"
+
+[node name="HBox" type="HBoxContainer" parent="UI/VBox"]
+layout_mode = 2
+
+[node name="StartBtn" type="Button" parent="UI/VBox/HBox"]
+layout_mode = 2
+text = "▶  Start Recording"
+
+[node name="StopBtn" type="Button" parent="UI/VBox/HBox"]
+layout_mode = 2
+disabled = true
+text = "■  Stop & Save"
+
+[node name="BackBtn" type="Button" parent="UI/VBox"]
+layout_mode = 2
+text = "← Back to Main Menu"
+
+[node name="Player" parent="." instance=ExtResource("2_4wx5q")]
+position = Vector2(-41.9999, 359)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -50)
+limit_left = -1500
+limit_top = -800
+limit_right = 1500
+limit_bottom = 800
+
+[connection signal="pressed" from="UI/VBox/CharBtn" to="." method="_on_char_pressed"]
+[connection signal="pressed" from="UI/VBox/HBox/StartBtn" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="UI/VBox/HBox/StopBtn" to="." method="_on_stop_pressed"]
+[connection signal="pressed" from="UI/VBox/BackBtn" to="." method="_on_back_pressed"]

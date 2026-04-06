@@ -17,9 +17,9 @@ func _ready() -> void:
 	GameData.fruits_changed.connect(func(_v): _update_count(GameData.get_balance()))
 
 func _update_count(count: int) -> void:
-	var hundreds: int = int(count / 100)
-	var tens: int = int((count % 100) / 10)
-	var ones: int = int(count % 10)
+	var hundreds: int = count / 100
+	var tens: int = (count % 100) / 10
+	var ones: int = count % 10
 	hundreds_sprite.frame = hundreds
 	tens_sprite.frame = tens
 	ones_sprite.frame = ones
