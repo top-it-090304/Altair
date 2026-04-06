@@ -404,6 +404,7 @@ position = Vector2(3.26531, 3.33341)
 
 [node name="SpikeHead" parent="Entities/Traps" instance=ExtResource("15_wgnty")]
 position = Vector2(164.667, 212.667)
+move_mode = 1
 
 [node name="Flag" parent="Entities" instance=ExtResource("11_6lo4y")]
 position = Vector2(442.667, 336)
