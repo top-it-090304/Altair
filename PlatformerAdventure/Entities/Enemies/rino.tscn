@@ -1,6 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://dp6hoa81oogua"]
+[gd_scene load_steps=36 format=3 uid="uid://dp6hoa81oogua"]
 
 [ext_resource type="Texture2D" uid="uid://7nah2478y7cs" path="res://Assets/Textures/Enemies/Rino/Hit (52x34).png" id="1_lb3uv"]
+[ext_resource type="Script" uid="uid://ud0tni3p2r6n" path="res://Entities/Enemies/rino.gd" id="1_m0hlf"]
 [ext_resource type="Texture2D" uid="uid://cj8njmsh713va" path="res://Assets/Textures/Enemies/Rino/Hit Wall (52x34).png" id="2_m0hlf"]
 [ext_resource type="Texture2D" uid="uid://cv6fwxpfar8bd" path="res://Assets/Textures/Enemies/Rino/Idle (52x34).png" id="3_h7fg5"]
 [ext_resource type="Texture2D" uid="uid://b7wtpkp6683rg" path="res://Assets/Textures/Enemies/Rino/Run (52x34).png" id="4_p4ia6"]
@@ -127,9 +128,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ugfub")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -144,9 +145,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b2pcc")
 }],
-"loop": true,
+"loop": false,
 "name": &"hitwall",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -184,7 +185,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -207,21 +208,45 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eueei"]
 radius = 14.0
 height = 50.0
 
-[node name="Rino" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(14, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stomp"]
+size = Vector2(48, 10)
+
+[node name="Rino" type="CharacterBody2D" groups=["enemies"]]
 texture_filter = 1
+script = ExtResource("1_m0hlf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ec82d")
-animation = &"idle"
+animation = &"hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_eueei")
+
+[node name="BodyArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
+position = Vector2(-22, 0)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="StompArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_stomp")
+
+[connection signal="body_entered" from="BodyArea" to="." method="_on_body_area_body_entered"]
+[connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]
