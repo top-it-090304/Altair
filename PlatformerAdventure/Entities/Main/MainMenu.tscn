@@ -1,27 +1,28 @@
-[gd_scene load_steps=147 format=4 uid="uid://co1ws314r8c86"]
+[gd_scene load_steps=158 format=4 uid="uid://co1ws314r8c86"]
 
 [ext_resource type="Script" uid="uid://bjdi8sxlppvp0" path="res://Entities/Main/main_menu.gd" id="1_dva7d"]
 [ext_resource type="Texture2D" uid="uid://ch5vy6hg72m40" path="res://Assets/Textures/Main Characters/Mask Dude/Idle (32x32).png" id="3_dva7d"]
 [ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_h1gie"]
-[ext_resource type="Texture2D" uid="uid://bdnljoempx2li" path="res://Assets/Buttons/play/play_normal.png" id="3_t3ix7"]
-[ext_resource type="Texture2D" uid="uid://c1wrexhrrir2f" path="res://Assets/Buttons/play/play_pressed.png" id="4_huydx"]
+[ext_resource type="Texture2D" uid="uid://3fmkanogt4l2" path="res://Assets/Buttons/play/play_normal.png" id="3_t3ix7"]
+[ext_resource type="Texture2D" uid="uid://mem3h7dmd7fi" path="res://Assets/Buttons/play/play_pressed.png" id="4_huydx"]
 [ext_resource type="Texture2D" uid="uid://dr771pghv6j0r" path="res://Assets/Textures/Main Characters/Ninja Frog/Idle (32x32).png" id="4_kyksg"]
 [ext_resource type="Texture2D" uid="uid://d1y85jp64ykw8" path="res://Assets/Textures/Main Characters/Pink Man/Idle_reverse (32x32).png" id="5_cfroj"]
-[ext_resource type="Texture2D" uid="uid://cio3l0p74s35o" path="res://Assets/Buttons/play/play_hover.png" id="5_h1gie"]
-[ext_resource type="Texture2D" uid="uid://cws5tbc2aekk8" path="res://Assets/Buttons/shop/shop_normal.png" id="6_6arad"]
+[ext_resource type="Texture2D" uid="uid://w5a5fcyeh7q0" path="res://Assets/Buttons/play/play_hover.png" id="5_h1gie"]
+[ext_resource type="Texture2D" uid="uid://cawgwixlont3m" path="res://Assets/Buttons/shop/shop_normal.png" id="6_6arad"]
 [ext_resource type="Texture2D" uid="uid://bkyuaylyunrul" path="res://Assets/Textures/Main Characters/Virtual Guy/Idle_reverse (32x32).png" id="6_umweh"]
 [ext_resource type="Texture2D" uid="uid://dtabinlsrqqk" path="res://Assets/Textures/Traps/Rock Head/Idle.png" id="7_cfroj"]
-[ext_resource type="Texture2D" uid="uid://g2inublnrpba" path="res://Assets/Buttons/shop/shop_pressed.png" id="7_y0v30"]
-[ext_resource type="Texture2D" uid="uid://kdiralh71n86" path="res://Assets/Buttons/shop/shop_hover.png" id="8_e4dpk"]
+[ext_resource type="Texture2D" uid="uid://bbif3b8mbwddm" path="res://Assets/Buttons/shop/shop_pressed.png" id="7_y0v30"]
+[ext_resource type="Texture2D" uid="uid://c2am160h7m532" path="res://Assets/Buttons/shop/shop_hover.png" id="8_e4dpk"]
 [ext_resource type="Texture2D" uid="uid://d1816iu6s15um" path="res://Assets/Textures/Traps/Rock Head/Blink (42x42).png" id="8_umweh"]
-[ext_resource type="Texture2D" uid="uid://ccdtcybpo4wav" path="res://Assets/Buttons/exit/exit_normal.png" id="9_pdd02"]
-[ext_resource type="Texture2D" uid="uid://6h28igsxmk2m" path="res://Assets/Buttons/exit/exit_pressed.png" id="10_giv72"]
-[ext_resource type="Texture2D" uid="uid://dd2rpaidmum48" path="res://Assets/Buttons/exit/exit_hover.png" id="11_ixvsi"]
-[ext_resource type="Texture2D" uid="uid://bjmxdp1vfx0ko" path="res://Assets/Buttons/settigs/settings_normal.png" id="12_crcoo"]
-[ext_resource type="Texture2D" uid="uid://b27616h5gh1u" path="res://Assets/Buttons/settigs/settings_pressed.png" id="13_p01wl"]
-[ext_resource type="Texture2D" uid="uid://n678njvy5qxy" path="res://Assets/Buttons/settigs/settings_hover.png" id="14_8pdeq"]
-[ext_resource type="Texture2D" uid="uid://7qm7p23addpd" path="res://Assets/Textures/Menu/logo_pixel.png" id="31_ixvsi"]
-[ext_resource type="Texture2D" uid="uid://75bip3uofjky" path="res://Assets/Textures/Menu/Clouds V2.png" id="clouds_v2"]
+[ext_resource type="Texture2D" uid="uid://dvn2ytre2w0ki" path="res://Assets/Buttons/exit/exit_normal.png" id="9_pdd02"]
+[ext_resource type="Texture2D" uid="uid://bbb22cy267osa" path="res://Assets/Buttons/exit/exit_pressed.png" id="10_giv72"]
+[ext_resource type="Texture2D" uid="uid://kh47fo6a5x5x" path="res://Assets/Buttons/exit/exit_hover.png" id="11_ixvsi"]
+[ext_resource type="Texture2D" uid="uid://baq3q4tr2qpl4" path="res://Assets/Buttons/settigs/settings_normal.png" id="12_crcoo"]
+[ext_resource type="Texture2D" uid="uid://cc0gjoddhr605" path="res://Assets/Buttons/settigs/settings_pressed.png" id="13_p01wl"]
+[ext_resource type="Texture2D" uid="uid://dfq1xqlg0414t" path="res://Assets/Buttons/settigs/settings_hover.png" id="14_8pdeq"]
+[ext_resource type="Texture2D" uid="uid://7212u2ucbsvq" path="res://Assets/Textures/Menu/logo_pixel.png" id="31_ixvsi"]
+[ext_resource type="Texture2D" uid="uid://bvjfy6sdus5av" path="res://Assets/Textures/Enemies/BlueBird/Flying (32x32).png" id="34_xn2ct"]
+[ext_resource type="Texture2D" uid="uid://bmyqpu8ht8ivb" path="res://Assets/Textures/Menu/Clouds V2.png" id="clouds_v2"]
 [ext_resource type="Texture2D" uid="uid://cjdhxka5uxu70" path="res://Assets/Textures/Main Characters/Mask Dude/Fall (32x32).png" id="md_fal"]
 [ext_resource type="Texture2D" uid="uid://cg81fx0xvlxht" path="res://Assets/Textures/Main Characters/Mask Dude/Jump (32x32).png" id="md_jmp"]
 [ext_resource type="Texture2D" uid="uid://dhgreiwc8u3ja" path="res://Assets/Textures/Main Characters/Mask Dude/Run (32x32).png" id="md_run"]
@@ -1117,6 +1118,77 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrq0x"]
+atlas = ExtResource("34_xn2ct")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp41j"]
+atlas = ExtResource("34_xn2ct")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nebij"]
+atlas = ExtResource("34_xn2ct")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f58dm"]
+atlas = ExtResource("34_xn2ct")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo8lf"]
+atlas = ExtResource("34_xn2ct")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd6rq"]
+atlas = ExtResource("34_xn2ct")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsb88"]
+atlas = ExtResource("34_xn2ct")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6lrr"]
+atlas = ExtResource("34_xn2ct")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3y0o"]
+atlas = ExtResource("34_xn2ct")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xq0pv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrq0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp41j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nebij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f58dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo8lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd6rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsb88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6lrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3y0o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Control" type="Control"]
 texture_filter = 1
 layout_mode = 3
@@ -1241,6 +1313,13 @@ position = Vector2(48, 244)
 scale = Vector2(2.8, 2.8)
 sprite_frames = SubResource("SpriteFrames_eequg")
 autoplay = "default"
+
+[node name="bird" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(-54, 96)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_xq0pv")
+autoplay = "default"
+flip_h = true
 
 [node name="logo" type="Sprite2D" parent="."]
 texture_filter = 1

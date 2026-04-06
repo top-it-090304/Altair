@@ -5,9 +5,17 @@ const SCREEN_LEFT: float = 0.0
 const SCREEN_RIGHT: float = 1280.0
 const CLOUD_SPEED: float = 40.0
 
+# --- Птица ---
+const BIRD_SPEED: float = 85.0     # px/s  (1280 / 85 ≈ 15 сек на экран)
+const BIRD_INTERVAL: float = 8.0  # секунд паузы между пролётами
+
 var _chars: Array = []
 var _cloud_rects: Array = []
 var _cloud_w: float
+var _bird: AnimatedSprite2D = null
+var _bird_start_y: float = 0.0
+var _bird_flying: bool = false
+var _bird_wait: float = 0.0
 
 func _on_btn_settings_pressed() -> void:
 	SceneManager.go_to("res://Entities/Settings/setting.tscn")
@@ -18,6 +26,7 @@ func _ready() -> void:
 	_on_viewport_resize()
 	_init_chars()
 	call_deferred("_init_clouds")
+	call_deferred("_init_bird")
 
 func _init_clouds() -> void:
 	var c1: TextureRect = $TextureRect
@@ -62,6 +71,29 @@ func _init_chars() -> void:
 		sprite.flip_h = dir < 0.0
 		sprite.play("run")
 
+func _init_bird() -> void:
+	if not has_node("Node2D/bird"):
+		return
+	_bird = $Node2D/bird
+	_bird_start_y = _bird.position.y
+	_bird.speed_scale = 2.5  # ускоряем анимацию
+	_bird_flying = true       # сразу летим, без ожидания
+
+func _process_bird(delta: float) -> void:
+	if _bird == null:
+		return
+	if _bird_flying:
+		_bird.position.x += BIRD_SPEED * delta   # летим ВПРАВО
+		if _bird.position.x > SCREEN_RIGHT + 200.0:  # вышла за правый край
+			_bird_flying = false
+			_bird_wait = BIRD_INTERVAL
+	else:
+		_bird_wait -= delta
+		if _bird_wait <= 0.0:
+			_bird.position.x = -200.0            # появляемся слева за экраном
+			_bird.position.y = _bird_start_y
+			_bird_flying = true
+
 func _scroll_clouds(delta: float) -> void:
 	if _cloud_rects.is_empty():
 		return
@@ -80,6 +112,7 @@ func _scroll_clouds(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	_scroll_clouds(delta)
+	_process_bird(delta)
 	for c in _chars:
 		var sprite: AnimatedSprite2D = c.sprite
 
