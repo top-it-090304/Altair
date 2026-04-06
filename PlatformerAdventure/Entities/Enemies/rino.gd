@@ -96,7 +96,7 @@ func _on_body_area_body_entered(body: Node2D) -> void:
 func _on_stomp_area_body_entered(body: Node2D) -> void:
 	if state == State.DEAD:
 		return
-	if body.is_in_group("player") and body.velocity.y > 0:
+	if body.is_in_group("player") and body.global_position.y < global_position.y:
 		_die_rino()
 		body.velocity.y = stomp_bounce
 
