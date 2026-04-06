@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://djsq40fi5wfv4"]
+[gd_scene load_steps=24 format=4 uid="uid://djsq40fi5wfv4"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_1kjls"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_cusey"]
@@ -14,13 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://b1t30svix720r" path="res://Entities/Enemies/Chicken/Chicken.tscn" id="11_cusey"]
 [ext_resource type="PackedScene" uid="uid://brstsdqgjh4vs" path="res://Entities/Fruits/pineapple.tscn" id="12_0vlnq"]
 [ext_resource type="PackedScene" uid="uid://dp6hoa81oogua" path="res://Entities/Enemies/rino.tscn" id="12_g5qk8"]
-[ext_resource type="PackedScene" uid="uid://h8i67qnod2am" path="res://Entities/Fruits/strawberry.tscn" id="13_v4b8a"]
 [ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="14_1ql2u"]
-[ext_resource type="PackedScene" uid="uid://52x52oidtims" path="res://Entities/Fruits/kiwi.tscn" id="14_j6d3d"]
 [ext_resource type="PackedScene" uid="uid://bumyw757kma2e" path="res://Entities/Enemies/plant_2d.tscn" id="15_1ql2u"]
-[ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="15_hhr3i"]
 [ext_resource type="PackedScene" uid="uid://7ixqyae4l32t" path="res://Entities/Traps/SpikeHead/spike_head.tscn" id="15_wgnty"]
-[ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="16_o7kv6"]
 [ext_resource type="PackedScene" uid="uid://lxxadfoc1hv7" path="res://Entities/Fruits/orange.tscn" id="17_fbvpt"]
 [ext_resource type="PackedScene" uid="uid://idmtdn4k1ns6" path="res://Entities/Fruits/cherries.tscn" id="18_tgwlr"]
 [ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="19_rsaq8"]
@@ -327,6 +323,7 @@ sources/0 = SubResource("TileSetAtlasSource_t8xvb")
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_1kjls")
+next_level_path = "res://Entities/Main/Level_Menu_MaskDude.tscn"
 metadata/_edit_vertical_guides_ = [346.0]
 
 [node name="UI" type="Node2D" parent="."]
@@ -419,18 +416,6 @@ position = Vector2(20.6667, 114)
 
 [node name="pineapple2" parent="Entities/Fruits" instance=ExtResource("12_0vlnq")]
 position = Vector2(-294, 119.333)
-
-[node name="strawberry" parent="Entities/Fruits" instance=ExtResource("13_v4b8a")]
-position = Vector2(197.333, 21.3333)
-
-[node name="kiwi" parent="Entities/Fruits" instance=ExtResource("14_j6d3d")]
-position = Vector2(218.667, 21.3333)
-
-[node name="banana" parent="Entities/Fruits" instance=ExtResource("15_hhr3i")]
-position = Vector2(240, 21.3333)
-
-[node name="apple" parent="Entities/Fruits" instance=ExtResource("16_o7kv6")]
-position = Vector2(261.333, 21.3333)
 
 [node name="orange" parent="Entities/Fruits" instance=ExtResource("17_fbvpt")]
 position = Vector2(-374, 295.333)

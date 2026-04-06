@@ -39,10 +39,10 @@ func _on_viewport_resize() -> void:
 
 func _init_chars() -> void:
 	var configs := [
-		{ "node": $Node2D/mask_dude, "speed": 210.0, "jump_interval": 3.2, "jump_power": -380.0, "left_bound": -70.0, "right_bound": 1350.0 },
-		{ "node": $Node2D/pepe,      "speed": 215.0, "jump_interval": 1.6, "jump_power": -450.0, "left_bound": -70.0, "right_bound": 1350.0 },
-		{ "node": $Node2D/pink,      "speed": 190.0, "jump_interval": 4.5, "jump_power": -300.0, "left_bound": -70.0, "right_bound": 1350.0 },
-		{ "node": $Node2D/vr_guy,    "speed": 250.0, "jump_interval": 4.0, "jump_power": -365.0, "left_bound": -70.0, "right_bound": 1350.0 },
+		{ "node": $Node2D/mask_dude, "speed": 210.0, "jump_interval": 3.2, "jump_power": -380.0, "left_bound": 200.0, "right_bound": 1075.0 },
+		{ "node": $Node2D/pepe,      "speed": 215.0, "jump_interval": 1.6, "jump_power": -450.0, "left_bound": 200.0, "right_bound": 1075.0 },
+		{ "node": $Node2D/pink,      "speed": 190.0, "jump_interval": 4.5, "jump_power": -300.0, "left_bound": 200.0, "right_bound": 1075.0 },
+		{ "node": $Node2D/vr_guy,    "speed": 250.0, "jump_interval": 4.0, "jump_power": -365.0, "left_bound": 200.0, "right_bound": 1075.0 },
 	]
 	for cfg in configs:
 		var sprite: AnimatedSprite2D = cfg.node
