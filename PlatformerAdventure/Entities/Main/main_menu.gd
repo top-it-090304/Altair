@@ -3,8 +3,11 @@ extends Control
 const GRAVITY: float = 900.0
 const SCREEN_LEFT: float = 0.0
 const SCREEN_RIGHT: float = 1280.0
+const CLOUD_SPEED: float = 40.0
 
 var _chars: Array = []
+var _cloud_rects: Array = []
+var _cloud_w: float
 
 func _on_btn_settings_pressed() -> void:
 	SceneManager.go_to("res://Entities/Settings/setting.tscn")
@@ -14,6 +17,24 @@ func _ready() -> void:
 	get_tree().get_root().size_changed.connect(_on_viewport_resize)
 	_on_viewport_resize()
 	_init_chars()
+	call_deferred("_init_clouds")
+
+func _init_clouds() -> void:
+	var c1: TextureRect = $TextureRect
+	var c2: TextureRect = $TextureRect2
+	_cloud_w = c1.size.x
+	# выравниваем c2 под c1 (одинаковый размер и Y)
+	c2.size = c1.size
+	c2.position.y = c1.position.y
+	# создаём третий спрайт — дубликат c1
+	var c3: TextureRect = c1.duplicate()
+	add_child(c3)
+	move_child(c3, c2.get_index() + 1)  # сразу за c2, перед остальным UI
+	# расставляем три спрайта вплотную
+	c1.position.x = 0.0
+	c2.position.x = _cloud_w
+	c3.position.x = _cloud_w * 2.0
+	_cloud_rects = [c1, c2, c3]
 
 func _init_chars() -> void:
 	var configs = [
@@ -41,7 +62,24 @@ func _init_chars() -> void:
 		sprite.flip_h = dir < 0.0
 		sprite.play("run")
 
+func _scroll_clouds(delta: float) -> void:
+	if _cloud_rects.is_empty():
+		return
+	for cloud in _cloud_rects:
+		cloud.position.x -= CLOUD_SPEED * delta
+	# находим самый правый спрайт
+	var rightmost: TextureRect = _cloud_rects[0]
+	for cloud in _cloud_rects:
+		if cloud.position.x > rightmost.position.x:
+			rightmost = cloud
+	# перекидываем вышедший за левый край вправо за самый правый
+	for cloud in _cloud_rects:
+		if cloud.position.x + _cloud_w < 0.0:
+			cloud.position.x = rightmost.position.x + _cloud_w
+			break
+
 func _process(delta: float) -> void:
+	_scroll_clouds(delta)
 	for c in _chars:
 		var sprite: AnimatedSprite2D = c.sprite
 
