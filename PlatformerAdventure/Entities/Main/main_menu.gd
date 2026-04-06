@@ -83,10 +83,10 @@ func _on_viewport_resize() -> void:
 	position = Vector2.ZERO
 
 func _on_texture_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Entities/Main/Levels_Menu.tscn")
+	SceneManager.go_to("res://Entities/Main/Levels_Menu.tscn")
 
 func _on_texture_button_2_pressed() -> void:
-	get_tree().change_scene_to_file("res://Entities/Shop/shop.tscn")
+	SceneManager.go_to("res://Entities/Shop/shop.tscn")
 
 func _on_texture_button_3_pressed() -> void:
 	get_tree().quit()
