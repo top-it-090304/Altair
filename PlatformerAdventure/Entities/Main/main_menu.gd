@@ -32,8 +32,8 @@ func _process(delta: float) -> void:
 		_simulate_char(c, delta)
 
 func _on_viewport_resize() -> void:
-	size = get_viewport().get_visible_rect().size
-	position = Vector2.ZERO
+	set_deferred("size", get_viewport().get_visible_rect().size)
+	set_deferred("position", Vector2.ZERO)
 
 # ── Characters ────────────────────────────────────────────────────────────────
 
