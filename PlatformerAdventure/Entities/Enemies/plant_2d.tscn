@@ -201,6 +201,7 @@ size = Vector2(26, 8)
 [node name="Plant2D" type="Node2D" groups=["enemies"]]
 z_index = 1
 texture_filter = 1
+position = Vector2(-9, -12)
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_q305o")
 bullet_scene = ExtResource("2_oatfv")
@@ -211,6 +212,7 @@ sprite_frames = SubResource("SpriteFrames_0k6bt")
 animation = &"idle"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(4.5, 2)
