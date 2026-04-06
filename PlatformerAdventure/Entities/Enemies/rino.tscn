@@ -223,11 +223,12 @@ size = Vector2(48, 10)
 
 [node name="Rino" type="CharacterBody2D" groups=["enemies"]]
 texture_filter = 1
+collision_layer = 4
 script = ExtResource("1_m0hlf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ec82d")
-animation = &"hit"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
