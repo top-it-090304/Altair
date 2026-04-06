@@ -20,10 +20,14 @@ var wall_check_cooldown: float = 0.0
 
 
 func _ready() -> void:
+	if scale.x < 0.0:
+		direction = 1.0
+		scale.x = 1.0
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	body_area.body_entered.connect(_on_body_area_body_entered)
 	stomp_area.body_entered.connect(_on_stomp_area_body_entered)
 	animated_sprite.play("run")
+	animated_sprite.flip_h = direction > 0
 	_update_horn_position()
 
 
