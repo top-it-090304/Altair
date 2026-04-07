@@ -14,6 +14,7 @@ func play_music(track: AudioStream):
 
 	# Если играет другой трек — просто заменяем
 	current_track = track
+	track.loop = true
 	music_player.stream = track
 	music_player.play()
 
