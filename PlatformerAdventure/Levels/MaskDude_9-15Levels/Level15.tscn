@@ -351,7 +351,7 @@ offset_bottom = 540.667
 
 [node name="Spikes" parent="UI" instance=ExtResource("9_pqar7")]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAPABkAAAAAAAAAAAAQABkAAAAAAAAAAAARABkAAAAAAAAAAAASABkAAAAAAAAAAAATABkAAAAAAAAAAAAUABkAAAAAAAAAAAAVABkAAAAAAAAAAAAWABkAAAAAAAAAAAAXABkAAAAAAAAAAAAYABkAAAAAAAAAAAAZABkAAAAAAAAAAAAaABkAAAAAAAAAAAAbABkAAAAAAAAAAAAcABkAAAAAAAAAAAAOABkAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAVABkAAAAAAAAAAAAWABkAAAAAAAAAAAAXABkAAAAAAAAAAAAYABkAAAAAAAAAAAAZABkAAAAAAAAAAAAaABkAAAAAAAAAAAAbABkAAAAAAAAAAAAcABkAAAAAAAAAAAARABkAAAAAAAAAAAASABkAAAAAAAAAAAATABkAAAAAAAAAAAAUABkAAAAAAAAAAAAPABkAAAAAAAAAAAAQABkAAAAAAAAAAAAOABkAAAAAAAAAAAA=")
 
 [node name="Entities" type="Node2D" parent="."]
 
@@ -364,32 +364,38 @@ position = Vector2(126.667, 144)
 position = Vector2(256, 128)
 fire_on = 3.0
 fire_off = 2.0
+fire_hit = 0.5
 
 [node name="FireTrap2" parent="Entities/Traps" instance=ExtResource("11_jixxx")]
 position = Vector2(370.667, 128)
 fire_on = 6.0
 fire_off = 2.0
+fire_hit = 0.5
 
 [node name="FireTrap3" parent="Entities/Traps" instance=ExtResource("11_jixxx")]
 position = Vector2(333.333, 128)
 fire_off = 2.0
+fire_hit = 0.5
 
 [node name="FireTrap4" parent="Entities/Traps" instance=ExtResource("11_jixxx")]
 position = Vector2(293.333, 128)
 fire_on = 4.0
 fire_off = 2.0
+fire_hit = 0.5
 metadata/_edit_group_ = true
 
 [node name="FireTrap5" parent="Entities/Traps" instance=ExtResource("11_jixxx")]
 position = Vector2(408, 128)
 fire_on = 7.0
 fire_off = 2.0
+fire_hit = 0.5
 metadata/_edit_group_ = true
 
 [node name="FireTrap6" parent="Entities/Traps" instance=ExtResource("11_jixxx")]
 position = Vector2(448, 128)
 fire_on = 8.0
 fire_off = 2.0
+fire_hit = 0.5
 metadata/_edit_group_ = true
 
 [node name="SpikedBallTrap" parent="Entities/Traps" instance=ExtResource("12_7rns2")]
