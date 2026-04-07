@@ -30,9 +30,13 @@ func _fade_out_then_go(scene_path: String) -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(_overlay, "modulate:a", 1.0, 0.3)
 	tween.tween_callback(func():
-		get_tree().change_scene_to_file(scene_path)
-	).set_delay(0.0)
-	get_tree().root.child_entered_tree.connect(_on_new_scene_ready, CONNECT_ONE_SHOT)
+		var err = get_tree().change_scene_to_file(scene_path)
+		if err != OK:
+			push_error("[SceneManager] change_scene_to_file failed: %d for path: %s" % [err, scene_path])
+			_fade_in()
+			return
+		get_tree().root.child_entered_tree.connect(_on_new_scene_ready, CONNECT_ONE_SHOT)
+	)
 
 func _on_new_scene_ready(_node: Node) -> void:
 	_fade_in()
