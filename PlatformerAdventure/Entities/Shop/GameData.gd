@@ -5,6 +5,10 @@ extends Node
 
 const SAVE_PATH = "user://save.cfg"
 
+# ВРЕМЕННО: true = все уровни разблокированы и зелёные (для тестирования)
+# Перед релизом поставить false
+const DEV_UNLOCK_ALL: bool = true
+
 const LEVEL_ORDER: Array = [
 	"Level1", "Level2", "Level3", "Level4", "Level5",
 	"Level6", "Level7", "Level8",
@@ -197,9 +201,13 @@ func load_data() -> void:
 # ── ПРОГРЕСС УРОВНЕЙ ─────────────────────────
 
 func is_level_completed(level_name: String) -> bool:
+	if DEV_UNLOCK_ALL:
+		return true
 	return level_records.has(level_name)
 
 func is_level_unlocked(level_index: int) -> bool:
+	if DEV_UNLOCK_ALL:
+		return true
 	if level_index == 0:
 		return true
 	var prev_level = LEVEL_ORDER[level_index - 1]
