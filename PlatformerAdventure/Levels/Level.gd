@@ -31,8 +31,16 @@ var used_magnet: int = 0
 
 @onready var fruit_counter = preload("res://Entities/Level/Buttons/сounter.tscn").instantiate()
 
+const MUSIC_LEVELS_1_8 = preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3")
+const MUSIC_LEVELS_9_16 = preload("res://Assets/audio/maskdude1.mp3")
+
 func _ready() -> void:
-	MusicManager.play_music(preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3"))
+	var level_name := scene_file_path.get_file().get_basename()
+	var level_num := level_name.trim_prefix("Level").to_int()
+	if level_num >= 9:
+		MusicManager.play_music(MUSIC_LEVELS_9_16)
+	else:
+		MusicManager.play_music(MUSIC_LEVELS_1_8)
 	add_to_group("level")  # ← нужно для BonusHUD
 
 	if player and spawn_marker:
