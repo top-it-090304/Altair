@@ -339,6 +339,7 @@ point_count = 17
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_sp7fk")
+next_level_path = "res://Levels/MaskDude_9-15Levels/Level13.tscn"
 metadata/_edit_vertical_guides_ = [346.0]
 
 [node name="UI" type="Node2D" parent="."]

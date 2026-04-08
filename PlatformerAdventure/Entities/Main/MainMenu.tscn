@@ -1169,9 +1169,9 @@ color = Color(0.42, 0.75, 0.93, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -22.0
+offset_left = -1.0
 offset_top = -2.0
-offset_right = 634.0
+offset_right = 655.0
 offset_bottom = 302.0
 texture = ExtResource("clouds_v2")
 

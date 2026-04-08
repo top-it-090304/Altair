@@ -317,10 +317,11 @@ custom_data_layer_0/name = "is_deadly"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_jmsh5")
 
-[node name="LevelConstructorForMaskDude" type="Node2D"]
+[node name="LevelConstructorForMaskDude2" type="Node2D"]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_4b144")
+next_level_path = "res://Levels/MaskDude_9-15Levels/Level14.tscn"
 metadata/_edit_vertical_guides_ = [346.0]
 
 [node name="UI" type="Node2D" parent="."]
