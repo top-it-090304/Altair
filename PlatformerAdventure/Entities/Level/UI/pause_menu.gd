@@ -26,7 +26,11 @@ func _on_restart_pressed() -> void:
 
 func _on_back_pressed() -> void:
 	get_tree().paused = false
-	SceneManager.go_to("res://Entities/Main/Levels_Menu.tscn")
+	var scene_path = get_tree().current_scene.scene_file_path
+	if "MaskDude" in scene_path:
+		SceneManager.go_to("res://Entities/Main/Level_Menu_MaskDude.tscn")
+	else:
+		SceneManager.go_to("res://Entities/Main/Levels_Menu.tscn")
 
 
 func _on_settings_pressed() -> void:
