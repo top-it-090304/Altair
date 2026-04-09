@@ -17,12 +17,8 @@ signal died
 @export_group("Wall Mechanics")
 @export var wall_mechanics_enabled: bool = false
 @export var wall_jump_velocity: Vector2 = Vector2(280.0, -400.0)
-@export var wall_jump_input_lock_time: float = 0.25
-@export var wall_slide_speed: float = 80.0
+@export var wall_jump_input_lock_time: float = 0.1
 @export var wall_min_contact_height: float = 8.0
-@export var wall_cling_time: float = 0.4
-@export var wall_cling_grace_time: float = 0.3
-@export var wall_jump_direction_buffer_time: float = 0.3
 
 @export_group("Double Jump")
 @export var double_jump_enabled: bool = true
@@ -60,16 +56,14 @@ var animation_speed_compensate: float = 1.0
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 var wall_jump_lock_timer: float = 0.0
-var wall_cling_timer: float = 0.0
-var wall_grace_timer: float = 0.0
 
 var is_jumping: bool = false
 var is_wall_sliding: bool = false
 var facing_right: bool = true
 
-var _was_wall_sliding: bool = false
-var _last_input_x: float = 0.0
-var _last_input_x_timer: float = 0.0
+var _cling_wall_dir: int = 0
+var _just_entered_cling: bool = false
+var _after_wall_jump: bool = false
 
 var double_jump_available: bool = false
 var is_double_jumping: bool = false
@@ -122,7 +116,7 @@ func _physics_process(delta: float) -> void:
 	_apply_gravity(real_delta)
 
 	if wall_mechanics_enabled:
-		_handle_wall_slide()
+		_handle_wall_cling()
 
 	_handle_jump()
 	_handle_movement(real_delta)
@@ -235,6 +229,7 @@ func _update_timers(delta: float) -> void:
 		is_jumping = false
 		is_double_jumping = false
 		double_jump_available = double_jump_enabled
+		_after_wall_jump = false
 	elif coyote_timer > 0.0:
 		coyote_timer -= delta
 
@@ -244,76 +239,67 @@ func _update_timers(delta: float) -> void:
 	if wall_jump_lock_timer > 0.0:
 		wall_jump_lock_timer -= delta
 
-	if wall_cling_timer > 0.0:
-		wall_cling_timer -= delta
-
-	if wall_grace_timer > 0.0:
-		wall_grace_timer -= delta
-
 # GRAVITY
 
 func _apply_gravity(delta: float) -> void:
 	if is_on_floor():
 		return
-	# Цепляние за стену — удерживаем позицию пока активен cling timer.
-	# Срабатывает только во время слайда, не при обычном прыжке у стены.
-	if is_wall_sliding and wall_cling_timer > 0.0:
-		velocity.y = 0.0
-		return
 	if is_wall_sliding:
-		velocity.y = min(velocity.y + gravity_fall * delta, wall_slide_speed)
+		velocity.y = 0.0
+		velocity.x = 0.0
 		return
 	var grav := gravity_fall if velocity.y > 0 else gravity_rise
 	velocity.y = min(velocity.y + grav * delta, max_fall_speed)
 	
-# WALL SLIDE
+# WALL CLING
 
-func _handle_wall_slide() -> void:
-	is_wall_sliding = false
+func _handle_wall_cling() -> void:
+	# If already clinging, only exit on explicit away-press or landing.
+	if is_wall_sliding:
+		if is_on_floor():
+			is_wall_sliding = false
+			_cling_wall_dir = 0
+			return
+		var input_x := Input.get_axis("move_left", "move_right")
+		var pressing_away: bool = input_x != 0.0 and sign(input_x) != _cling_wall_dir
+		if pressing_away:
+			is_wall_sliding = false
+			_cling_wall_dir = 0
+		return
 
-	# Базовые условия: у стены и не на полу
-	if not is_on_wall() or is_on_floor():
-		wall_cling_timer = 0.0
-		wall_grace_timer = 0.0
-		_was_wall_sliding = false
+	# Entry: airborne + touching wall.
+	if is_on_floor() or not is_on_wall():
 		return
 
 	var wall_normal := get_wall_normal()
 	var wall_dir := -int(sign(wall_normal.x))  # -1 = left wall, +1 = right wall
+
+	# After a wall jump — auto-cling with lenient check (bottom ray only, ~half character height).
+	if _after_wall_jump:
+		if is_valid_wall_lenient(wall_dir):
+			is_wall_sliding = true
+			_cling_wall_dir = wall_dir
+			_after_wall_jump = false
+			_just_entered_cling = false
+			facing_right = (wall_dir == 1)
+		return
+
+	# Normal first entry: wall must be large enough (is_valid_wall), pressing toward it + jump buffered.
 	if not is_valid_wall(wall_dir):
-		wall_cling_timer = 0.0
-		wall_grace_timer = 0.0
-		_was_wall_sliding = false
+		return
+	if not Input.is_action_just_pressed("move_up") and jump_buffer_timer <= 0.0:
 		return
 
 	var input_x := Input.get_axis("move_left", "move_right")
-	var pressing_toward_wall: bool = input_x != 0.0 and sign(input_x) != sign(wall_normal.x)
-
+	var pressing_toward_wall: bool = input_x != 0.0 and sign(input_x) == wall_dir
 	if not pressing_toward_wall:
-		# Игрок отпустил кнопку или жмёт от стены.
-		# Если до этого скользили — даём grace period: is_wall_sliding остаётся true,
-		# игрок может успеть нажать прыжок от стены.
-		if _was_wall_sliding and wall_grace_timer > 0.0:
-			is_wall_sliding = true
-			return
-		# Grace period истёк или слайда не было — сбрасываем полностью.
-		_was_wall_sliding = false
-		return
-
-	# Входим в слайд только если падаем (velocity.y > 0).
-	# Продолжаем слайд если уже скользили — это покрывает cling hold,
-	# когда velocity.y = 0 из-за _apply_gravity, и не даёт осцилляции.
-	if not _was_wall_sliding and velocity.y <= 0.0:
 		return
 
 	is_wall_sliding = true
-	# Взводим cling timer только в первый кадр слайда
-	if not _was_wall_sliding:
-		wall_cling_timer = wall_cling_time
-	# Пока жмём к стене — держим grace timer заряженным.
-	# Начнёт убывать только когда игрок отпустит кнопку.
-	wall_grace_timer = wall_cling_grace_time
-	_was_wall_sliding = true
+	_cling_wall_dir = wall_dir
+	_after_wall_jump = false
+	_just_entered_cling = true
+	facing_right = (wall_dir == 1)
 
 # Returns true only when all three validation layers pass:
 #   Layer 1 — at least one slide collision on this side has a near-vertical normal (abs Y < 0.15)
@@ -345,6 +331,28 @@ func is_valid_wall(direction: int) -> bool:
 
 	return false
 
+# Lenient version for auto-cling after wall jump.
+# Only the bottom raycast must hit — wall covers at least the lower half of the character.
+# direction: -1 = left wall, +1 = right wall
+func is_valid_wall_lenient(direction: int) -> bool:
+	if is_on_floor():
+		return false
+
+	var ray_bot: RayCast2D = ray_left if direction == -1 else ray_right
+	ray_bot.force_raycast_update()
+	if not ray_bot.is_colliding():
+		return false
+
+	for i in get_slide_collision_count():
+		var col    := get_slide_collision(i)
+		var normal := col.get_normal()
+		if sign(normal.x) != -direction:
+			continue
+		if abs(normal.y) < 0.15:
+			return true
+
+	return false
+
 # JUMP
 
 func _handle_jump() -> void:
@@ -355,18 +363,15 @@ func _handle_jump() -> void:
 		velocity.y *= jump_cut_multiplier
 		is_jumping = false
 
-	if wall_mechanics_enabled and is_on_wall() and not is_on_floor():
-		if jump_buffer_timer > 0.0:
-			var wall_normal := get_wall_normal()
-			var wall_dir    := -int(sign(wall_normal.x))
-			if is_valid_wall(wall_dir):
-				# Используем буферизованный инпут: игрок мог отпустить кнопку
-				# чуть раньше прыжка — буфер даёт лениентность в wall_jump_direction_buffer_time сек.
-				var effective_input_x: float = _last_input_x if _last_input_x_timer > 0.0 else 0.0
-				var pressing_toward_wall: bool = sign(effective_input_x) == -sign(wall_normal.x)
-				if pressing_toward_wall:
-					_do_wall_jump()
-					return
+	if wall_mechanics_enabled and is_wall_sliding:
+		# Consume the entry flag so the same press that triggered cling does not also wall jump.
+		if _just_entered_cling:
+			_just_entered_cling = false
+			jump_buffer_timer = 0.0
+			return
+		if Input.is_action_just_pressed("move_up"):
+			_do_wall_jump()
+			return
 
 	if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
 		velocity.y = jump_velocity
@@ -378,6 +383,18 @@ func _handle_jump() -> void:
 
 	if double_jump_enabled and double_jump_available:
 		if Input.is_action_just_pressed("move_up"):
+			# Suppress double jump when pressing toward a wall that both raycasts detect —
+			# let the jump buffer keep the press alive until the player touches the wall.
+			if wall_mechanics_enabled:
+				var input_x := Input.get_axis("move_left", "move_right")
+				ray_left.force_raycast_update()
+				ray_right.force_raycast_update()
+				ray_left_top.force_raycast_update()
+				ray_right_top.force_raycast_update()
+				if input_x < -0.1 and ray_left.is_colliding() and ray_left_top.is_colliding():
+					return
+				if input_x > 0.1 and ray_right.is_colliding() and ray_right_top.is_colliding():
+					return
 			velocity.y = jump_velocity
 			is_jumping = true
 			is_double_jumping = true
@@ -392,12 +409,9 @@ func _do_wall_jump() -> void:
 	coyote_timer = 0.0
 	is_jumping = true
 	jump_buffer_timer = 0.0
-	# Сбрасываем cling-состояние немедленно, иначе в следующем кадре
-	# _apply_gravity увидит стale is_wall_sliding=true + wall_cling_timer>0
-	# и обнулит velocity.y, убив импульс прыжка.
-	wall_cling_timer = 0.0
-	wall_grace_timer = 0.0
-	_was_wall_sliding = false
+	is_wall_sliding = false
+	_cling_wall_dir = 0
+	_after_wall_jump = true
 	sound_jump.play()
 
 # MOVEMENT
@@ -405,15 +419,13 @@ func _do_wall_jump() -> void:
 func _handle_movement(delta: float) -> void:
 	var input_x := Input.get_axis("move_left", "move_right")
 
-	# Буфер последнего направления — для wall jump direction check
-	if input_x != 0.0:
-		_last_input_x = input_x
-		_last_input_x_timer = wall_jump_direction_buffer_time
-	elif _last_input_x_timer > 0.0:
-		_last_input_x_timer -= delta
-
-	# Во время wall jump lock — полностью игнорируем инпут, velocity.x не трогаем
+	# During wall jump lock — ignore input, do not touch velocity.x
 	if wall_jump_lock_timer > 0.0:
+		return
+
+	# While clinging, velocity.x is already zeroed by _apply_gravity; keep it zero
+	if is_wall_sliding:
+		velocity.x = 0.0
 		return
 
 	if input_x != 0.0:
