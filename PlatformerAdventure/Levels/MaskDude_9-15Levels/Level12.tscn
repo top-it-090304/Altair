@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://b5mqgt8n7oxtl"]
+[gd_scene load_steps=26 format=4 uid="uid://b5mqgt8n7oxtl"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_sp7fk"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_ctuiu"]
@@ -15,15 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://7ixqyae4l32t" path="res://Entities/Traps/SpikeHead/spike_head.tscn" id="12_1m0xq"]
 [ext_resource type="PackedScene" uid="uid://brstsdqgjh4vs" path="res://Entities/Fruits/pineapple.tscn" id="12_5ro4g"]
 [ext_resource type="PackedScene" uid="uid://bumyw757kma2e" path="res://Entities/Enemies/plant_2d.tscn" id="13_fcu3s"]
-[ext_resource type="PackedScene" uid="uid://h8i67qnod2am" path="res://Entities/Fruits/strawberry.tscn" id="13_ygt4o"]
-[ext_resource type="PackedScene" uid="uid://52x52oidtims" path="res://Entities/Fruits/kiwi.tscn" id="14_rykps"]
 [ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="15_8nxwd"]
 [ext_resource type="PackedScene" uid="uid://ielkwmhy36io" path="res://Entities/Traps/Trampoline/trampoline.tscn" id="15_kre2r"]
 [ext_resource type="PackedScene" uid="uid://uyawx8kco8am" path="res://Entities/Traps/Fan/fan.tscn" id="16_10wqy"]
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="16_m46cp"]
 [ext_resource type="PackedScene" uid="uid://lxxadfoc1hv7" path="res://Entities/Fruits/orange.tscn" id="17_hbwxv"]
-[ext_resource type="PackedScene" uid="uid://idmtdn4k1ns6" path="res://Entities/Fruits/cherries.tscn" id="18_njnif"]
-[ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="19_8kyv0"]
 [ext_resource type="PackedScene" uid="uid://cuixn1nfqfiya" path="res://Entities/Players/MaskDude/MaskDude.tscn" id="20_q33rw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmsh5"]
@@ -434,28 +430,37 @@ position = Vector2(208, 96)
 [node name="Fruits" type="Node2D" parent="Entities"]
 
 [node name="pineapple" parent="Entities/Fruits" instance=ExtResource("12_5ro4g")]
-position = Vector2(176, 21.3333)
-
-[node name="strawberry" parent="Entities/Fruits" instance=ExtResource("13_ygt4o")]
-position = Vector2(197.333, 21.3333)
-
-[node name="kiwi" parent="Entities/Fruits" instance=ExtResource("14_rykps")]
-position = Vector2(218.667, 21.3333)
+position = Vector2(106.667, 309.333)
 
 [node name="banana" parent="Entities/Fruits" instance=ExtResource("15_8nxwd")]
-position = Vector2(240, 21.3333)
+position = Vector2(554.667, 352)
 
 [node name="apple" parent="Entities/Fruits" instance=ExtResource("16_m46cp")]
-position = Vector2(261.333, 21.3333)
+position = Vector2(528, 117.333)
 
 [node name="orange" parent="Entities/Fruits" instance=ExtResource("17_hbwxv")]
-position = Vector2(282.667, 21.3333)
+position = Vector2(672, 229.333)
 
-[node name="cherries" parent="Entities/Fruits" instance=ExtResource("18_njnif")]
-position = Vector2(304, 21.3333)
+[node name="apple2" parent="Entities/Fruits" instance=ExtResource("16_m46cp")]
+position = Vector2(570.667, 117.333)
 
-[node name="melon" parent="Entities/Fruits" instance=ExtResource("19_8kyv0")]
-position = Vector2(325.333, 21.3333)
+[node name="orange2" parent="Entities/Fruits" instance=ExtResource("17_hbwxv")]
+position = Vector2(650.667, 346.667)
+
+[node name="banana2" parent="Entities/Fruits" instance=ExtResource("15_8nxwd")]
+position = Vector2(448, 352)
+
+[node name="banana3" parent="Entities/Fruits" instance=ExtResource("15_8nxwd")]
+position = Vector2(314.667, 352)
+
+[node name="banana4" parent="Entities/Fruits" instance=ExtResource("15_8nxwd")]
+position = Vector2(192, 352)
+
+[node name="pineapple2" parent="Entities/Fruits" instance=ExtResource("12_5ro4g")]
+position = Vector2(144, 117.333)
+
+[node name="pineapple3" parent="Entities/Fruits" instance=ExtResource("12_5ro4g")]
+position = Vector2(256, 154.667)
 
 [node name="Player" parent="Entities" instance=ExtResource("20_q33rw")]
 position = Vector2(394.667, 245.333)
