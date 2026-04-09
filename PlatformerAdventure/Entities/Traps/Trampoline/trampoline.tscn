@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bxn73f6f4s41h" path="res://Assets/Textures/Traps/Trampoline/Jump (28x28).png" id="3_e8yfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwies"]
-size = Vector2(25, 11)
+size = Vector2(24.6667, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i65o3"]
-size = Vector2(25, 11.3333)
+size = Vector2(24.6667, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i65o3"]
 atlas = ExtResource("3_e8yfb")
@@ -92,13 +92,13 @@ metadata/_edit_group_ = true
 texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-0.5, 8.5)
+position = Vector2(-0.333333, 8.5)
 shape = SubResource("RectangleShape2D_pwies")
 
 [node name="Detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
-position = Vector2(-0.5, 8.33333)
+position = Vector2(-0.333333, 7.99999)
 shape = SubResource("RectangleShape2D_i65o3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
