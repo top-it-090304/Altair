@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://uxab5gxnppwu"]
+[gd_scene load_steps=23 format=4 uid="uid://uxab5gxnppwu"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_rdrgy"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_3ska5"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://m8vymuv18nrh" path="res://Entities/Traps/Spike/TileSpikes.tscn" id="9_hiuog"]
 [ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="10_mtv7v"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="11_2sh7q"]
-[ext_resource type="PackedScene" uid="uid://brstsdqgjh4vs" path="res://Entities/Fruits/pineapple.tscn" id="12_kmude"]
 [ext_resource type="PackedScene" uid="uid://ielkwmhy36io" path="res://Entities/Traps/Trampoline/trampoline.tscn" id="12_lcoy2"]
 [ext_resource type="PackedScene" uid="uid://bumyw757kma2e" path="res://Entities/Enemies/plant_2d.tscn" id="12_pr2pw"]
 [ext_resource type="PackedScene" uid="uid://h8i67qnod2am" path="res://Entities/Fruits/strawberry.tscn" id="13_h5k6x"]
@@ -19,10 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="14_0qown"]
 [ext_resource type="PackedScene" uid="uid://52x52oidtims" path="res://Entities/Fruits/kiwi.tscn" id="14_bdlbl"]
 [ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="15_d5d6d"]
-[ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="16_gluuy"]
 [ext_resource type="PackedScene" uid="uid://lxxadfoc1hv7" path="res://Entities/Fruits/orange.tscn" id="17_amgn2"]
-[ext_resource type="PackedScene" uid="uid://idmtdn4k1ns6" path="res://Entities/Fruits/cherries.tscn" id="18_l12v4"]
-[ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="19_y4ljl"]
 [ext_resource type="PackedScene" uid="uid://cuixn1nfqfiya" path="res://Entities/Players/MaskDude/MaskDude.tscn" id="20_necrr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmsh5"]
@@ -364,7 +360,7 @@ tile_map_data = PackedByteArray("AAAsAAQAAAAAAAAAADAuAAQAAAAAAAAAADAtAAQAAAAAAAA
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("10_mtv7v")]
-position = Vector2(423.333, 382.667)
+position = Vector2(640, 384)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
@@ -397,29 +393,41 @@ position = Vector2(133.333, 96)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
 
-[node name="pineapple" parent="Entities/Fruits" instance=ExtResource("12_kmude")]
-position = Vector2(176, 21.3333)
-
 [node name="strawberry" parent="Entities/Fruits" instance=ExtResource("13_h5k6x")]
-position = Vector2(197.333, 21.3333)
+position = Vector2(400, 197.333)
 
 [node name="kiwi" parent="Entities/Fruits" instance=ExtResource("14_bdlbl")]
-position = Vector2(218.667, 21.3333)
+position = Vector2(330.667, 352)
 
 [node name="banana" parent="Entities/Fruits" instance=ExtResource("15_d5d6d")]
-position = Vector2(240, 21.3333)
-
-[node name="apple" parent="Entities/Fruits" instance=ExtResource("16_gluuy")]
-position = Vector2(261.333, 21.3333)
+position = Vector2(538.667, 282.667)
 
 [node name="orange" parent="Entities/Fruits" instance=ExtResource("17_amgn2")]
-position = Vector2(282.667, 21.3333)
+position = Vector2(714.667, 176)
 
-[node name="cherries" parent="Entities/Fruits" instance=ExtResource("18_l12v4")]
-position = Vector2(304, 21.3333)
+[node name="banana2" parent="Entities/Fruits" instance=ExtResource("15_d5d6d")]
+position = Vector2(554.667, 213.333)
 
-[node name="melon" parent="Entities/Fruits" instance=ExtResource("19_y4ljl")]
-position = Vector2(325.333, 21.3333)
+[node name="orange2" parent="Entities/Fruits" instance=ExtResource("17_amgn2")]
+position = Vector2(629.333, 96)
+
+[node name="strawberry2" parent="Entities/Fruits" instance=ExtResource("13_h5k6x")]
+position = Vector2(405.333, 309.333)
+
+[node name="orange3" parent="Entities/Fruits" instance=ExtResource("17_amgn2")]
+position = Vector2(480, 96)
+
+[node name="kiwi2" parent="Entities/Fruits" instance=ExtResource("14_bdlbl")]
+position = Vector2(197.333, 352)
+
+[node name="banana3" parent="Entities/Fruits" instance=ExtResource("15_d5d6d")]
+position = Vector2(106.667, 288)
+
+[node name="banana4" parent="Entities/Fruits" instance=ExtResource("15_d5d6d")]
+position = Vector2(186.667, 224)
+
+[node name="banana5" parent="Entities/Fruits" instance=ExtResource("15_d5d6d")]
+position = Vector2(250.667, 144)
 
 [node name="Player" parent="Entities" instance=ExtResource("20_necrr")]
 position = Vector2(597.333, 358)

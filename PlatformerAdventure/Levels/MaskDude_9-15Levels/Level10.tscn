@@ -369,12 +369,11 @@ position = Vector2(90.6667, 416)
 [node name="Traps" type="Node2D" parent="Entities"]
 
 [node name="Plant2D" parent="Entities/Traps" instance=ExtResource("11_yfjs3")]
-position = Vector2(723.333, 136)
+position = Vector2(724.667, 135.333)
 shoot_interval = 3.0
-metadata/_edit_group_ = true
 
 [node name="BulletSpawnPoint" parent="Entities/Traps/Plant2D" index="4"]
-position = Vector2(-16.1108, -6.11082)
+position = Vector2(-16.1111, 0.555559)
 
 [node name="Rino" parent="Entities/Traps" instance=ExtResource("12_pu4su")]
 position = Vector2(720, 288)
@@ -384,10 +383,6 @@ move_speed = 300.0
 [node name="Rino3" parent="Entities/Traps" instance=ExtResource("12_pu4su")]
 position = Vector2(484, 142.667)
 move_speed = 300.0
-
-[node name="Plant2D3" parent="Entities/Traps" instance=ExtResource("11_yfjs3")]
-position = Vector2(658.667, 392)
-shoot_interval = 3.0
 
 [node name="Plant2D4" parent="Entities/Traps" instance=ExtResource("11_yfjs3")]
 position = Vector2(221.333, 392)
