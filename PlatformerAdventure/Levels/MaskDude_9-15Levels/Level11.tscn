@@ -450,7 +450,6 @@ position = Vector2(90, 236.667)
 
 [node name="Player" parent="Entities" instance=ExtResource("20_i3k86")]
 position = Vector2(713.333, 314)
-wall_jump_velocity = Vector2(700, -600)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
 
