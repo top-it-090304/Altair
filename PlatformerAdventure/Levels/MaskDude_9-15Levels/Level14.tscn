@@ -360,7 +360,7 @@ tile_map_data = PackedByteArray("AAAOAAYAAAAAAAAAAGAOAAcAAAAAAAAAAGAOAAgAAAAAAAA
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("10_pb8t1")]
-position = Vector2(209.333, 383.333)
+position = Vector2(720, 144)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
@@ -436,7 +436,7 @@ position = Vector2(680.667, 272.667)
 position = Vector2(712.667, 272.667)
 
 [node name="Player" parent="Entities" instance=ExtResource("20_mlqsh")]
-position = Vector2(684, 147.333)
+position = Vector2(704, 117.333)
 wall_jump_velocity = Vector2(600, -600)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
