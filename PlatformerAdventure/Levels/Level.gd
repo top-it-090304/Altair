@@ -85,13 +85,14 @@ func activate_slowmo_bonus() -> void:
 	used_slowmo += 1
 	Engine.time_scale = slowmo_scale
 	var c: float = 1.0 / slowmo_scale
-	player.speed          *= c
-	player.acceleration   *= c
-	player.friction       *= c
-	player.gravity_fall   *= c
-	player.gravity_rise   *= c
-	player.max_fall_speed *= c
-	player.jump_velocity  *= c
+	player.speed               *= c
+	player.acceleration        *= c
+	player.friction            *= c
+	player.gravity_fall        *= c
+	player.gravity_rise        *= c
+	player.max_fall_speed      *= c
+	player.jump_velocity       *= c
+	player.wall_jump_velocity  *= c
 	player.animated_sprite.speed_scale = c
 
 func activate_magnet_bonus() -> void:
