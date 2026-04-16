@@ -62,6 +62,11 @@ move_left={
 
 pointing/emulate_touch_from_mouse=true
 
+[physics]
+
+common/physics_ticks_per_second=30
+common/physics_interpolation=true
+
 [rendering]
 
 rendering_device/driver="opengl3"
