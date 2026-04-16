@@ -414,5 +414,6 @@ position = Vector2(298.667, 85.3333)
 position = Vector2(582, 146.667)
 
 [node name="Spikes" parent="Entities" instance=ExtResource("18_tvs4k")]
+tile_map_data = PackedByteArray()
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
