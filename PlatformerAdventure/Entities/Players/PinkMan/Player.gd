@@ -10,7 +10,7 @@ signal died
 
 @export_group("Jumping")
 @export var jump_velocity: float = -450.0
-@export var jump_cut_multiplier: float = 0.4
+@export var jump_cut_multiplier: float = 0.85
 @export var coyote_time: float = 0.12
 @export var jump_buffer_time: float = 0.12
 
