@@ -1,17 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://diylqawxkwomj"]
+[gd_scene load_steps=3 format=3 uid="uid://diylqawxkwomj"]
 
-[ext_resource type="Shader" uid="uid://cbraoprsctj22" path="res://Entities/Level/UI/AnimatedBack.gdshader" id="1_nptii"]
+[ext_resource type="Script" path="res://Entities/Level/UI/scrolling_bg.gd" id="1_scrll"]
 [ext_resource type="Texture2D" uid="uid://xeaeximlb8ac" path="res://Assets/Textures/Background/Pink.png" id="2_gud5w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rayyn"]
-shader = ExtResource("1_nptii")
-shader_parameter/scroll_speed = 30.0
-shader_parameter/tile_size = Vector2(64, 64)
-
 [node name="TextureRect" type="TextureRect"]
-material = SubResource("ShaderMaterial_rayyn")
-offset_left = -417.0
-offset_top = -240.0
-offset_right = 445.0
-offset_bottom = 240.0
+script = ExtResource("1_scrll")
 texture = ExtResource("2_gud5w")
+stretch_mode = 3
