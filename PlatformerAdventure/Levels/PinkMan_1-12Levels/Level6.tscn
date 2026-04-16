@@ -325,7 +325,6 @@ next_level_path = "uid://dvkog8bchbnf8"
 [node name="UI" type="Node2D" parent="."]
 
 [node name="BgTexture" parent="UI" instance=ExtResource("2_4xek7")]
-offset_left = 0.0
 offset_top = -2.0
 offset_right = 852.0
 offset_bottom = 479.0

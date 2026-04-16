@@ -326,7 +326,6 @@ next_level_path = "res://Levels/PinkMan_1-12Levels/Level3.tscn"
 [node name="UI" type="Node2D" parent="."]
 
 [node name="BgTexture" parent="UI" instance=ExtResource("2_gbnyl")]
-offset_left = 0.0
 offset_top = -2.0
 offset_right = 852.0
 offset_bottom = 479.0
