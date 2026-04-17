@@ -49,6 +49,10 @@ func _ready() -> void:
 	if player and spawn_marker:
 		player.global_position = spawn_marker.global_position
 
+	if GameData.return_position != Vector2.ZERO:
+		player.global_position = GameData.return_position
+		GameData.return_position = Vector2.ZERO
+
 	add_child(fruit_counter)
 	fruit_counter.update_count(0)
 
@@ -66,6 +70,16 @@ func _ready() -> void:
 
 	if player:
 		player.died.connect(reset_bonus_uses)
+
+	if GameData.return_collected_count >= 0:
+		collected_count = GameData.return_collected_count
+		fruit_counter.update_count(collected_count)
+		for fruit in get_tree().get_nodes_in_group("fruits"):
+			if not GameData.return_uncollected_positions.has(fruit.global_position):
+				fruit.visible = false
+				fruit.queue_free()
+		GameData.return_collected_count = -1
+		GameData.return_uncollected_positions.clear()
 
 
 # ── БОНУСЫ — вызываются из BonusHUD ──────────

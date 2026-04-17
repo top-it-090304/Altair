@@ -22,6 +22,11 @@ var _spent: int = 0
 var show_ctrl_hits: bool = true
 signal fruits_changed(new_total: int)
 
+# Состояние возврата из магазина (return_position == ZERO = не задано)
+var return_position: Vector2 = Vector2.ZERO
+var return_collected_count: int = -1
+var return_uncollected_positions: Array[Vector2] = []
+
 # Количество в инвентаре
 var count_shield: int = 0
 var count_slowmo: int = 0
