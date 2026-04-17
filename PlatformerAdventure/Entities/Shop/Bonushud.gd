@@ -88,6 +88,16 @@ func _show_shop_dialog() -> void:
 	btn_yes.pressed.connect(func():
 		get_tree().paused = false
 		dialog.queue_free()
+		var level = _get_level()
+		if level:
+			var p = level.get("player")
+			if p:
+				GameData.return_position = p.global_position
+			var cc = level.get("collected_count")
+			GameData.return_collected_count = cc if cc != null else 0
+			GameData.return_uncollected_positions.clear()
+			for fruit in get_tree().get_nodes_in_group("fruits"):
+				GameData.return_uncollected_positions.append(fruit.global_position)
 		SceneManager.go_to("res://Entities/Shop/shop.tscn")
 	)
 
