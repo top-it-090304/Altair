@@ -272,8 +272,6 @@ script = ExtResource("16_y6nnx")
 
 [node name="BgTexture" parent="." instance=ExtResource("2_jubmu")]
 layout_mode = 1
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 1237.0
 offset_bottom = 690.0
 texture = ExtResource("3_plwyx")

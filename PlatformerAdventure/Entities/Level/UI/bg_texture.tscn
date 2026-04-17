@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4yu7d0wdp5mf"]
 
-[ext_resource type="Script" path="res://Entities/Level/UI/scrolling_bg.gd" id="1_scrll"]
+[ext_resource type="Script" uid="uid://douquulhppqvx" path="res://Entities/Level/UI/scrolling_bg.gd" id="1_scrll"]
 [ext_resource type="Texture2D" uid="uid://bj7b55rnrte64" path="res://Assets/Textures/Background/Green.png" id="2_qbrvq"]
 
 [node name="BgTexture" type="TextureRect"]
-script = ExtResource("1_scrll")
 texture = ExtResource("2_qbrvq")
 stretch_mode = 3
+script = ExtResource("1_scrll")
