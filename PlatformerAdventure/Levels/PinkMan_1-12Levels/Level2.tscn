@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d08w2f7pgtaav"]
+[gd_scene load_steps=22 format=4 uid="uid://d08w2f7pgtaav"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_e04ax"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_gbnyl"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bljm38ot20br2" path="res://Entities/Level/UI/touch_controls.tscn" id="6_l21dc"]
 [ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="7_5mlkt"]
 [ext_resource type="PackedScene" uid="uid://dtnt0bcigkql1" path="res://Entities/Shop/bonus_hud.tscn" id="7_ssbi6"]
-[ext_resource type="PackedScene" uid="uid://beclvqgl5s6o8" path="res://Entities/Traps/Fire/fire_trap.tscn" id="8_gbnyl"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="8_oxc05"]
 [ext_resource type="PackedScene" uid="uid://c3dtup05erfjm" path="res://Entities/Traps/Spike/spikes10.tscn" id="9_12qpy"]
 [ext_resource type="PackedScene" uid="uid://ielkwmhy36io" path="res://Entities/Traps/Trampoline/trampoline.tscn" id="10_l21dc"]
@@ -327,7 +326,6 @@ next_level_path = "res://Levels/PinkMan_1-12Levels/Level3.tscn"
 [node name="UI" type="Node2D" parent="."]
 
 [node name="BgTexture" parent="UI" instance=ExtResource("2_gbnyl")]
-offset_left = 0.0
 offset_top = -2.0
 offset_right = 852.0
 offset_bottom = 479.0
@@ -362,18 +360,6 @@ position = Vector2(122.667, 320)
 position = Vector2(119.333, 291.333)
 
 [node name="Traps" type="Node2D" parent="Entities"]
-
-[node name="FireTrap" parent="Entities/Traps" instance=ExtResource("8_gbnyl")]
-position = Vector2(406.667, 127.333)
-fire_on = 3.0
-
-[node name="FireTrap2" parent="Entities/Traps" instance=ExtResource("8_gbnyl")]
-position = Vector2(506, 127.333)
-fire_on = 3.0
-
-[node name="FireTrap3" parent="Entities/Traps" instance=ExtResource("8_gbnyl")]
-position = Vector2(456, 127.333)
-fire_on = 3.0
 
 [node name="Area2D" parent="Entities/Traps" instance=ExtResource("9_12qpy")]
 position = Vector2(224, 425.333)

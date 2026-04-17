@@ -10,7 +10,7 @@ signal died
 
 @export_group("Jumping")
 @export var jump_velocity: float = -450.0
-@export var jump_cut_multiplier: float = 0.4
+@export var jump_cut_multiplier: float = 0.85
 @export var coyote_time: float = 0.12
 @export var jump_buffer_time: float = 0.12
 
@@ -46,6 +46,9 @@ signal died
 @onready var ray_right: RayCast2D     = $RayCastRight
 @onready var ray_left_top: RayCast2D  = $RayCastLeftTop
 @onready var ray_right_top: RayCast2D = $RayCastRightTop
+
+var ray_left_mid: RayCast2D
+var ray_right_mid: RayCast2D
 @onready var sound_jump: AudioStreamPlayer2D = $SoundJump
 @onready var sound_hit: AudioStreamPlayer2D  = $SoundHit
 
@@ -78,8 +81,19 @@ var _invincibility_timer: float = 0.0
 # INIT
 
 func _ready() -> void:
-	# Подключаемся к сигналам всех врагов, которые уже есть на сцене.
-	# call_deferred гарантирует, что все _ready() на сцене уже отработали.
+	# Создаём средние рейкасты динамически — на полпути между нижним и верхним.
+	ray_left_mid = RayCast2D.new()
+	ray_left_mid.position = (ray_left.position + ray_left_top.position) / 2.0
+	ray_left_mid.target_position = ray_left.target_position
+	ray_left_mid.enabled = true
+	add_child(ray_left_mid)
+
+	ray_right_mid = RayCast2D.new()
+	ray_right_mid.position = (ray_right.position + ray_right_top.position) / 2.0
+	ray_right_mid.target_position = ray_right.target_position
+	ray_right_mid.enabled = true
+	add_child(ray_right_mid)
+
 	call_deferred("_connect_enemy_signals")
 
 func _connect_enemy_signals() -> void:
@@ -332,15 +346,17 @@ func is_valid_wall(direction: int) -> bool:
 	return false
 
 # Lenient version for auto-cling after wall jump.
-# Only the bottom raycast must hit — wall covers at least the lower half of the character.
+# Both the bottom AND middle raycasts must hit — wall covers at least half the character height.
 # direction: -1 = left wall, +1 = right wall
 func is_valid_wall_lenient(direction: int) -> bool:
 	if is_on_floor():
 		return false
 
-	var ray_bot: RayCast2D = ray_left if direction == -1 else ray_right
+	var ray_bot: RayCast2D = ray_left     if direction == -1 else ray_right
+	var ray_mid: RayCast2D = ray_left_mid if direction == -1 else ray_right_mid
 	ray_bot.force_raycast_update()
-	if not ray_bot.is_colliding():
+	ray_mid.force_raycast_update()
+	if not ray_bot.is_colliding() or not ray_mid.is_colliding():
 		return false
 
 	for i in get_slide_collision_count():

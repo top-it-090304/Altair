@@ -110,3 +110,4 @@ frame_progress = 0.392571
 
 [node name="TouchZoneHints" type="Node2D" parent="."]
 script = ExtResource("3_wfiyp")
+line_alpha = 0.3

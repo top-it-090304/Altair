@@ -336,7 +336,6 @@ next_level_path = "res://Levels/MaskDude_9-15Levels/Level9.tscn"
 [node name="UI" type="Node2D" parent="."]
 
 [node name="BgTexture" parent="UI" instance=ExtResource("2_bkewb")]
-offset_left = 0.0
 offset_top = -2.0
 offset_right = 852.0
 offset_bottom = 479.0

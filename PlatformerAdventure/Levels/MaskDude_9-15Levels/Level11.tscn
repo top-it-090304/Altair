@@ -329,7 +329,6 @@ metadata/_edit_vertical_guides_ = [346.0]
 [node name="UI" type="Node2D" parent="."]
 
 [node name="BgTexture" parent="UI" instance=ExtResource("2_cusey")]
-offset_left = 0.0
 offset_top = -2.0
 offset_right = 852.0
 offset_bottom = 479.0

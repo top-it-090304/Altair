@@ -2,15 +2,28 @@ extends Node2D
 
 @export var show_hints: bool = true
 
-const HINT_COLOR := Color(1.0, 1.0, 1.0, 0.08)
-const LINE_WIDTH := 2.0
-const CORNER_RADIUS := 30.0
+@export_group("Appearance")
+@export var line_alpha: float = 0.35: set = _set_line_alpha
+@export var line_width: float = 3.5: set = _set_line_width
+@export var corner_radius: float = 30.0: set = _set_corner_radius
 
 const ZONE_LEFT  := Rect2(8,   480, 230, 220)
 const ZONE_RIGHT := Rect2(260, 480, 230, 220)
 const ZONE_JUMP  := Rect2(970, 480, 295, 220)
 
 var _scale := Vector2.ONE
+
+func _set_line_alpha(v: float) -> void:
+	line_alpha = v
+	queue_redraw()
+
+func _set_line_width(v: float) -> void:
+	line_width = v
+	queue_redraw()
+
+func _set_corner_radius(v: float) -> void:
+	corner_radius = v
+	queue_redraw()
 
 func _ready() -> void:
 	show_hints = GameData.show_ctrl_hits  # читаем из сохранения
@@ -36,7 +49,8 @@ func _draw_rounded_rect(zone: Rect2) -> void:
 	r.size.x *= _scale.x
 	r.size.y *= _scale.y
 
-	var cr: float = CORNER_RADIUS * min(_scale.x, _scale.y)
+	var color := Color(1.0, 1.0, 1.0, line_alpha)
+	var cr: float = corner_radius * min(_scale.x, _scale.y)
 	var segments := 8
 	var points := PackedVector2Array()
 
@@ -62,4 +76,4 @@ func _draw_rounded_rect(zone: Rect2) -> void:
 
 	# Замыкаем
 	points.append(points[0])
-	draw_polyline(points, HINT_COLOR, LINE_WIDTH, true)
+	draw_polyline(points, color, line_width, true)
