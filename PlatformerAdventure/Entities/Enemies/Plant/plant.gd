@@ -86,6 +86,7 @@ func _spawn_bullet() -> void:
 	var bullet: Node = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = spawn_point.global_position
+	bullet.reset_physics_interpolation()
 	bullet.direction = Vector2(shoot_direction.x * sign(scale.x), shoot_direction.y)
 
 # ──────────────────────────────────────────────
