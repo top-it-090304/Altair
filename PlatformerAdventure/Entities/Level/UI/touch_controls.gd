@@ -75,10 +75,13 @@ func _on_finger_up(id : int) -> void:
 func _on_finger_drag (id: int, pos : Vector2) -> void:
 	if id == _finger_left:
 		ghost_left.global_position = pos
+		ghost_left.reset_physics_interpolation()
 	elif id == _finger_rigjt:
 		ghost_right.global_position = pos
+		ghost_right.reset_physics_interpolation()
 	elif id == _finger_jump:
 		ghost_jump.global_position = pos
+		ghost_jump.reset_physics_interpolation()
 	
 func _on_anim_finished (ghost: AnimatedSprite2D):
 	if ghost.visible:
@@ -99,6 +102,7 @@ func _release(action: String) -> void:
 func _show_ghost(ghost: AnimatedSprite2D, pos: Vector2) -> void:
 	ghost.visible = true
 	ghost.position = pos
+	ghost.reset_physics_interpolation()
 	ghost.play("hit")
 
 func _to_base(pos: Vector2) -> Vector2:
