@@ -436,7 +436,6 @@ position = Vector2(712.667, 272.667)
 
 [node name="Player" parent="Entities" instance=ExtResource("20_mlqsh")]
 position = Vector2(704, 117.333)
-wall_jump_velocity = Vector2(600, -600)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
 

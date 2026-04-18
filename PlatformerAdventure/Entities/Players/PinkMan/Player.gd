@@ -16,9 +16,7 @@ signal died
 
 @export_group("Wall Mechanics")
 @export var wall_mechanics_enabled: bool = false
-@export var wall_jump_velocity: Vector2 = Vector2(280.0, -400.0)
-@export var wall_jump_input_lock_time: float = 0.1
-@export var wall_min_contact_height: float = 8.0
+@export var wall_slide_speed: float = 50.0
 
 @export_group("Double Jump")
 @export var double_jump_enabled: bool = true
@@ -47,8 +45,6 @@ signal died
 @onready var ray_left_top: RayCast2D  = $RayCastLeftTop
 @onready var ray_right_top: RayCast2D = $RayCastRightTop
 
-var ray_left_mid: RayCast2D
-var ray_right_mid: RayCast2D
 @onready var sound_jump: AudioStreamPlayer2D = $SoundJump
 @onready var sound_hit: AudioStreamPlayer2D  = $SoundHit
 
@@ -58,15 +54,12 @@ var animation_speed_compensate: float = 1.0
 
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
-var wall_jump_lock_timer: float = 0.0
 
 var is_jumping: bool = false
 var is_wall_sliding: bool = false
 var facing_right: bool = true
 
 var _cling_wall_dir: int = 0
-var _just_entered_cling: bool = false
-var _after_wall_jump: bool = false
 
 var double_jump_available: bool = false
 var is_double_jumping: bool = false
@@ -83,19 +76,6 @@ var _invincibility_timer: float = 0.0
 # INIT
 
 func _ready() -> void:
-	# Создаём средние рейкасты динамически — на полпути между нижним и верхним.
-	ray_left_mid = RayCast2D.new()
-	ray_left_mid.position = (ray_left.position + ray_left_top.position) / 2.0
-	ray_left_mid.target_position = ray_left.target_position
-	ray_left_mid.enabled = true
-	add_child(ray_left_mid)
-
-	ray_right_mid = RayCast2D.new()
-	ray_right_mid.position = (ray_right.position + ray_right_top.position) / 2.0
-	ray_right_mid.target_position = ray_right.target_position
-	ray_right_mid.enabled = true
-	add_child(ray_right_mid)
-
 	call_deferred("_connect_enemy_signals")
 
 func _connect_enemy_signals() -> void:
@@ -247,15 +227,11 @@ func _update_timers(delta: float) -> void:
 		is_jumping = false
 		is_double_jumping = false
 		double_jump_available = double_jump_enabled
-		_after_wall_jump = false
 	elif coyote_timer > 0.0:
 		coyote_timer -= delta
 
 	if jump_buffer_timer > 0.0:
 		jump_buffer_timer -= delta
-
-	if wall_jump_lock_timer > 0.0:
-		wall_jump_lock_timer -= delta
 
 # GRAVITY
 
@@ -263,7 +239,7 @@ func _apply_gravity(delta: float) -> void:
 	if is_on_floor():
 		return
 	if is_wall_sliding:
-		velocity.y = 0.0
+		velocity.y = wall_slide_speed
 		velocity.x = 0.0
 		return
 	var grav := gravity_fall if velocity.y > 0 else gravity_rise
@@ -272,106 +248,67 @@ func _apply_gravity(delta: float) -> void:
 # WALL CLING
 
 func _handle_wall_cling() -> void:
-	# If already clinging, only exit on explicit away-press or landing.
+	# Already clinging — exit on landing, wall lost, or pressing away.
 	if is_wall_sliding:
 		if is_on_floor():
-			is_wall_sliding = false
-			_cling_wall_dir = 0
+			_exit_wall_cling()
+			return
+		if not _wall_detected_dir(_cling_wall_dir):
+			_exit_wall_cling()
 			return
 		var input_x := Input.get_axis("move_left", "move_right")
-		var pressing_away: bool = input_x != 0.0 and sign(input_x) != _cling_wall_dir
-		if pressing_away:
-			is_wall_sliding = false
-			_cling_wall_dir = 0
+		if input_x != 0.0 and sign(input_x) != _cling_wall_dir:
+			_exit_wall_cling()
+			return
 		return
 
-	# Entry: airborne + touching wall.
-	if is_on_floor() or not is_on_wall():
+	# Entry: airborne + falling (velocity.y > 0) + touching wall via raycast.
+	if is_on_floor():
+		return
+	if velocity.y <= 0.0:
 		return
 
-	var wall_normal := get_wall_normal()
-	var wall_dir := -int(sign(wall_normal.x))  # -1 = left wall, +1 = right wall
-
-	# After a wall jump — auto-cling with lenient check (bottom ray only, ~half character height).
-	if _after_wall_jump:
-		if is_valid_wall_lenient(wall_dir):
-			is_wall_sliding = true
-			_cling_wall_dir = wall_dir
-			_after_wall_jump = false
-			_just_entered_cling = false
-			facing_right = (wall_dir == 1)
+	var wall_dir := _detect_wall_dir()
+	if wall_dir == 0:
 		return
 
-	# Normal first entry: wall must be large enough (is_valid_wall), pressing toward it + jump buffered.
-	if not is_valid_wall(wall_dir):
-		return
-	if not Input.is_action_just_pressed("move_up") and jump_buffer_timer <= 0.0:
-		return
-
+	# Pressing away from the detected wall — don't cling, let player pass freely.
 	var input_x := Input.get_axis("move_left", "move_right")
-	var pressing_toward_wall: bool = input_x != 0.0 and sign(input_x) == wall_dir
-	if not pressing_toward_wall:
+	if input_x != 0.0 and sign(input_x) != wall_dir:
 		return
 
 	is_wall_sliding = true
 	_cling_wall_dir = wall_dir
-	_after_wall_jump = false
-	_just_entered_cling = true
 	facing_right = (wall_dir == 1)
+	is_jumping = false
+	is_double_jumping = false
+	double_jump_available = double_jump_enabled
 
-# Returns true only when all three validation layers pass:
-#   Layer 1 — at least one slide collision on this side has a near-vertical normal (abs Y < 0.15)
-#   Layer 2 — BOTH the bottom and top raycasts on this side are colliding (rules out corners/steps)
-#   Layer 3 — player is airborne (wall mechanics never fire while grounded)
-# direction: -1 = left wall, +1 = right wall
-func is_valid_wall(direction: int) -> bool:
-	# Layer 3: airborne only
-	if is_on_floor():
+func _exit_wall_cling() -> void:
+	is_wall_sliding = false
+	_cling_wall_dir = 0
+
+# Detects a wall via side raycasts. Returns -1 (left), +1 (right), or 0 (none).
+# When both sides report a wall, the one the player is currently facing wins.
+func _detect_wall_dir() -> int:
+	ray_left.force_raycast_update()
+	ray_right.force_raycast_update()
+	var left_hit: bool = ray_left.is_colliding()
+	var right_hit: bool = ray_right.is_colliding()
+	if left_hit and right_hit:
+		return 1 if facing_right else -1
+	if right_hit:
+		return 1
+	if left_hit:
+		return -1
+	return 0
+
+func _wall_detected_dir(direction: int) -> bool:
+	if direction == 0:
 		return false
-
-	# Layer 2: dual-raycast requirement — both bottom and top must hit
-	var ray_bot: RayCast2D = ray_left     if direction == -1 else ray_right
-	var ray_top: RayCast2D = ray_left_top if direction == -1 else ray_right_top
-	ray_bot.force_raycast_update()
-	ray_top.force_raycast_update()
-	if not ray_bot.is_colliding() or not ray_top.is_colliding():
-		return false
-
-	# Layer 1: find a slide collision on this side with a near-vertical normal
-	for i in get_slide_collision_count():
-		var col    := get_slide_collision(i)
-		var normal := col.get_normal()
-		# Normal points away from wall; for left wall normal.x > 0, right wall normal.x < 0
-		if sign(normal.x) != -direction:
-			continue
-		if abs(normal.y) < 0.15:
-			return true
-
-	return false
-
-# Lenient version for auto-cling after wall jump.
-# Both the bottom AND middle raycasts must hit — wall covers at least half the character height.
-# direction: -1 = left wall, +1 = right wall
-func is_valid_wall_lenient(direction: int) -> bool:
-	if is_on_floor():
-		return false
-
-	var ray_bot: RayCast2D = ray_left     if direction == -1 else ray_right
-	var ray_mid: RayCast2D = ray_left_mid if direction == -1 else ray_right_mid
-	ray_bot.force_raycast_update()
-	ray_mid.force_raycast_update()
-	if not ray_bot.is_colliding() or not ray_mid.is_colliding():
-		return false
-
-	for i in get_slide_collision_count():
-		var col    := get_slide_collision(i)
-		var normal := col.get_normal()
-		if sign(normal.x) != -direction:
-			continue
-		if abs(normal.y) < 0.15:
-			return true
-
-	return false
+	var ray: RayCast2D = ray_left if direction == -1 else ray_right
+	ray.force_raycast_update()
+	return ray.is_colliding()
 
 # JUMP
 
@@ -384,12 +321,7 @@ func _handle_jump() -> void:
 		is_jumping = false
 
 	if wall_mechanics_enabled and is_wall_sliding:
-		# Consume the entry flag so the same press that triggered cling does not also wall jump.
-		if _just_entered_cling:
-			_just_entered_cling = false
-			jump_buffer_timer = 0.0
-			return
-		if Input.is_action_just_pressed("move_up"):
+		if jump_buffer_timer > 0.0:
 			_do_wall_jump()
 			return
 
@@ -403,18 +335,6 @@ func _handle_jump() -> void:
 
 	if double_jump_enabled and double_jump_available:
 		if Input.is_action_just_pressed("move_up"):
-			# Suppress double jump when pressing toward a wall that both raycasts detect —
-			# let the jump buffer keep the press alive until the player touches the wall.
-			if wall_mechanics_enabled:
-				var input_x := Input.get_axis("move_left", "move_right")
-				ray_left.force_raycast_update()
-				ray_right.force_raycast_update()
-				ray_left_top.force_raycast_update()
-				ray_right_top.force_raycast_update()
-				if input_x < -0.1 and ray_left.is_colliding() and ray_left_top.is_colliding():
-					return
-				if input_x > 0.1 and ray_right.is_colliding() and ray_right_top.is_colliding():
-					return
 			velocity.y = jump_velocity
 			is_jumping = true
 			is_double_jumping = true
@@ -422,26 +342,18 @@ func _handle_jump() -> void:
 			sound_jump.play()
 
 func _do_wall_jump() -> void:
-	var wall_normal := get_wall_normal()
-	velocity.x = wall_normal.x * wall_jump_velocity.x
-	velocity.y = wall_jump_velocity.y
-	wall_jump_lock_timer = wall_jump_input_lock_time
+	velocity.y = jump_velocity
+	velocity.x = 0.0
 	coyote_timer = 0.0
 	is_jumping = true
 	jump_buffer_timer = 0.0
-	is_wall_sliding = false
-	_cling_wall_dir = 0
-	_after_wall_jump = true
+	_exit_wall_cling()
 	sound_jump.play()
 
 # MOVEMENT
 
 func _handle_movement(delta: float) -> void:
 	var input_x := Input.get_axis("move_left", "move_right")
-
-	# During wall jump lock — ignore input, do not touch velocity.x
-	if wall_jump_lock_timer > 0.0:
-		return
 
 	# While clinging, velocity.x is already zeroed by _apply_gravity; keep it zero
 	if is_wall_sliding:
