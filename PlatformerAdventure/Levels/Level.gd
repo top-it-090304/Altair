@@ -31,6 +31,7 @@ var used_magnet: int = 0
 
 @onready var fruit_counter = preload("res://Entities/Level/Buttons/сounter.tscn").instantiate()
 
+const TUTORIAL_SCENE  = preload("res://Entities/Level/UI/TutorialOverlay.tscn")
 const CONFETTI_SCENE = preload("res://Entities/Level/Effects/confetti_effect.tscn")
 const VICTORY_SOUND  = preload("res://Assets/audio/Voicy_Level up sfx 2.mp3")
 
@@ -70,6 +71,12 @@ func _ready() -> void:
 
 	if player:
 		player.died.connect(reset_bonus_uses)
+
+	if level_num == 1 and not GameData.tutorial_shown:
+		player.can_move = false
+		var tutorial := TUTORIAL_SCENE.instantiate()
+		add_child(tutorial)
+		tutorial.tutorial_closed.connect(_on_tutorial_closed)
 
 	if GameData.return_collected_count >= 0:
 		collected_count = GameData.return_collected_count
@@ -124,6 +131,11 @@ func reset_bonus_uses() -> void:
 
 
 # ── ЗАВЕРШЕНИЕ УРОВНЯ ─────────────────────────
+
+func _on_tutorial_closed() -> void:
+	if player:
+		player.can_move = true
+
 
 func _on_level_completed() -> void:
 	Engine.time_scale = 1.0

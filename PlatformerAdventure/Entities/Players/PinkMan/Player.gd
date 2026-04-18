@@ -71,6 +71,8 @@ var _after_wall_jump: bool = false
 var double_jump_available: bool = false
 var is_double_jumping: bool = false
 
+var can_move: bool = true
+
 # БОНУСЫ
 var shield_active: bool = false
 var magnet_active: bool = false
@@ -119,6 +121,8 @@ func stomp_bounce() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
+		return
+	if not can_move:
 		return
 
 	var real_delta: float = delta / Engine.time_scale

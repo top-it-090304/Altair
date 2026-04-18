@@ -355,7 +355,8 @@ offset_bottom = 540.667
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("7_104vp")]
-position = Vector2(165.333, 416)
+position = Vector2(176, 395.333)
+metadata/_edit_group_ = true
 
 [node name="Player" parent="Entities" instance=ExtResource("6_f5cpa")]
 position = Vector2(137.333, 394)
@@ -416,3 +417,5 @@ position = Vector2(581.333, 166.667)
 tile_map_data = PackedByteArray()
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
+
+[editable path="Entities/SpawnPoint"]
