@@ -268,6 +268,11 @@ func _handle_wall_cling() -> void:
 	if wall_dir == 0:
 		return
 
+	# Pressing away from the detected wall — don't cling, let player pass freely.
+	var input_x := Input.get_axis("move_left", "move_right")
+	if input_x != 0.0 and sign(input_x) != wall_dir:
+		return
+
 	is_wall_sliding = true
 	_cling_wall_dir = wall_dir
 	facing_right = (wall_dir == 1)
