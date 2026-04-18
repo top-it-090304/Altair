@@ -356,7 +356,7 @@ tile_map_data = PackedByteArray("AAAVABkAAAAAAAAAAAAWABkAAAAAAAAAAAAXABkAAAAAAAA
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("10_8wfaw")]
-position = Vector2(126.667, 144)
+position = Vector2(135.333, 123.333)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
@@ -464,7 +464,7 @@ position = Vector2(512, 128)
 position = Vector2(549.333, 128)
 
 [node name="Player" parent="Entities" instance=ExtResource("23_7uaxm")]
-position = Vector2(132, 116.667)
+position = Vector2(180, 111.333)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
 

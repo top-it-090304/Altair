@@ -427,10 +427,10 @@ position = Vector2(237.333, -142.333)
 position = Vector2(464, 128)
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("15_vom13")]
-position = Vector2(528, 416)
+position = Vector2(527.333, 395.333)
 
 [node name="Player" parent="Entities" instance=ExtResource("16_twmc3")]
-position = Vector2(501.333, 394.667)
+position = Vector2(499.333, 384.667)
 
 [connection signal="pressed" from="UI/Pause" to="UI/PauseMenu" method="open_pause_menu"]
 

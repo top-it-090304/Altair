@@ -373,7 +373,7 @@ chain_length = 110.0
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("9_nqo64")]
-position = Vector2(575.333, 416.667)
+position = Vector2(570.667, 395.333)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
@@ -430,6 +430,6 @@ position = Vector2(266.667, 181.333)
 position = Vector2(117.333, 266.667)
 
 [node name="Player" parent="Entities" instance=ExtResource("11_o6hxu")]
-position = Vector2(580.667, 389.333)
+position = Vector2(618.667, 386.667)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
