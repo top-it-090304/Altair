@@ -106,7 +106,7 @@ func activate_slowmo_bonus() -> void:
 	player.gravity_rise        *= c
 	player.max_fall_speed      *= c
 	player.jump_velocity       *= c
-	player.wall_jump_velocity  *= c
+	player.wall_slide_speed    *= c
 	player.animated_sprite.speed_scale = c
 
 func activate_magnet_bonus() -> void:
