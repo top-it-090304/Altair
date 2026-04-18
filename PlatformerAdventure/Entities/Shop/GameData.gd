@@ -21,6 +21,7 @@ var total_fruits: int = 0
 var _spent: int = 0
 var show_ctrl_hits: bool = true
 var tutorial_shown: bool = false
+var tutorial_shown_9: bool = false
 signal fruits_changed(new_total: int)
 
 # Состояние возврата из магазина (return_position == ZERO = не задано)
@@ -174,6 +175,7 @@ func save_data() -> void:
 	config.set_value("audio", "volume_sfx", volume_sfx)
 	config.set_value("settings", "show_ctrl_hits", show_ctrl_hits)
 	config.set_value("tutorial", "shown", tutorial_shown)
+	config.set_value("tutorial", "shown_9", tutorial_shown_9)
 	for level_name in level_records:
 		config.set_value("records", level_name, level_records[level_name])
 	config.save(SAVE_PATH)
@@ -186,6 +188,7 @@ func reset_progress() -> void:
 	count_slowmo = 0
 	count_magnet = 0
 	tutorial_shown = false
+	tutorial_shown_9 = false
 	fruits_changed.emit(0)
 	save_data()
 
@@ -202,6 +205,7 @@ func load_data() -> void:
 	volume_sfx    = config.get_value("audio", "volume_sfx",    1.0)
 	show_ctrl_hits = config.get_value("settings", "show_ctrl_hits", true)
 	tutorial_shown = config.get_value("tutorial", "shown", false)
+	tutorial_shown_9 = config.get_value("tutorial", "shown_9", false)
 	if config.has_section("records"):
 		for key in config.get_section_keys("records"):
 			level_records[key] = config.get_value("records", key, 0)

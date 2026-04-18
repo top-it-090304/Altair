@@ -73,10 +73,15 @@ func _ready() -> void:
 		player.died.connect(reset_bonus_uses)
 
 	if level_num == 1 and not GameData.tutorial_shown:
-		player.can_move = false
-		var tutorial := TUTORIAL_SCENE.instantiate()
-		add_child(tutorial)
-		tutorial.tutorial_closed.connect(_on_tutorial_closed)
+		_show_tutorial("PinkMan", false, func():
+			GameData.tutorial_shown = true
+			GameData.save_data()
+		)
+	elif level_num == 9 and not GameData.tutorial_shown_9:
+		_show_tutorial("MaskDude", true, func():
+			GameData.tutorial_shown_9 = true
+			GameData.save_data()
+		)
 
 	if GameData.return_collected_count >= 0:
 		collected_count = GameData.return_collected_count
@@ -132,9 +137,17 @@ func reset_bonus_uses() -> void:
 
 # ── ЗАВЕРШЕНИЕ УРОВНЯ ─────────────────────────
 
-func _on_tutorial_closed() -> void:
-	if player:
-		player.can_move = true
+func _show_tutorial(char_name: String, wall_jump: bool, on_close: Callable) -> void:
+	player.can_move = false
+	var tutorial := TUTORIAL_SCENE.instantiate()
+	tutorial.character_name = char_name
+	tutorial.show_wall_jump = wall_jump
+	add_child(tutorial)
+	tutorial.tutorial_closed.connect(func():
+		if player:
+			player.can_move = true
+		on_close.call()
+	)
 
 
 func _on_level_completed() -> void:
