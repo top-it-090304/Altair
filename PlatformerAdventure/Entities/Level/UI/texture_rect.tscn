@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://diylqawxkwomj"]
 
-[ext_resource type="Script" path="res://Entities/Level/UI/scrolling_bg.gd" id="1_scrll"]
+[ext_resource type="Script" uid="uid://douquulhppqvx" path="res://Entities/Level/UI/scrolling_bg.gd" id="1_scrll"]
 [ext_resource type="Texture2D" uid="uid://xeaeximlb8ac" path="res://Assets/Textures/Background/Pink.png" id="2_gud5w"]
 
 [node name="TextureRect" type="TextureRect"]
-script = ExtResource("1_scrll")
 texture = ExtResource("2_gud5w")
 stretch_mode = 3
+script = ExtResource("1_scrll")

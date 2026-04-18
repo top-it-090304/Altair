@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-const ZONE_LEFT := Rect2(0, 470, 250, 250)
-const ZONE_RIGHT := Rect2(251, 470, 250, 250)
-const ZONE_JUMP := Rect2(960, 470, 320, 275)
+const ZONE_LEFT := Rect2(40, 510, 170, 170)
+const ZONE_RIGHT := Rect2(291, 510, 170, 170)
+const ZONE_JUMP := Rect2(1035, 522, 170, 170)
 
 var _finger_left: int = -1
 var _finger_rigjt: int = -1
@@ -16,13 +16,11 @@ var _finger_jump: int = -1
 @onready var _hints: Node2D = $TouchZoneHints
 
 func _ready() -> void:
-	
-	_hints.show_hints = GameData.show_ctrl_hits
-	_hints.queue_redraw()
-	ghost_left.visible = false
-	ghost_right.visible = false
-	ghost_jump.visible = false
-	
+	_hints.visible = false
+	ghost_left.play("idle")
+	ghost_right.play("idle")
+	ghost_jump.play("idle")
+
 	ghost_left.animation_finished.connect(_on_anim_finished.bind(ghost_left))
 	ghost_right.animation_finished.connect(_on_anim_finished.bind(ghost_right))
 	ghost_jump.animation_finished.connect(_on_anim_finished.bind(ghost_jump))
@@ -43,49 +41,44 @@ func _on_finger_down(id : int, pos : Vector2) -> void:
 	if ZONE_LEFT.has_point(scaled) and _finger_left == -1:
 		_finger_left = id
 		_press("move_left")
-		_show_ghost(ghost_left, pos)
-		
+		_show_ghost(ghost_left)
+
 	elif ZONE_RIGHT.has_point(scaled) and _finger_rigjt == -1:
 		_finger_rigjt = id
 		_press("move_right")
-		_show_ghost(ghost_right, pos)
-		
+		_show_ghost(ghost_right)
+
 	elif ZONE_JUMP.has_point(scaled) and _finger_jump == -1:
 		_finger_jump = id
 		_press("move_up")
-		_show_ghost(ghost_jump, pos)
+		_show_ghost(ghost_jump)
 
 func _on_finger_up(id : int) -> void:
 	
 	if id == _finger_left:
 		_finger_left = -1
 		_release("move_left")
-		ghost_left.visible = false
-	
+		ghost_left.modulate = Color(1, 1, 1, 0.5)
+		ghost_left.play("idle")
+
 	if id == _finger_rigjt:
 		_finger_rigjt = -1
 		_release("move_right")
-		ghost_right.visible = false
-	
+		ghost_right.modulate = Color(1, 1, 1, 0.5)
+		ghost_right.play("idle")
+
 	if id == _finger_jump:
 		_finger_jump = -1
 		_release("move_up")
-		ghost_jump.visible = false
+		ghost_jump.modulate = Color(1, 1, 1, 0.5)
+		ghost_jump.play("idle")
 
 func _on_finger_drag (id: int, pos : Vector2) -> void:
-	if id == _finger_left:
-		ghost_left.global_position = pos
-		ghost_left.reset_physics_interpolation()
-	elif id == _finger_rigjt:
-		ghost_right.global_position = pos
-		ghost_right.reset_physics_interpolation()
-	elif id == _finger_jump:
-		ghost_jump.global_position = pos
-		ghost_jump.reset_physics_interpolation()
-	
+	pass
+
 func _on_anim_finished (ghost: AnimatedSprite2D):
-	if ghost.visible:
-		ghost.play("idle")
+	ghost.modulate = Color(1, 1, 1, 0.5)
+	ghost.play("idle")
 		
 func _press(action: String) -> void:
 	var event := InputEventAction.new()
@@ -99,10 +92,8 @@ func _release(action: String) -> void:
 	event.pressed = false
 	Input.parse_input_event(event)
 	
-func _show_ghost(ghost: AnimatedSprite2D, pos: Vector2) -> void:
-	ghost.visible = true
-	ghost.position = pos
-	ghost.reset_physics_interpolation()
+func _show_ghost(ghost: AnimatedSprite2D) -> void:
+	ghost.modulate = Color(1, 1, 1, 1.0)
 	ghost.play("hit")
 
 func _to_base(pos: Vector2) -> Vector2:
@@ -116,15 +107,18 @@ func release_all() -> void:
 	if _finger_left != -1:
 		_finger_left = -1
 		_release("move_left")
-		ghost_left.visible = false
+		ghost_left.modulate = Color(1, 1, 1, 0.5)
+		ghost_left.play("idle")
 	if _finger_rigjt != -1:
 		_finger_rigjt = -1
 		_release("move_right")
-		ghost_right.visible = false
+		ghost_right.modulate = Color(1, 1, 1, 0.5)
+		ghost_right.play("idle")
 	if _finger_jump != -1:
 		_finger_jump = -1
 		_release("move_up")
-		ghost_jump.visible = false
+		ghost_jump.modulate = Color(1, 1, 1, 0.5)
+		ghost_jump.play("idle")
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:

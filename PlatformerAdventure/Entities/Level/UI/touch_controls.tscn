@@ -84,29 +84,30 @@ animations = [{
 script = ExtResource("1_6pg8p")
 
 [node name="GhostLeft" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
 texture_filter = 1
-position = Vector2(0, -16)
+position = Vector2(125, 595)
 rotation = -1.5708
-scale = Vector2(4, 4)
+scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_hrqe7")
-animation = &"hit"
-frame_progress = 0.641408
+animation = &"idle"
 
 [node name="GhostRight" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
 texture_filter = 1
-position = Vector2(-24, -16)
+position = Vector2(376, 595)
 rotation = 1.5708
-scale = Vector2(4, 4)
+scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_hrqe7")
-animation = &"hit"
+animation = &"idle"
 
 [node name="GhostJump" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
 texture_filter = 1
-position = Vector2(24, -16)
-scale = Vector2(4, 4)
+position = Vector2(1120, 607)
+scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_hrqe7")
-animation = &"hit"
-frame_progress = 0.392571
+animation = &"idle"
 
 [node name="TouchZoneHints" type="Node2D" parent="."]
 script = ExtResource("3_wfiyp")
