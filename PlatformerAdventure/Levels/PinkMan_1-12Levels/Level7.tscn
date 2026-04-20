@@ -34,7 +34,7 @@ _data = {
 }
 point_count = 7
 
-[node name="LevelConstructor" instance=ExtResource("1_u3pjk")]
+[node name="LevelConstructor2" instance=ExtResource("1_u3pjk")]
 next_level_path = "uid://cjoso4k6j67y0"
 
 [node name="BgTexture" parent="UI" index="0"]
