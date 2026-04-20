@@ -16,6 +16,11 @@ func _ready() -> void:
 	if _player:
 		_player.can_move = false
 
+	# Connect the Back button (top-left) → return to settings
+	var back_btn: TextureButton = get_parent().get_node_or_null("TextureButton")
+	if back_btn:
+		back_btn.pressed.connect(_on_back_to_settings)
+
 	# Re-edit button lives in its own CanvasLayer at root level
 	_edit_canvas = CanvasLayer.new()
 	_edit_canvas.layer = 5
@@ -53,6 +58,9 @@ func _on_editing_done() -> void:
 	if _player:
 		_player.can_move = true
 	_edit_btn.visible = true
+
+func _on_back_to_settings() -> void:
+	SceneManager.go_back()
 
 func _exit_tree() -> void:
 	if is_instance_valid(_edit_canvas):
