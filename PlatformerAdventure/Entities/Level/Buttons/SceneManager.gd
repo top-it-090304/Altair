@@ -1,42 +1,60 @@
 extends Node
 
 var previous_scene: String = ""
-var _overlay: ColorRect = null
+var _diamond: Sprite2D = null
+var _cover_scale: float = 1.0
+
+const TEXTURE_HALF_SIZE: float = 22.0   # half of 44px diamond tip-to-tip
+const DURATION_COVER:  float = 0.45
+const DURATION_REVEAL: float = 0.5
 
 func _ready() -> void:
 	var transition = preload("res://Entities/Level/UI/transition_layer.tscn").instantiate()
 	get_tree().root.call_deferred("add_child", transition)
 	await get_tree().process_frame
-	_overlay = transition.get_node("Overlay")
-	_overlay.modulate.a = 1.0
-	_fade_in()
+	_diamond = transition.get_node("Diamond")
+	_setup_diamond()
+	_diamond.scale = Vector2.ONE * _cover_scale
+	_reveal()
+
+# Centre the diamond on screen and compute the scale that fully covers every corner.
+# Diamond (rotated square) covers point (x,y) from centre when |x|+|y| <= half_size * scale.
+# Worst case corner: half_w + half_h.
+func _setup_diamond() -> void:
+	var vp_size: Vector2 = get_viewport().get_visible_rect().size
+	_diamond.position   = vp_size * 0.5
+	_cover_scale = (vp_size.x * 0.5 + vp_size.y * 0.5) / TEXTURE_HALF_SIZE + 2.0
 
 func go_to(scene_path: String) -> void:
 	previous_scene = get_tree().current_scene.scene_file_path
-	_fade_out_then_go(scene_path)
+	_cover_then_go(scene_path)
 
 func go_back(fallback: String = "res://Entities/Main/MainMenu.tscn") -> void:
-	var target = previous_scene if previous_scene != "" else fallback
+	var target := previous_scene if previous_scene != "" else fallback
 	previous_scene = ""
 	go_to(target)
 
-func _fade_in() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property(_overlay, "modulate:a", 0.0, 0.3)
-	tween.tween_callback(func(): _overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE)
-
-func _fade_out_then_go(scene_path: String) -> void:
-	_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
-	var tween = get_tree().create_tween()
-	tween.tween_property(_overlay, "modulate:a", 1.0, 0.3)
-	tween.tween_callback(func():
-		var err = get_tree().change_scene_to_file(scene_path)
+# Diamond grows from 0 → full cover, then switches scene.
+func _cover_then_go(scene_path: String) -> void:
+	var tween := get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_CIRC)
+	tween.tween_property(_diamond, "scale", Vector2.ONE * _cover_scale, DURATION_COVER)
+	tween.tween_callback(func() -> void:
+		var err := get_tree().change_scene_to_file(scene_path)
 		if err != OK:
-			push_error("[SceneManager] change_scene_to_file failed: %d for path: %s" % [err, scene_path])
-			_fade_in()
+			push_error("[SceneManager] change_scene_to_file failed: %d  path: %s" % [err, scene_path])
+			_reveal()
 			return
 		get_tree().root.child_entered_tree.connect(_on_new_scene_ready, CONNECT_ONE_SHOT)
 	)
 
+# Diamond shrinks from full cover → 0, revealing new scene.
+func _reveal() -> void:
+	var tween := get_tree().create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CIRC)
+	tween.tween_property(_diamond, "scale", Vector2.ZERO, DURATION_REVEAL)
+
 func _on_new_scene_ready(_node: Node) -> void:
-	_fade_in()
+	_reveal()
