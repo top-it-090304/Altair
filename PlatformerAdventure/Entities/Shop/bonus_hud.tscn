@@ -257,10 +257,10 @@ offset_bottom = 104.0
 
 [node name="BonusList" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 80.0
-offset_right = 885.0
-offset_bottom = 3409.0
+offset_left = 3.325
+offset_top = 43.065
+offset_right = 881.325
+offset_bottom = 3503.06
 scale = Vector2(0.07, 0.07)
 theme_override_constants/separation = 380
 

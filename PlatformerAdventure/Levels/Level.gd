@@ -9,6 +9,7 @@ extends Node2D
 
 @export_file("*.tscn") var next_level_path: String
 @export var manual_fruit_count: int = 0
+@export var show_fruit_counter: bool = true
 
 @export_group("Level Bonuses")
 @export var allow_shield: bool = true
@@ -31,15 +32,32 @@ var used_magnet: int = 0
 
 @onready var fruit_counter = preload("res://Entities/Level/Buttons/сounter.tscn").instantiate()
 
+const TUTORIAL_SCENE  = preload("res://Entities/Level/UI/TutorialOverlay.tscn")
+const CONFETTI_SCENE = preload("res://Entities/Level/Effects/confetti_effect.tscn")
+const VICTORY_SOUND  = preload("res://Assets/audio/Voicy_Level up sfx 2.mp3")
+
+const MUSIC_LEVELS_1_8 = preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3")
+const MUSIC_LEVELS_9_16 = preload("res://Assets/audio/maskdude1.mp3")
+
 func _ready() -> void:
-	MusicManager.play_music(preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3"))
+	var level_name := scene_file_path.get_file().get_basename()
+	var level_num := level_name.trim_prefix("Level").to_int()
+	if level_num >= 9:
+		MusicManager.play_music(MUSIC_LEVELS_9_16)
+	else:
+		MusicManager.play_music(MUSIC_LEVELS_1_8)
 	add_to_group("level")  # ← нужно для BonusHUD
 
 	if player and spawn_marker:
 		player.global_position = spawn_marker.global_position
 
-	add_child(fruit_counter)
-	fruit_counter.update_count(0)
+	if GameData.return_position != Vector2.ZERO:
+		player.global_position = GameData.return_position
+		GameData.return_position = Vector2.ZERO
+
+	if show_fruit_counter:
+		add_child(fruit_counter)
+		fruit_counter.update_count(0)
 
 	var fruits = get_tree().get_nodes_in_group("fruits")
 	if manual_fruit_count > 0:
@@ -55,6 +73,28 @@ func _ready() -> void:
 
 	if player:
 		player.died.connect(reset_bonus_uses)
+
+	if level_num == 1 and not GameData.tutorial_shown:
+		_show_tutorial("PinkMan", false, func():
+			GameData.tutorial_shown = true
+			GameData.save_data()
+		)
+	elif level_num == 9 and not GameData.tutorial_shown_9:
+		_show_tutorial("MaskDude", true, func():
+			GameData.tutorial_shown_9 = true
+			GameData.save_data()
+		)
+
+	if GameData.return_collected_count >= 0:
+		collected_count = GameData.return_collected_count
+		if show_fruit_counter:
+			fruit_counter.update_count(collected_count)
+		for fruit in get_tree().get_nodes_in_group("fruits"):
+			if not GameData.return_uncollected_positions.has(fruit.global_position):
+				fruit.visible = false
+				fruit.queue_free()
+		GameData.return_collected_count = -1
+		GameData.return_uncollected_positions.clear()
 
 
 # ── БОНУСЫ — вызываются из BonusHUD ──────────
@@ -74,13 +114,14 @@ func activate_slowmo_bonus() -> void:
 	used_slowmo += 1
 	Engine.time_scale = slowmo_scale
 	var c: float = 1.0 / slowmo_scale
-	player.speed          *= c
-	player.acceleration   *= c
-	player.friction       *= c
-	player.gravity_fall   *= c
-	player.gravity_rise   *= c
-	player.max_fall_speed *= c
-	player.jump_velocity  *= c
+	player.speed               *= c
+	player.acceleration        *= c
+	player.friction            *= c
+	player.gravity_fall        *= c
+	player.gravity_rise        *= c
+	player.max_fall_speed      *= c
+	player.jump_velocity       *= c
+	player.wall_slide_speed    *= c
 	player.animated_sprite.speed_scale = c
 
 func activate_magnet_bonus() -> void:
@@ -99,11 +140,39 @@ func reset_bonus_uses() -> void:
 
 # ── ЗАВЕРШЕНИЕ УРОВНЯ ─────────────────────────
 
+func _show_tutorial(char_name: String, wall_jump: bool, on_close: Callable) -> void:
+	player.can_move = false
+	var tutorial := TUTORIAL_SCENE.instantiate()
+	tutorial.character_name = char_name
+	tutorial.show_wall_jump = wall_jump
+	add_child(tutorial)
+	tutorial.tutorial_closed.connect(func():
+		if player:
+			player.can_move = true
+		on_close.call()
+	)
+
+
 func _on_level_completed() -> void:
 	Engine.time_scale = 1.0
 	_release_all_input()
+	if player:
+		player._invincibility_timer = 99.0
 	var level_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	GameData.submit_level_result(level_name, collected_count)
+
+	var victory_sfx := AudioStreamPlayer.new()
+	victory_sfx.stream = VICTORY_SOUND
+	victory_sfx.bus = &"SFX"
+	victory_sfx.volume_db = 6.0
+	add_child(victory_sfx)
+	victory_sfx.play()
+
+	var confetti = CONFETTI_SCENE.instantiate()
+	get_tree().root.add_child(confetti)
+	await confetti.play()
+	confetti.queue_free()
+
 	SceneManager.go_to(next_level_path)
 
 func _release_all_input() -> void:
@@ -117,7 +186,8 @@ func _release_all_input() -> void:
 
 func _on_fruit_collected() -> void:
 	collected_count += 1
-	fruit_counter.update_count(collected_count)
+	if show_fruit_counter:
+		fruit_counter.update_count(collected_count)
 	if collected_count >= total_fruits:
 		if flag:
 			flag.activate()

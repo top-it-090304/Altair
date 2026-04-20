@@ -1,0 +1,155 @@
+[gd_scene load_steps=15 format=3 uid="uid://bmyqd7xhtvbi"]
+
+[ext_resource type="Script" uid="uid://b5k3nxfhgx3wf" path="res://Entities/Settings/ctrl_layout_editor.gd" id="1_cle"]
+[ext_resource type="Texture2D" uid="uid://b4jwg0w66p7fw" path="res://Assets/Textures/Traps/Arrow/Hit (18x18).png" id="2_cle"]
+[ext_resource type="Texture2D" uid="uid://ct207nfaaph3k" path="res://Assets/Textures/Menu/Buttons/Restart.png" id="3_cle"]
+[ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="4_cle"]
+
+[sub_resource type="AtlasTexture" id="AT_0"]
+atlas = ExtResource("2_cle")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AT_1"]
+atlas = ExtResource("2_cle")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AT_2"]
+atlas = ExtResource("2_cle")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AT_3"]
+atlas = ExtResource("2_cle")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AT_4"]
+atlas = ExtResource("2_cle")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AT_5"]
+atlas = ExtResource("2_cle")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AT_6"]
+atlas = ExtResource("2_cle")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AT_7"]
+atlas = ExtResource("2_cle")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AT_idle"]
+atlas = ExtResource("2_cle")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SF_cle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_7")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_idle")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="CtrlLayoutEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cle")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Overlay" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.784314)
+
+[node name="GhostLeft" type="AnimatedSprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.9)
+texture_filter = 1
+position = Vector2(125, 595)
+rotation = -1.5708
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SF_cle")
+animation = &"idle"
+
+[node name="GhostRight" type="AnimatedSprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.9)
+texture_filter = 1
+position = Vector2(376, 595)
+rotation = 1.5708
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SF_cle")
+animation = &"idle"
+
+[node name="GhostJump" type="AnimatedSprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.9)
+texture_filter = 1
+position = Vector2(1120, 607)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SF_cle")
+animation = &"idle"
+
+[node name="HintLabel" type="Label" parent="CanvasLayer"]
+offset_left = 448.0
+offset_top = 184.0
+offset_right = 645.0
+offset_bottom = 208.0
+scale = Vector2(2, 2)
+text = "Перетаскивайте кнопки"
+
+[node name="ResetButton" type="TextureButton" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 584.0
+offset_top = 248.0
+offset_right = 664.0
+offset_bottom = 328.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("3_cle")
+stretch_mode = 0
+
+[node name="BackButton" type="TextureButton" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 104.0
+offset_bottom = 128.0
+texture_normal = ExtResource("4_cle")
+stretch_mode = 0
+
+[connection signal="pressed" from="CanvasLayer/ResetButton" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_pressed"]

@@ -5,6 +5,10 @@ extends Node
 
 const SAVE_PATH = "user://save.cfg"
 
+# ВРЕМЕННО: true = все уровни разблокированы и зелёные (для тестирования)
+# Перед релизом поставить false
+const DEV_UNLOCK_ALL: bool = true
+
 const LEVEL_ORDER: Array = [
 	"Level1", "Level2", "Level3", "Level4", "Level5",
 	"Level6", "Level7", "Level8",
@@ -16,7 +20,14 @@ var level_records: Dictionary = {}
 var total_fruits: int = 0
 var _spent: int = 0
 var show_ctrl_hits: bool = true
+var tutorial_shown: bool = false
+var tutorial_shown_9: bool = false
 signal fruits_changed(new_total: int)
+
+# Состояние возврата из магазина (return_position == ZERO = не задано)
+var return_position: Vector2 = Vector2.ZERO
+var return_collected_count: int = -1
+var return_uncollected_positions: Array[Vector2] = []
 
 # Количество в инвентаре
 var count_shield: int = 0
@@ -31,6 +42,10 @@ const PRICE_MAGNET: int = 10
 var volume_master: float = 1.0
 var volume_music: float = 1.0
 var volume_sfx: float = 1.0
+
+var ctrl_pos_left:  Vector2 = Vector2(125.0,  595.0)
+var ctrl_pos_right: Vector2 = Vector2(376.0,  595.0)
+var ctrl_pos_up:    Vector2 = Vector2(1120.0, 607.0)
 
 func _ready() -> void:
 	load_data()
@@ -163,9 +178,23 @@ func save_data() -> void:
 	config.set_value("audio", "volume_music", volume_music)
 	config.set_value("audio", "volume_sfx", volume_sfx)
 	config.set_value("settings", "show_ctrl_hits", show_ctrl_hits)
+	config.set_value("ctrl_layout", "left_x",  ctrl_pos_left.x)
+	config.set_value("ctrl_layout", "left_y",  ctrl_pos_left.y)
+	config.set_value("ctrl_layout", "right_x", ctrl_pos_right.x)
+	config.set_value("ctrl_layout", "right_y", ctrl_pos_right.y)
+	config.set_value("ctrl_layout", "up_x",    ctrl_pos_up.x)
+	config.set_value("ctrl_layout", "up_y",    ctrl_pos_up.y)
+	config.set_value("tutorial", "shown", tutorial_shown)
+	config.set_value("tutorial", "shown_9", tutorial_shown_9)
 	for level_name in level_records:
 		config.set_value("records", level_name, level_records[level_name])
 	config.save(SAVE_PATH)
+
+func reset_ctrl_positions() -> void:
+	ctrl_pos_left  = Vector2(125.0,  595.0)
+	ctrl_pos_right = Vector2(376.0,  595.0)
+	ctrl_pos_up    = Vector2(1120.0, 607.0)
+	save_data()
 
 func reset_progress() -> void:
 	level_records.clear()
@@ -174,6 +203,8 @@ func reset_progress() -> void:
 	count_shield = 0
 	count_slowmo = 0
 	count_magnet = 0
+	tutorial_shown = false
+	tutorial_shown_9 = false
 	fruits_changed.emit(0)
 	save_data()
 
@@ -189,6 +220,14 @@ func load_data() -> void:
 	volume_music  = config.get_value("audio", "volume_music",  1.0)
 	volume_sfx    = config.get_value("audio", "volume_sfx",    1.0)
 	show_ctrl_hits = config.get_value("settings", "show_ctrl_hits", true)
+	ctrl_pos_left.x  = config.get_value("ctrl_layout", "left_x",  125.0)
+	ctrl_pos_left.y  = config.get_value("ctrl_layout", "left_y",  595.0)
+	ctrl_pos_right.x = config.get_value("ctrl_layout", "right_x", 376.0)
+	ctrl_pos_right.y = config.get_value("ctrl_layout", "right_y", 595.0)
+	ctrl_pos_up.x    = config.get_value("ctrl_layout", "up_x",    1120.0)
+	ctrl_pos_up.y    = config.get_value("ctrl_layout", "up_y",    607.0)
+	tutorial_shown = config.get_value("tutorial", "shown", false)
+	tutorial_shown_9 = config.get_value("tutorial", "shown_9", false)
 	if config.has_section("records"):
 		for key in config.get_section_keys("records"):
 			level_records[key] = config.get_value("records", key, 0)
@@ -197,9 +236,13 @@ func load_data() -> void:
 # ── ПРОГРЕСС УРОВНЕЙ ─────────────────────────
 
 func is_level_completed(level_name: String) -> bool:
+	if DEV_UNLOCK_ALL:
+		return true
 	return level_records.has(level_name)
 
 func is_level_unlocked(level_index: int) -> bool:
+	if DEV_UNLOCK_ALL:
+		return true
 	if level_index == 0:
 		return true
 	var prev_level = LEVEL_ORDER[level_index - 1]

@@ -1,23 +1,19 @@
-[gd_scene load_steps=21 format=4 uid="uid://csi2o7cdfg3gs"]
+[gd_scene load_steps=17 format=4 uid="uid://csi2o7cdfg3gs"]
 
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_jubmu"]
 [ext_resource type="Texture2D" uid="uid://dphss4v8xjpbi" path="res://Assets/Textures/Background/Blue.png" id="3_plwyx"]
 [ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_qp4b8"]
 [ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="5_y6nnx"]
-[ext_resource type="Texture2D" uid="uid://bjlg8k71tfaee" path="res://Assets/Textures/Menu/Buttons/Back_pressed.png" id="6_y6nnx"]
+[ext_resource type="Texture2D" uid="uid://bepvq4d546fp" path="res://Assets/Textures/Menu/Buttons/Back_pressed.png" id="6_y6nnx"]
 [ext_resource type="Texture2D" uid="uid://o05nvamef1vh" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="7_m75j8"]
-[ext_resource type="Texture2D" uid="uid://bhc8ocm1j3dav" path="res://Assets/Textures/Menu/Buttons/Volume.png" id="8_w0bmm"]
-[ext_resource type="Texture2D" uid="uid://b3bb326povybs" path="res://Assets/Textures/Menu/numbers_black(8x10).png" id="9_3c2vg"]
-[ext_resource type="Texture2D" uid="uid://ccbpa2jrttea1" path="res://Assets/Textures/Menu/Text/numbers_black1(8x10).png" id="10_0piyy"]
-[ext_resource type="Texture2D" uid="uid://dm4awsgc2tgpn" path="res://Assets/Textures/Menu/Text/numbers_black0(8x10).png" id="11_vgwex"]
 [ext_resource type="Texture2D" uid="uid://blp2m4pvj0nr7" path="res://Assets/Textures/Settings/polzunok(16x16).png" id="12_q06dr"]
-[ext_resource type="Texture2D" uid="uid://dt7bqpkeal1n8" path="res://Assets/Textures/Settings/Gemini_Generated_Image_r9tnl9r9tnl9r9tn-Photoroom.png" id="12_y6nnx"]
-[ext_resource type="Texture2D" uid="uid://b8f0a3xv8bydf" path="res://Assets/Textures/Settings/Gemini_Generated_Image_9tt6pf9tt6pf9tt6-Photoroom.png" id="13_jqpad"]
-[ext_resource type="Texture2D" uid="uid://bfoqkp2ujtjbo" path="res://Assets/Textures/Settings/Gemini_Generated_Image_sddsosddsosddsos-Photoroom.png" id="14_m75j8"]
+[ext_resource type="Texture2D" uid="uid://c74mbpl78360a" path="res://Assets/Textures/Settings/Gemini_Generated_Image_r9tnl9r9tnl9r9tn-Photoroom.png" id="12_y6nnx"]
+[ext_resource type="Texture2D" uid="uid://dtcsj7nijkorb" path="res://Assets/Textures/Settings/Gemini_Generated_Image_9tt6pf9tt6pf9tt6-Photoroom.png" id="13_jqpad"]
+[ext_resource type="Texture2D" uid="uid://bqb31q2arcsue" path="res://Assets/Textures/Settings/Gemini_Generated_Image_sddsosddsosddsos-Photoroom.png" id="14_m75j8"]
 [ext_resource type="Texture2D" uid="uid://ct207nfaaph3k" path="res://Assets/Textures/Menu/Buttons/Restart.png" id="15_y6nnx"]
 [ext_resource type="Script" uid="uid://bo7e5rjs0pw2k" path="res://Entities/Settings/sfx_volume_slider.gd" id="16_y6nnx"]
 [ext_resource type="Script" uid="uid://dwmpevdo3yn55" path="res://Entities/Settings/ctrl_hits_toggle.gd" id="17_ctrlhits"]
-[ext_resource type="Texture2D" uid="uid://s72rctptcscs" path="res://Assets/Textures/Settings/Gemini_Generated_Image_tyk8zotyk8zotyk8-Photoroom.png" id="18_w0bmm"]
+[ext_resource type="Texture2D" uid="uid://bpeliskege1v7" path="res://Assets/Textures/Settings/Gemini_Generated_Image_tyk8zotyk8zotyk8-Photoroom.png" id="18_w0bmm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pvgl"]
 texture = ExtResource("4_qp4b8")
@@ -276,10 +272,8 @@ script = ExtResource("16_y6nnx")
 
 [node name="BgTexture" parent="." instance=ExtResource("2_jubmu")]
 layout_mode = 1
-offset_left = -1.0
-offset_top = -5.0
-offset_right = 1236.0
-offset_bottom = 685.0
+offset_right = 1237.0
+offset_bottom = 690.0
 texture = ExtResource("3_plwyx")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -304,69 +298,21 @@ texture_pressed = ExtResource("6_y6nnx")
 texture_hover = ExtResource("7_m75j8")
 stretch_mode = 0
 
-[node name="sound_music" type="Node2D" parent="."]
-position = Vector2(-100, 21)
-metadata/_edit_group_ = true
-
-[node name="Volume" type="Sprite2D" parent="sound_music"]
-position = Vector2(690, 259)
-scale = Vector2(3.52874, 3.21191)
-texture = ExtResource("8_w0bmm")
-
-[node name="NumbersBlack(8x10)" type="Sprite2D" parent="sound_music"]
-position = Vector2(427, 328)
-scale = Vector2(4.35938, 4.25)
-texture = ExtResource("9_3c2vg")
-
-[node name="NumbersBlack1(8x10)" type="Sprite2D" parent="sound_music"]
-position = Vector2(617, 328)
-scale = Vector2(4.1, 4.25)
-texture = ExtResource("10_0piyy")
-
-[node name="NumbersBlack0(8x10)" type="Sprite2D" parent="sound_music"]
-position = Vector2(643, 328)
-scale = Vector2(4.1, 4.25)
-texture = ExtResource("11_vgwex")
-
-[node name="sound_plauer" type="Node2D" parent="."]
-position = Vector2(-102, 276)
-metadata/_edit_group_ = true
-
-[node name="Volume" type="Sprite2D" parent="sound_plauer"]
-position = Vector2(690, 259)
-scale = Vector2(3.52874, 3.21191)
-texture = ExtResource("8_w0bmm")
-
-[node name="NumbersBlack(8x10)" type="Sprite2D" parent="sound_plauer"]
-position = Vector2(427, 328)
-scale = Vector2(4.35938, 4.25)
-texture = ExtResource("9_3c2vg")
-
-[node name="NumbersBlack1(8x10)" type="Sprite2D" parent="sound_plauer"]
-position = Vector2(617, 328)
-scale = Vector2(4.1, 4.25)
-texture = ExtResource("10_0piyy")
-
-[node name="NumbersBlack0(8x10)" type="Sprite2D" parent="sound_plauer"]
-position = Vector2(643, 328)
-scale = Vector2(4.1, 4.25)
-texture = ExtResource("11_vgwex")
-
 [node name="Node2D2" type="Node2D" parent="."]
 position = Vector2(760, 328)
 
 [node name="SoundsEffects" type="Sprite2D" parent="Node2D2"]
-position = Vector2(-416, 112)
+position = Vector2(-416, 96)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("12_y6nnx")
 
 [node name="Music" type="Sprite2D" parent="Node2D2"]
-position = Vector2(-407, -122)
+position = Vector2(-408, -128)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("13_jqpad")
 
 [node name="ShowControl" type="Sprite2D" parent="Node2D2"]
-position = Vector2(184, 112)
+position = Vector2(184, 96)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("14_m75j8")
 
@@ -432,10 +378,10 @@ scale = Vector2(0.5, 0.5)
 stretch_mode = 0
 
 [node name="Reset" type="Sprite2D" parent="."]
-position = Vector2(944, 192)
+position = Vector2(944, 184)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("18_w0bmm")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="CtrlHitsToggle/TextureButton" to="CtrlHitsToggle" method="_on_pressed"]
+[connection signal="pressed" from="CtrlHitsToggle/TextureButton" to="." method="_on_ctrl_layout_pressed"]

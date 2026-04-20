@@ -317,7 +317,7 @@ custom_data_layer_0/name = "is_deadly"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_bgei7")
 
-[node name="LevelConstructor" type="Node2D"]
+[node name="LevelConstructor2" type="Node2D"]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ffm0y")
@@ -326,7 +326,6 @@ metadata/_edit_vertical_guides_ = [346.0]
 [node name="UI" type="Node2D" parent="."]
 
 [node name="BgTexture" parent="UI" instance=ExtResource("2_0widg")]
-offset_left = 0.0
 offset_top = -2.0
 offset_right = 852.0
 offset_bottom = 479.0

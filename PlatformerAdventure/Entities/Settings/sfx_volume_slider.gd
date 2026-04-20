@@ -70,3 +70,6 @@ func _on_texture_button_pressed() -> void:
 
 func _on_reset_button_pressed() -> void:
 	add_child(_RESET_CONFIRM.instantiate())
+
+func _on_ctrl_layout_pressed() -> void:
+	SceneManager.go_to("res://Levels/change_control_lvl.tscn")

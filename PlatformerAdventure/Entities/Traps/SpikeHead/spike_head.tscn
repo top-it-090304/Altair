@@ -115,7 +115,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Blink",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -130,9 +130,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pua3d")
 }],
-"loop": true,
+"loop": false,
 "name": &"Bottom Hit",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -155,9 +155,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xgjo8")
 }],
-"loop": true,
+"loop": false,
 "name": &"Left_Hit",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -172,9 +172,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mttlj")
 }],
-"loop": true,
+"loop": false,
 "name": &"Right_Hit",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -189,9 +189,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_muksp")
 }],
-"loop": true,
+"loop": false,
 "name": &"Top_Hit",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="SpikeHead" type="AnimatableBody2D"]
@@ -212,6 +212,6 @@ shape = SubResource("RectangleShape2D_kill")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wiw2b")
-animation = &"Idle"
+animation = &"Blink"
 
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]

@@ -356,7 +356,6 @@ jump_velocity = -500.0
 coyote_time = 0.15
 jump_buffer_time = 0.15
 wall_mechanics_enabled = true
-wall_jump_velocity = Vector2(600, -600)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 texture_filter = 1

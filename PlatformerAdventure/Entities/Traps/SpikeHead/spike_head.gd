@@ -18,7 +18,8 @@ func _ready() -> void:
 		MoveMode.LEFT:  direction = Vector2.LEFT
 		MoveMode.RIGHT: direction = Vector2.RIGHT
 
-	$KillArea.body_entered.connect(_on_kill_area_body_entered)
+	if not $KillArea.body_entered.is_connected(_on_kill_area_body_entered):
+		$KillArea.body_entered.connect(_on_kill_area_body_entered)
 	$AnimatedSprite2D.play("Idle")
 
 

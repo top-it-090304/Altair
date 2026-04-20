@@ -351,7 +351,6 @@ scale = Vector2(1.7, 1.7)
 script = ExtResource("1_a2kkq")
 speed = 350.0
 wall_mechanics_enabled = true
-wall_jump_velocity = Vector2(400, -500)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

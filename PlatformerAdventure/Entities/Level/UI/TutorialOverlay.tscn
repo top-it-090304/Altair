@@ -1,0 +1,224 @@
+[gd_scene load_steps=4 format=3 uid="uid://d31kxt446umrf"]
+
+[ext_resource type="Script" uid="uid://b01v2cplalgoq" path="res://Entities/Level/UI/TutorialOverlay.gd" id="1_tutor"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 24.0
+content_margin_top = 24.0
+content_margin_right = 24.0
+content_margin_bottom = 24.0
+bg_color = Color(0.1, 0.1, 0.1, 0.75)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
+content_margin_left = 8.0
+content_margin_top = 2.0
+content_margin_right = 8.0
+content_margin_bottom = 2.0
+bg_color = Color(0.91, 0.29, 0.18, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="TutorialOverlay" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_tutor")
+
+[node name="RootControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="RootControl"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="Center" type="CenterContainer" parent="RootControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="RootControl/Center"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="RootControl/Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CharacterHeader" type="Label" parent="RootControl/Center/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.851, 0.4, 1)
+theme_override_font_sizes/font_size = 26
+text = "У PinkMan доступно:"
+horizontal_alignment = 1
+
+[node name="HeaderSeparator" type="HSeparator" parent="RootControl/Center/Panel/VBox"]
+layout_mode = 2
+
+[node name="HintLeft" type="HBoxContainer" parent="RootControl/Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="Label" parent="RootControl/Center/Panel/VBox/HintLeft"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "←"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/HintLeft"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "Бежать влево"
+
+[node name="HintRight" type="HBoxContainer" parent="RootControl/Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="Label" parent="RootControl/Center/Panel/VBox/HintRight"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "→"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/HintRight"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "Бежать вправо"
+
+[node name="HintJump" type="HBoxContainer" parent="RootControl/Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="Label" parent="RootControl/Center/Panel/VBox/HintJump"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "↑"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/HintJump"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "Прыжок"
+
+[node name="HintDoubleJump" type="HBoxContainer" parent="RootControl/Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="Label" parent="RootControl/Center/Panel/VBox/HintDoubleJump"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "↑↑"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/HintDoubleJump"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "Двойной прыжок"
+
+[node name="WallJumpSection" type="VBoxContainer" parent="RootControl/Center/Panel/VBox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="WallJumpSeparator" type="HSeparator" parent="RootControl/Center/Panel/VBox/WallJumpSection"]
+layout_mode = 2
+
+[node name="WallJumpHeader" type="HBoxContainer" parent="RootControl/Center/Panel/VBox/WallJumpSection"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="NewBadge" type="PanelContainer" parent="RootControl/Center/Panel/VBox/WallJumpSection/WallJumpHeader"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="NewLabel" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/WallJumpHeader/NewBadge"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "НОВОЕ"
+
+[node name="WallJumpLabel" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/WallJumpHeader"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = " Прыжок от стены"
+
+[node name="HintWallSlide" type="HBoxContainer" parent="RootControl/Center/Panel/VBox/WallJumpSection"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/HintWallSlide"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "←/→"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/HintWallSlide"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "Прыгни к стене в воздухе"
+
+[node name="HintWallJump" type="HBoxContainer" parent="RootControl/Center/Panel/VBox/WallJumpSection"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/HintWallJump"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "↑+←/→"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/HintWallJump"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "Прыгни на другую стену"
+
+[node name="Separator" type="HSeparator" parent="RootControl/Center/Panel/VBox"]
+layout_mode = 2
+
+[node name="TapPrompt" type="Label" parent="RootControl/Center/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.667, 0.667, 0.667, 1)
+theme_override_font_sizes/font_size = 26
+text = "Коснитесь экрана чтобы начать"
+horizontal_alignment = 1

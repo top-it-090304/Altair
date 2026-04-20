@@ -34,14 +34,19 @@ func _ready() -> void:
 	$StaticBody2D.add_to_group("enemies")
 	anim.play("idle")
 
-	anim.animation_finished.connect(_on_attack_complete)
-	anim.animation_looped.connect(_on_attack_complete)
-	anim.frame_changed.connect(_on_frame_changed)
+	if not anim.animation_finished.is_connected(_on_attack_complete):
+		anim.animation_finished.connect(_on_attack_complete)
+	if not anim.animation_looped.is_connected(_on_attack_complete):
+		anim.animation_looped.connect(_on_attack_complete)
+	if not anim.frame_changed.is_connected(_on_frame_changed):
+		anim.frame_changed.connect(_on_frame_changed)
 
-	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
+	if not shoot_timer.timeout.is_connected(_on_shoot_timer_timeout):
+		shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 	shoot_timer.start(shoot_interval)
 
-	stomp_area.body_entered.connect(_on_stomp_area_body_entered)
+	if not stomp_area.body_entered.is_connected(_on_stomp_area_body_entered):
+		stomp_area.body_entered.connect(_on_stomp_area_body_entered)
 
 # ──────────────────────────────────────────────
 #  ТАЙМЕР ВЫСТРЕЛА
@@ -81,6 +86,7 @@ func _spawn_bullet() -> void:
 	var bullet: Node = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = spawn_point.global_position
+	bullet.reset_physics_interpolation()
 	bullet.direction = Vector2(shoot_direction.x * sign(scale.x), shoot_direction.y)
 
 # ──────────────────────────────────────────────
