@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b37tktlyaroc4" path="res://Entities/Traps/SpikedBallTrap/SpikedBallTrap.tscn" id="13_26cya"]
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="17_sko51"]
 
-[node name="LevelConstructor" instance=ExtResource("1_jdkxw")]
+[node name="LevelConstructor2" instance=ExtResource("1_jdkxw")]
 next_level_path = "uid://c0q1mc08tjpsm"
 
 [node name="BgTexture" parent="UI" index="0"]
