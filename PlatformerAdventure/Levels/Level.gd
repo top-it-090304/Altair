@@ -9,6 +9,7 @@ extends Node2D
 
 @export_file("*.tscn") var next_level_path: String
 @export var manual_fruit_count: int = 0
+@export var show_fruit_counter: bool = true
 
 @export_group("Level Bonuses")
 @export var allow_shield: bool = true
@@ -54,8 +55,9 @@ func _ready() -> void:
 		player.global_position = GameData.return_position
 		GameData.return_position = Vector2.ZERO
 
-	add_child(fruit_counter)
-	fruit_counter.update_count(0)
+	if show_fruit_counter:
+		add_child(fruit_counter)
+		fruit_counter.update_count(0)
 
 	var fruits = get_tree().get_nodes_in_group("fruits")
 	if manual_fruit_count > 0:
@@ -85,7 +87,8 @@ func _ready() -> void:
 
 	if GameData.return_collected_count >= 0:
 		collected_count = GameData.return_collected_count
-		fruit_counter.update_count(collected_count)
+		if show_fruit_counter:
+			fruit_counter.update_count(collected_count)
 		for fruit in get_tree().get_nodes_in_group("fruits"):
 			if not GameData.return_uncollected_positions.has(fruit.global_position):
 				fruit.visible = false
@@ -183,7 +186,8 @@ func _release_all_input() -> void:
 
 func _on_fruit_collected() -> void:
 	collected_count += 1
-	fruit_counter.update_count(collected_count)
+	if show_fruit_counter:
+		fruit_counter.update_count(collected_count)
 	if collected_count >= total_fruits:
 		if flag:
 			flag.activate()

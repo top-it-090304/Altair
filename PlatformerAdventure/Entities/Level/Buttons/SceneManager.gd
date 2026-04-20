@@ -18,7 +18,7 @@ func go_to(scene_path: String) -> void:
 func go_back(fallback: String = "res://Entities/Main/MainMenu.tscn") -> void:
 	var target = previous_scene if previous_scene != "" else fallback
 	previous_scene = ""
-	go_to(target)
+	_fade_out_then_go(target)
 
 func _fade_in() -> void:
 	var tween = get_tree().create_tween()

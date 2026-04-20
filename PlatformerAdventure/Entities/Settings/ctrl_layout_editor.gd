@@ -1,5 +1,7 @@
 extends Control
 
+signal editing_done
+
 @onready var ghost_left:  AnimatedSprite2D = $CanvasLayer/GhostLeft
 @onready var ghost_right: AnimatedSprite2D = $CanvasLayer/GhostRight
 @onready var ghost_jump:  AnimatedSprite2D = $CanvasLayer/GhostJump
@@ -77,4 +79,5 @@ func _on_reset_pressed() -> void:
 	reset_positions()
 
 func _on_back_pressed() -> void:
+	editing_done.emit()
 	queue_free()

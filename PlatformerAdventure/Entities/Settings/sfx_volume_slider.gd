@@ -3,8 +3,7 @@
 
 extends Control
 
-const _RESET_CONFIRM   = preload("res://Entities/Settings/reset_confirm.tscn")
-const _CTRL_LAYOUT     = preload("res://Entities/Settings/ctrl_layout_editor.tscn")
+const _RESET_CONFIRM = preload("res://Entities/Settings/reset_confirm.tscn")
 const SLIDER_LEFT_X:  float = 160.0
 const SLIDER_RIGHT_X: float = 514.0
 
@@ -73,4 +72,4 @@ func _on_reset_button_pressed() -> void:
 	add_child(_RESET_CONFIRM.instantiate())
 
 func _on_ctrl_layout_pressed() -> void:
-	add_child(_CTRL_LAYOUT.instantiate())
+	SceneManager.go_to("res://Levels/change_control_lvl.tscn")

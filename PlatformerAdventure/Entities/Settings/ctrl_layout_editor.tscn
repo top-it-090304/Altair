@@ -144,10 +144,10 @@ stretch_mode = 0
 
 [node name="BackButton" type="TextureButton" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 120.0
-offset_top = 88.0
-offset_right = 200.0
-offset_bottom = 168.0
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 104.0
+offset_bottom = 128.0
 texture_normal = ExtResource("4_cle")
 stretch_mode = 0
 

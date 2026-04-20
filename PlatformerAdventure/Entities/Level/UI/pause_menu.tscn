@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://cvlr4l8nskod5" path="res://Entities/Level/UI/pause_menu.gd" id="1_atd2j"]
 [ext_resource type="Texture2D" uid="uid://bb7soxx714856" path="res://Assets/Textures/Menu/Text/Text (White) (8x10).png" id="1_m34iv"]
 [ext_resource type="Texture2D" uid="uid://dahpic8afr1" path="res://Assets/Textures/Menu/Buttons/Settings.png" id="2_m34iv"]
-[ext_resource type="Texture2D" uid="uid://bd30yu5opgmnd" path="res://Assets/Textures/Settings/p.png" id="2_uj12p"]
+[ext_resource type="Texture2D" uid="uid://cmxptbkpkl33m" path="res://Assets/Textures/Settings/p.png" id="2_uj12p"]
 [ext_resource type="PackedScene" uid="uid://c1agu3vccxwvg" path="res://Entities/Level/Buttons/restart.tscn" id="3_4s5y1"]
 [ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="3_atd2j"]
-[ext_resource type="Texture2D" uid="uid://b3p060gchtdpl" path="res://Assets/Textures/Settings/y.png" id="4_c8ba3"]
-[ext_resource type="Texture2D" uid="uid://dler0p8waega8" path="res://Assets/Textures/Settings/z.png" id="5_kn3vn"]
-[ext_resource type="Texture2D" uid="uid://b3jvbnoo8ha6d" path="res://Assets/Textures/Settings/a.png" id="6_i44cc"]
+[ext_resource type="Texture2D" uid="uid://toi54ge00p5m" path="res://Assets/Textures/Settings/y.png" id="4_c8ba3"]
+[ext_resource type="Texture2D" uid="uid://ce0uccg6jma3m" path="res://Assets/Textures/Settings/z.png" id="5_kn3vn"]
+[ext_resource type="Texture2D" uid="uid://i0l64hq5lr1x" path="res://Assets/Textures/Settings/a.png" id="6_i44cc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s5y1"]
 atlas = ExtResource("1_m34iv")
