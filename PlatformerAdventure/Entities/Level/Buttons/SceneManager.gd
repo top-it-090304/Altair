@@ -22,7 +22,8 @@ func _ready() -> void:
 # Worst case corner: half_w + half_h.
 func _setup_diamond() -> void:
 	var vp_size: Vector2 = get_viewport().get_visible_rect().size
-	_diamond.position   = vp_size * 0.5
+	_diamond.position      = vp_size * 0.5
+	_diamond.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_cover_scale = (vp_size.x * 0.5 + vp_size.y * 0.5) / TEXTURE_HALF_SIZE + 2.0
 
 func go_to(scene_path: String) -> void:
@@ -34,12 +35,10 @@ func go_back(fallback: String = "res://Entities/Main/MainMenu.tscn") -> void:
 	previous_scene = ""
 	go_to(target)
 
-# Diamond grows from 0 → full cover, then switches scene.
+# Diamond grows from 0 → full cover in integer scale steps, then switches scene.
 func _cover_then_go(scene_path: String) -> void:
 	var tween := get_tree().create_tween()
-	tween.set_ease(Tween.EASE_IN)
-	tween.set_trans(Tween.TRANS_CIRC)
-	tween.tween_property(_diamond, "scale", Vector2.ONE * _cover_scale, DURATION_COVER)
+	tween.tween_method(_set_scale_snapped, 0.0, _cover_scale, DURATION_COVER)
 	tween.tween_callback(func() -> void:
 		var err := get_tree().change_scene_to_file(scene_path)
 		if err != OK:
@@ -49,12 +48,14 @@ func _cover_then_go(scene_path: String) -> void:
 		get_tree().root.child_entered_tree.connect(_on_new_scene_ready, CONNECT_ONE_SHOT)
 	)
 
-# Diamond shrinks from full cover → 0, revealing new scene.
+# Diamond shrinks from full cover → 0 in integer scale steps, revealing new scene.
 func _reveal() -> void:
 	var tween := get_tree().create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_CIRC)
-	tween.tween_property(_diamond, "scale", Vector2.ZERO, DURATION_REVEAL)
+	tween.tween_method(_set_scale_snapped, _cover_scale, 0.0, DURATION_REVEAL)
+
+# Snap scale to nearest integer so each step shows a full pixel block.
+func _set_scale_snapped(s: float) -> void:
+	_diamond.scale = Vector2.ONE * round(s)
 
 func _on_new_scene_ready(_node: Node) -> void:
 	_reveal()
