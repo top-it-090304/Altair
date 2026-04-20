@@ -7,10 +7,10 @@ extends CanvasLayer
 func _ready() -> void:
 	btn_left.button_down.connect(_press.bind("move_left"))
 	btn_left.button_up.connect(_release.bind("move_left"))
-	
+
 	btn_right.button_down.connect(_press.bind("move_right"))
 	btn_right.button_up.connect(_release.bind("move_right"))
-	
+
 	btn_jump.button_down.connect(_press.bind("move_up"))
 	btn_jump.button_up.connect(_release.bind("move_up"))
 

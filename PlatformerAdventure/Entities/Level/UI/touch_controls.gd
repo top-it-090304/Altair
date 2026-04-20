@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-const ZONE_LEFT := Rect2(40, 510, 170, 170)
-const ZONE_RIGHT := Rect2(291, 510, 170, 170)
-const ZONE_JUMP := Rect2(1035, 522, 170, 170)
+var ZONE_LEFT := Rect2(40, 510, 170, 170)
+var ZONE_RIGHT := Rect2(291, 510, 170, 170)
+var ZONE_JUMP := Rect2(1035, 522, 170, 170)
 
 var _finger_left: int = -1
 var _finger_rigjt: int = -1
@@ -16,6 +16,10 @@ var _finger_jump: int = -1
 @onready var _hints: Node2D = $TouchZoneHints
 
 func _ready() -> void:
+	ghost_left.position  = GameData.ctrl_pos_left
+	ghost_right.position = GameData.ctrl_pos_right
+	ghost_jump.position  = GameData.ctrl_pos_up
+	_update_zones()
 	_hints.visible = false
 	ghost_left.play("idle")
 	ghost_right.play("idle")
@@ -72,6 +76,12 @@ func _on_finger_up(id : int) -> void:
 		_release("move_up")
 		ghost_jump.modulate = Color(1, 1, 1, 0.5)
 		ghost_jump.play("idle")
+
+func _update_zones() -> void:
+	var half := Vector2(85.0, 85.0)
+	ZONE_LEFT  = Rect2(ghost_left.position  - half, Vector2(170.0, 170.0))
+	ZONE_RIGHT = Rect2(ghost_right.position - half, Vector2(170.0, 170.0))
+	ZONE_JUMP  = Rect2(ghost_jump.position  - half, Vector2(170.0, 170.0))
 
 func _on_finger_drag (id: int, pos : Vector2) -> void:
 	pass

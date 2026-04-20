@@ -43,6 +43,10 @@ var volume_master: float = 1.0
 var volume_music: float = 1.0
 var volume_sfx: float = 1.0
 
+var ctrl_pos_left:  Vector2 = Vector2(125.0,  595.0)
+var ctrl_pos_right: Vector2 = Vector2(376.0,  595.0)
+var ctrl_pos_up:    Vector2 = Vector2(1120.0, 607.0)
+
 func _ready() -> void:
 	load_data()
 	_apply_volumes()
@@ -174,11 +178,23 @@ func save_data() -> void:
 	config.set_value("audio", "volume_music", volume_music)
 	config.set_value("audio", "volume_sfx", volume_sfx)
 	config.set_value("settings", "show_ctrl_hits", show_ctrl_hits)
+	config.set_value("ctrl_layout", "left_x",  ctrl_pos_left.x)
+	config.set_value("ctrl_layout", "left_y",  ctrl_pos_left.y)
+	config.set_value("ctrl_layout", "right_x", ctrl_pos_right.x)
+	config.set_value("ctrl_layout", "right_y", ctrl_pos_right.y)
+	config.set_value("ctrl_layout", "up_x",    ctrl_pos_up.x)
+	config.set_value("ctrl_layout", "up_y",    ctrl_pos_up.y)
 	config.set_value("tutorial", "shown", tutorial_shown)
 	config.set_value("tutorial", "shown_9", tutorial_shown_9)
 	for level_name in level_records:
 		config.set_value("records", level_name, level_records[level_name])
 	config.save(SAVE_PATH)
+
+func reset_ctrl_positions() -> void:
+	ctrl_pos_left  = Vector2(125.0,  595.0)
+	ctrl_pos_right = Vector2(376.0,  595.0)
+	ctrl_pos_up    = Vector2(1120.0, 607.0)
+	save_data()
 
 func reset_progress() -> void:
 	level_records.clear()
@@ -204,6 +220,12 @@ func load_data() -> void:
 	volume_music  = config.get_value("audio", "volume_music",  1.0)
 	volume_sfx    = config.get_value("audio", "volume_sfx",    1.0)
 	show_ctrl_hits = config.get_value("settings", "show_ctrl_hits", true)
+	ctrl_pos_left.x  = config.get_value("ctrl_layout", "left_x",  125.0)
+	ctrl_pos_left.y  = config.get_value("ctrl_layout", "left_y",  595.0)
+	ctrl_pos_right.x = config.get_value("ctrl_layout", "right_x", 376.0)
+	ctrl_pos_right.y = config.get_value("ctrl_layout", "right_y", 595.0)
+	ctrl_pos_up.x    = config.get_value("ctrl_layout", "up_x",    1120.0)
+	ctrl_pos_up.y    = config.get_value("ctrl_layout", "up_y",    607.0)
 	tutorial_shown = config.get_value("tutorial", "shown", false)
 	tutorial_shown_9 = config.get_value("tutorial", "shown_9", false)
 	if config.has_section("records"):

@@ -384,4 +384,4 @@ texture = ExtResource("18_w0bmm")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="CtrlHitsToggle/TextureButton" to="CtrlHitsToggle" method="_on_pressed"]
+[connection signal="pressed" from="CtrlHitsToggle/TextureButton" to="." method="_on_ctrl_layout_pressed"]
