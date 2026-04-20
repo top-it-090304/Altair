@@ -17,6 +17,8 @@ signal died
 @export_group("Wall Mechanics")
 @export var wall_mechanics_enabled: bool = false
 @export var wall_slide_speed: float = 50.0
+@export var wall_jump_extra_x: float = 50.0
+@export var wall_jump_extra_y: float = 50.0
 
 @export_group("Double Jump")
 @export var double_jump_enabled: bool = true
@@ -342,8 +344,8 @@ func _handle_jump() -> void:
 			sound_jump.play()
 
 func _do_wall_jump() -> void:
-	velocity.y = jump_velocity
-	velocity.x = 0.0
+	velocity.y = jump_velocity - wall_jump_extra_y
+	velocity.x = -_cling_wall_dir * wall_jump_extra_x
 	coyote_timer = 0.0
 	is_jumping = true
 	jump_buffer_timer = 0.0
