@@ -33,7 +33,7 @@ func go_to(scene_path: String) -> void:
 func go_back(fallback: String = "res://Entities/Main/MainMenu.tscn") -> void:
 	var target := previous_scene if previous_scene != "" else fallback
 	previous_scene = ""
-	_fade_out_then_go(target)
+	_cover_then_go(target)
 
 # Diamond grows from 0 → full cover in integer scale steps, then switches scene.
 func _cover_then_go(scene_path: String) -> void:
