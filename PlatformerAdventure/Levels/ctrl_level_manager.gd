@@ -1,11 +1,9 @@
 extends Node
 
-const CTRL_EDITOR  = preload("res://Entities/Settings/ctrl_layout_editor.tscn")
-const EDIT_TEX     = preload("res://Assets/Textures/Menu/Buttons/Settings.png")
+const CTRL_EDITOR = preload("res://Entities/Settings/ctrl_layout_editor.tscn")
 
 var _touch_controls: Node
 var _player: Node
-var _edit_canvas: CanvasLayer
 var _edit_btn: TextureButton
 
 func _ready() -> void:
@@ -16,31 +14,22 @@ func _ready() -> void:
 	if _player:
 		_player.can_move = false
 
-	# Connect the Back button (top-left) → return to settings
+	# Back button (top-left) → return to settings
 	var back_btn: TextureButton = get_parent().get_node_or_null("TextureButton")
 	if back_btn:
 		back_btn.pressed.connect(_on_back_to_settings)
 
-	# Re-edit button lives in its own CanvasLayer at root level
-	_edit_canvas = CanvasLayer.new()
-	_edit_canvas.layer = 5
-	get_tree().root.add_child(_edit_canvas)
-
-	_edit_btn = TextureButton.new()
-	_edit_btn.texture_normal = EDIT_TEX
-	_edit_btn.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	_edit_btn.offset_left   = 10.0
-	_edit_btn.offset_top    = 10.0
-	_edit_btn.offset_right  = 70.0
-	_edit_btn.offset_bottom = 70.0
-	_edit_btn.visible = false
-	_edit_btn.pressed.connect(_open_editor)
-	_edit_canvas.add_child(_edit_btn)
+	# Edit button lives in the scene as "EditButton"
+	_edit_btn = get_parent().get_node_or_null("EditButton")
+	if _edit_btn:
+		_edit_btn.visible = false
+		_edit_btn.pressed.connect(_open_editor)
 
 	_open_editor()
 
 func _open_editor() -> void:
-	_edit_btn.visible = false
+	if _edit_btn:
+		_edit_btn.visible = false
 	_touch_controls.visible = false
 	if _player:
 		_player.can_move = false
@@ -57,11 +46,8 @@ func _on_editing_done() -> void:
 	_touch_controls.visible = true
 	if _player:
 		_player.can_move = true
-	_edit_btn.visible = true
+	if _edit_btn:
+		_edit_btn.visible = true
 
 func _on_back_to_settings() -> void:
 	SceneManager.go_back()
-
-func _exit_tree() -> void:
-	if is_instance_valid(_edit_canvas):
-		_edit_canvas.queue_free()

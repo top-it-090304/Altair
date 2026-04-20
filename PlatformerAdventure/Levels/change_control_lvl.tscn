@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dseivaiqfxg5m"]
+[gd_scene load_steps=15 format=4 uid="uid://dseivaiqfxg5m"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_2efw2"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_eo8v7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://m8vymuv18nrh" path="res://Entities/Traps/Spike/TileSpikes.tscn" id="8_ysxmm"]
 [ext_resource type="PackedScene" uid="uid://d2bse35kvkdqj" path="res://Entities/Players/PinkMan/Player.tscn" id="19_520re"]
 [ext_resource type="Script" uid="uid://d2cbgyk5qr6rv" path="res://Levels/ctrl_level_manager.gd" id="20_manager"]
+[ext_resource type="Texture2D" uid="uid://dahpic8afr1" path="res://Assets/Textures/Menu/Buttons/Settings.png" id="21_settings"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgei7"]
 texture = ExtResource("4_ft2ug")
@@ -343,12 +344,21 @@ tile_map_data = PackedByteArray()
 [node name="Player" parent="Entities" instance=ExtResource("19_520re")]
 position = Vector2(426.667, 346.667)
 
+[node name="EditButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 778.667
+offset_top = 37.3333
+offset_right = 831.667
+offset_bottom = 90.3333
+texture_normal = ExtResource("21_settings")
+stretch_mode = 0
+
 [node name="TextureButton" type="TextureButton" parent="."]
 texture_filter = 1
 offset_left = 16.0
-offset_top = 32.0
+offset_top = 37.0
 offset_right = 69.0
-offset_bottom = 85.0
+offset_bottom = 90.0
 texture_normal = ExtResource("5_2efw2")
 texture_pressed = ExtResource("6_eo8v7")
 texture_hover = ExtResource("7_dfejv")
