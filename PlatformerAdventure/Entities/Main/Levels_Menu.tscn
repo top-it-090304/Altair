@@ -52,7 +52,7 @@
 [ext_resource type="Texture2D" uid="uid://b13e2305dsutq" path="res://Assets/Textures/Menu/Levels/11_pressed.png" id="36_2ox7x"]
 [ext_resource type="Texture2D" uid="uid://dil4espoyplmi" path="res://Assets/Textures/Menu/Levels/12_pressed.png" id="39_d0sv2"]
 [ext_resource type="Texture2D" uid="uid://blywy0aewykno" path="res://Assets/Textures/Menu/Buttons/Back_pressed.png" id="51_dw8pg"]
-[ext_resource type="Texture2D" uid="uid://btkgso65k0ssh" path="res://Assets/Textures/Menu/Buttons/next_normal.png" id="52_p7f38"]
+[ext_resource type="Texture2D" uid="uid://c62ki017wjepx" path="res://Assets/Textures/Menu/Buttons/Next.png" id="53_8th4m"]
 [ext_resource type="Texture2D" uid="uid://6bq54h5icdbv" path="res://Assets/Textures/Menu/Buttons/next_pressed.png" id="53_dw8pg"]
 [ext_resource type="Texture2D" uid="uid://g2y5q3xvbdwh" path="res://Assets/Textures/Menu/Buttons/next_hover.png" id="54_8th4m"]
 
@@ -560,16 +560,16 @@ texture_hover = ExtResource("30_u2hxe")
 stretch_mode = 0
 
 [node name="TextureButton2" type="TextureButton" parent="."]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1080.0
-offset_top = 96.0
-offset_right = 1095.0
-offset_bottom = 112.0
-scale = Vector2(5, 5)
-texture_normal = ExtResource("52_p7f38")
+custom_minimum_size = Vector2(1, 0)
+offset_left = 1040.0
+offset_top = 320.0
+offset_right = 1063.0
+offset_bottom = 343.0
+scale = Vector2(3.07, 3.07)
+texture_normal = ExtResource("53_8th4m")
 texture_pressed = ExtResource("53_dw8pg")
 texture_hover = ExtResource("54_8th4m")
+stretch_mode = 0
 
 [connection signal="pressed" from="CenterContainer/GridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]

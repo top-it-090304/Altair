@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://dxqtbmndsvd4x"]
+[gd_scene load_steps=59 format=4 uid="uid://dxqtbmndsvd4x"]
 
 [ext_resource type="Script" uid="uid://dm1gfn45781mk" path="res://Entities/Main/level_menu_maskdude.gd" id="1_ppbo6"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_sjjoc"]
@@ -31,10 +31,11 @@
 [ext_resource type="Texture2D" uid="uid://b56bkjtertnd2" path="res://Assets/Textures/Menu/Levels/09.png" id="37_h1dk3"]
 [ext_resource type="Texture2D" uid="uid://d2jefe6gqbl06" path="res://Assets/Textures/Menu/Levels/09_.png" id="39_6m0k1"]
 [ext_resource type="Texture2D" uid="uid://dl7awgqlu8vml" path="res://Assets/Textures/Menu/Levels/10.png" id="40_hv0bj"]
+[ext_resource type="Texture2D" uid="uid://c62ki017wjepx" path="res://Assets/Textures/Menu/Buttons/Next.png" id="41_dw2xu"]
+[ext_resource type="Texture2D" uid="uid://bigj2vlfda1yu" path="res://Assets/Textures/Menu/Buttons/Previous.png" id="41_o2u14"]
 [ext_resource type="Texture2D" uid="uid://ddpk1gfn45781" path="res://Assets/Textures/Menu/Levels/10_.png" id="42_71vq3"]
 [ext_resource type="Texture2D" uid="uid://blywy0aewykno" path="res://Assets/Textures/Menu/Buttons/Back_pressed.png" id="42_d37hy"]
 [ext_resource type="Texture2D" uid="uid://ck8y10rxtc2wp" path="res://Assets/Textures/Menu/Levels/11.png" id="43_t2bjw"]
-[ext_resource type="Texture2D" uid="uid://btkgso65k0ssh" path="res://Assets/Textures/Menu/Buttons/next_normal.png" id="45_d37hy"]
 [ext_resource type="Texture2D" uid="uid://c7p2qu1x6fggd" path="res://Assets/Textures/Menu/Levels/11_.png" id="45_nj4xh"]
 [ext_resource type="Texture2D" uid="uid://dyyd7a5h5otg1" path="res://Assets/Textures/Menu/Levels/12.png" id="46_2weea"]
 [ext_resource type="Texture2D" uid="uid://6bq54h5icdbv" path="res://Assets/Textures/Menu/Buttons/next_pressed.png" id="46_kadik"]
@@ -400,8 +401,10 @@ tile_set = SubResource("TileSet_k0xnw")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 1283.0
+offset_bottom = 717.0
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer"]
 layout_mode = 2
@@ -543,15 +546,27 @@ sprite_frames = SubResource("SpriteFrames_qp66j")
 autoplay = "default"
 
 [node name="TextureButton2" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(1, 0)
 layout_mode = 0
-offset_left = 1080.0
-offset_top = 96.0
-offset_right = 1095.0
-offset_bottom = 112.0
-scale = Vector2(5, 5)
-texture_normal = ExtResource("45_d37hy")
+offset_left = 1040.0
+offset_top = 320.0
+offset_right = 1063.0
+offset_bottom = 343.0
+scale = Vector2(3.07, 3.07)
+texture_normal = ExtResource("41_dw2xu")
 texture_pressed = ExtResource("46_kadik")
 texture_hover = ExtResource("47_um63m")
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+offset_left = 168.0
+offset_top = 320.0
+offset_right = 240.0
+offset_bottom = 392.0
+texture_normal = ExtResource("41_o2u14")
+texture_pressed = ExtResource("42_d37hy")
+texture_hover = ExtResource("51_65yeq")
+stretch_mode = 0
 
 [connection signal="pressed" from="CenterContainer/GridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
@@ -561,3 +576,5 @@ texture_hover = ExtResource("47_um63m")
 [connection signal="pressed" from="CenterContainer/GridContainer/Button6" to="." method="_on_button_6_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/Button7" to="." method="_on_button_7_pressed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="TextureButton3" to="." method="_on_back_button_pressed"]
