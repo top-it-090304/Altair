@@ -539,8 +539,10 @@ func _play_dash_vfx(anim_name: String) -> void:
 		_dash_vfx_bottom.visible = true
 		_dash_vfx_top.play("appear")
 		_dash_vfx_bottom.play("appear")
-		_dash_vfx_top.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
-		_dash_vfx_bottom.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
+		if not _dash_vfx_top.animation_finished.is_connected(_hide_dash_vfx):
+			_dash_vfx_top.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
+		if not _dash_vfx_bottom.animation_finished.is_connected(_hide_dash_vfx):
+			_dash_vfx_bottom.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
 	else:
 		var sf: SpriteFrames = _dash_vfx_top.get_meta("sf_disappear")
 		_dash_vfx_top.sprite_frames = sf
@@ -549,8 +551,10 @@ func _play_dash_vfx(anim_name: String) -> void:
 		_dash_vfx_bottom.visible = true
 		_dash_vfx_top.play("disappear")
 		_dash_vfx_bottom.play("disappear")
-		_dash_vfx_top.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
-		_dash_vfx_bottom.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
+		if not _dash_vfx_top.animation_finished.is_connected(_hide_dash_vfx):
+			_dash_vfx_top.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
+		if not _dash_vfx_bottom.animation_finished.is_connected(_hide_dash_vfx):
+			_dash_vfx_bottom.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
 
 func _hide_dash_vfx() -> void:
 	if _dash_vfx_top != null:

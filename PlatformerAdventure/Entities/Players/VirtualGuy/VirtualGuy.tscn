@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dyds15vnjstj6"]
+[gd_scene load_steps=57 format=3 uid="uid://dyds15vnjstj6"]
 
 [ext_resource type="Script" uid="uid://dl4x2rxmic3pr" path="res://Entities/Players/PinkMan/Player.gd" id="1_14bb7"]
 [ext_resource type="Texture2D" uid="uid://bv1w8wwlaxuf4" path="res://Assets/Textures/Main Characters/Virtual Guy/Double Jump (32x32).png" id="1_yl1jr"]
@@ -387,12 +387,24 @@ stream = ExtResource("11_dash")
 bus = &"SFX"
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)
 target_position = Vector2(-19.3278, 0)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)
 target_position = Vector2(19.3277, 0)
+
+[node name="RayCastLeftTop" type="RayCast2D" parent="."]
+position = Vector2(0.315, -12)
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(-19.3278, 0.336136)
+
+[node name="RayCastRightTop" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(19.3277, 0.336136)
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
 scale = Vector2(0.7, 0.7)
