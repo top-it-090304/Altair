@@ -461,13 +461,14 @@ func _setup_dash_vfx() -> void:
 		sf_disappear.add_frame("disappear", atlas)
 
 	_dash_vfx_top = AnimatedSprite2D.new()
-	_dash_vfx_top.position = Vector2(0, -24)
+	_dash_vfx_top.position = Vector2(0, 0)
+	_dash_vfx_top.scale = Vector2(1.0 / 1.5, 1.0 / 1.5)
 	_dash_vfx_top.visible = false
 	add_child(_dash_vfx_top)
 
 	_dash_vfx_bottom = AnimatedSprite2D.new()
-	_dash_vfx_bottom.position = Vector2(0, 20)
-	_dash_vfx_bottom.flip_v = true
+	_dash_vfx_bottom.position = Vector2(0, 0)
+	_dash_vfx_bottom.scale = Vector2(1.0 / 1.5, 1.0 / 1.5)
 	_dash_vfx_bottom.visible = false
 	add_child(_dash_vfx_bottom)
 
