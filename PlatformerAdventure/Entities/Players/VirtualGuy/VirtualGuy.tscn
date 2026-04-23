@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dyds15vnjstj6"]
+[gd_scene load_steps=55 format=3 uid="uid://dyds15vnjstj6"]
 
 [ext_resource type="Script" uid="uid://dl4x2rxmic3pr" path="res://Entities/Players/PinkMan/Player.gd" id="1_14bb7"]
 [ext_resource type="Texture2D" uid="uid://bv1w8wwlaxuf4" path="res://Assets/Textures/Main Characters/Virtual Guy/Double Jump (32x32).png" id="1_yl1jr"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dslq5o7cfbfw1" path="res://Assets/Textures/Main Characters/Virtual Guy/Wall Jump (32x32).png" id="7_m7452"]
 [ext_resource type="AudioStream" uid="uid://yta0jaw4eeh3" path="res://Assets/audio/jump.wav" id="9_vnxse"]
 [ext_resource type="AudioStream" uid="uid://cbjssvjhlw06y" path="res://Assets/audio/hit.wav" id="10_2r1nl"]
+[ext_resource type="AudioStream" path="res://Assets/audio/video-game-vintage-jump-ascend_zkbs6f4_.mp3" id="11_dash"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6knb0"]
 atlas = ExtResource("1_yl1jr")
@@ -379,6 +380,10 @@ bus = &"SFX"
 
 [node name="SoundHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_2r1nl")
+bus = &"SFX"
+
+[node name="SoundDash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_dash")
 bus = &"SFX"
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]

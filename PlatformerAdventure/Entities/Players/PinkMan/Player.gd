@@ -85,6 +85,7 @@ var _tap_left_count: int = 0
 var _tap_right_count: int = 0
 var _dash_vfx_top: AnimatedSprite2D = null
 var _dash_vfx_bottom: AnimatedSprite2D = null
+var _sound_dash: AudioStreamPlayer2D = null
 
 # БОНУСЫ
 var shield_active: bool = false
@@ -97,6 +98,7 @@ var _invincibility_timer: float = 0.0
 
 func _ready() -> void:
 	call_deferred("_connect_enemy_signals")
+	_sound_dash = get_node_or_null("SoundDash")
 	if dash_enabled:
 		_setup_dash_vfx()
 
@@ -509,6 +511,8 @@ func _try_dash(direction: float) -> void:
 	_dash_direction = direction
 	velocity.x = (dash_distance / dash_duration) * direction
 	velocity.y = 0.0
+	if _sound_dash:
+		_sound_dash.play()
 	_play_dash_vfx("appear")
 
 func _update_dash(delta: float) -> void:
