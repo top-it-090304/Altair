@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_eo8v7"]
 [ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="4_ft2ug"]
 [ext_resource type="Texture2D" uid="uid://d05w68lvcmpy4" path="res://Assets/Textures/Menu/Buttons/Back.png" id="5_2efw2"]
-[ext_resource type="Texture2D" uid="uid://bvxd4cktodqkf" path="res://Assets/Textures/Menu/Buttons/Back_pressed.png" id="6_eo8v7"]
+[ext_resource type="Texture2D" uid="uid://blywy0aewykno" path="res://Assets/Textures/Menu/Buttons/Back_pressed.png" id="6_eo8v7"]
 [ext_resource type="PackedScene" uid="uid://bljm38ot20br2" path="res://Entities/Level/UI/touch_controls.tscn" id="6_tbugv"]
 [ext_resource type="PackedScene" uid="uid://dtnt0bcigkql1" path="res://Entities/Shop/bonus_hud.tscn" id="7_02hj4"]
 [ext_resource type="Texture2D" uid="uid://o05nvamef1vh" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="7_dfejv"]
