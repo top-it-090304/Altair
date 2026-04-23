@@ -99,6 +99,9 @@ func _on_level_pressed(index: int) -> void:
 
 # Кнопка «Назад»
 func _on_texture_button_pressed() -> void:
+	SceneManager.go_to("res://Entities/Main/MainMenu.tscn")
+
+func _on_back_button_pressed() -> void:
 	SceneManager.go_to("res://Entities/Main/Levels_Menu.tscn")
 
 # Сигналы из Level_Menu_MaskDude.tscn (Button – Button7)
