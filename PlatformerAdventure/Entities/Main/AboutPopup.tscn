@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm8vo7hrn3hwp"]
+[gd_scene load_steps=7 format=3 uid="uid://cm8vo7hrn3hwp"]
 
-[ext_resource type="Script" path="res://Entities/Main/about_popup.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://1cjfqls8uyl1" path="res://Entities/Main/about_popup.gd" id="1_script"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/PixelOperator-Bold.ttf" id="2_font_bold"]
+[ext_resource type="FontFile" uid="uid://clk2d556aj5xs" path="res://Assets/Fonts/cyrillic_pixel-7.ttf" id="3_ietks"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.12, 0.12, 0.18, 1)
@@ -63,8 +65,10 @@ theme_override_constants/separation = 14
 [node name="Title" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 28
-text = "ОБ ИГРЕ"
+theme_override_fonts/font = ExtResource("2_font_bold")
+theme_override_font_sizes/font_size = 34
+text = "ОБ ИГРЕ
+"
 horizontal_alignment = 1
 
 [node name="Separator" type="HSeparator" parent="Panel/VBoxContainer"]
@@ -73,36 +77,41 @@ layout_mode = 2
 [node name="Developers" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 18
-text = "Разработчики: Андрей Колохматов, Владислав Эллерт"
+theme_override_fonts/font = ExtResource("2_font_bold")
+theme_override_font_sizes/font_size = 24
+text = "Разработчики: Andrey Kolokhmatov, Vladislav Ellert"
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="StudyInfo" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 18
-text = "Студенты 1 курса, учебная практика (2025)"
+theme_override_fonts/font = ExtResource("2_font_bold")
+theme_override_font_sizes/font_size = 24
+text = "Студенты 1 курса, учебная практика (2026)"
 horizontal_alignment = 1
 
 [node name="Version" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("2_font_bold")
+theme_override_font_sizes/font_size = 14
 text = "Версия: 1.0.0"
 horizontal_alignment = 1
 
 [node name="Graphics" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("3_ietks")
+theme_override_font_sizes/font_size = 14
 text = "Графика: PixelFrog, Andrey Kolokhmatov, Vladislav Ellert"
 horizontal_alignment = 1
 
 [node name="Music" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("2_font_bold")
+theme_override_font_sizes/font_size = 14
 text = "Музыка: ZvukiPro"
 horizontal_alignment = 1
 
@@ -113,7 +122,8 @@ offset_top = 4.0
 offset_right = 676.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_font_bold")
+theme_override_font_sizes/font_size = 14
 theme_override_styles/focus = SubResource("StyleBoxFlat_close_normal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_close_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_close_normal")
