@@ -155,7 +155,7 @@ func _on_btn_settings_pressed() -> void:
 	SceneManager.go_to("res://Entities/Settings/setting.tscn")
 
 func _on_texture_button_pressed() -> void:
-	SceneManager.go_to("res://Entities/Main/Levels_Menu.tscn")
+	SceneManager.go_to(GameData.get_progress_scene())
 
 func _on_texture_button_2_pressed() -> void:
 	SceneManager.go_to("res://Entities/Shop/shop.tscn")

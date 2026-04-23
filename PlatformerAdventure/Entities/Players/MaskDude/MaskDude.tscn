@@ -343,7 +343,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahb1e"]
-size = Vector2(19.4118, 26.4706)
+size = Vector2(17.7921, 26.4706)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(17, 19)
@@ -351,7 +351,6 @@ scale = Vector2(1.7, 1.7)
 script = ExtResource("1_a2kkq")
 speed = 350.0
 wall_mechanics_enabled = true
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -359,28 +358,29 @@ sprite_frames = SubResource("SpriteFrames_u5ups")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.294117, 2.05883)
+position = Vector2(-0.0725002, 2.059)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ahb1e")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)
-target_position = Vector2(-19.3278, 0)
+target_position = Vector2(-13.4454, 0)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)
-target_position = Vector2(18.4874, 0)
+target_position = Vector2(13.4454, 0)
 
 [node name="RayCastLeftTop" type="RayCast2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(0.315, -12)
 scale = Vector2(0.7, 0.7)
-target_position = Vector2(-19.3278, 0)
+target_position = Vector2(-13.4454, 0.336136)
 
 [node name="RayCastRightTop" type="RayCast2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(0.7, 0.7)
-target_position = Vector2(18.4874, 0)
+target_position = Vector2(13.4454, 0.336136)
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
 scale = Vector2(0.7, 0.7)
