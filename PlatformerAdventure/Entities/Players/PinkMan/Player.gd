@@ -433,7 +433,7 @@ func _update_animation() -> void:
 
 func _setup_dash_vfx() -> void:
 	var tex_appear: Texture2D = load("res://Assets/Textures/Main Characters/Appearing (96x96).png")
-	var tex_disappear: Texture2D = load("res://Assets/Textures/Main Characters/Disappearing (96x96).png")
+	var tex_disappear: Texture2D = load("res://Assets/Textures/Main Characters/Desappearing (96x96).png")
 
 	var frames_appear: int = int(tex_appear.get_width() / 96)
 	var frames_disappear: int = int(tex_disappear.get_width() / 96)
