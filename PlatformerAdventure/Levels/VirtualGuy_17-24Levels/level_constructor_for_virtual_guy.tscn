@@ -390,5 +390,6 @@ position = Vector2(325.333, 21.3333)
 
 [node name="virtualguy" parent="Entities" instance=ExtResource("20_0gjlo")]
 position = Vector2(592, 352)
+double_jump_enabled = false
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
