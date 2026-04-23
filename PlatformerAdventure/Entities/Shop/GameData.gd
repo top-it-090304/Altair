@@ -247,3 +247,25 @@ func is_level_unlocked(level_index: int) -> bool:
 		return true
 	var prev_level = LEVEL_ORDER[level_index - 1]
 	return is_level_completed(prev_level)
+
+func get_progress_scene() -> String:
+	# Find the first uncompleted level, open the menu for that character.
+	# LEVEL_ORDER is 0-indexed: 0-7 PinkMan, 8-15 MaskDude
+	# Future: 16-23 VirtualGuy, 24-31 NinjaFrog
+	for i in LEVEL_ORDER.size():
+		if not is_level_completed(LEVEL_ORDER[i]):
+			return _level_index_to_menu_scene(i)
+	# All levels completed — open last menu (MaskDude for now)
+	return _level_index_to_menu_scene(LEVEL_ORDER.size() - 1)
+
+func _level_index_to_menu_scene(index: int) -> String:
+	if index < 8:
+		return "res://Entities/Main/Levels_Menu.tscn"
+	elif index < 16:
+		return "res://Entities/Main/Level_Menu_MaskDude.tscn"
+	# Placeholders for future characters — add when scenes exist
+	# elif index < 24:
+	#     return "res://Entities/Main/Level_Menu_VirtualGuy.tscn"
+	# elif index < 32:
+	#     return "res://Entities/Main/Level_Menu_NinjaFrog.tscn"
+	return "res://Entities/Main/Levels_Menu.tscn"
