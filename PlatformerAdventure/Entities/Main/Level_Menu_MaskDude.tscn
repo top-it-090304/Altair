@@ -576,4 +576,5 @@ stretch_mode = 0
 [connection signal="pressed" from="CenterContainer/GridContainer/Button6" to="." method="_on_button_6_pressed"]
 [connection signal="pressed" from="CenterContainer/GridContainer/Button7" to="." method="_on_button_7_pressed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
 [connection signal="pressed" from="TextureButton3" to="." method="_on_back_button_pressed"]

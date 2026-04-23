@@ -125,3 +125,7 @@ func _on_button_6_pressed() -> void:
 
 func _on_button_7_pressed() -> void:
 	_on_level_pressed(6)
+
+
+func _on_texture_button_2_pressed() -> void:
+	SceneManager.go_to("res://Entities/Main/Level_Menu_VirtualGuy.tscn")
