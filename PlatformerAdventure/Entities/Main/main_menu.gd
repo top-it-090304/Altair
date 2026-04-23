@@ -162,3 +162,6 @@ func _on_texture_button_2_pressed() -> void:
 
 func _on_texture_button_3_pressed() -> void:
 	get_tree().quit()
+
+func _on_btn_about_pressed() -> void:
+	$AboutPopup.show_popup()
