@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dslq5o7cfbfw1" path="res://Assets/Textures/Main Characters/Virtual Guy/Wall Jump (32x32).png" id="7_m7452"]
 [ext_resource type="AudioStream" uid="uid://yta0jaw4eeh3" path="res://Assets/audio/jump.wav" id="9_vnxse"]
 [ext_resource type="AudioStream" uid="uid://cbjssvjhlw06y" path="res://Assets/audio/hit.wav" id="10_2r1nl"]
-[ext_resource type="AudioStream" uid="uid://ddmqdsnk3lhy6" path="res://Assets/audio/video-game-vintage-jump-ascend_zkbs6f4_.mp3" id="11_dash"]
+[ext_resource type="AudioStream" uid="uid://cxht46e6tabe1" path="res://Assets/audio/video-game-vintage-jump-ascend_zkbs6f4_.mp3" id="11_dash"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6knb0"]
 atlas = ExtResource("1_yl1jr")

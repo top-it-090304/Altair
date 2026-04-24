@@ -360,7 +360,7 @@ tile_map_data = PackedByteArray("AAAsAAQAAAAAAAAAADAuAAQAAAAAAAAAADAtAAQAAAAAAAA
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("10_3mthw")]
-position = Vector2(624, 363.333)
+position = Vector2(613.333, 363.333)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
@@ -390,7 +390,7 @@ fire_on = 4.0
 fire_off = 3.0
 
 [node name="Flag" parent="Entities" instance=ExtResource("11_of1c3")]
-position = Vector2(133.333, 96)
+position = Vector2(117.333, 96)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
 
@@ -431,7 +431,7 @@ position = Vector2(186.667, 224)
 position = Vector2(250.667, 144)
 
 [node name="Player" parent="Entities" instance=ExtResource("20_q33rw")]
-position = Vector2(597.333, 358)
+position = Vector2(576.667, 357.333)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
 
