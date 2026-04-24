@@ -37,6 +37,13 @@ signal died
 
 @export var shield_invincibility_duration: float = 1.0
 
+@export_group("Dash")
+@export var dash_enabled: bool = false
+@export var dash_distance: float = 200.0
+@export var dash_duration: float = 0.12
+@export var dash_cooldown: float = 0.8
+@export var double_tap_window: float = 0.25
+
 # NODES
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D  = $CollisionShape2D
@@ -68,6 +75,18 @@ var is_double_jumping: bool = false
 
 var can_move: bool = true
 
+var is_dashing: bool = false
+var _dash_timer: float = 0.0
+var _dash_cooldown_timer: float = 0.0
+var _dash_direction: float = 0.0
+var _tap_left_timer: float = 0.0
+var _tap_right_timer: float = 0.0
+var _tap_left_count: int = 0
+var _tap_right_count: int = 0
+var _dash_vfx_top: AnimatedSprite2D = null
+var _dash_vfx_bottom: AnimatedSprite2D = null
+var _sound_dash: AudioStreamPlayer2D = null
+
 # БОНУСЫ
 var shield_active: bool = false
 var magnet_active: bool = false
@@ -79,6 +98,9 @@ var _invincibility_timer: float = 0.0
 
 func _ready() -> void:
 	call_deferred("_connect_enemy_signals")
+	_sound_dash = get_node_or_null("SoundDash")
+	if dash_enabled:
+		_setup_dash_vfx()
 
 func _connect_enemy_signals() -> void:
 	for enemy in get_tree().get_nodes_in_group("enemies"):
@@ -113,13 +135,20 @@ func _physics_process(delta: float) -> void:
 		_invincibility_timer -= real_delta
 
 	_update_timers(real_delta)
-	_apply_gravity(real_delta)
 
-	if wall_mechanics_enabled:
-		_handle_wall_cling()
+	if dash_enabled:
+		_update_double_tap(real_delta)
+		_update_dash(real_delta)
 
-	_handle_jump()
-	_handle_movement(real_delta)
+	if not is_dashing:
+		_apply_gravity(real_delta)
+
+		if wall_mechanics_enabled:
+			_handle_wall_cling()
+
+		_handle_jump()
+		_handle_movement(real_delta)
+
 	_update_animation()
 
 	velocity_before_slide = velocity
@@ -128,6 +157,9 @@ func _physics_process(delta: float) -> void:
 
 	if magnet_active:
 		_attract_fruits(real_delta)
+
+	if _dash_cooldown_timer > 0.0:
+		_dash_cooldown_timer -= real_delta
 
 # ЩИТ
 
@@ -373,6 +405,10 @@ func _handle_movement(delta: float) -> void:
 func _update_animation() -> void:
 	animated_sprite.flip_h = not facing_right
 
+	if is_dashing:
+		animated_sprite.play("run")
+		return
+
 	if wall_mechanics_enabled and is_wall_sliding:
 		animated_sprite.speed_scale = 1.0
 		animated_sprite.play("walljump")
@@ -394,6 +430,137 @@ func _update_animation() -> void:
 	else:
 		animated_sprite.speed_scale = 1.0
 		animated_sprite.play("idle")
+
+# DASH
+
+func _setup_dash_vfx() -> void:
+	var tex_appear: Texture2D = load("res://Assets/Textures/Main Characters/Appearing (96x96).png")
+	var tex_disappear: Texture2D = load("res://Assets/Textures/Main Characters/Desappearing (96x96).png")
+
+	var frames_appear: int = int(tex_appear.get_width() / 96)
+	var frames_disappear: int = int(tex_disappear.get_width() / 96)
+
+	var sf_appear: SpriteFrames = SpriteFrames.new()
+	sf_appear.remove_animation("default")
+	sf_appear.add_animation("appear")
+	sf_appear.set_animation_speed("appear", 20.0)
+	sf_appear.set_animation_loop("appear", false)
+	for i in frames_appear:
+		var atlas := AtlasTexture.new()
+		atlas.atlas = tex_appear
+		atlas.region = Rect2(i * 96, 0, 96, 96)
+		sf_appear.add_frame("appear", atlas)
+
+	var sf_disappear: SpriteFrames = SpriteFrames.new()
+	sf_disappear.remove_animation("default")
+	sf_disappear.add_animation("disappear")
+	sf_disappear.set_animation_speed("disappear", 20.0)
+	sf_disappear.set_animation_loop("disappear", false)
+	for i in frames_disappear:
+		var atlas := AtlasTexture.new()
+		atlas.atlas = tex_disappear
+		atlas.region = Rect2(i * 96, 0, 96, 96)
+		sf_disappear.add_frame("disappear", atlas)
+
+	_dash_vfx_top = AnimatedSprite2D.new()
+	_dash_vfx_top.position = Vector2(0, 0)
+	_dash_vfx_top.scale = Vector2(1.0 / 1.5, 1.0 / 1.5)
+	_dash_vfx_top.visible = false
+	add_child(_dash_vfx_top)
+
+	_dash_vfx_bottom = AnimatedSprite2D.new()
+	_dash_vfx_bottom.position = Vector2(0, 0)
+	_dash_vfx_bottom.scale = Vector2(1.0 / 1.5, 1.0 / 1.5)
+	_dash_vfx_bottom.visible = false
+	add_child(_dash_vfx_bottom)
+
+	_dash_vfx_top.sprite_frames = sf_appear
+	_dash_vfx_bottom.sprite_frames = sf_appear
+	_dash_vfx_top.set_meta("sf_appear", sf_appear)
+	_dash_vfx_top.set_meta("sf_disappear", sf_disappear)
+
+func _update_double_tap(delta: float) -> void:
+	if _tap_left_timer > 0.0:
+		_tap_left_timer -= delta
+	if _tap_right_timer > 0.0:
+		_tap_right_timer -= delta
+
+	if Input.is_action_just_pressed("move_left"):
+		if _tap_left_timer > 0.0:
+			_tap_left_count = 0
+			_tap_left_timer = 0.0
+			_try_dash(-1.0)
+		else:
+			_tap_left_count = 1
+			_tap_left_timer = double_tap_window
+
+	if Input.is_action_just_pressed("move_right"):
+		if _tap_right_timer > 0.0:
+			_tap_right_count = 0
+			_tap_right_timer = 0.0
+			_try_dash(1.0)
+		else:
+			_tap_right_count = 1
+			_tap_right_timer = double_tap_window
+
+func _try_dash(direction: float) -> void:
+	if is_dashing or is_dead or _dash_cooldown_timer > 0.0:
+		return
+	is_dashing = true
+	_dash_timer = dash_duration
+	_dash_direction = direction
+	velocity.x = (dash_distance / dash_duration) * direction
+	velocity.y = 0.0
+	if _sound_dash:
+		_sound_dash.play()
+	_play_dash_vfx("appear")
+
+func _update_dash(delta: float) -> void:
+	if not is_dashing:
+		return
+	_dash_timer -= delta
+	if _dash_timer <= 0.0:
+		is_dashing = false
+		velocity.x *= 0.3
+		_dash_cooldown_timer = dash_cooldown
+		_play_dash_vfx("disappear")
+
+func _play_dash_vfx(anim_name: String) -> void:
+	if _dash_vfx_top == null or _dash_vfx_bottom == null:
+		return
+	var flip := not facing_right
+	_dash_vfx_top.flip_h = flip
+	_dash_vfx_bottom.flip_h = flip
+	if anim_name == "appear":
+		var sf: SpriteFrames = _dash_vfx_top.get_meta("sf_appear")
+		_dash_vfx_top.sprite_frames = sf
+		_dash_vfx_bottom.sprite_frames = sf
+		_dash_vfx_top.visible = true
+		_dash_vfx_bottom.visible = true
+		_dash_vfx_top.play("appear")
+		_dash_vfx_bottom.play("appear")
+		if not _dash_vfx_top.animation_finished.is_connected(_hide_dash_vfx):
+			_dash_vfx_top.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
+		if not _dash_vfx_bottom.animation_finished.is_connected(_hide_dash_vfx):
+			_dash_vfx_bottom.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
+	else:
+		var sf: SpriteFrames = _dash_vfx_top.get_meta("sf_disappear")
+		_dash_vfx_top.sprite_frames = sf
+		_dash_vfx_bottom.sprite_frames = sf
+		_dash_vfx_top.visible = true
+		_dash_vfx_bottom.visible = true
+		_dash_vfx_top.play("disappear")
+		_dash_vfx_bottom.play("disappear")
+		if not _dash_vfx_top.animation_finished.is_connected(_hide_dash_vfx):
+			_dash_vfx_top.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
+		if not _dash_vfx_bottom.animation_finished.is_connected(_hide_dash_vfx):
+			_dash_vfx_bottom.animation_finished.connect(_hide_dash_vfx, CONNECT_ONE_SHOT)
+
+func _hide_dash_vfx() -> void:
+	if _dash_vfx_top != null:
+		_dash_vfx_top.visible = false
+	if _dash_vfx_bottom != null:
+		_dash_vfx_bottom.visible = false
 
 # UTILITIES
 

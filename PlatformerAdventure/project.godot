@@ -30,6 +30,10 @@ window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
+[gui]
+
+theme/custom="res://Assets/Fonts/pixel_theme.tres"
+
 [global_group]
 
 player=""

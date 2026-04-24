@@ -1,17 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://d31kxt446umrf"]
+[gd_scene load_steps=5 format=3 uid="uid://d31kxt446umrf"]
 
 [ext_resource type="Script" uid="uid://b01v2cplalgoq" path="res://Entities/Level/UI/TutorialOverlay.gd" id="1_tutor"]
+[ext_resource type="FontFile" uid="uid://d3shsaa84dpjg" path="res://Assets/Fonts/EpilepsySansBold.ttf" id="2_font"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 24.0
 content_margin_top = 24.0
 content_margin_right = 24.0
 content_margin_bottom = 24.0
-bg_color = Color(0.1, 0.1, 0.1, 0.75)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+bg_color = Color(0.12, 0.12, 0.18, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.4, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
 content_margin_left = 8.0
@@ -43,7 +49,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.5)
+color = Color(0, 0, 0, 0.7)
 
 [node name="Center" type="CenterContainer" parent="RootControl"]
 layout_mode = 1
@@ -67,7 +73,8 @@ theme_override_constants/separation = 12
 [node name="CharacterHeader" type="Label" parent="RootControl/Center/Panel/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.851, 0.4, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
 text = "У PinkMan доступно:"
 horizontal_alignment = 1
 
@@ -82,14 +89,16 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
 text = "←"
 horizontal_alignment = 1
 
 [node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/HintLeft"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
 text = "Бежать влево"
 
 [node name="HintRight" type="HBoxContainer" parent="RootControl/Center/Panel/VBox"]
@@ -100,14 +109,16 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
 text = "→"
 horizontal_alignment = 1
 
 [node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/HintRight"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
 text = "Бежать вправо"
 
 [node name="HintJump" type="HBoxContainer" parent="RootControl/Center/Panel/VBox"]
@@ -118,14 +129,16 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
 text = "↑"
 horizontal_alignment = 1
 
 [node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/HintJump"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
 text = "Прыжок"
 
 [node name="HintDoubleJump" type="HBoxContainer" parent="RootControl/Center/Panel/VBox"]
@@ -136,14 +149,16 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
 text = "↑↑"
 horizontal_alignment = 1
 
 [node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/HintDoubleJump"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
 text = "Двойной прыжок"
 
 [node name="WallJumpSection" type="VBoxContainer" parent="RootControl/Center/Panel/VBox"]
@@ -168,13 +183,15 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
 [node name="NewLabel" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/WallJumpHeader/NewBadge"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
 text = "НОВОЕ"
 
 [node name="WallJumpLabel" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/WallJumpHeader"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
 text = " Прыжок от стены"
 
 [node name="HintWallSlide" type="HBoxContainer" parent="RootControl/Center/Panel/VBox/WallJumpSection"]
@@ -185,14 +202,16 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
 text = "←/→"
 horizontal_alignment = 1
 
 [node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/HintWallSlide"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
 text = "Прыгни к стене в воздухе"
 
 [node name="HintWallJump" type="HBoxContainer" parent="RootControl/Center/Panel/VBox/WallJumpSection"]
@@ -203,14 +222,16 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "↑+←/→"
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "↑ + ←/→"
 horizontal_alignment = 1
 
 [node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/HintWallJump"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
 text = "Прыгни на другую стену"
 
 [node name="Separator" type="HSeparator" parent="RootControl/Center/Panel/VBox"]
@@ -219,6 +240,7 @@ layout_mode = 2
 [node name="TapPrompt" type="Label" parent="RootControl/Center/Panel/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.667, 0.667, 0.667, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
 text = "Коснитесь экрана чтобы начать"
 horizontal_alignment = 1
