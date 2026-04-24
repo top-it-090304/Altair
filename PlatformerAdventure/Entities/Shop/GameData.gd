@@ -21,6 +21,28 @@ var _spent: int = 0
 var show_ctrl_hits: bool = true
 var tutorial_shown: bool = false
 var tutorial_shown_9: bool = false
+var tutorial_skip_shown: bool = false
+
+# ── СЧЁТЧИК СМЕРТЕЙ (не сохраняется, живёт в памяти) ─────────────────────────
+var current_level_deaths: int = 0
+var bonuses_popup_shown: bool = false   # показали попап бонусов на этом уровне
+var last_skip_popup_deaths: int = -1    # при каком количестве смертей последний раз показали попап пропуска
+var _coming_from_death_reload: bool = false  # перезагрузка после смерти
+var _tracked_level_path: String = ""
+
+func reset_level_death_tracking(level_path: String) -> void:
+	if _coming_from_death_reload:
+		# Перезагрузка после смерти — счётчик не сбрасываем
+		_coming_from_death_reload = false
+		return
+	# Свежий старт уровня (из меню или нового уровня) — сбрасываем
+	current_level_deaths = 0
+	bonuses_popup_shown = false
+	last_skip_popup_deaths = -1
+	_tracked_level_path = level_path
+
+func record_death() -> void:
+	current_level_deaths += 1
 signal fruits_changed(new_total: int)
 
 # Состояние возврата из магазина (return_position == ZERO = не задано)
@@ -185,6 +207,7 @@ func save_data() -> void:
 	config.set_value("ctrl_layout", "up_y",    ctrl_pos_up.y)
 	config.set_value("tutorial", "shown", tutorial_shown)
 	config.set_value("tutorial", "shown_9", tutorial_shown_9)
+	config.set_value("tutorial", "skip_shown", tutorial_skip_shown)
 	for level_name in level_records:
 		config.set_value("records", level_name, level_records[level_name])
 	config.save(SAVE_PATH)
@@ -227,6 +250,7 @@ func load_data() -> void:
 	ctrl_pos_up.y    = config.get_value("ctrl_layout", "up_y",    607.0)
 	tutorial_shown = config.get_value("tutorial", "shown", false)
 	tutorial_shown_9 = config.get_value("tutorial", "shown_9", false)
+	tutorial_skip_shown = config.get_value("tutorial", "skip_shown", false)
 	if config.has_section("records"):
 		for key in config.get_section_keys("records"):
 			level_records[key] = config.get_value("records", key, 0)
