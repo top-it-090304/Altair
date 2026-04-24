@@ -373,7 +373,7 @@ chain_length = 110.0
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("9_nqo64")]
-position = Vector2(570.667, 395.333)
+position = Vector2(581.333, 395.333)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
@@ -383,10 +383,10 @@ scale = Vector2(-1.2, 1.2)
 shoot_interval = 3.0
 
 [node name="Plant2D2" parent="Entities/Traps" instance=ExtResource("11_up5hp")]
-position = Vector2(408.667, 393.333)
+position = Vector2(416, 390)
 
 [node name="Flag" parent="Entities" instance=ExtResource("10_7kq46")]
-position = Vector2(90.6667, 384)
+position = Vector2(101.333, 384)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
 

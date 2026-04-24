@@ -322,7 +322,7 @@ sources/0 = SubResource("TileSetAtlasSource_vddnb")
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_jxc1c")
-next_level_path = "uid://cm14esjfq3r7d"
+next_level_path = "res://Levels/MaskDude_9-15Levels/Level15.tscn"
 metadata/_edit_vertical_guides_ = [346.0]
 
 [node name="UI" type="Node2D" parent="."]
@@ -356,7 +356,7 @@ tile_map_data = PackedByteArray("AAAVABkAAAAAAAAAAAAWABkAAAAAAAAAAAAXABkAAAAAAAA
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("10_pb8t1")]
-position = Vector2(135.333, 123.333)
+position = Vector2(154.667, 123.333)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
@@ -423,7 +423,7 @@ shoot_interval = 4.0
 position = Vector2(170, 346.667)
 
 [node name="Flag" parent="Entities" instance=ExtResource("11_rrrcg")]
-position = Vector2(112, 336)
+position = Vector2(106.667, 336)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
 
@@ -440,7 +440,7 @@ position = Vector2(229.333, 330.667)
 position = Vector2(172.667, 336.667)
 
 [node name="pineapple8" parent="Entities/Fruits" instance=ExtResource("12_kxvmb")]
-position = Vector2(128.667, 346)
+position = Vector2(133.333, 346.667)
 
 [node name="pineapple4" parent="Entities/Fruits" instance=ExtResource("12_kxvmb")]
 position = Vector2(272, 325.333)

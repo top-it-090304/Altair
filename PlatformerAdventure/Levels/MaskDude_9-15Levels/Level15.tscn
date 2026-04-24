@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cm14esjfq3r7d"]
+[gd_scene load_steps=22 format=4 uid="uid://d0qdvy3aqxmrv"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_6ic8j"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_ibncn"]
@@ -321,7 +321,7 @@ sources/0 = SubResource("TileSetAtlasSource_jmsh5")
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_6ic8j")
-next_level_path = "uid://dxqtbmndsvd4x"
+next_level_path = "res://Levels/MaskDude_9-15Levels/Level16.tscn"
 metadata/_edit_vertical_guides_ = [346.0]
 
 [node name="UI" type="Node2D" parent="."]

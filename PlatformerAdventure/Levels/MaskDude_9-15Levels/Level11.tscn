@@ -361,7 +361,7 @@ tile_map_data = PackedByteArray("AAAgAAgAAAAAAAAAAAAaAAgAAAAAAAAAAAA=")
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("10_cdv2c")]
-position = Vector2(740.667, 336.667)
+position = Vector2(737.333, 336.667)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="Entities/SpawnPoint" index="0"]
@@ -406,7 +406,7 @@ position = Vector2(122.667, 85.3333)
 move_mode = 1
 
 [node name="Flag" parent="Entities" instance=ExtResource("11_6lo4y")]
-position = Vector2(442.667, 336)
+position = Vector2(474.667, 336)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
 position = Vector2(454, 8.66667)
@@ -421,10 +421,10 @@ position = Vector2(-246, 119.333)
 position = Vector2(-374, 295.333)
 
 [node name="orange2" parent="Entities/Fruits" instance=ExtResource("17_fbvpt")]
-position = Vector2(223.333, 167.333)
+position = Vector2(244.667, 167.333)
 
 [node name="orange3" parent="Entities/Fruits" instance=ExtResource("17_fbvpt")]
-position = Vector2(223.333, 247.333)
+position = Vector2(244.667, 247.333)
 
 [node name="orange4" parent="Entities/Fruits" instance=ExtResource("17_fbvpt")]
 position = Vector2(-283.333, 295.333)
@@ -448,7 +448,7 @@ position = Vector2(68.6667, 295.333)
 position = Vector2(90, 295.333)
 
 [node name="Player" parent="Entities" instance=ExtResource("20_i3k86")]
-position = Vector2(713.333, 314)
+position = Vector2(662.667, 318.667)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
 

@@ -355,10 +355,10 @@ stretch_mode = 0
 
 [node name="TextureButton" type="TextureButton" parent="."]
 texture_filter = 1
-offset_left = 16.0
-offset_top = 37.0
-offset_right = 69.0
-offset_bottom = 90.0
+offset_left = 21.3333
+offset_top = 37.3333
+offset_right = 74.3333
+offset_bottom = 90.3333
 texture_normal = ExtResource("5_2efw2")
 texture_pressed = ExtResource("6_eo8v7")
 texture_hover = ExtResource("7_dfejv")
