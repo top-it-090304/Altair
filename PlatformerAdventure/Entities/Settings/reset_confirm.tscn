@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://1tn3gc22ckwr"]
 
-[ext_resource type="Script" uid="uid://bvouknts3va2e" path="res://Entities/Settings/reset_confirm.gd" id="0_rcscript"]
-[ext_resource type="Texture2D" uid="uid://bxmnqc6x82lce" path="res://Assets/Textures/Settings/resetprogress.png" id="1_o0sge"]
-[ext_resource type="Texture2D" uid="uid://bowin2akbga6" path="res://Assets/Buttons/yes_no/no_normal.png" id="3_qcx1j"]
-[ext_resource type="Texture2D" uid="uid://cwykbttoe8p8m" path="res://Assets/Buttons/yes_no/no_pressed.png" id="4_tpbxu"]
-[ext_resource type="Texture2D" uid="uid://3u0431eiy8h1" path="res://Assets/Buttons/yes_no/no_hover.png" id="5_dn65u"]
-[ext_resource type="Texture2D" uid="uid://p234jupmvbsa" path="res://Assets/Buttons/yes_no/yes_normal.png" id="6_mbqt7"]
-[ext_resource type="Texture2D" uid="uid://bdw61jo7ja4g1" path="res://Assets/Buttons/yes_no/yes_pressed.png" id="7_ul4e8"]
-[ext_resource type="Texture2D" uid="uid://dqv2b1bgsuq8m" path="res://Assets/Buttons/yes_no/yes_hover.png" id="8_py5mo"]
+[ext_resource type="Script" uid="uid://dkbhroq52asgn" path="res://Entities/Settings/reset_confirm.gd" id="0_rcscript"]
+[ext_resource type="Texture2D" uid="uid://c0cjvdfnantfn" path="res://Assets/Textures/Settings/resetprogress.png" id="1_o0sge"]
+[ext_resource type="Texture2D" uid="uid://briuwcn5xi4kt" path="res://Assets/Buttons/yes_no/no_normal.png" id="3_qcx1j"]
+[ext_resource type="Texture2D" uid="uid://dbu8oi4oo564g" path="res://Assets/Buttons/yes_no/no_pressed.png" id="4_tpbxu"]
+[ext_resource type="Texture2D" uid="uid://re8wl4ovkrho" path="res://Assets/Buttons/yes_no/no_hover.png" id="5_dn65u"]
+[ext_resource type="Texture2D" uid="uid://buni5ewv4pi2h" path="res://Assets/Buttons/yes_no/yes_normal.png" id="6_mbqt7"]
+[ext_resource type="Texture2D" uid="uid://dliwbdgll7nc3" path="res://Assets/Buttons/yes_no/yes_pressed.png" id="7_ul4e8"]
+[ext_resource type="Texture2D" uid="uid://cxdbtp0dpy3y1" path="res://Assets/Buttons/yes_no/yes_hover.png" id="8_py5mo"]
 
 [node name="ResetConfirm" type="Control"]
 texture_filter = 1

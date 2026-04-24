@@ -325,7 +325,7 @@ sources/0 = SubResource("TileSetAtlasSource_jmsh5")
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_rdrgy")
-next_level_path = "res://Levels/MaskDude_9-15Levels/Level15.tscn"
+next_level_path = "uid://dxqtbmndsvd4x"
 metadata/_edit_vertical_guides_ = [346.0]
 
 [node name="UI" type="Node2D" parent="."]
