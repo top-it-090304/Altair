@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b5k3nxfhgx3wf" path="res://Entities/Settings/ctrl_layout_editor.gd" id="1_cle"]
 [ext_resource type="Texture2D" uid="uid://b4jwg0w66p7fw" path="res://Assets/Textures/Traps/Arrow/Hit (18x18).png" id="2_cle"]
 [ext_resource type="Texture2D" uid="uid://ct207nfaaph3k" path="res://Assets/Textures/Menu/Buttons/Restart.png" id="3_cle"]
-[ext_resource type="FontFile" uid="uid://d3shsaa84dpjg" path="res://Assets/Fonts/EpilepsySansBold.ttf" id="3_xw6i6"]
+[ext_resource type="FontFile" uid="uid://bp4x7qeldah35" path="res://Assets/Fonts/EpilepsySansBold.ttf" id="3_xw6i6"]
 [ext_resource type="Texture2D" uid="uid://du8ahe0pxtgem" path="res://Assets/Textures/Menu/Buttons/Close.png" id="5_close"]
 
 [sub_resource type="AtlasTexture" id="AT_0"]
