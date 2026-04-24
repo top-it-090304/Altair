@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d31kxt446umrf"]
 
 [ext_resource type="Script" uid="uid://b01v2cplalgoq" path="res://Entities/Level/UI/TutorialOverlay.gd" id="1_tutor"]
-[ext_resource type="FontFile" uid="uid://d3shsaa84dpjg" path="res://Assets/Fonts/EpilepsySansBold.ttf" id="2_font"]
+[ext_resource type="FontFile" uid="uid://dvu7gx2dt8hx4" path="res://Assets/Fonts/EpilepsySansBold.ttf" id="2_font"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 24.0
