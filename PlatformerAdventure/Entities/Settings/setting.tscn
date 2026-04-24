@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://csi2o7cdfg3gs"]
+[gd_scene load_steps=21 format=4 uid="uid://csi2o7cdfg3gs"]
 
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_jubmu"]
 [ext_resource type="Texture2D" uid="uid://dphss4v8xjpbi" path="res://Assets/Textures/Background/Blue.png" id="3_plwyx"]
@@ -7,13 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://bepvq4d546fp" path="res://Assets/Textures/Menu/Buttons/Back_pressed.png" id="6_y6nnx"]
 [ext_resource type="Texture2D" uid="uid://o05nvamef1vh" path="res://Assets/Textures/Menu/Buttons/Back_.png" id="7_m75j8"]
 [ext_resource type="Texture2D" uid="uid://dcg3arg4lfrn4" path="res://Assets/Textures/Settings/zxc777.png" id="10_tvgwm"]
-[ext_resource type="Texture2D" uid="uid://16f70hj77o72" path="res://Assets/Textures/Menu/Buttons/Restart_pressed.png" id="12_jubmu"]
+[ext_resource type="Texture2D" uid="uid://ccdnbuptsplxn" path="res://Assets/Buttons/reset/reset_normal.png" id="11_jqpad"]
+[ext_resource type="Texture2D" uid="uid://beld7xqtsp85g" path="res://Assets/Buttons/reset/change_pressed.png" id="12_m75j8"]
 [ext_resource type="Texture2D" uid="uid://blp2m4pvj0nr7" path="res://Assets/Textures/Settings/polzunok(16x16).png" id="12_q06dr"]
 [ext_resource type="Texture2D" uid="uid://c74mbpl78360a" path="res://Assets/Textures/Settings/Gemini_Generated_Image_r9tnl9r9tnl9r9tn-Photoroom.png" id="12_y6nnx"]
 [ext_resource type="Texture2D" uid="uid://dtcsj7nijkorb" path="res://Assets/Textures/Settings/Gemini_Generated_Image_9tt6pf9tt6pf9tt6-Photoroom.png" id="13_jqpad"]
-[ext_resource type="Texture2D" uid="uid://ct207nfaaph3k" path="res://Assets/Textures/Menu/Buttons/Restart.png" id="15_y6nnx"]
+[ext_resource type="Texture2D" uid="uid://cc5kihxu8f0q8" path="res://Assets/Buttons/reset/change_hover.png" id="13_w0bmm"]
+[ext_resource type="Texture2D" uid="uid://dcl1swe4ap1u4" path="res://Assets/Buttons/change/change_normal.png" id="15_jqpad"]
+[ext_resource type="Texture2D" uid="uid://c6bt3kmm2327q" path="res://Assets/Buttons/change/change_pressed.png" id="16_m75j8"]
 [ext_resource type="Script" uid="uid://bo7e5rjs0pw2k" path="res://Entities/Settings/sfx_volume_slider.gd" id="16_y6nnx"]
-[ext_resource type="Script" uid="uid://dwmpevdo3yn55" path="res://Entities/Settings/ctrl_hits_toggle.gd" id="17_ctrlhits"]
+[ext_resource type="Texture2D" uid="uid://ibqtx5ne8kud" path="res://Assets/Buttons/change/change_hover.png" id="17_w0bmm"]
 [ext_resource type="Texture2D" uid="uid://bpeliskege1v7" path="res://Assets/Textures/Settings/Gemini_Generated_Image_tyk8zotyk8zotyk8-Photoroom.png" id="18_w0bmm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pvgl"]
@@ -321,13 +324,14 @@ metadata/_edit_group_ = true
 [node name="ResetButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 905.0
-offset_top = 249.0
-offset_right = 1105.0
-offset_bottom = 429.0
-scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("15_y6nnx")
-texture_pressed = ExtResource("12_jubmu")
+offset_left = 848.0
+offset_top = 240.0
+offset_right = 942.0
+offset_bottom = 270.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("11_jqpad")
+texture_pressed = ExtResource("12_m75j8")
+texture_hover = ExtResource("13_w0bmm")
 stretch_mode = 0
 
 [node name="SFXVolumeSlider" type="Control" parent="."]
@@ -363,7 +367,6 @@ offset_left = 915.0
 offset_top = 345.0
 offset_right = 979.0
 offset_bottom = 401.0
-script = ExtResource("17_ctrlhits")
 
 [node name="TextureButton" type="TextureButton" parent="CtrlHitsToggle"]
 texture_filter = 1
@@ -373,11 +376,14 @@ anchor_left = -0.375
 anchor_top = 2.929
 anchor_right = -0.375
 anchor_bottom = 2.929
-offset_left = -11.0
-offset_top = -5.02397
-offset_right = 229.0
-offset_bottom = 122.976
-scale = Vector2(0.5, 0.5)
+offset_left = -43.0
+offset_top = -21.024
+offset_right = 51.0
+offset_bottom = 8.97601
+scale = Vector2(2, 2)
+texture_normal = ExtResource("15_jqpad")
+texture_pressed = ExtResource("16_m75j8")
+texture_hover = ExtResource("17_w0bmm")
 stretch_mode = 0
 
 [node name="Reset" type="Sprite2D" parent="."]
