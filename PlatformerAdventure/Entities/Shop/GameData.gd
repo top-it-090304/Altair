@@ -5,9 +5,8 @@ extends Node
 
 const SAVE_PATH = "user://save.cfg"
 
-# ВРЕМЕННО: true = все уровни разблокированы и зелёные (для тестирования)
-# Перед релизом поставить false
-const DEV_UNLOCK_ALL: bool = true
+# false = уровни открываются по мере прохождения (боевой режим)
+const DEV_UNLOCK_ALL: bool = false
 
 const LEVEL_ORDER: Array = [
 	"Level1", "Level2", "Level3", "Level4", "Level5",
