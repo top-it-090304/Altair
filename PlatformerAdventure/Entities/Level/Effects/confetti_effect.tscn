@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=4]
+[gd_scene load_steps=2 format=3 uid="uid://dvp8qqri74v1n"]
 
-[ext_resource type="Script" path="res://Entities/Level/Effects/confetti_effect.gd" id="1"]
+[ext_resource type="Script" uid="uid://ds7fqydfoby04" path="res://Entities/Level/Effects/confetti_effect.gd" id="1"]
 
 [node name="ConfettiEffect" type="CanvasLayer"]
 layer = 100

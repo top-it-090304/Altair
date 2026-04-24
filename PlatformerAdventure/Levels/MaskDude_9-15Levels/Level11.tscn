@@ -448,7 +448,7 @@ position = Vector2(68.6667, 295.333)
 position = Vector2(90, 295.333)
 
 [node name="Player" parent="Entities" instance=ExtResource("20_i3k86")]
-position = Vector2(713.333, 314)
+position = Vector2(704, 325.333)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
 
