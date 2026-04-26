@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cm8vo7hrn3hwp"]
+[gd_scene load_steps=6 format=3 uid="uid://cm8vo7hrn3hwp"]
 
 [ext_resource type="Script" uid="uid://b7hwo185i2w64" path="res://Entities/Main/about_popup.gd" id="1_script"]
-[ext_resource type="FontFile" uid="uid://dcbui8k0dep1r" path="res://Assets/Fonts/cyrillic_pixel-7.ttf" id="3_ietks"]
+[ext_resource type="FontFile" uid="uid://c14rxxu7piuvj" path="res://Assets/Fonts/cyrillic_pixel-7.ttf" id="3_ietks"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.12, 0.12, 0.18, 1)
@@ -14,24 +14,6 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-
-[sub_resource type="Resource" id="Resource_cqxw6"]
-metadata/__load_path__ = "res://Assets/Fonts/PixelOperator-Bold.ttf"
-
-[sub_resource type="Resource" id="Resource_ietks"]
-metadata/__load_path__ = "res://Assets/Fonts/PixelOperator-Bold.ttf"
-
-[sub_resource type="Resource" id="Resource_cwuxm"]
-metadata/__load_path__ = "res://Assets/Fonts/PixelOperator-Bold.ttf"
-
-[sub_resource type="Resource" id="Resource_nloio"]
-metadata/__load_path__ = "res://Assets/Fonts/PixelOperator-Bold.ttf"
-
-[sub_resource type="Resource" id="Resource_12ypr"]
-metadata/__load_path__ = "res://Assets/Fonts/PixelOperator-Bold.ttf"
-
-[sub_resource type="Resource" id="Resource_rocfv"]
-metadata/__load_path__ = "res://Assets/Fonts/PixelOperator-Bold.ttf"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close_normal"]
 bg_color = Color(1, 1, 1, 0)
@@ -82,7 +64,6 @@ theme_override_constants/separation = 14
 [node name="Title" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = SubResource("Resource_cqxw6")
 theme_override_font_sizes/font_size = 34
 text = "ОБ ИГРЕ
 "
@@ -94,7 +75,6 @@ layout_mode = 2
 [node name="Developers" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = SubResource("Resource_ietks")
 theme_override_font_sizes/font_size = 24
 text = "Разработчики: Andrey Kolokhmatov, Vladislav Ellert"
 horizontal_alignment = 1
@@ -103,7 +83,6 @@ autowrap_mode = 3
 [node name="StudyInfo" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = SubResource("Resource_cwuxm")
 theme_override_font_sizes/font_size = 24
 text = "Студенты 1 курса, учебная практика (2026)"
 horizontal_alignment = 1
@@ -111,7 +90,6 @@ horizontal_alignment = 1
 [node name="Version" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = SubResource("Resource_nloio")
 theme_override_font_sizes/font_size = 14
 text = "Версия: 1.0.0"
 horizontal_alignment = 1
@@ -127,7 +105,6 @@ horizontal_alignment = 1
 [node name="Music" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = SubResource("Resource_12ypr")
 theme_override_font_sizes/font_size = 14
 text = "Музыка: ZvukiPro"
 horizontal_alignment = 1
@@ -139,7 +116,6 @@ offset_top = 4.0
 offset_right = 676.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = SubResource("Resource_rocfv")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/focus = SubResource("StyleBoxFlat_close_normal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_close_hover")

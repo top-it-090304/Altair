@@ -3,6 +3,7 @@ extends Node
 var previous_scene: String = ""
 var _diamond: Sprite2D = null
 var _cover_scale: float = 1.0
+var _transitioning: bool = false
 
 const TEXTURE_HALF_SIZE: float = 22.0   # half of 44px diamond tip-to-tip
 const DURATION_COVER:  float = 0.45
@@ -27,22 +28,28 @@ func _setup_diamond() -> void:
 	_cover_scale = (vp_size.x * 0.5 + vp_size.y * 0.5) / TEXTURE_HALF_SIZE + 2.0
 
 func go_to(scene_path: String) -> void:
+	if _transitioning:
+		return
 	previous_scene = get_tree().current_scene.scene_file_path
 	_cover_then_go(scene_path)
 
 func go_back(fallback: String = "res://Entities/Main/MainMenu.tscn") -> void:
+	if _transitioning:
+		return
 	var target := previous_scene if previous_scene != "" else fallback
 	previous_scene = ""
 	_cover_then_go(target)
 
 # Diamond grows from 0 → full cover in integer scale steps, then switches scene.
 func _cover_then_go(scene_path: String) -> void:
+	_transitioning = true
 	var tween := get_tree().create_tween()
 	tween.tween_method(_set_scale_snapped, 0.0, _cover_scale, DURATION_COVER)
 	tween.tween_callback(func() -> void:
 		var err := get_tree().change_scene_to_file(scene_path)
 		if err != OK:
 			push_error("[SceneManager] change_scene_to_file failed: %d  path: %s" % [err, scene_path])
+			_transitioning = false
 			_reveal()
 			return
 		get_tree().root.child_entered_tree.connect(_on_new_scene_ready, CONNECT_ONE_SHOT)
@@ -58,4 +65,5 @@ func _set_scale_snapped(s: float) -> void:
 	_diamond.scale = Vector2.ONE * round(s)
 
 func _on_new_scene_ready(_node: Node) -> void:
+	_transitioning = false
 	_reveal()

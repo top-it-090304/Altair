@@ -26,6 +26,9 @@ extends Node2D
 var total_fruits: int = 0
 var collected_count: int = 0
 
+# Время жизни игрока с момента загрузки уровня (для проверки >3 сек)
+var _time_alive: float = 0.0
+
 var used_shield: int = 0
 var used_slowmo: int = 0
 var used_magnet: int = 0
@@ -33,8 +36,9 @@ var used_magnet: int = 0
 @onready var fruit_counter = preload("res://Entities/Level/Buttons/сounter.tscn").instantiate()
 
 const TUTORIAL_SCENE  = preload("res://Entities/Level/UI/TutorialOverlay.tscn")
-const CONFETTI_SCENE = preload("res://Entities/Level/Effects/confetti_effect.tscn")
-const VICTORY_SOUND  = preload("res://Assets/audio/Voicy_Level up sfx 2.mp3")
+const CONFETTI_SCENE  = preload("res://Entities/Level/Effects/confetti_effect.tscn")
+const VICTORY_SOUND   = preload("res://Assets/audio/Voicy_Level up sfx 2.mp3")
+const DeathHelpPopup  = preload("res://Entities/Level/UI/death_help_popup.gd")
 
 const MUSIC_LEVELS_1_8 = preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3")
 const MUSIC_LEVELS_9_16 = preload("res://Assets/audio/maskdude1.mp3")
@@ -73,6 +77,15 @@ func _ready() -> void:
 
 	if player:
 		player.died.connect(reset_bonus_uses)
+		player.died.connect(_on_player_died)
+
+	# Инициализация счётчика смертей (сбрасывается только при свежем старте уровня)
+	GameData.reset_level_death_tracking(scene_file_path)
+	_check_death_popups_deferred()
+
+	# Туториал о пропуске — один раз на уровнях 3 или 4
+	if (level_num == 3 or level_num == 4) and not GameData.tutorial_skip_shown:
+		_show_skip_tutorial_deferred()
 
 	if level_num == 1 and not GameData.tutorial_shown:
 		_show_tutorial("PinkMan", false, func():
@@ -200,3 +213,51 @@ func _on_button_pressed() -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST or what == NOTIFICATION_EXIT_TREE:
 		Engine.time_scale = 1.0
+
+# ── СЧЁТЧИК СМЕРТЕЙ И ПОПАПЫ ПОМОЩИ ─────────────────────────────────────────
+
+func _process(delta: float) -> void:
+	_time_alive += delta
+
+func _on_player_died() -> void:
+	# Флаг перезагрузки ставим всегда — иначе счётчик сбросится при быстрой смерти
+	GameData._coming_from_death_reload = true
+	# Сама смерть считается только если игрок прожил > 3 секунд
+	if _time_alive > 3.0:
+		GameData.current_level_deaths += 1
+
+func _check_death_popups_deferred() -> void:
+	# Небольшая задержка чтобы уровень успел отрисоваться
+	await get_tree().create_timer(0.6).timeout
+	if not is_instance_valid(self):
+		return
+	if _should_show_bonuses_popup():
+		var popup := DeathHelpPopup.new()
+		add_child(popup)
+		popup.show_bonuses_popup(self)
+	elif _should_show_skip_popup():
+		var popup := DeathHelpPopup.new()
+		add_child(popup)
+		popup.show_skip_popup(self)
+
+func _show_skip_tutorial_deferred() -> void:
+	await get_tree().create_timer(1.2).timeout
+	if not is_instance_valid(self):
+		return
+	var popup := DeathHelpPopup.new()
+	add_child(popup)
+	popup.show_skip_tutorial()
+
+# 10 смертей — попап бонусов (только один раз за уровень)
+func _should_show_bonuses_popup() -> bool:
+	return GameData.current_level_deaths >= 2 and not GameData.bonuses_popup_shown
+
+# 20, 35, 50, 65... — попап пропуска (каждые 15 после 20)
+func _should_show_skip_popup() -> bool:
+	var d := GameData.current_level_deaths
+	if d < 4:
+		return false
+	if (d - 4) % 2 != 0:
+		return false
+	# Не показывать повторно при одном и том же количестве смертей
+	return GameData.last_skip_popup_deaths != d
