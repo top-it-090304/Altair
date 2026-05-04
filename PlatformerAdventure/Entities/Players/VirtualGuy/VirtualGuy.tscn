@@ -344,7 +344,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vguy"]
-size = Vector2(17.7921, 26.4706)
+size = Vector2(20.5882, 27.0587)
 
 [node name="virtualguy" type="CharacterBody2D" groups=["player"]]
 position = Vector2(10, -5)
@@ -366,7 +366,8 @@ sprite_frames = SubResource("SpriteFrames_0ahki")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.0725002, 2.059)
+position = Vector2(0.294117, 2.35303)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vguy")
 
 [node name="SoundJump" type="AudioStreamPlayer2D" parent="."]
@@ -384,26 +385,26 @@ bus = &"SFX"
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)
-target_position = Vector2(-13.4454, 0)
+target_position = Vector2(-15.126, 0)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, 10)
 scale = Vector2(0.7, 0.7)
-target_position = Vector2(13.4454, 0)
+target_position = Vector2(15.9664, 0)
 
 [node name="RayCastLeftTop" type="RayCast2D" parent="."]
 position = Vector2(-2.62962e-07, -8.82353)
 scale = Vector2(0.7, 0.7)
-target_position = Vector2(-13.4454, 0.336136)
+target_position = Vector2(-15.126, 1.90735e-06)
 
 [node name="RayCastRightTop" type="RayCast2D" parent="."]
 position = Vector2(0, -8.82353)
 scale = Vector2(0.7, 0.7)
-target_position = Vector2(13.4454, 0.336136)
+target_position = Vector2(15.9664, 1.90735e-06)
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
 scale = Vector2(0.7, 0.7)
-target_position = Vector2(0, 22.6891)
+target_position = Vector2(0, 23.5294)
 
 [node name="RayCastUp" type="RayCast2D" parent="."]
 scale = Vector2(0.9, 0.9)

@@ -71,7 +71,7 @@ animations = [{
 }]
 
 [node name="LevelConstructor" instance=ExtResource("1_ecjtj")]
-next_level_path = "uid://828mdfcmflwm"
+next_level_path = "uid://drlct66k3c04r"
 
 [node name="BgTexture" parent="UI" index="0"]
 texture = ExtResource("2_6hcvj")

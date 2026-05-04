@@ -406,7 +406,7 @@ position = Vector2(122.667, 85.3333)
 move_mode = 1
 
 [node name="Flag" parent="Entities" instance=ExtResource("11_6lo4y")]
-position = Vector2(474.667, 336)
+position = Vector2(421.333, 336)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
 position = Vector2(454, 8.66667)
