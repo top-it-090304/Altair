@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="19_giwja"]
 [ext_resource type="PackedScene" uid="uid://dyds15vnjstj6" path="res://Entities/Players/VirtualGuy/VirtualGuy.tscn" id="20_0gjlo"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmsh5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb52b"]
 texture = ExtResource("5_gar5w")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -316,7 +316,7 @@ texture = ExtResource("5_gar5w")
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "is_deadly"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_jmsh5")
+sources/0 = SubResource("TileSetAtlasSource_sb52b")
 
 [node name="LevelConstructorForVirtualGuy" type="Node2D"]
 texture_filter = 1
