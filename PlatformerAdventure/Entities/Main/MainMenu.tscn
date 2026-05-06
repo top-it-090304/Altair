@@ -1,11 +1,10 @@
-[gd_scene load_steps=154 format=4 uid="uid://co1ws314r8c86"]
+[gd_scene load_steps=124 format=4 uid="uid://co1ws314r8c86"]
 
 [ext_resource type="Script" uid="uid://bjdi8sxlppvp0" path="res://Entities/Main/main_menu.gd" id="1_dva7d"]
 [ext_resource type="Texture2D" uid="uid://ch5vy6hg72m40" path="res://Assets/Textures/Main Characters/Mask Dude/Idle (32x32).png" id="3_dva7d"]
 [ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="3_h1gie"]
 [ext_resource type="Texture2D" uid="uid://ckbqa4630h8vu" path="res://Assets/Buttons/play/play_normal.png" id="3_t3ix7"]
 [ext_resource type="Texture2D" uid="uid://df253bl8q7jji" path="res://Assets/Buttons/play/play_pressed.png" id="4_huydx"]
-[ext_resource type="Texture2D" uid="uid://dr771pghv6j0r" path="res://Assets/Textures/Main Characters/Ninja Frog/Idle (32x32).png" id="4_kyksg"]
 [ext_resource type="Texture2D" uid="uid://d1y85jp64ykw8" path="res://Assets/Textures/Main Characters/Pink Man/Idle_reverse (32x32).png" id="5_cfroj"]
 [ext_resource type="Texture2D" uid="uid://c88avvpf0d5x4" path="res://Assets/Buttons/play/play_hover.png" id="5_h1gie"]
 [ext_resource type="Texture2D" uid="uid://cs6thhn81hvee" path="res://Assets/Buttons/shop/shop_normal.png" id="6_6arad"]
@@ -28,9 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://cjdhxka5uxu70" path="res://Assets/Textures/Main Characters/Mask Dude/Fall (32x32).png" id="md_fal"]
 [ext_resource type="Texture2D" uid="uid://cg81fx0xvlxht" path="res://Assets/Textures/Main Characters/Mask Dude/Jump (32x32).png" id="md_jmp"]
 [ext_resource type="Texture2D" uid="uid://dhgreiwc8u3ja" path="res://Assets/Textures/Main Characters/Mask Dude/Run (32x32).png" id="md_run"]
-[ext_resource type="Texture2D" uid="uid://bo0i7bncfs5na" path="res://Assets/Textures/Main Characters/Ninja Frog/Fall (32x32).png" id="nf_fal"]
-[ext_resource type="Texture2D" uid="uid://bj0biutn2rjlr" path="res://Assets/Textures/Main Characters/Ninja Frog/Jump (32x32).png" id="nf_jmp"]
-[ext_resource type="Texture2D" uid="uid://geyjrd2l8fog" path="res://Assets/Textures/Main Characters/Ninja Frog/Run (32x32).png" id="nf_run"]
 [ext_resource type="Texture2D" uid="uid://dt6atm75twi1v" path="res://Assets/Textures/Main Characters/Pink Man/Fall (32x32).png" id="pm_fal"]
 [ext_resource type="Texture2D" uid="uid://r217vwa71p2e" path="res://Assets/Textures/Main Characters/Pink Man/Jump (32x32).png" id="pm_jmp"]
 [ext_resource type="Texture2D" uid="uid://die1egwxsnc3t" path="res://Assets/Textures/Main Characters/Pink Man/Run (32x32).png" id="pm_run"]
@@ -477,204 +473,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_md_r11")
-}],
-"loop": true,
-"name": &"run",
-"speed": 12.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_f0"]
-atlas = ExtResource("nf_fal")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_15s63"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_drt3r"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_luk2h"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12pmw"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_glwwg"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o732v"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1otou"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tejh6"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3ix7"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_huydx"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h1gie"]
-atlas = ExtResource("4_kyksg")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_j0"]
-atlas = ExtResource("nf_jmp")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r0"]
-atlas = ExtResource("nf_run")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r1"]
-atlas = ExtResource("nf_run")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r2"]
-atlas = ExtResource("nf_run")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r3"]
-atlas = ExtResource("nf_run")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r4"]
-atlas = ExtResource("nf_run")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r5"]
-atlas = ExtResource("nf_run")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r6"]
-atlas = ExtResource("nf_run")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r7"]
-atlas = ExtResource("nf_run")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r8"]
-atlas = ExtResource("nf_run")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r9"]
-atlas = ExtResource("nf_run")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r10"]
-atlas = ExtResource("nf_run")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf_r11"]
-atlas = ExtResource("nf_run")
-region = Rect2(352, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6arad"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_f0")
-}],
-"loop": false,
-"name": &"fall",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_15s63")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_drt3r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_luk2h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_12pmw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_glwwg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o732v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1otou")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tejh6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t3ix7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_huydx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h1gie")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_j0")
-}],
-"loop": false,
-"name": &"jump",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r9")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r10")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf_r11")
 }],
 "loop": true,
 "name": &"run",
@@ -1243,23 +1041,15 @@ texture_hover = ExtResource("14_8pdeq")
 
 [node name="mask_dude" type="AnimatedSprite2D" parent="Node2D"]
 texture_filter = 1
-position = Vector2(473, 370)
+position = Vector2(631, 368)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_15s63")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="pepe" type="AnimatedSprite2D" parent="Node2D"]
-texture_filter = 1
-position = Vector2(226, 368)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_6arad")
-animation = &"idle"
-autoplay = "idle"
-
 [node name="pink" type="AnimatedSprite2D" parent="Node2D"]
 texture_filter = 1
-position = Vector2(855, 370)
+position = Vector2(303, 368)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_lrq0x")
 animation = &"idle"
@@ -1267,7 +1057,7 @@ autoplay = "idle"
 
 [node name="vr_guy" type="AnimatedSprite2D" parent="Node2D"]
 texture_filter = 1
-position = Vector2(1049, 367)
+position = Vector2(1002, 366)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_lp41j")
 animation = &"idle"
