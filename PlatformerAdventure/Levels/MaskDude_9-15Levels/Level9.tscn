@@ -333,10 +333,10 @@ offset_bottom = 479.0
 texture = ExtResource("3_wov1j")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("3_up5hp")]
-offset_left = 234.667
-offset_top = 85.3333
-offset_right = 234.667
-offset_bottom = 85.3333
+offset_left = 233.333
+offset_top = 82.6667
+offset_right = 233.333
+offset_bottom = 82.6667
 
 [node name="TouchControls" parent="UI" instance=ExtResource("6_0iqdw")]
 
@@ -373,7 +373,7 @@ chain_length = 110.0
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("9_nqo64")]
-position = Vector2(581.333, 395.333)
+position = Vector2(582, 392.667)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
