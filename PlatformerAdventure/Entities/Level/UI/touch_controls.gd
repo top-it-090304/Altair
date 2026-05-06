@@ -13,6 +13,7 @@ var _finger_jump: int = -1
 @onready var ghost_jump: AnimatedSprite2D = $GhostJump
 
 @export var show_zone_hints: bool = true
+@export var zone_size: float = 170.0
 @onready var _hints: Node2D = $TouchZoneHints
 
 func _ready() -> void:
@@ -78,10 +79,11 @@ func _on_finger_up(id : int) -> void:
 		ghost_jump.play("idle")
 
 func _update_zones() -> void:
-	var half := Vector2(85.0, 85.0)
-	ZONE_LEFT  = Rect2(ghost_left.position  - half, Vector2(170.0, 170.0))
-	ZONE_RIGHT = Rect2(ghost_right.position - half, Vector2(170.0, 170.0))
-	ZONE_JUMP  = Rect2(ghost_jump.position  - half, Vector2(170.0, 170.0))
+	var half := Vector2(zone_size * 0.5, zone_size * 0.5)
+	var size := Vector2(zone_size, zone_size)
+	ZONE_LEFT  = Rect2(ghost_left.position  - half, size)
+	ZONE_RIGHT = Rect2(ghost_right.position - half, size)
+	ZONE_JUMP  = Rect2(ghost_jump.position  - half, size)
 
 func _on_finger_drag (id: int, pos : Vector2) -> void:
 	pass

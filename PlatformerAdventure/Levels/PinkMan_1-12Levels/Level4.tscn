@@ -427,7 +427,7 @@ position = Vector2(237.333, -142.333)
 position = Vector2(464, 128)
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("15_vom13")]
-position = Vector2(527.333, 395.333)
+position = Vector2(526.667, 392)
 
 [node name="Player" parent="Entities" instance=ExtResource("16_twmc3")]
 position = Vector2(499.333, 384.667)
