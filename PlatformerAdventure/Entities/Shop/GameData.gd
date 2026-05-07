@@ -7,6 +7,7 @@ const SAVE_PATH = "user://save.cfg"
 
 # false = уровни открываются по мере прохождения (боевой режим)
 const DEV_UNLOCK_ALL: bool = false
+const DEV_FRUITS: int = 1000  # убрать в релизе
 
 const LEVEL_ORDER: Array = [
 	"Level1", "Level2", "Level3", "Level4", "Level5",
@@ -101,7 +102,7 @@ func spend_fruits(amount: int) -> bool:
 	return true
 
 func get_balance() -> int:
-	return total_fruits - _spent
+	return total_fruits - _spent + DEV_FRUITS
 
 # ── ПОКУПКА ───────────────────────────────────
 

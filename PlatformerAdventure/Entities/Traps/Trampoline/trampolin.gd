@@ -17,11 +17,11 @@ func _physics_process(_delta: float) -> void:
 func _on_body_entered(body):
 	if not body.is_in_group("player"):
 		return
-	
+	var ts := maxf(Engine.time_scale, 0.001)
 	if horizontal:
-		body.velocity.x = bounce_force   # толкаем по X
+		body.velocity.x = bounce_force / ts
 	else:
-		body.velocity.y = bounce_force   # стандартный прыжок вверх
+		body.velocity.y = bounce_force / ts
 	
 	play_bounce_animation()
 
