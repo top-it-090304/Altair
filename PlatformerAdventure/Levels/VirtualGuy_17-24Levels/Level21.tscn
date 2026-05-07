@@ -320,7 +320,7 @@ sources/0 = SubResource("TileSetAtlasSource_sb52b")
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_2dvxl")
-next_level_path = "uid://d2hd02lhy4d6d"
+next_level_path = "uid://bd2cyvgxj1fow"
 metadata/_edit_vertical_guides_ = [346.0]
 
 [node name="UI" type="Node2D" parent="."]
