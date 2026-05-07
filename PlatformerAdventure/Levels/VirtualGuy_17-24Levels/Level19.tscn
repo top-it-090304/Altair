@@ -384,7 +384,7 @@ script = ExtResource("13_jgst0")
 chain_length = 30.0
 
 [node name="Trampoline4" parent="Entities/Traps" instance=ExtResource("11_3ev61")]
-position = Vector2(448.667, 378.667)
+position = Vector2(448.667, 380)
 
 [node name="SpikeHead5" parent="Entities/Traps" instance=ExtResource("14_ggtmg")]
 position = Vector2(138.667, 277.333)

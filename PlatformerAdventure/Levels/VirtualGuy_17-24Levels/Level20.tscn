@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_mvnj0"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_7k35d"]
-[ext_resource type="Texture2D" uid="uid://dtygh7e3bbmky" path="res://Assets/Textures/Background/Brown.png" id="3_dq0y5"]
+[ext_resource type="Texture2D" uid="uid://d0d5xqof1snva" path="res://Assets/Textures/Background/Gray.png" id="3_p6njl"]
 [ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="4_qpf7i"]
 [ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="5_y4qpg"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="6_txish"]
@@ -329,7 +329,7 @@ metadata/_edit_vertical_guides_ = [346.0]
 offset_top = -2.0
 offset_right = 852.0
 offset_bottom = 479.0
-texture = ExtResource("3_dq0y5")
+texture = ExtResource("3_p6njl")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("4_qpf7i")]
 offset_left = 16.6667

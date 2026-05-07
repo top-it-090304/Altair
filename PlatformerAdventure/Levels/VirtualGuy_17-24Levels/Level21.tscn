@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_2dvxl"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_4m254"]
-[ext_resource type="Texture2D" uid="uid://dtygh7e3bbmky" path="res://Assets/Textures/Background/Brown.png" id="3_m31oq"]
+[ext_resource type="Texture2D" uid="uid://xeaeximlb8ac" path="res://Assets/Textures/Background/Pink.png" id="3_bf3n7"]
 [ext_resource type="PackedScene" uid="uid://dj1bg0rg16h72" path="res://Entities/Level/UI/pause_menu.tscn" id="4_crsj3"]
 [ext_resource type="Texture2D" uid="uid://b6fhl6cl47ehx" path="res://Assets/Textures/Terrain/Terrain (16x16).png" id="5_748ic"]
 [ext_resource type="PackedScene" uid="uid://j3gtc24oaakm" path="res://Entities/Level/Buttons/pause.tscn" id="6_lqxso"]
@@ -329,7 +329,7 @@ metadata/_edit_vertical_guides_ = [346.0]
 offset_top = -2.0
 offset_right = 852.0
 offset_bottom = 479.0
-texture = ExtResource("3_m31oq")
+texture = ExtResource("3_bf3n7")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("4_crsj3")]
 offset_left = 78.6667
@@ -359,7 +359,7 @@ tile_map_data = PackedByteArray("AAAOABgAAAAAAAAAAAANABgAAAAAAAAAAAAPABgAAAAAAAA
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("10_vxskl")]
-position = Vector2(91.3333, 379.333)
+position = Vector2(90.6667, 378)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
@@ -450,6 +450,6 @@ position = Vector2(582.667, 378.667)
 position = Vector2(593.333, 357.333)
 
 [node name="virtualguy" parent="Entities" instance=ExtResource("20_6v0af")]
-position = Vector2(89.3333, 373.333)
+position = Vector2(133.333, 374)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
