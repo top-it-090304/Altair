@@ -35,11 +35,10 @@ func _update_air_height() -> void:
 	
 	collision_shape.position.y = -(air_height / 2.0)
 
+func _process(_delta: float) -> void:
+	animated_sprite.speed_scale = 1.0 / maxf(Engine.time_scale, 0.001)
+
 func _physics_process(delta: float) -> void:
-	# При slow-mo Level.gd умножает player.gravity_fall на c = 1/time_scale,
-	# и игрок применяет её через real_delta = delta/ts.
-	# Итого гравитация за кадр = gravity_fall * c * real_delta = gravity_fall * delta / ts^2.
-	# Фан должен масштабироваться так же — иначе gravity_fall(×c) всегда побеждает lift_force.
 	var ts: float = maxf(Engine.time_scale, 0.001)
 	var real_delta: float = delta / ts
 

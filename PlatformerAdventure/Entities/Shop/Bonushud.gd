@@ -46,7 +46,7 @@ func _make_btn_style(bg: Color, border: Color) -> StyleBoxFlat:
 func _style_button(btn: Button, font: Font) -> void:
 	btn.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	btn.add_theme_font_override("font", font)
-	btn.add_theme_font_size_override("font_size", 18)
+	btn.add_theme_font_size_override("font_size", 24)
 	btn.add_theme_stylebox_override("normal",  _make_btn_style(Color(0.20, 0.20, 0.30), Color(0.40, 0.40, 0.50)))
 	btn.add_theme_stylebox_override("hover",   _make_btn_style(Color(0.28, 0.28, 0.42), Color(0.55, 0.55, 0.70)))
 	btn.add_theme_stylebox_override("pressed", _make_btn_style(Color(0.15, 0.15, 0.25), Color(0.35, 0.35, 0.45)))
@@ -67,25 +67,30 @@ func _show_shop_dialog() -> void:
 	var panel_style := StyleBoxFlat.new()
 	panel_style.bg_color = Color(0.12, 0.12, 0.18, 1.0)
 	panel_style.border_color = Color(0.4, 0.4, 0.5, 1.0)
-	panel_style.border_width_left = 3
-	panel_style.border_width_top = 3
-	panel_style.border_width_right = 3
-	panel_style.border_width_bottom = 3
-	panel_style.corner_radius_top_left = 8
-	panel_style.corner_radius_top_right = 8
-	panel_style.corner_radius_bottom_right = 8
-	panel_style.corner_radius_bottom_left = 8
+	panel_style.border_width_left = 4
+	panel_style.border_width_top = 4
+	panel_style.border_width_right = 4
+	panel_style.border_width_bottom = 4
+	panel_style.corner_radius_top_left = 14
+	panel_style.corner_radius_top_right = 14
+	panel_style.corner_radius_bottom_right = 14
+	panel_style.corner_radius_bottom_left = 14
 
-	var panel := Panel.new()
-	panel.set_anchors_preset(Control.PRESET_CENTER)
-	panel.offset_left = -190.0
-	panel.offset_top = -75.0
-	panel.offset_right = 190.0
-	panel.offset_bottom = 75.0
+	var vp_size := get_viewport().get_visible_rect().size
+	var popup_width := clampf(vp_size.x * 0.80, 340.0, 700.0)
+
+	var screen_center := CenterContainer.new()
+	screen_center.set_anchors_preset(Control.PRESET_FULL_RECT)
+
+	var panel := PanelContainer.new()
+	panel.custom_minimum_size = Vector2(popup_width, 0)
 	panel.add_theme_stylebox_override("panel", panel_style)
 
-	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	var margin := MarginContainer.new()
+	margin.add_theme_constant_override("margin_left",   28)
+	margin.add_theme_constant_override("margin_top",    26)
+	margin.add_theme_constant_override("margin_right",  28)
+	margin.add_theme_constant_override("margin_bottom", 26)
 
 	var vbox := VBoxContainer.new()
 	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -94,32 +99,34 @@ func _show_shop_dialog() -> void:
 	var lbl := Label.new()
 	lbl.text = "Бонуса нет! Открыть магазин?"
 	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lbl.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	lbl.add_theme_font_override("font", font)
-	lbl.add_theme_font_size_override("font_size", 22)
+	lbl.add_theme_font_size_override("font_size", 28)
 
 	var hbox := HBoxContainer.new()
 	hbox.alignment = BoxContainer.ALIGNMENT_CENTER
-	hbox.add_theme_constant_override("separation", 16)
+	hbox.add_theme_constant_override("separation", 20)
 
 	var btn_yes := Button.new()
 	btn_yes.text = "Да"
-	btn_yes.custom_minimum_size = Vector2(100, 40)
+	btn_yes.custom_minimum_size = Vector2(130, 60)
 	_style_button(btn_yes, font)
 
 	var btn_no := Button.new()
 	btn_no.text = "Нет"
-	btn_no.custom_minimum_size = Vector2(100, 40)
+	btn_no.custom_minimum_size = Vector2(130, 60)
 	_style_button(btn_no, font)
 
 	hbox.add_child(btn_yes)
 	hbox.add_child(btn_no)
 	vbox.add_child(lbl)
 	vbox.add_child(hbox)
-	center.add_child(vbox)
-	panel.add_child(center)
+	margin.add_child(vbox)
+	panel.add_child(margin)
+	screen_center.add_child(panel)
 	dialog.add_child(bg)
-	dialog.add_child(panel)
+	dialog.add_child(screen_center)
 	add_child(dialog)
 
 	btn_no.pressed.connect(func():

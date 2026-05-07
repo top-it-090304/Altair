@@ -4,8 +4,9 @@
 extends Node2D
 
 @onready var spawn_marker = $Entities/SpawnPoint
-@onready var player: PlayerBase = $Entities/Player
 @onready var flag = $Entities/Flag
+
+var player: PlayerBase = null
 
 @export_file("*.tscn") var next_level_path: String
 @export var manual_fruit_count: int = 0
@@ -20,8 +21,8 @@ extends Node2D
 
 @export_group("Bonus Limits")
 @export var max_shield_uses: int = 1
-@export var max_slowmo_uses: int = 2
-@export var max_magnet_uses: int = 2
+@export var max_slowmo_uses: int = 1
+@export var max_magnet_uses: int = 1
 
 var total_fruits: int = 0
 var collected_count: int = 0
@@ -44,6 +45,12 @@ const MUSIC_LEVELS_1_8 = preload("res://Assets/audio/For_Levels/kissan4-pixel-pa
 const MUSIC_LEVELS_9_16 = preload("res://Assets/audio/maskdude1.mp3")
 
 func _ready() -> void:
+	var players := get_tree().get_nodes_in_group("player")
+	for p in players:
+		if p is PlayerBase:
+			player = p
+			break
+
 	var level_name := scene_file_path.get_file().get_basename()
 	var level_num := level_name.trim_prefix("Level").to_int()
 	if level_num >= 9:
@@ -88,13 +95,18 @@ func _ready() -> void:
 		_show_skip_tutorial_deferred()
 
 	if level_num == 1 and not GameData.tutorial_shown:
-		_show_tutorial("PinkMan", false, func():
+		_show_tutorial("PinkMan", false, false, func():
 			GameData.tutorial_shown = true
 			GameData.save_data()
 		)
 	elif level_num == 9 and not GameData.tutorial_shown_9:
-		_show_tutorial("MaskDude", true, func():
+		_show_tutorial("MaskDude", true, false, func():
 			GameData.tutorial_shown_9 = true
+			GameData.save_data()
+		)
+	elif level_num == 17 and not GameData.tutorial_shown_17:
+		_show_tutorial("VirtualGuy", false, true, func():
+			GameData.tutorial_shown_17 = true
 			GameData.save_data()
 		)
 
@@ -124,6 +136,8 @@ func activate_shield_bonus() -> void:
 func activate_slowmo_bonus() -> void:
 	if not allow_slowmo or player == null or not can_use_slowmo():
 		return
+	if Engine.time_scale < 1.0:
+		return
 	used_slowmo += 1
 	Engine.time_scale = slowmo_scale
 	var c: float = 1.0 / slowmo_scale
@@ -139,6 +153,8 @@ func activate_slowmo_bonus() -> void:
 
 func activate_magnet_bonus() -> void:
 	if allow_magnet and player and can_use_magnet():
+		if player.magnet_active:
+			return
 		used_magnet += 1
 		player.activate_magnet()
 
@@ -153,11 +169,12 @@ func reset_bonus_uses() -> void:
 
 # ── ЗАВЕРШЕНИЕ УРОВНЯ ─────────────────────────
 
-func _show_tutorial(char_name: String, wall_jump: bool, on_close: Callable) -> void:
+func _show_tutorial(char_name: String, wall_jump: bool, show_dash: bool, on_close: Callable) -> void:
 	player.can_move = false
 	var tutorial := TUTORIAL_SCENE.instantiate()
 	tutorial.character_name = char_name
 	tutorial.show_wall_jump = wall_jump
+	tutorial.show_dash = show_dash
 	add_child(tutorial)
 	tutorial.tutorial_closed.connect(func():
 		if player:

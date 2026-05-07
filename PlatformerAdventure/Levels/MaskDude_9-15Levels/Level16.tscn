@@ -359,7 +359,7 @@ tile_map_data = PackedByteArray("AAAOAAYAAAAAAAAAAGAOAAcAAAAAAAAAAGAOAAgAAAAAAAA
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="SpawnPoint" parent="Entities" instance=ExtResource("10_mtv7v")]
-position = Vector2(720.667, 123.333)
+position = Vector2(720, 120.667)
 
 [node name="Traps" type="Node2D" parent="Entities"]
 
@@ -377,6 +377,9 @@ metadata/_edit_group_ = true
 
 [node name="Pivot" parent="Entities/Traps/SpikedBallTrap" index="0"]
 amplitude = 85.0
+
+[node name="Chain" parent="Entities/Traps/SpikedBallTrap/Pivot" index="0"]
+chain_length = 60.0
 
 [node name="SpikeHead" parent="Entities/Traps" instance=ExtResource("14_ir6bg")]
 position = Vector2(414, 282)
@@ -435,7 +438,7 @@ position = Vector2(680.667, 272.667)
 position = Vector2(712.667, 272.667)
 
 [node name="Player" parent="Entities" instance=ExtResource("20_necrr")]
-position = Vector2(704, 117.333)
+position = Vector2(685.333, 115.333)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
 

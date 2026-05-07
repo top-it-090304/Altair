@@ -7,12 +7,15 @@ const SAVE_PATH = "user://save.cfg"
 
 # false = уровни открываются по мере прохождения (боевой режим)
 const DEV_UNLOCK_ALL: bool = false
+const DEV_FRUITS: int = 1000  # убрать в релизе
 
 const LEVEL_ORDER: Array = [
 	"Level1", "Level2", "Level3", "Level4", "Level5",
 	"Level6", "Level7", "Level8",
 	"Level9", "Level10", "Level11", "Level12", "Level13",
-	"Level14", "Level15", "Level16"
+	"Level14", "Level15", "Level16",
+	"Level17", "Level18", "Level19", "Level20",
+	"Level21", "Level22", "Level23", "Level24"
 ]
 
 var level_records: Dictionary = {}
@@ -21,6 +24,7 @@ var _spent: int = 0
 var show_ctrl_hits: bool = true
 var tutorial_shown: bool = false
 var tutorial_shown_9: bool = false
+var tutorial_shown_17: bool = false
 var tutorial_skip_shown: bool = false
 
 # ── СЧЁТЧИК СМЕРТЕЙ (не сохраняется, живёт в памяти) ─────────────────────────
@@ -99,7 +103,7 @@ func spend_fruits(amount: int) -> bool:
 	return true
 
 func get_balance() -> int:
-	return total_fruits - _spent
+	return total_fruits - _spent + DEV_FRUITS
 
 # ── ПОКУПКА ───────────────────────────────────
 
@@ -207,6 +211,7 @@ func save_data() -> void:
 	config.set_value("ctrl_layout", "up_y",    ctrl_pos_up.y)
 	config.set_value("tutorial", "shown", tutorial_shown)
 	config.set_value("tutorial", "shown_9", tutorial_shown_9)
+	config.set_value("tutorial", "shown_17", tutorial_shown_17)
 	config.set_value("tutorial", "skip_shown", tutorial_skip_shown)
 	for level_name in level_records:
 		config.set_value("records", level_name, level_records[level_name])
@@ -227,6 +232,7 @@ func reset_progress() -> void:
 	count_magnet = 0
 	tutorial_shown = false
 	tutorial_shown_9 = false
+	tutorial_shown_17 = false
 	fruits_changed.emit(0)
 	save_data()
 
@@ -250,6 +256,7 @@ func load_data() -> void:
 	ctrl_pos_up.y    = config.get_value("ctrl_layout", "up_y",    607.0)
 	tutorial_shown = config.get_value("tutorial", "shown", false)
 	tutorial_shown_9 = config.get_value("tutorial", "shown_9", false)
+	tutorial_shown_17 = config.get_value("tutorial", "shown_17", false)
 	tutorial_skip_shown = config.get_value("tutorial", "skip_shown", false)
 	if config.has_section("records"):
 		for key in config.get_section_keys("records"):
@@ -286,9 +293,6 @@ func _level_index_to_menu_scene(index: int) -> String:
 		return "res://Entities/Main/Levels_Menu.tscn"
 	elif index < 16:
 		return "res://Entities/Main/Level_Menu_MaskDude.tscn"
-	# Placeholders for future characters — add when scenes exist
-	# elif index < 24:
-	#     return "res://Entities/Main/Level_Menu_VirtualGuy.tscn"
-	# elif index < 32:
-	#     return "res://Entities/Main/Level_Menu_NinjaFrog.tscn"
+	elif index < 24:
+		return "res://Entities/Main/Level_Menu_VirtualGuy.tscn"
 	return "res://Entities/Main/Levels_Menu.tscn"

@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://csj274ngayvn7" path="res://Entities/Players/NinjaFrog/NinjaFrog.tscn" id="13_5gia3"]
 [ext_resource type="Texture2D" uid="uid://do6sfmljgcobn" path="res://Assets/Textures/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png" id="14_nrkty"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0du0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hot2k"]
 texture = ExtResource("3_ry7jm")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -508,7 +508,7 @@ texture = ExtResource("3_ry7jm")
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "is_deadly"
 custom_data_layer_0/type = 1
-sources/3 = SubResource("TileSetAtlasSource_r0du0")
+sources/3 = SubResource("TileSetAtlasSource_hot2k")
 
 [node name="LevelN" type="Node2D"]
 position = Vector2(628, 360)
