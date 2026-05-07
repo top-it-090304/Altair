@@ -384,7 +384,7 @@ fire_on = 1000.0
 fire_hit = 1.0
 
 [node name="FireTrap3" parent="Entities/Traps" instance=ExtResource("11_k8jwj")]
-position = Vector2(512, 264.667)
+position = Vector2(512, 266)
 fire_on = 1000.0
 fire_hit = 1.0
 
