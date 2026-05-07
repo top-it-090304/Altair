@@ -357,6 +357,7 @@ jump_velocity = -510.0
 coyote_time = 0.15
 jump_buffer_time = 0.15
 dash_enabled = true
+dash_cooldown = 0.4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

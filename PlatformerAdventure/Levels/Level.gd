@@ -4,8 +4,9 @@
 extends Node2D
 
 @onready var spawn_marker = $Entities/SpawnPoint
-@onready var player: PlayerBase = $Entities/Player
 @onready var flag = $Entities/Flag
+
+var player: PlayerBase = null
 
 @export_file("*.tscn") var next_level_path: String
 @export var manual_fruit_count: int = 0
@@ -44,6 +45,12 @@ const MUSIC_LEVELS_1_8 = preload("res://Assets/audio/For_Levels/kissan4-pixel-pa
 const MUSIC_LEVELS_9_16 = preload("res://Assets/audio/maskdude1.mp3")
 
 func _ready() -> void:
+	var players := get_tree().get_nodes_in_group("player")
+	for p in players:
+		if p is PlayerBase:
+			player = p
+			break
+
 	var level_name := scene_file_path.get_file().get_basename()
 	var level_num := level_name.trim_prefix("Level").to_int()
 	if level_num >= 9:

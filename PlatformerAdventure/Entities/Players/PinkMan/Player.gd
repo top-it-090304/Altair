@@ -91,6 +91,7 @@ var _sound_dash: AudioStreamPlayer2D = null
 var shield_active: bool = false
 var magnet_active: bool = false
 var _shield_visual: Node2D = null
+var _magnet_visual: Node2D = null
 
 var _invincibility_timer: float = 0.0
 
@@ -175,6 +176,10 @@ func _create_shield_visual() -> void:
 
 func activate_magnet() -> void:
 	magnet_active = true
+	if _magnet_visual != null:
+		_magnet_visual.queue_free()
+	_magnet_visual = MagnetVisual.new()
+	add_child(_magnet_visual)
 
 # МАГНИТ
 
@@ -231,6 +236,9 @@ func _flash_break() -> void:
 func _die_sequence() -> void:
 	died.emit()
 	is_dead = true
+	if _magnet_visual != null:
+		_magnet_visual.queue_free()
+		_magnet_visual = null
 	velocity = Vector2.ZERO
 	set_physics_process(false)
 	collision_shape.set_deferred("disabled", true)
