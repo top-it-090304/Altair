@@ -415,16 +415,13 @@ position = Vector2(192, 144)
 position = Vector2(176, 21.3333)
 
 [node name="strawberry" parent="Entities/Fruits" instance=ExtResource("14_pa3k2")]
-position = Vector2(197.333, 21.3333)
+position = Vector2(448, 320)
 
 [node name="kiwi" parent="Entities/Fruits" instance=ExtResource("15_biywx")]
-position = Vector2(218.667, 21.3333)
-
-[node name="banana" parent="Entities/Fruits" instance=ExtResource("16_e8m7n")]
-position = Vector2(240, 21.3333)
+position = Vector2(165.333, 346.667)
 
 [node name="apple" parent="Entities/Fruits" instance=ExtResource("17_x38o5")]
-position = Vector2(261.333, 21.3333)
+position = Vector2(725.333, 181.333)
 
 [node name="orange" parent="Entities/Fruits" instance=ExtResource("18_xns7q")]
 position = Vector2(282.667, 21.3333)
@@ -433,7 +430,25 @@ position = Vector2(282.667, 21.3333)
 position = Vector2(304, 21.3333)
 
 [node name="melon" parent="Entities/Fruits" instance=ExtResource("20_d06rw")]
-position = Vector2(325.333, 21.3333)
+position = Vector2(570.667, 298.667)
+
+[node name="melon2" parent="Entities/Fruits" instance=ExtResource("20_d06rw")]
+position = Vector2(570.667, 218.667)
+
+[node name="apple2" parent="Entities/Fruits" instance=ExtResource("17_x38o5")]
+position = Vector2(725.333, 106.667)
+
+[node name="banana2" parent="Entities/Fruits" instance=ExtResource("16_e8m7n")]
+position = Vector2(336, 112)
+
+[node name="banana3" parent="Entities/Fruits" instance=ExtResource("16_e8m7n")]
+position = Vector2(192, 117.333)
+
+[node name="kiwi2" parent="Entities/Fruits" instance=ExtResource("15_biywx")]
+position = Vector2(256, 346.667)
+
+[node name="kiwi3" parent="Entities/Fruits" instance=ExtResource("15_biywx")]
+position = Vector2(341.333, 346.667)
 
 [node name="virtualguy" parent="Entities" instance=ExtResource("21_8adkj")]
 position = Vector2(676.667, 342)
