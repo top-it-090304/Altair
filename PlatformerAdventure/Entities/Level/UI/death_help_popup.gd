@@ -111,6 +111,8 @@ func _do_skip(level_ref: Node, is_free: bool) -> void:
 	var collected = level_ref.get("collected_count")
 	GameData.submit_level_result(lvl_name, collected if collected != null else 0)
 
+	var next: String = level_ref.get("next_level_path") if level_ref.get("next_level_path") != null else ""
+
 	var sfx := AudioStreamPlayer.new()
 	sfx.stream = VICTORY_SOUND
 	sfx.bus = &"SFX"
@@ -123,7 +125,11 @@ func _do_skip(level_ref: Node, is_free: bool) -> void:
 
 	get_tree().paused = false
 
-	var next: String = level_ref.get("next_level_path") if level_ref.get("next_level_path") != null else ""
+	# Prevent player from dying during the victory animation (same as _on_level_completed)
+	var player = level_ref.get("player")
+	if player and is_instance_valid(player):
+		player._invincibility_timer = 99.0
+
 	await confetti.play()
 	confetti.queue_free()
 
