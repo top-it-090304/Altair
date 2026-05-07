@@ -4,10 +4,12 @@ signal tutorial_closed
 
 @export var character_name: String = ""
 @export var show_wall_jump: bool = false
+@export var show_dash: bool = false
 
 @onready var _root_control: Control = $RootControl
 @onready var _char_header: Label = $RootControl/Center/Panel/VBox/CharacterHeader
 @onready var _wall_jump_section: VBoxContainer = $RootControl/Center/Panel/VBox/WallJumpSection
+@onready var _dash_section: VBoxContainer = $RootControl/Center/Panel/VBox/DashSection
 @onready var _tap_prompt: Label = $RootControl/Center/Panel/VBox/TapPrompt
 
 var _can_dismiss: bool = false
@@ -16,6 +18,7 @@ func _ready() -> void:
 	_char_header.text = "У %s доступно:" % character_name if character_name != "" else ""
 	_char_header.visible = character_name != ""
 	_wall_jump_section.visible = show_wall_jump
+	_dash_section.visible = show_dash
 	_start_countdown()
 
 func _start_countdown() -> void:

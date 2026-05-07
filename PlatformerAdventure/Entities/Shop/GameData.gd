@@ -24,6 +24,7 @@ var _spent: int = 0
 var show_ctrl_hits: bool = true
 var tutorial_shown: bool = false
 var tutorial_shown_9: bool = false
+var tutorial_shown_17: bool = false
 var tutorial_skip_shown: bool = false
 
 # ── СЧЁТЧИК СМЕРТЕЙ (не сохраняется, живёт в памяти) ─────────────────────────
@@ -210,6 +211,7 @@ func save_data() -> void:
 	config.set_value("ctrl_layout", "up_y",    ctrl_pos_up.y)
 	config.set_value("tutorial", "shown", tutorial_shown)
 	config.set_value("tutorial", "shown_9", tutorial_shown_9)
+	config.set_value("tutorial", "shown_17", tutorial_shown_17)
 	config.set_value("tutorial", "skip_shown", tutorial_skip_shown)
 	for level_name in level_records:
 		config.set_value("records", level_name, level_records[level_name])
@@ -230,6 +232,7 @@ func reset_progress() -> void:
 	count_magnet = 0
 	tutorial_shown = false
 	tutorial_shown_9 = false
+	tutorial_shown_17 = false
 	fruits_changed.emit(0)
 	save_data()
 
@@ -253,6 +256,7 @@ func load_data() -> void:
 	ctrl_pos_up.y    = config.get_value("ctrl_layout", "up_y",    607.0)
 	tutorial_shown = config.get_value("tutorial", "shown", false)
 	tutorial_shown_9 = config.get_value("tutorial", "shown_9", false)
+	tutorial_shown_17 = config.get_value("tutorial", "shown_17", false)
 	tutorial_skip_shown = config.get_value("tutorial", "skip_shown", false)
 	if config.has_section("records"):
 		for key in config.get_section_keys("records"):
