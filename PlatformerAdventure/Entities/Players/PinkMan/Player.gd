@@ -517,7 +517,8 @@ func _try_dash(direction: float) -> void:
 	is_dashing = true
 	_dash_timer = dash_duration
 	_dash_direction = direction
-	velocity.x = (dash_distance / dash_duration) * direction
+	var ts := maxf(Engine.time_scale, 0.001)
+	velocity.x = (dash_distance / dash_duration) * direction / ts
 	velocity.y = 0.0
 	if _sound_dash:
 		_sound_dash.play()
