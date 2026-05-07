@@ -452,16 +452,16 @@ position = Vector2(320, 325.333)
 position = Vector2(362.667, 325.333)
 
 [node name="orange" parent="Entities/Fruits" instance=ExtResource("17_08nkg")]
-position = Vector2(618.667, 293.333)
+position = Vector2(576, 202.667)
 
 [node name="orange2" parent="Entities/Fruits" instance=ExtResource("17_08nkg")]
-position = Vector2(650.667, 320)
+position = Vector2(597.333, 202.667)
 
 [node name="melon" parent="Entities/Fruits" instance=ExtResource("19_weaj5")]
-position = Vector2(512, 128)
+position = Vector2(517.333, 128)
 
 [node name="melon2" parent="Entities/Fruits" instance=ExtResource("19_weaj5")]
-position = Vector2(549.333, 128)
+position = Vector2(565.333, 128)
 
 [node name="Player" parent="Entities" instance=ExtResource("20_mlqsh")]
 position = Vector2(181.333, 108.667)
