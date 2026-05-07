@@ -234,6 +234,59 @@ theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 20
 text = "Прыгни на другую стену"
 
+[node name="DashSection" type="VBoxContainer" parent="RootControl/Center/Panel/VBox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="DashSeparator" type="HSeparator" parent="RootControl/Center/Panel/VBox/DashSection"]
+layout_mode = 2
+
+[node name="DashHeader" type="HBoxContainer" parent="RootControl/Center/Panel/VBox/DashSection"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="NewBadge" type="PanelContainer" parent="RootControl/Center/Panel/VBox/DashSection/DashHeader"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="NewLabel" type="Label" parent="RootControl/Center/Panel/VBox/DashSection/DashHeader/NewBadge"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "НОВОЕ"
+
+[node name="DashLabel" type="Label" parent="RootControl/Center/Panel/VBox/DashSection/DashHeader"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = " Рывок"
+
+[node name="HintDash" type="HBoxContainer" parent="RootControl/Center/Panel/VBox/DashSection"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="Label" parent="RootControl/Center/Panel/VBox/DashSection/HintDash"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "←← / →→"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/DashSection/HintDash"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Двойное нажатие — рывок"
+
 [node name="Separator" type="HSeparator" parent="RootControl/Center/Panel/VBox"]
 layout_mode = 2
 

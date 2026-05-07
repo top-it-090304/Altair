@@ -95,13 +95,18 @@ func _ready() -> void:
 		_show_skip_tutorial_deferred()
 
 	if level_num == 1 and not GameData.tutorial_shown:
-		_show_tutorial("PinkMan", false, func():
+		_show_tutorial("PinkMan", false, false, func():
 			GameData.tutorial_shown = true
 			GameData.save_data()
 		)
 	elif level_num == 9 and not GameData.tutorial_shown_9:
-		_show_tutorial("MaskDude", true, func():
+		_show_tutorial("MaskDude", true, false, func():
 			GameData.tutorial_shown_9 = true
+			GameData.save_data()
+		)
+	elif level_num == 17 and not GameData.tutorial_shown_17:
+		_show_tutorial("VirtualGuy", false, true, func():
+			GameData.tutorial_shown_17 = true
 			GameData.save_data()
 		)
 
@@ -164,11 +169,12 @@ func reset_bonus_uses() -> void:
 
 # ── ЗАВЕРШЕНИЕ УРОВНЯ ─────────────────────────
 
-func _show_tutorial(char_name: String, wall_jump: bool, on_close: Callable) -> void:
+func _show_tutorial(char_name: String, wall_jump: bool, show_dash: bool, on_close: Callable) -> void:
 	player.can_move = false
 	var tutorial := TUTORIAL_SCENE.instantiate()
 	tutorial.character_name = char_name
 	tutorial.show_wall_jump = wall_jump
+	tutorial.show_dash = show_dash
 	add_child(tutorial)
 	tutorial.tutorial_closed.connect(func():
 		if player:

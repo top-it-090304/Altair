@@ -515,7 +515,7 @@ custom_data_layer_0/name = "is_deadly"
 custom_data_layer_0/type = 1
 sources/3 = SubResource("TileSetAtlasSource_vpi27")
 
-[node name="LevelConstructorForVirtualGuy" type="Node2D"]
+[node name="LevelConstructorForVirtualGuy2" type="Node2D"]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_hkywk")
