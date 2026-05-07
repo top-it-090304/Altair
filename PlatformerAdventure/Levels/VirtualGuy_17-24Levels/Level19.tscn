@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://d2hd02lhy4d6d"]
+[gd_scene load_steps=25 format=4 uid="uid://d2hd02lhy4d6d"]
 
 [ext_resource type="Script" uid="uid://kaoaey8n7mt7" path="res://Levels/Level.gd" id="1_jf7h5"]
 [ext_resource type="PackedScene" uid="uid://c4yu7d0wdp5mf" path="res://Entities/Level/UI/bg_texture.tscn" id="2_3ev61"]
@@ -12,17 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://xcim7p3b4fpr" path="res://Entities/Level/Items/spawn_point.tscn" id="10_f2xbb"]
 [ext_resource type="PackedScene" uid="uid://ielkwmhy36io" path="res://Entities/Traps/Trampoline/trampoline.tscn" id="11_3ev61"]
 [ext_resource type="PackedScene" uid="uid://dsgexcycx1gnd" path="res://Entities/Level/Items/flag.tscn" id="11_y8gis"]
-[ext_resource type="PackedScene" uid="uid://brstsdqgjh4vs" path="res://Entities/Fruits/pineapple.tscn" id="12_d751m"]
 [ext_resource type="Texture2D" uid="uid://3whjjeuue2yp" path="res://Assets/Textures/Traps/Spiked Ball/Chain.png" id="12_pbxot"]
 [ext_resource type="PackedScene" uid="uid://h8i67qnod2am" path="res://Entities/Fruits/strawberry.tscn" id="13_fkp2a"]
 [ext_resource type="Script" uid="uid://w3af3m71wt0o" path="res://Entities/Traps/SpikedBallTrap/chain.gd" id="13_jgst0"]
 [ext_resource type="PackedScene" uid="uid://7ixqyae4l32t" path="res://Entities/Traps/SpikeHead/spike_head.tscn" id="14_ggtmg"]
 [ext_resource type="PackedScene" uid="uid://bchxc4gq32ppd" path="res://Entities/Traps/Spinner/spinner.tscn" id="15_woofb"]
-[ext_resource type="PackedScene" uid="uid://lxxadfoc1hv7" path="res://Entities/Fruits/orange.tscn" id="17_c5qh7"]
 [ext_resource type="PackedScene" uid="uid://52x52oidtims" path="res://Entities/Fruits/kiwi.tscn" id="18_f2xbb"]
 [ext_resource type="PackedScene" uid="uid://dw5gh4fc4isun" path="res://Entities/Fruits/apple.tscn" id="19_y8gis"]
 [ext_resource type="PackedScene" uid="uid://dyds15vnjstj6" path="res://Entities/Players/VirtualGuy/VirtualGuy.tscn" id="20_qvoqb"]
-[ext_resource type="PackedScene" uid="uid://idmtdn4k1ns6" path="res://Entities/Fruits/cherries.tscn" id="21_d751m"]
 [ext_resource type="PackedScene" uid="uid://clq4ekldmr2a" path="res://Entities/Fruits/melon.tscn" id="22_fkp2a"]
 [ext_resource type="PackedScene" uid="uid://edsc237m2ghn" path="res://Entities/Fruits/banana.tscn" id="23_g220i"]
 
@@ -412,9 +409,6 @@ position = Vector2(192, 144)
 
 [node name="Fruits" type="Node2D" parent="Entities"]
 
-[node name="pineapple" parent="Entities/Fruits" instance=ExtResource("12_d751m")]
-position = Vector2(176, 21.3333)
-
 [node name="strawberry" parent="Entities/Fruits" instance=ExtResource("13_fkp2a")]
 position = Vector2(448, 320)
 
@@ -423,12 +417,6 @@ position = Vector2(165.333, 346.667)
 
 [node name="apple" parent="Entities/Fruits" instance=ExtResource("19_y8gis")]
 position = Vector2(725.333, 181.333)
-
-[node name="orange" parent="Entities/Fruits" instance=ExtResource("17_c5qh7")]
-position = Vector2(282.667, 21.3333)
-
-[node name="cherries" parent="Entities/Fruits" instance=ExtResource("21_d751m")]
-position = Vector2(304, 21.3333)
 
 [node name="melon" parent="Entities/Fruits" instance=ExtResource("22_fkp2a")]
 position = Vector2(570.667, 298.667)

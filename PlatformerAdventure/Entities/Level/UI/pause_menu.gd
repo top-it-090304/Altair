@@ -34,6 +34,8 @@ func _on_back_pressed() -> void:
 		SceneManager.go_to("res://Entities/Settings/setting.tscn")
 	elif "MaskDude" in scene_path:
 		SceneManager.go_to("res://Entities/Main/Level_Menu_MaskDude.tscn")
+	elif "VirtualGuy" in scene_path:
+		SceneManager.go_to("res://Entities/Main/Level_Menu_VirtualGuy.tscn")
 	else:
 		SceneManager.go_to("res://Entities/Main/Levels_Menu.tscn")
 
