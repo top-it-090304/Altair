@@ -367,7 +367,6 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.294117, 2.35303)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vguy")
 
 [node name="SoundJump" type="AudioStreamPlayer2D" parent="."]

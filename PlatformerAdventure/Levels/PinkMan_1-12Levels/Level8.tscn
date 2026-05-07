@@ -317,15 +317,15 @@ sources/0 = SubResource("TileSetAtlasSource_bgei7")
 
 [sub_resource type="Curve2D" id="Curve2D_4jjeu"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 752, 320, 0, 0, 0, 0, 528, 320, 0, 0, 0, 0, 528, 336, 0, 0, 0, 0, 496, 336, 0, 0, 0, 0, 496, 320, 0, 0, 0, 0, 368, 320, 0, 0, 0, 0, 368, 336, 0, 0, 0, 0, 336, 336, 0, 0, 0, 0, 336, 320, 0, 0, 0, 0, 256, 320, 0, 0, 0, 0, 256, 336, 0, 0, 0, 0, 224, 336, 0, 0, 0, 0, 224, 320, 0, 0, 0, 0, 160, 320, 0, 0, 0, 0, 160, 272, 0, 0, 0, 0, 752, 272)
+"points": PackedVector2Array(0, 0, 0, 0, 752, 320, 0, 0, 0, 0, 528, 320, 0, 0, 0, 0, 528, 336, 0, 0, 0, 0, 496, 336, 0, 0, 0, 0, 496, 320, 0, 0, 0, 0, 368, 320, 0, 0, 0, 0, 368, 336, 0, 0, 0, 0, 336, 336, 0, 0, 0, 0, 336, 320, 0, 0, 0, 0, 256, 320, 0, 0, 0, 0, 256, 336, 0, 0, 0, 0, 224, 336, 0, 0, 0, 0, 224, 320, 0, 0, 0, 0, 160, 320, 0, 0, 0, 0, 160, 272, 0, 0, 0, 0, 752, 272, 0, 0, 0, 0, 752, 320)
 }
-point_count = 16
+point_count = 17
 
 [sub_resource type="Curve2D" id="Curve2D_5mlkt"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 80, 192, 0, 0, 0, 0, 624, 192, 0, 0, 0, 0, 624, 160, 0, 0, 0, 0, 608, 160, 0, 0, 0, 0, 608, 144, 0, 0, 0, 0, 501.333, 144, 0, 0, 0, 0, 128, 144)
+"points": PackedVector2Array(-5.10703, 1.59595, 5.10703, -1.59595, 80, 192, 0, 0, 0, 0, 624, 192, 0, 0, 0, 0, 624, 160, 0, 0, 0, 0, 608, 160, 0, 0, 0, 0, 608, 144, 0, 0, 0, 0, 501.333, 144, 68.6257, 2.71311, -68.6257, -2.71311, 128, 144, 0, 0, 0, 0, 80, 192)
 }
-point_count = 7
+point_count = 8
 
 [node name="Level2" type="Node2D"]
 texture_filter = 1
@@ -379,17 +379,17 @@ position = Vector2(96, 336)
 fire_on = 2.5
 
 [node name="FireTrap2" parent="Entities/Traps" instance=ExtResource("11_k8jwj")]
-position = Vector2(352, 261.333)
+position = Vector2(352, 264.667)
 fire_on = 1000.0
 fire_hit = 1.0
 
 [node name="FireTrap3" parent="Entities/Traps" instance=ExtResource("11_k8jwj")]
-position = Vector2(512, 261.333)
+position = Vector2(512, 264.667)
 fire_on = 1000.0
 fire_hit = 1.0
 
 [node name="FireTrap4" parent="Entities/Traps" instance=ExtResource("11_k8jwj")]
-position = Vector2(240, 261.333)
+position = Vector2(240, 264.667)
 fire_on = 1000.0
 fire_hit = 1.0
 
@@ -400,12 +400,20 @@ curve = SubResource("Curve2D_4jjeu")
 position = Vector2(752, 320)
 rotation = 3.14159
 
+[node name="Body" parent="Entities/Traps/SaW1/PathFollow2D" index="0"]
+move_type = 1
+
 [node name="SAW2" type="Path2D" parent="Entities/Traps"]
+position = Vector2(3.31696, 0)
+scale = Vector2(0.994684, 1)
 curve = SubResource("Curve2D_5mlkt")
 
 [node name="PathFollow2D" parent="Entities/Traps/SAW2" instance=ExtResource("12_sjabq")]
 position = Vector2(80, 192)
-rotation = 0.0
+rotation = -0.302885
+
+[node name="Body" parent="Entities/Traps/SAW2/PathFollow2D" index="0"]
+move_type = 1
 
 [node name="Node2D" parent="Entities/Traps" instance=ExtResource("13_yybob")]
 position = Vector2(666, 268.667)
@@ -480,3 +488,6 @@ position = Vector2(197.333, 128)
 position = Vector2(234.667, 101.333)
 
 [connection signal="pressed" from="UI/PauseButton" to="UI/PauseMenu" method="open_pause_menu"]
+
+[editable path="Entities/Traps/SaW1/PathFollow2D"]
+[editable path="Entities/Traps/SAW2/PathFollow2D"]
