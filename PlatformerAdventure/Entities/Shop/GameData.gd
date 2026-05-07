@@ -12,7 +12,9 @@ const LEVEL_ORDER: Array = [
 	"Level1", "Level2", "Level3", "Level4", "Level5",
 	"Level6", "Level7", "Level8",
 	"Level9", "Level10", "Level11", "Level12", "Level13",
-	"Level14", "Level15", "Level16"
+	"Level14", "Level15", "Level16",
+	"Level17", "Level18", "Level19", "Level20",
+	"Level21", "Level22", "Level23", "Level24"
 ]
 
 var level_records: Dictionary = {}
@@ -286,9 +288,6 @@ func _level_index_to_menu_scene(index: int) -> String:
 		return "res://Entities/Main/Levels_Menu.tscn"
 	elif index < 16:
 		return "res://Entities/Main/Level_Menu_MaskDude.tscn"
-	# Placeholders for future characters — add when scenes exist
-	# elif index < 24:
-	#     return "res://Entities/Main/Level_Menu_VirtualGuy.tscn"
-	# elif index < 32:
-	#     return "res://Entities/Main/Level_Menu_NinjaFrog.tscn"
+	elif index < 24:
+		return "res://Entities/Main/Level_Menu_VirtualGuy.tscn"
 	return "res://Entities/Main/Levels_Menu.tscn"
