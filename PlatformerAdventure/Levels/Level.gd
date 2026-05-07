@@ -21,8 +21,8 @@ var player: PlayerBase = null
 
 @export_group("Bonus Limits")
 @export var max_shield_uses: int = 1
-@export var max_slowmo_uses: int = 2
-@export var max_magnet_uses: int = 2
+@export var max_slowmo_uses: int = 1
+@export var max_magnet_uses: int = 1
 
 var total_fruits: int = 0
 var collected_count: int = 0
@@ -131,6 +131,8 @@ func activate_shield_bonus() -> void:
 func activate_slowmo_bonus() -> void:
 	if not allow_slowmo or player == null or not can_use_slowmo():
 		return
+	if Engine.time_scale < 1.0:
+		return
 	used_slowmo += 1
 	Engine.time_scale = slowmo_scale
 	var c: float = 1.0 / slowmo_scale
@@ -146,6 +148,8 @@ func activate_slowmo_bonus() -> void:
 
 func activate_magnet_bonus() -> void:
 	if allow_magnet and player and can_use_magnet():
+		if player.magnet_active:
+			return
 		used_magnet += 1
 		player.activate_magnet()
 
