@@ -27,7 +27,7 @@ func _ready() -> void:
 	add_child(_bg)
 
 	_overlay = ColorRect.new()
-	_overlay.color = Color(0, 0, 0, 0)
+	_overlay.color = Color(0, 0, 0, 1)  # стартуем с чёрного — fade-in делаем сами
 	_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_overlay.z_index = 100
@@ -87,6 +87,8 @@ func _run_intro() -> void:
 	add_child(sub)
 
 	_tween = create_tween().set_parallel(true)
+	# Сначала убираем чёрный overlay, открывая сцену
+	_tween.tween_property(_overlay, "color:a", 0.0, 0.8)
 	_tween.tween_property(title, "modulate:a", 1.0, 1.2).set_delay(0.3)
 	_tween.tween_property(title, "position:y", vp.y / 2.0 - 45.0, 1.2) \
 			.set_delay(0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
