@@ -22,5 +22,7 @@ func _on_body_entered(body):
 	if not is_active:
 		return
 	if body.is_in_group("player"):
+		is_active = false
+		monitoring = false
 		level_completed.emit()
 		

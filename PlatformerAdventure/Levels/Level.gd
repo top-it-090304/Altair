@@ -33,6 +33,7 @@ var _time_alive: float = 0.0
 var used_shield: int = 0
 var used_slowmo: int = 0
 var used_magnet: int = 0
+var _level_completed: bool = false
 
 @onready var fruit_counter = preload("res://Entities/Level/Buttons/сounter.tscn").instantiate()
 
@@ -184,6 +185,9 @@ func _show_tutorial(char_name: String, wall_jump: bool, show_dash: bool, on_clos
 
 
 func _on_level_completed() -> void:
+	if _level_completed:
+		return
+	_level_completed = true
 	Engine.time_scale = 1.0
 	_release_all_input()
 	if player:
