@@ -4,13 +4,14 @@
 extends Control
 
 const FONT_PATH    := "res://Assets/Fonts/EpilepsySansBold.ttf"
-const MENU_PATH    := "res://Entities/Main/Levels_Menu.tscn"
+const MENU_PATH    := "res://Entities/Main/MainMenu.tscn"
 const SCROLL_SPEED := 80.0
 
 var _font: Font
-var _overlay: ColorRect
+var _bg: ColorRect      # всегда жив — даёт чёрный фон на всех фазах
+var _overlay: ColorRect # слой для плавных затемнений
 var _tween: Tween
-var _gen := 0  # Incremented on skip to cancel any pending coroutines
+var _gen := 0           # инкремент отменяет все запущенные корутины
 
 enum _Phase { INTRO, CREDITS, FINAL, DONE }
 var _phase := _Phase.INTRO
@@ -20,13 +21,14 @@ func _ready() -> void:
 	_font = load(FONT_PATH)
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
-	var bg := ColorRect.new()
-	bg.color = Color.BLACK
-	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	add_child(bg)
+	_bg = ColorRect.new()
+	_bg.color = Color.BLACK
+	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_bg)
 
 	_overlay = ColorRect.new()
 	_overlay.color = Color(0, 0, 0, 0)
+	_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_overlay.z_index = 100
 	add_child(_overlay)
@@ -52,22 +54,25 @@ func _skip_to_final() -> void:
 	_phase = _Phase.FINAL
 	if _tween:
 		_tween.kill()
-	for child in get_children():
-		if child != _overlay:
-			child.queue_free()
+	_clear_content()
 	_overlay.color = Color(0, 0, 0, 1)
-	# Wait one frame so queue_free'd nodes are gone before we add new ones
 	await get_tree().process_frame
 	if not is_inside_tree():
 		return
 	_show_final_content()
 
+# Удаляет всё кроме _bg и _overlay
+func _clear_content() -> void:
+	for child in get_children():
+		if child != _overlay and child != _bg:
+			child.queue_free()
 
-# ── INTRO ──────────────────────────────────────────────────────────────────────
+
+# ── ИНТРО ──────────────────────────────────────────────────────────────────────
 
 func _run_intro() -> void:
 	var my_gen := _gen
-	var vp    := get_viewport_rect().size
+	var vp     := get_viewport_rect().size
 
 	var title := _make_label("ТЫ ПРОШЁЛ ИГРУ", 72, Color("#ffd700"))
 	title.size     = Vector2(vp.x, 90)
@@ -105,13 +110,12 @@ func _run_intro() -> void:
 	_run_credits()
 
 
-# ── CREDITS ───────────────────────────────────────────────────────────────────
+# ── ТИТРЫ ─────────────────────────────────────────────────────────────────────
 
 func _run_credits() -> void:
 	var my_gen := _gen
 	var vp     := get_viewport_rect().size
 
-	# Clipping wrapper so content scrolls behind screen edges
 	var clip := Control.new()
 	clip.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	clip.clip_contents = true
@@ -119,13 +123,23 @@ func _run_credits() -> void:
 
 	var content := VBoxContainer.new()
 	content.add_theme_constant_override("separation", 16)
-	# Give the VBoxContainer a fixed width so labels inside can centre correctly
 	content.custom_minimum_size = Vector2(vp.x, 0)
 	clip.add_child(content)
 
 	_build_credits(content, vp.x)
 
-	# Wait for Godot layout engine to compute actual sizes
+	# Кнопка «Пропустить» — поверх overlay, ведёт сразу в главное меню
+	var skip_btn := _make_skip_button()
+	skip_btn.pressed.connect(func() -> void:
+		_gen += 1
+		_phase = _Phase.DONE
+		if _tween:
+			_tween.kill()
+		get_tree().change_scene_to_file(MENU_PATH)
+	)
+	add_child(skip_btn)
+
+	# Ждём пока layout посчитает размеры
 	for _i in 4:
 		await get_tree().process_frame
 	if _gen != my_gen or not is_inside_tree():
@@ -135,14 +149,13 @@ func _run_credits() -> void:
 	if content_h < 10.0:
 		content_h = content.get_combined_minimum_size().y
 
-	# Start below the screen
 	content.position = Vector2(0.0, vp.y)
 
-	# Reveal: fade overlay out
+	# Плавно убираем затемнение
 	_tween = create_tween()
 	_tween.tween_property(_overlay, "color:a", 0.0, 0.8)
 
-	# Scroll credits upward at constant speed
+	# Прокрутка с постоянной скоростью
 	var scroll_dur := (content_h + vp.y) / SCROLL_SPEED
 	var scroll_tw  := create_tween()
 	scroll_tw.tween_property(content, "position:y", -content_h, scroll_dur) \
@@ -153,13 +166,14 @@ func _run_credits() -> void:
 	if _gen != my_gen or not is_inside_tree():
 		return
 
+	skip_btn.queue_free()
 	_run_final()
 
 
 func _build_credits(c: VBoxContainer, width: float) -> void:
 	_spacer(c, 200)
 
-	# ── Вступительный текст ─────────────────────────────────────
+	# ── Вступление ───────────────────────────────────────────────
 	for line: String in [
 		"Эта игра началась как учебное задание.",
 		"Но где-то между февралём и маем 2026 года",
@@ -220,7 +234,8 @@ func _build_credits(c: VBoxContainer, width: float) -> void:
 	_spacer(c, 16)
 	c.add_child(_make_label("— ALTAIR —", 60, Color("#ffd700")))
 
-	_spacer(c, 500)
+	# Минимальный отступ — чтобы последняя строка успела уйти за верхний край
+	_spacer(c, 60)
 
 
 # ── ФИНАЛЬНЫЙ ЭКРАН ───────────────────────────────────────────────────────────
@@ -228,16 +243,14 @@ func _build_credits(c: VBoxContainer, width: float) -> void:
 func _run_final() -> void:
 	var my_gen := _gen
 
+	# Быстро гасим экран
 	_tween = create_tween()
-	_tween.tween_property(_overlay, "color:a", 1.0, 1.0)
+	_tween.tween_property(_overlay, "color:a", 1.0, 0.6)
 	await _tween.finished
 	if _gen != my_gen or not is_inside_tree():
 		return
 
-	for child in get_children():
-		if child != _overlay:
-			child.queue_free()
-
+	_clear_content()
 	_phase = _Phase.FINAL
 	_show_final_content()
 
@@ -269,10 +282,10 @@ func _show_final_content() -> void:
 	final_ctrl.add_child(year)
 
 	_tween = create_tween().set_parallel(true)
-	_tween.tween_property(_overlay,    "color:a",    0.0, 1.5)
-	_tween.tween_property(thank,       "modulate:a", 1.0, 1.5).set_delay(0.3)
-	_tween.tween_property(altair_lbl,  "modulate:a", 1.0, 1.5).set_delay(0.6)
-	_tween.tween_property(year,        "modulate:a", 1.0, 1.5).set_delay(0.9)
+	_tween.tween_property(_overlay,   "color:a",    0.0, 1.5)
+	_tween.tween_property(thank,      "modulate:a", 1.0, 1.5).set_delay(0.3)
+	_tween.tween_property(altair_lbl, "modulate:a", 1.0, 1.5).set_delay(0.6)
+	_tween.tween_property(year,       "modulate:a", 1.0, 1.5).set_delay(0.9)
 
 	await get_tree().create_timer(5.0).timeout
 	if _gen != my_gen or not is_inside_tree():
@@ -293,6 +306,21 @@ func _make_label(text: String, font_size: int, color: Color) -> Label:
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	return l
+
+func _make_skip_button() -> Button:
+	var btn := Button.new()
+	btn.text = "Пропустить"
+	btn.add_theme_font_override("font", _font)
+	btn.add_theme_font_size_override("font_size", 20)
+	btn.add_theme_color_override("font_color", Color("#777777"))
+	btn.add_theme_color_override("font_hover_color", Color("#ffffff"))
+	btn.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+	btn.offset_left   = -180.0
+	btn.offset_top    = -52.0
+	btn.offset_right  = -20.0
+	btn.offset_bottom = -20.0
+	btn.z_index       = 150
+	return btn
 
 func _spacer(c: Control, h: int) -> void:
 	var s := Control.new()
