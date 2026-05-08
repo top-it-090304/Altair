@@ -54,6 +54,13 @@ func show_skip_popup(level_ref: Node) -> void:
 	var balance := GameData.get_balance()
 	var is_free := balance < SKIP_COST
 
+	if is_free:
+		_add_label(vbox, "У тебя %d фруктов — не хватает на пропуск" % balance,
+			17, Color(0.85, 0.45, 0.45))
+	else:
+		_add_label(vbox, "У тебя %d фруктов" % balance,
+			17, Color(0.55, 0.90, 0.55))
+
 	var skip_text: String
 	var skip_bg:   Color
 	if is_free:
