@@ -161,10 +161,9 @@ func _run_intro() -> void:
 
 	var scroll_dur := (content_h + vp.y) / SCROLL_SPEED
 
-	# Плавное появление overlay-fade и кнопки
-	var fade_tw := create_tween().set_parallel(true)
-	fade_tw.tween_property(_overlay, "color:a",    0.0, 0.8)
-	fade_tw.tween_property(skip_btn, "modulate:a", 1.0, 0.8)
+	# Убираем overlay сразу — без задержки
+	_overlay.color.a = 0.0
+	skip_btn.modulate.a = 1.0
 
 	# Прокрутка — отдельный tween, его убиваем при skip
 	var scroll_tw := create_tween()
