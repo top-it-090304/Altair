@@ -211,7 +211,11 @@ func _on_level_completed() -> void:
 	confetti.queue_free()
 
 	if next_level_path.ends_with("Credits.tscn"):
-		_fade_to_credits()
+		if GameData.credits_shown:
+			# Титры уже были — сразу в главное меню
+			SceneManager.go_to("res://Entities/Main/MainMenu.tscn")
+		else:
+			_fade_to_credits()
 	else:
 		SceneManager.go_to(next_level_path)
 

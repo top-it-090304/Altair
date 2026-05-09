@@ -26,6 +26,7 @@ var tutorial_shown: bool = false
 var tutorial_shown_9: bool = false
 var tutorial_shown_17: bool = false
 var tutorial_skip_shown: bool = false
+var credits_shown: bool = false
 
 # ── СЧЁТЧИК СМЕРТЕЙ (не сохраняется, живёт в памяти) ─────────────────────────
 var current_level_deaths: int = 0
@@ -213,6 +214,7 @@ func save_data() -> void:
 	config.set_value("tutorial", "shown_9", tutorial_shown_9)
 	config.set_value("tutorial", "shown_17", tutorial_shown_17)
 	config.set_value("tutorial", "skip_shown", tutorial_skip_shown)
+	config.set_value("game", "credits_shown", credits_shown)
 	for level_name in level_records:
 		config.set_value("records", level_name, level_records[level_name])
 	config.save(SAVE_PATH)
@@ -233,6 +235,7 @@ func reset_progress() -> void:
 	tutorial_shown = false
 	tutorial_shown_9 = false
 	tutorial_shown_17 = false
+	credits_shown = false
 	fruits_changed.emit(0)
 	save_data()
 
@@ -258,6 +261,7 @@ func load_data() -> void:
 	tutorial_shown_9 = config.get_value("tutorial", "shown_9", false)
 	tutorial_shown_17 = config.get_value("tutorial", "shown_17", false)
 	tutorial_skip_shown = config.get_value("tutorial", "skip_shown", false)
+	credits_shown = config.get_value("game", "credits_shown", false)
 	if config.has_section("records"):
 		for key in config.get_section_keys("records"):
 			level_records[key] = config.get_value("records", key, 0)

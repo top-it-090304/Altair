@@ -38,6 +38,12 @@ func _ready() -> void:
 		node.queue_free()
 
 	MusicManager.stop_music()
+
+	# Помечаем что титры показаны — повторное прохождение уровня 24
+	# будет вести сразу в главное меню
+	GameData.credits_shown = true
+	GameData.save_data()
+
 	_run_intro()
 
 
