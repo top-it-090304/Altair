@@ -94,27 +94,27 @@ func _run_intro() -> void:
 	sub.modulate.a = 0.0
 	add_child(sub)
 
-	# 1.5 сек темноты — пауза после перехода с уровня
-	await get_tree().create_timer(1.5).timeout
+	# Пауза в темноте — нагнетание
+	await get_tree().create_timer(1.0).timeout
 	if _gen != my_gen or not is_inside_tree():
 		return
 
-	# Overlay уходит медленно, текст появляется «из темноты»
+	# Текст появляется «из темноты» — overlay медленно уходит вместе с текстом
 	_tween = create_tween().set_parallel(true)
-	_tween.tween_property(_overlay, "color:a", 0.0, 2.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	_tween.tween_property(title, "modulate:a", 1.0, 2.5)
-	_tween.tween_property(title, "position:y", vp.y / 2.0 - 45.0, 2.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	_tween.tween_property(sub, "modulate:a", 1.0, 2.0).set_delay(1.5)
-	_tween.tween_property(sub, "position:y", vp.y / 2.0 + 55.0, 2.0).set_delay(1.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_tween.tween_property(_overlay, "color:a", 0.0, 2.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	_tween.tween_property(title, "modulate:a", 1.0, 2.2)
+	_tween.tween_property(title, "position:y", vp.y / 2.0 - 45.0, 2.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_tween.tween_property(sub, "modulate:a", 1.0, 1.8).set_delay(1.0)
+	_tween.tween_property(sub, "position:y", vp.y / 2.0 + 55.0, 1.8).set_delay(1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-	# Держим надписи на экране ещё 3 сек после полного появления
-	await get_tree().create_timer(5.5).timeout
+	# Держим на экране
+	await get_tree().create_timer(3.5).timeout
 	if _gen != my_gen or not is_inside_tree():
 		return
 
-	# Плавный уход в черноту перед титрами
+	# Уход в чёрный перед титрами
 	_tween = create_tween()
-	_tween.tween_property(_overlay, "color:a", 1.0, 2.0)
+	_tween.tween_property(_overlay, "color:a", 1.0, 1.5)
 	await _tween.finished
 	if _gen != my_gen or not is_inside_tree():
 		return

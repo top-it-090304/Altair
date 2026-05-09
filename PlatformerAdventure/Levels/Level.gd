@@ -213,14 +213,19 @@ func _on_level_completed() -> void:
 		SceneManager.go_to(next_level_path)
 
 func _fade_to_credits() -> void:
-	# Добавляем overlay прямо на root — он переживёт смену сцены
-	# Credits найдёт его по группе и удалит в _ready()
+	# Оборачиваем в CanvasLayer 110 — перекрывает весь UI и бонус-HUD,
+	# которые сидят на CanvasLayer по умолчанию (layer 1).
+	# Credits найдёт этот узел по группе и удалит в _ready().
+	var canvas := CanvasLayer.new()
+	canvas.layer = 110
+	canvas.add_to_group("credits_fade_overlay")
+	get_tree().root.add_child(canvas)
+
 	var overlay := ColorRect.new()
 	overlay.color = Color(0, 0, 0, 0)
-	overlay.add_to_group("credits_fade_overlay")
 	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	overlay.z_index = 200
-	get_tree().root.add_child(overlay)
+	canvas.add_child(overlay)
+
 	var tw := get_tree().create_tween()
 	tw.tween_property(overlay, "color:a", 1.0, 2.5)
 	await tw.finished
