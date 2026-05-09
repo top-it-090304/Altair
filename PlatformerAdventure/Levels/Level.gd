@@ -208,10 +208,23 @@ func _on_level_completed() -> void:
 	confetti.queue_free()
 
 	if next_level_path.ends_with("Credits.tscn"):
-		# Credits сам стартует с чёрным экраном и делает fade-in
-		get_tree().change_scene_to_file(next_level_path)
+		_fade_to_credits()
 	else:
 		SceneManager.go_to(next_level_path)
+
+func _fade_to_credits() -> void:
+	# Добавляем overlay прямо на root — он переживёт смену сцены
+	# Credits найдёт его по группе и удалит в _ready()
+	var overlay := ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0)
+	overlay.add_to_group("credits_fade_overlay")
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.z_index = 200
+	get_tree().root.add_child(overlay)
+	var tw := get_tree().create_tween()
+	tw.tween_property(overlay, "color:a", 1.0, 1.2)
+	await tw.finished
+	get_tree().change_scene_to_file(next_level_path)
 
 func _release_all_input() -> void:
 	for action in ["move_left", "move_right", "move_up"]:

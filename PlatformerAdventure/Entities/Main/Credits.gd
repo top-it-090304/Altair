@@ -33,6 +33,10 @@ func _ready() -> void:
 	_overlay.z_index = 100
 	add_child(_overlay)
 
+	# Удаляем overlay затемнения, оставшийся от Level.gd после смены сцены
+	for node in get_tree().get_nodes_in_group("credits_fade_overlay"):
+		node.queue_free()
+
 	_run_intro()
 
 
