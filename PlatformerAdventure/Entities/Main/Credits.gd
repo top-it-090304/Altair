@@ -108,13 +108,13 @@ func _run_intro() -> void:
 	_tween.tween_property(sub, "position:y", vp.y / 2.0 + 55.0, 1.8).set_delay(1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 	# Держим на экране
-	await get_tree().create_timer(3.5).timeout
+	await get_tree().create_timer(2.0).timeout
 	if _gen != my_gen or not is_inside_tree():
 		return
 
 	# Уход в чёрный перед титрами
 	_tween = create_tween()
-	_tween.tween_property(_overlay, "color:a", 1.0, 1.5)
+	_tween.tween_property(_overlay, "color:a", 1.0, 1.2)
 	await _tween.finished
 	if _gen != my_gen or not is_inside_tree():
 		return
