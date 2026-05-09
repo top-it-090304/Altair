@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 				_skip_to_final()
 		_Phase.FINAL:
 			# Любое нажатие клавиши, клик мыши или тач — выход в меню
-			var is_press := (
+			var is_press: bool = (
 				(event is InputEventKey and event.pressed and not event.echo) or
 				(event is InputEventMouseButton and event.pressed) or
 				(event is InputEventScreenTouch and event.pressed)
