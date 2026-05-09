@@ -104,7 +104,7 @@ func _music_start() -> void:
 	add_child(_music)
 	_music.play()
 	# Плавное нарастание за 2 секунды
-	create_tween().tween_property(_music, "volume_db", -10.0, 2.0)
+	create_tween().tween_property(_music, "volume_db", -4.0, 2.0)
 
 func _music_fade_out(duration: float) -> void:
 	if not is_instance_valid(_music):
@@ -258,7 +258,7 @@ func _show_final_content() -> void:
 	final_ctrl.add_child(year)
 
 	# Подсказка «нажми на экран»
-	var hint := _make_label("нажми на экран, чтобы продолжить", 18, Color("#444444"))
+	var hint := _make_label("нажми на экран, чтобы продолжить", 18, Color("#aaaaaa"))
 	hint.size     = Vector2(vp.x, 28)
 	hint.position = Vector2(0.0, vp.y - 55.0)
 	hint.modulate.a = 0.0

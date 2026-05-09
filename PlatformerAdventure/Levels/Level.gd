@@ -233,8 +233,11 @@ func _fade_to_credits() -> void:
 	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	canvas.add_child(overlay)
 
-	var tw := get_tree().create_tween()
+	# Затемнение экрана и fade out музыки идут одновременно
+	var tw := get_tree().create_tween().set_parallel(true)
 	tw.tween_property(overlay, "color:a", 1.0, 2.5)
+	if MusicManager.music_player.playing:
+		tw.tween_property(MusicManager.music_player, "volume_db", -80.0, 2.5)
 	await tw.finished
 	get_tree().change_scene_to_file(next_level_path)
 
