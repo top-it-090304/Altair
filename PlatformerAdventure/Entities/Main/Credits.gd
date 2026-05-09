@@ -37,6 +37,9 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("credits_fade_overlay"):
 		node.queue_free()
 
+	# Останавливаем музыку уровня
+	MusicManager.stop_music()
+
 	_run_intro()
 
 
@@ -80,32 +83,38 @@ func _run_intro() -> void:
 
 	var title := _make_label("ТЫ ПРОШЁЛ ИГРУ", 72, Color("#ffd700"))
 	title.size     = Vector2(vp.x, 90)
-	title.position = Vector2(0.0, vp.y / 2.0 - 45.0 + 80.0)
+	# Начинаем чуть ниже финальной позиции — очень лёгкий дрейф снизу
+	title.position = Vector2(0.0, vp.y / 2.0 - 45.0 + 22.0)
 	title.modulate.a = 0.0
 	add_child(title)
 
 	var sub := _make_label("все 24 уровня позади", 36, Color("#777777"))
 	sub.size     = Vector2(vp.x, 50)
-	sub.position = Vector2(0.0, vp.y / 2.0 + 55.0 + 80.0)
+	sub.position = Vector2(0.0, vp.y / 2.0 + 55.0 + 22.0)
 	sub.modulate.a = 0.0
 	add_child(sub)
 
-	_tween = create_tween().set_parallel(true)
-	# Сначала убираем чёрный overlay, открывая сцену
-	_tween.tween_property(_overlay, "color:a", 0.0, 0.8)
-	_tween.tween_property(title, "modulate:a", 1.0, 1.2).set_delay(0.3)
-	_tween.tween_property(title, "position:y", vp.y / 2.0 - 45.0, 1.2) \
-			.set_delay(0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	_tween.tween_property(sub, "modulate:a", 1.0, 1.2).set_delay(0.9)
-	_tween.tween_property(sub, "position:y", vp.y / 2.0 + 55.0, 1.2) \
-			.set_delay(0.9).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-
-	await get_tree().create_timer(4.5).timeout
+	# 1.5 сек темноты — пауза после перехода с уровня
+	await get_tree().create_timer(1.5).timeout
 	if _gen != my_gen or not is_inside_tree():
 		return
 
+	# Overlay уходит медленно, текст появляется «из темноты»
+	_tween = create_tween().set_parallel(true)
+	_tween.tween_property(_overlay, "color:a", 0.0, 2.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	_tween.tween_property(title, "modulate:a", 1.0, 2.5)
+	_tween.tween_property(title, "position:y", vp.y / 2.0 - 45.0, 2.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_tween.tween_property(sub, "modulate:a", 1.0, 2.0).set_delay(1.5)
+	_tween.tween_property(sub, "position:y", vp.y / 2.0 + 55.0, 2.0).set_delay(1.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+	# Держим надписи на экране ещё 3 сек после полного появления
+	await get_tree().create_timer(5.5).timeout
+	if _gen != my_gen or not is_inside_tree():
+		return
+
+	# Плавный уход в черноту перед титрами
 	_tween = create_tween()
-	_tween.tween_property(_overlay, "color:a", 1.0, 1.8)
+	_tween.tween_property(_overlay, "color:a", 1.0, 2.0)
 	await _tween.finished
 	if _gen != my_gen or not is_inside_tree():
 		return

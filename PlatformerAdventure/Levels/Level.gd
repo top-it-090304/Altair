@@ -222,7 +222,7 @@ func _fade_to_credits() -> void:
 	overlay.z_index = 200
 	get_tree().root.add_child(overlay)
 	var tw := get_tree().create_tween()
-	tw.tween_property(overlay, "color:a", 1.0, 1.2)
+	tw.tween_property(overlay, "color:a", 1.0, 2.5)
 	await tw.finished
 	get_tree().change_scene_to_file(next_level_path)
 
