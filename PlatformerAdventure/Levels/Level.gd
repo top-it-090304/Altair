@@ -42,8 +42,9 @@ const CONFETTI_SCENE  = preload("res://Entities/Level/Effects/confetti_effect.ts
 const VICTORY_SOUND   = preload("res://Assets/audio/Voicy_Level up sfx 2.mp3")
 const DeathHelpPopup  = preload("res://Entities/Level/UI/death_help_popup.gd")
 
-const MUSIC_LEVELS_1_8 = preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3")
-const MUSIC_LEVELS_9_16 = preload("res://Assets/audio/maskdude1.mp3")
+const MUSIC_LEVELS_1_8   = preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3")
+const MUSIC_LEVELS_9_16  = preload("res://Assets/audio/maskdude1.mp3")
+const MUSIC_LEVELS_17_24 = preload("res://Assets/audio/For_Levels/neonovyy-serpantin-2-acf185.mp3")
 
 func _ready() -> void:
 	var players := get_tree().get_nodes_in_group("player")
@@ -54,7 +55,9 @@ func _ready() -> void:
 
 	var level_name := scene_file_path.get_file().get_basename()
 	var level_num := level_name.trim_prefix("Level").to_int()
-	if level_num >= 9:
+	if level_num >= 17:
+		MusicManager.play_music(MUSIC_LEVELS_17_24)
+	elif level_num >= 9:
 		MusicManager.play_music(MUSIC_LEVELS_9_16)
 	else:
 		MusicManager.play_music(MUSIC_LEVELS_1_8)
