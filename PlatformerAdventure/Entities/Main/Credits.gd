@@ -6,10 +6,12 @@ extends Control
 const FONT_PATH    := "res://Assets/Fonts/EpilepsySansBold.ttf"
 const MENU_PATH    := "res://Entities/Main/MainMenu.tscn"
 const SCROLL_SPEED := 80.0
+const MUSIC_PATH   := "res://Assets/audio/Ambient_Piano_-_Tranquility_58483122.mp3"
 
 var _font: Font
-var _bg: ColorRect      # всегда жив — чёрный фон на всех фазах
-var _overlay: ColorRect # слой затемнений
+var _bg: ColorRect           # всегда жив — чёрный фон на всех фазах
+var _overlay: ColorRect      # слой затемнений
+var _music: AudioStreamPlayer
 var _tween: Tween
 var _gen := 0
 
@@ -27,7 +29,7 @@ func _ready() -> void:
 	add_child(_bg)
 
 	_overlay = ColorRect.new()
-	_overlay.color = Color(0, 0, 0, 1)  # стартуем с чёрного
+	_overlay.color = Color(0, 0, 0, 1)
 	_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_overlay.z_index = 100
@@ -39,8 +41,6 @@ func _ready() -> void:
 
 	MusicManager.stop_music()
 
-	# Помечаем что титры показаны — повторное прохождение уровня 24
-	# будет вести сразу в главное меню
 	GameData.credits_shown = true
 	GameData.save_data()
 
@@ -50,15 +50,27 @@ func _ready() -> void:
 # ── INPUT ──────────────────────────────────────────────────────────────────────
 
 func _input(event: InputEvent) -> void:
-	if not event.is_action_pressed("ui_cancel"):
-		return
 	get_viewport().set_input_as_handled()
 	match _phase:
 		_Phase.INTRO, _Phase.CREDITS:
-			_skip_to_final()
+			if event.is_action_pressed("ui_cancel"):
+				_skip_to_final()
 		_Phase.FINAL:
-			_phase = _Phase.DONE
-			get_tree().change_scene_to_file(MENU_PATH)
+			# Любое нажатие клавиши, клик мыши или тач — выход в меню
+			var is_press := (
+				(event is InputEventKey and event.pressed and not event.echo) or
+				(event is InputEventMouseButton and event.pressed) or
+				(event is InputEventScreenTouch and event.pressed)
+			)
+			if is_press:
+				_go_to_menu()
+
+func _go_to_menu() -> void:
+	_gen += 1
+	_phase = _Phase.DONE
+	if _tween:
+		_tween.kill()
+	get_tree().change_scene_to_file(MENU_PATH)
 
 func _skip_to_final() -> void:
 	_gen += 1
@@ -67,26 +79,48 @@ func _skip_to_final() -> void:
 		_tween.kill()
 	_clear_content()
 	_overlay.color = Color(0, 0, 0, 1)
+	_music_fade_out(0.8)
 	await get_tree().process_frame
 	if not is_inside_tree():
 		return
 	_show_final_content()
 
+# Удаляет всё кроме _bg, _overlay, _music
 func _clear_content() -> void:
 	for child in get_children():
-		if child != _overlay and child != _bg:
+		if child != _overlay and child != _bg and child != _music:
 			child.queue_free()
 
 
+# ── МУЗЫКА ────────────────────────────────────────────────────────────────────
+
+func _music_start() -> void:
+	_music = AudioStreamPlayer.new()
+	var stream := load(MUSIC_PATH) as AudioStreamMP3
+	stream.loop = true
+	_music.stream = stream
+	_music.bus    = &"Music"
+	_music.volume_db = -80.0   # стартуем беззвучно
+	add_child(_music)
+	_music.play()
+	# Плавное нарастание за 2 секунды
+	create_tween().tween_property(_music, "volume_db", -10.0, 2.0)
+
+func _music_fade_out(duration: float) -> void:
+	if not is_instance_valid(_music):
+		return
+	var tw := create_tween()
+	tw.tween_property(_music, "volume_db", -80.0, duration)
+	tw.tween_callback(_music.stop)
+
+
 # ── ИНТРО + ПОДГОТОВКА ТИТРОВ ─────────────────────────────────────────────────
-# Строим контент титров ПОК А пользователь читает надпись.
-# К концу затемнения layout уже готов — прокрутка стартует без задержки.
 
 func _run_intro() -> void:
 	var my_gen := _gen
 	var vp     := get_viewport_rect().size
 
-	# ── Надписи интро ────────────────────────────────────────────
+	# Надписи интро
 	var title := _make_label("ТЫ ПРОШЁЛ ИГРУ", 72, Color("#ffd700"))
 	title.size     = Vector2(vp.x, 90)
 	title.position = Vector2(0.0, vp.y / 2.0 - 45.0 + 22.0)
@@ -99,11 +133,11 @@ func _run_intro() -> void:
 	sub.modulate.a = 0.0
 	add_child(sub)
 
-	# ── Контейнер титров — строится невидимым прямо сейчас ───────
+	# Контейнер титров — строится невидимым, пока пользователь читает надпись
 	var clip := Control.new()
 	clip.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	clip.clip_contents = true
-	clip.modulate.a = 0.0          # скрыт, покажем после fade
+	clip.modulate.a = 0.0
 	add_child(clip)
 
 	var content := VBoxContainer.new()
@@ -112,8 +146,7 @@ func _run_intro() -> void:
 	clip.add_child(content)
 	_build_credits(content, vp.x)
 
-	# ── Пока layout считается — показываем интро ──────────────────
-	# (эти await идут параллельно с паузой темноты)
+	# Пауза в темноте
 	await get_tree().create_timer(1.0).timeout
 	if _gen != my_gen or not is_inside_tree():
 		return
@@ -126,32 +159,30 @@ func _run_intro() -> void:
 	_tween.tween_property(sub,   "modulate:a", 1.0, 1.8).set_delay(1.0)
 	_tween.tween_property(sub,   "position:y", vp.y / 2.0 + 55.0, 1.8).set_delay(1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-	# Дольше держим надпись (3.5 сек с момента появления)
+	# Держим надпись на экране
 	await get_tree().create_timer(3.5).timeout
 	if _gen != my_gen or not is_inside_tree():
 		return
 
-	# ── За время удержания надписи layout уже готов — берём размер ──
+	# Берём высоту контента (layout уже посчитан за время показа надписи)
 	var content_h := content.size.y
 	if content_h < 10.0:
 		content_h = content.get_combined_minimum_size().y
-
-	# Позиционируем контент ниже экрана — готово к прокрутке
 	content.position = Vector2(0.0, vp.y)
 
 	# Кнопка «Пропустить»
 	var skip_btn := _make_skip_button()
-	skip_btn.modulate.a = 0.0   # появится вместе с титрами
+	skip_btn.modulate.a = 0.0
 	skip_btn.pressed.connect(func() -> void:
 		_gen += 1
 		_phase = _Phase.DONE
-		if _tween:
-			_tween.kill()
+		if _tween: _tween.kill()
+		_music_fade_out(0.5)
 		get_tree().change_scene_to_file(MENU_PATH)
 	)
 	add_child(skip_btn)
 
-	# ── Уход надписи в чёрный ────────────────────────────────────
+	# Надпись уходит в чёрный
 	_tween = create_tween()
 	_tween.tween_property(_overlay, "color:a", 1.0, 1.2)
 	await _tween.finished
@@ -162,17 +193,16 @@ func _run_intro() -> void:
 	sub.queue_free()
 	_phase = _Phase.CREDITS
 
-	# ── Сразу стартуем прокрутку — никакой паузы ─────────────────
-	clip.modulate.a = 1.0
-
-	var scroll_dur := (content_h + vp.y) / SCROLL_SPEED
-
-	# Убираем overlay сразу — без задержки
+	# Показываем титры и запускаем музыку
+	clip.modulate.a  = 1.0
 	_overlay.color.a = 0.0
 	skip_btn.modulate.a = 1.0
 
-	# Прокрутка — отдельный tween, его убиваем при skip
-	var scroll_tw := create_tween()
+	_music_start()
+
+	# Прокрутка
+	var scroll_dur := (content_h + vp.y) / SCROLL_SPEED
+	var scroll_tw  := create_tween()
 	scroll_tw.tween_property(content, "position:y", -content_h, scroll_dur).set_trans(Tween.TRANS_LINEAR)
 	_tween = scroll_tw
 
@@ -189,6 +219,8 @@ func _run_intro() -> void:
 func _run_final() -> void:
 	var my_gen := _gen
 
+	# Гасим экран и одновременно начинаем fade out музыки (3 сек)
+	_music_fade_out(3.0)
 	_tween = create_tween()
 	_tween.tween_property(_overlay, "color:a", 1.0, 0.6)
 	await _tween.finished
@@ -201,8 +233,7 @@ func _run_final() -> void:
 
 
 func _show_final_content() -> void:
-	var my_gen := _gen
-	var vp     := get_viewport_rect().size
+	var vp := get_viewport_rect().size
 
 	var final_ctrl := Control.new()
 	final_ctrl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -226,18 +257,29 @@ func _show_final_content() -> void:
 	year.modulate.a = 0.0
 	final_ctrl.add_child(year)
 
+	# Подсказка «нажми на экран»
+	var hint := _make_label("нажми на экран, чтобы продолжить", 18, Color("#444444"))
+	hint.size     = Vector2(vp.x, 28)
+	hint.position = Vector2(0.0, vp.y - 55.0)
+	hint.modulate.a = 0.0
+	final_ctrl.add_child(hint)
+
 	_tween = create_tween().set_parallel(true)
 	_tween.tween_property(_overlay,   "color:a",    0.0, 1.5)
 	_tween.tween_property(thank,      "modulate:a", 1.0, 1.5).set_delay(0.3)
 	_tween.tween_property(altair_lbl, "modulate:a", 1.0, 1.5).set_delay(0.6)
 	_tween.tween_property(year,       "modulate:a", 1.0, 1.5).set_delay(0.9)
+	# Подсказка появляется чуть позже и мигает
+	_tween.tween_property(hint, "modulate:a", 0.7, 1.2).set_delay(2.0)
 
-	await get_tree().create_timer(5.0).timeout
-	if _gen != my_gen or not is_inside_tree():
+	# Мигание подсказки (бесконечно, пока пользователь не нажмёт)
+	await get_tree().create_timer(3.2).timeout
+	if not is_inside_tree() or _phase == _Phase.DONE:
 		return
-
-	_phase = _Phase.DONE
-	get_tree().change_scene_to_file(MENU_PATH)
+	var blink := create_tween().set_loops()
+	blink.tween_property(hint, "modulate:a", 0.15, 0.9)
+	blink.tween_property(hint, "modulate:a", 0.7,  0.9)
+	# Дальше ждём нажатия через _input — авто-перехода нет
 
 
 # ── КОНТЕНТ ТИТРОВ ────────────────────────────────────────────────────────────
