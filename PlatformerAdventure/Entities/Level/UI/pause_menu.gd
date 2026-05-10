@@ -12,8 +12,10 @@ func _process(_delta: float) -> void:
 	pass
 
 func open_pause_menu():
+	if SceneManager._transitioning:
+		return
 	get_tree().paused = true
-	$PauseLayer/Background.show() 
+	$PauseLayer/Background.show()
 
 
 

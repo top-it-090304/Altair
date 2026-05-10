@@ -13,6 +13,7 @@ var player_in_area: Node2D = null
 
 
 func _ready() -> void:
+	sync_to_physics = true
 	match move_mode:
 		MoveMode.UP:    direction = Vector2.UP
 		MoveMode.DOWN:  direction = Vector2.DOWN
@@ -43,25 +44,25 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var motion = direction * speed * delta
-	var collision = move_and_collide(motion)
+	var col := KinematicCollision2D.new()
 
-	if collision == null:
+	if not test_move(global_transform, motion, col):
+		global_position += motion
 		return
 
-	var collider = collision.get_collider()
+	var collider = col.get_collider()
 
-	# ФИКС МЕНТОРА 
 	if collider != null and collider.is_in_group("player"):
 		if collider.is_wall_in_direction(direction):
 			collider.hit()
-		else:
-			var remainder = collision.get_remainder()
-			collider.global_position += remainder
-			global_position += remainder
+		# Floor velocity (sync_to_physics) carries player — no manual push needed
+		global_position += motion
 		return
 
-	_check_crush(collision.get_normal())
-	_start_wait(collision.get_normal())
+	# Wall: move cube exactly to contact point, then wait
+	global_position += col.get_travel()
+	_check_crush(col.get_normal())
+	_start_wait(col.get_normal())
 
 
 func _check_crush(normal: Vector2) -> void:
