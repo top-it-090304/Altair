@@ -4,7 +4,7 @@ const SPRITESHEET = preload("res://Assets/Textures/Other/Confetti (16x16).png")
 const FRAME_COUNT = 6
 const FRAME_W = 16
 const FRAME_H = 16
-const EFFECT_DURATION = 4.0
+const EFFECT_DURATION = 3.2
 const PARTICLES_PER_EMITTER = 80  # 80 * 6 = 480 частиц суммарно
 
 
