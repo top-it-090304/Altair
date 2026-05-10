@@ -7,7 +7,7 @@ const SAVE_PATH = "user://save.cfg"
 
 # false = уровни открываются по мере прохождения (боевой режим)
 const DEV_UNLOCK_ALL: bool = false
-const DEV_FRUITS: int = 1000  # убрать в релизе
+const DEV_FRUITS: int = 0
 
 const LEVEL_ORDER: Array = [
 	"Level1", "Level2", "Level3", "Level4", "Level5",

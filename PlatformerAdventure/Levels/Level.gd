@@ -35,6 +35,8 @@ var used_slowmo: int = 0
 var used_magnet: int = 0
 var _level_completed: bool = false
 
+var _slowmo_original: Dictionary = {}
+
 @onready var fruit_counter = preload("res://Entities/Level/Buttons/сounter.tscn").instantiate()
 
 const TUTORIAL_SCENE    = preload("res://Entities/Level/UI/TutorialOverlay.tscn")
@@ -144,6 +146,16 @@ func activate_slowmo_bonus() -> void:
 	if Engine.time_scale < 1.0:
 		return
 	used_slowmo += 1
+	_slowmo_original = {
+		"speed": player.speed,
+		"acceleration": player.acceleration,
+		"friction": player.friction,
+		"gravity_fall": player.gravity_fall,
+		"gravity_rise": player.gravity_rise,
+		"max_fall_speed": player.max_fall_speed,
+		"jump_velocity": player.jump_velocity,
+		"wall_slide_speed": player.wall_slide_speed,
+	}
 	Engine.time_scale = slowmo_scale
 	var c: float = 1.0 / slowmo_scale
 	player.speed               *= c
@@ -154,7 +166,23 @@ func activate_slowmo_bonus() -> void:
 	player.max_fall_speed      *= c
 	player.jump_velocity       *= c
 	player.wall_slide_speed    *= c
-	player.animated_sprite.speed_scale = c
+	player.animation_speed_compensate = c
+
+func _restore_slowmo() -> void:
+	if _slowmo_original.is_empty() or player == null:
+		Engine.time_scale = 1.0
+		return
+	Engine.time_scale = 1.0
+	player.speed               = _slowmo_original["speed"]
+	player.acceleration        = _slowmo_original["acceleration"]
+	player.friction            = _slowmo_original["friction"]
+	player.gravity_fall        = _slowmo_original["gravity_fall"]
+	player.gravity_rise        = _slowmo_original["gravity_rise"]
+	player.max_fall_speed      = _slowmo_original["max_fall_speed"]
+	player.jump_velocity       = _slowmo_original["jump_velocity"]
+	player.wall_slide_speed    = _slowmo_original["wall_slide_speed"]
+	player.animation_speed_compensate = 1.0
+	_slowmo_original.clear()
 
 func activate_magnet_bonus() -> void:
 	if allow_magnet and player and can_use_magnet():
@@ -164,6 +192,7 @@ func activate_magnet_bonus() -> void:
 		player.activate_magnet()
 
 func reset_bonus_uses() -> void:
+	_restore_slowmo()
 	used_shield = 0
 	used_slowmo = 0
 	used_magnet = 0
@@ -192,7 +221,7 @@ func _on_level_completed() -> void:
 	if _level_completed:
 		return
 	_level_completed = true
-	Engine.time_scale = 1.0
+	_restore_slowmo()
 	_release_all_input()
 	if player:
 		player._invincibility_timer = 99.0
@@ -309,14 +338,14 @@ func _show_skip_tutorial_deferred() -> void:
 
 # 10 смертей — попап бонусов (только один раз за уровень)
 func _should_show_bonuses_popup() -> bool:
-	return GameData.current_level_deaths >= 2 and not GameData.bonuses_popup_shown
+	return GameData.current_level_deaths >= 10 and not GameData.bonuses_popup_shown
 
-# 20, 35, 50, 65... — попап пропуска (каждые 15 после 20)
+# 20, 30, 40... — попап пропуска (каждые 10)
 func _should_show_skip_popup() -> bool:
 	var d := GameData.current_level_deaths
-	if d < 4:
+	if d < 20:
 		return false
-	if (d - 4) % 2 != 0:
+	if d % 10 != 0:
 		return false
 	# Не показывать повторно при одном и том же количестве смертей
 	return GameData.last_skip_popup_deaths != d
