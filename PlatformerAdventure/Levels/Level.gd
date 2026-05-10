@@ -40,7 +40,6 @@ var _level_completed: bool = false
 const TUTORIAL_SCENE  = preload("res://Entities/Level/UI/TutorialOverlay.tscn")
 const CONFETTI_SCENE  = preload("res://Entities/Level/Effects/confetti_effect.tscn")
 const VICTORY_SOUND   = preload("res://Assets/audio/Voicy_Level up sfx 2.mp3")
-const TROPHY_TEXTURE  = preload("res://Assets/Textures/Items/Checkpoints/End/End (Idle).png")
 const DeathHelpPopup  = preload("res://Entities/Level/UI/death_help_popup.gd")
 
 const MUSIC_LEVELS_1_8   = preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3")
@@ -205,19 +204,14 @@ func _on_level_completed() -> void:
 	victory_sfx.volume_db = 6.0
 	add_child(victory_sfx)
 	victory_sfx.play()
+	victory_sfx.finished.connect(victory_sfx.play)
 
 	var confetti = CONFETTI_SCENE.instantiate()
 	get_tree().root.add_child(confetti)
-
-	var trophy_canvas: CanvasLayer = null
-	if next_level_path.ends_with("Credits.tscn") and not GameData.credits_shown:
-		trophy_canvas = _start_trophy_animation()
-
 	await confetti.play()
 	confetti.queue_free()
 
-	if trophy_canvas and is_instance_valid(trophy_canvas):
-		trophy_canvas.queue_free()
+	victory_sfx.stop()
 
 	if next_level_path.ends_with("Credits.tscn"):
 		if GameData.credits_shown:
@@ -227,42 +221,6 @@ func _on_level_completed() -> void:
 			_fade_to_credits()
 	else:
 		SceneManager.go_to(next_level_path)
-
-func _start_trophy_animation() -> CanvasLayer:
-	var canvas := CanvasLayer.new()
-	canvas.layer = 100
-	get_tree().root.add_child(canvas)
-
-	var atlas := AtlasTexture.new()
-	atlas.atlas = TROPHY_TEXTURE
-	atlas.region = Rect2(0, 0, 64, 64)
-
-	var sprite := Sprite2D.new()
-	sprite.texture = atlas
-	sprite.scale = Vector2.ZERO
-	sprite.modulate.a = 0.0
-	sprite.position = get_viewport().get_visible_rect().size / 2.0
-	canvas.add_child(sprite)
-
-	_animate_trophy(sprite)
-	return canvas
-
-func _animate_trophy(sprite: Sprite2D) -> void:
-	var tw := get_tree().create_tween().set_parallel(true)
-	tw.tween_property(sprite, "scale", Vector2.ONE, 0.8) \
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	tw.tween_property(sprite, "modulate:a", 1.0, 0.8) \
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	await tw.finished
-
-	if not is_instance_valid(sprite):
-		return
-
-	var tw2 := get_tree().create_tween()
-	tw2.tween_property(sprite, "scale", Vector2(1.15, 1.15), 0.15) \
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	tw2.tween_property(sprite, "scale", Vector2.ONE, 0.15) \
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 
 func _fade_to_credits() -> void:
 	# Оборачиваем в CanvasLayer 110 — перекрывает весь UI и бонус-HUD,

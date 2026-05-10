@@ -4,8 +4,8 @@ const SPRITESHEET = preload("res://Assets/Textures/Other/Confetti (16x16).png")
 const FRAME_COUNT = 6
 const FRAME_W = 16
 const FRAME_H = 16
-const EFFECT_DURATION = 2.0
-const PARTICLES_PER_EMITTER = 33  # 33 * 6 = 198 частиц суммарно
+const EFFECT_DURATION = 5.0
+const PARTICLES_PER_EMITTER = 80  # 80 * 6 = 480 частиц суммарно
 
 
 func play() -> void:
