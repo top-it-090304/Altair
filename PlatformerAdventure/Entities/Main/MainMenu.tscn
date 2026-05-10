@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://xyno300p1evx" path="res://Assets/Buttons/settigs/settings_normal.png" id="12_crcoo"]
 [ext_resource type="Texture2D" uid="uid://dlpleyq2u8mcl" path="res://Assets/Buttons/settigs/settings_pressed.png" id="13_p01wl"]
 [ext_resource type="Texture2D" uid="uid://f1ysrfppt2os" path="res://Assets/Buttons/settigs/settings_hover.png" id="14_8pdeq"]
-[ext_resource type="Texture2D" uid="uid://dctpxqfiq737e" path="res://Assets/Textures/Menu/logo_pixel.png" id="31_ixvsi"]
+[ext_resource type="Texture2D" uid="uid://l0sp36f0n8ex" path="res://Assets/Textures/Menu/russian_logo.PNG" id="29_p01wl"]
 [ext_resource type="Texture2D" uid="uid://dskijtkwon6ts" path="res://Assets/Buttons/about/about_normal.png" id="34_gxib6"]
 [ext_resource type="Texture2D" uid="uid://bvjfy6sdus5av" path="res://Assets/Textures/Enemies/BlueBird/Flying (32x32).png" id="34_xn2ct"]
 [ext_resource type="Texture2D" uid="uid://8u300wovnf1a" path="res://Assets/Buttons/about/about_pressed.png" id="35_75gwc"]
@@ -1081,7 +1081,7 @@ flip_h = true
 texture_filter = 1
 position = Vector2(632, 128)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("31_ixvsi")
+texture = ExtResource("29_p01wl")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
