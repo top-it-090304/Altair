@@ -418,12 +418,12 @@ func _update_animation() -> void:
 		return
 
 	if wall_mechanics_enabled and is_wall_sliding:
-		animated_sprite.speed_scale = 1.0
+		animated_sprite.speed_scale = animation_speed_compensate
 		animated_sprite.play("walljump")
 		return
 
 	if not is_on_floor():
-		animated_sprite.speed_scale = 1.0
+		animated_sprite.speed_scale = animation_speed_compensate
 		if is_double_jumping:
 			animated_sprite.play("doublejump")
 		elif velocity.y < 0.0:
@@ -436,7 +436,7 @@ func _update_animation() -> void:
 		animated_sprite.speed_scale = clamp(abs(velocity.x) / 150.0, 0.5, 2.5) * animation_speed_compensate
 		animated_sprite.play("run")
 	else:
-		animated_sprite.speed_scale = 1.0
+		animated_sprite.speed_scale = animation_speed_compensate
 		animated_sprite.play("idle")
 
 # DASH

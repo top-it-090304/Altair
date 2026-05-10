@@ -8,7 +8,7 @@ const EFFECT_DURATION = 2.0
 const PARTICLES_PER_EMITTER = 33  # 33 * 6 = 198 частиц суммарно
 
 
-func play() -> void:
+func play(duration: float = EFFECT_DURATION) -> void:
 	var viewport_size := get_viewport().get_visible_rect().size
 	var half_w := viewport_size.x / 2.0
 
@@ -49,7 +49,7 @@ func play() -> void:
 		particles.texture = atlas
 		particles.process_material = mat
 		particles.amount = PARTICLES_PER_EMITTER
-		particles.lifetime = EFFECT_DURATION
+		particles.lifetime = duration
 		particles.one_shot = true
 		particles.explosiveness = 0.0
 		particles.randomness = 0.5
@@ -59,4 +59,4 @@ func play() -> void:
 		add_child(particles)
 
 	# Ждём реальное время (ignore_time_scale = true), не зависит от Engine.time_scale
-	await get_tree().create_timer(EFFECT_DURATION, true, false, true).timeout
+	await get_tree().create_timer(duration, true, false, true).timeout

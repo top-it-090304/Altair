@@ -33,16 +33,21 @@ var _time_alive: float = 0.0
 var used_shield: int = 0
 var used_slowmo: int = 0
 var used_magnet: int = 0
+var _level_completed: bool = false
+
+var _slowmo_original: Dictionary = {}
 
 @onready var fruit_counter = preload("res://Entities/Level/Buttons/сounter.tscn").instantiate()
 
-const TUTORIAL_SCENE  = preload("res://Entities/Level/UI/TutorialOverlay.tscn")
-const CONFETTI_SCENE  = preload("res://Entities/Level/Effects/confetti_effect.tscn")
-const VICTORY_SOUND   = preload("res://Assets/audio/Voicy_Level up sfx 2.mp3")
-const DeathHelpPopup  = preload("res://Entities/Level/UI/death_help_popup.gd")
+const TUTORIAL_SCENE    = preload("res://Entities/Level/UI/TutorialOverlay.tscn")
+const CONFETTI_SCENE    = preload("res://Entities/Level/Effects/confetti_effect.tscn")
+const VICTORY_SOUND     = preload("res://Assets/audio/Voicy_Level up sfx 2.mp3")
+const VICTORY_SOUND_END = preload("res://Assets/audio/quotyou-are-credited-with-victoryquot.mp3")
+const DeathHelpPopup    = preload("res://Entities/Level/UI/death_help_popup.gd")
 
-const MUSIC_LEVELS_1_8 = preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3")
-const MUSIC_LEVELS_9_16 = preload("res://Assets/audio/maskdude1.mp3")
+const MUSIC_LEVELS_1_8   = preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3")
+const MUSIC_LEVELS_9_16  = preload("res://Assets/audio/maskdude1.mp3")
+const MUSIC_LEVELS_17_24 = preload("res://Assets/audio/For_Levels/neonovyy-serpantin-2-acf185.mp3")
 
 func _ready() -> void:
 	var players := get_tree().get_nodes_in_group("player")
@@ -53,7 +58,9 @@ func _ready() -> void:
 
 	var level_name := scene_file_path.get_file().get_basename()
 	var level_num := level_name.trim_prefix("Level").to_int()
-	if level_num >= 9:
+	if level_num >= 17:
+		MusicManager.play_music(MUSIC_LEVELS_17_24)
+	elif level_num >= 9:
 		MusicManager.play_music(MUSIC_LEVELS_9_16)
 	else:
 		MusicManager.play_music(MUSIC_LEVELS_1_8)
@@ -139,6 +146,16 @@ func activate_slowmo_bonus() -> void:
 	if Engine.time_scale < 1.0:
 		return
 	used_slowmo += 1
+	_slowmo_original = {
+		"speed": player.speed,
+		"acceleration": player.acceleration,
+		"friction": player.friction,
+		"gravity_fall": player.gravity_fall,
+		"gravity_rise": player.gravity_rise,
+		"max_fall_speed": player.max_fall_speed,
+		"jump_velocity": player.jump_velocity,
+		"wall_slide_speed": player.wall_slide_speed,
+	}
 	Engine.time_scale = slowmo_scale
 	var c: float = 1.0 / slowmo_scale
 	player.speed               *= c
@@ -149,7 +166,23 @@ func activate_slowmo_bonus() -> void:
 	player.max_fall_speed      *= c
 	player.jump_velocity       *= c
 	player.wall_slide_speed    *= c
-	player.animated_sprite.speed_scale = c
+	player.animation_speed_compensate = c
+
+func _restore_slowmo() -> void:
+	if _slowmo_original.is_empty() or player == null:
+		Engine.time_scale = 1.0
+		return
+	Engine.time_scale = 1.0
+	player.speed               = _slowmo_original["speed"]
+	player.acceleration        = _slowmo_original["acceleration"]
+	player.friction            = _slowmo_original["friction"]
+	player.gravity_fall        = _slowmo_original["gravity_fall"]
+	player.gravity_rise        = _slowmo_original["gravity_rise"]
+	player.max_fall_speed      = _slowmo_original["max_fall_speed"]
+	player.jump_velocity       = _slowmo_original["jump_velocity"]
+	player.wall_slide_speed    = _slowmo_original["wall_slide_speed"]
+	player.animation_speed_compensate = 1.0
+	_slowmo_original.clear()
 
 func activate_magnet_bonus() -> void:
 	if allow_magnet and player and can_use_magnet():
@@ -159,6 +192,7 @@ func activate_magnet_bonus() -> void:
 		player.activate_magnet()
 
 func reset_bonus_uses() -> void:
+	_restore_slowmo()
 	used_shield = 0
 	used_slowmo = 0
 	used_magnet = 0
@@ -184,7 +218,10 @@ func _show_tutorial(char_name: String, wall_jump: bool, show_dash: bool, on_clos
 
 
 func _on_level_completed() -> void:
-	Engine.time_scale = 1.0
+	if _level_completed:
+		return
+	_level_completed = true
+	_restore_slowmo()
 	_release_all_input()
 	if player:
 		player._invincibility_timer = 99.0
@@ -192,18 +229,52 @@ func _on_level_completed() -> void:
 	GameData.submit_level_result(level_name, collected_count)
 
 	var victory_sfx := AudioStreamPlayer.new()
-	victory_sfx.stream = VICTORY_SOUND
+	var is_final_level := next_level_path.ends_with("Credits.tscn") and not GameData.credits_shown
+	victory_sfx.stream = VICTORY_SOUND_END if is_final_level else VICTORY_SOUND
 	victory_sfx.bus = &"SFX"
 	victory_sfx.volume_db = 6.0
 	add_child(victory_sfx)
 	victory_sfx.play()
+	victory_sfx.finished.connect(victory_sfx.play)
 
 	var confetti = CONFETTI_SCENE.instantiate()
 	get_tree().root.add_child(confetti)
-	await confetti.play()
+	await confetti.play(3.2 if is_final_level else confetti.EFFECT_DURATION)
 	confetti.queue_free()
 
-	SceneManager.go_to(next_level_path)
+	victory_sfx.stop()
+
+	if next_level_path.ends_with("Credits.tscn"):
+		if GameData.credits_shown:
+			# Титры уже были — сразу в главное меню
+			SceneManager.go_to("res://Entities/Main/MainMenu.tscn")
+		else:
+			_fade_to_credits()
+	else:
+		SceneManager.go_to(next_level_path)
+
+func _fade_to_credits() -> void:
+	# Оборачиваем в CanvasLayer 110 — перекрывает весь UI и бонус-HUD,
+	# которые сидят на CanvasLayer по умолчанию (layer 1).
+	# Credits найдёт этот узел по группе и удалит в _ready().
+	var canvas := CanvasLayer.new()
+	canvas.layer = 110
+	canvas.add_to_group("credits_fade_overlay")
+	get_tree().root.add_child(canvas)
+
+	var overlay := ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0)
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	canvas.add_child(overlay)
+
+	# Затемнение экрана и fade out музыки идут одновременно
+	# TRANS_QUAD + EASE_IN — начинают медленно, потом ускоряются вместе с экраном
+	var tw := get_tree().create_tween().set_parallel(true)
+	tw.tween_property(overlay, "color:a", 1.0, 2.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	if MusicManager.music_player.playing:
+		tw.tween_property(MusicManager.music_player, "volume_db", -80.0, 2.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	await tw.finished
+	get_tree().change_scene_to_file(next_level_path)
 
 func _release_all_input() -> void:
 	for action in ["move_left", "move_right", "move_up"]:
@@ -267,14 +338,14 @@ func _show_skip_tutorial_deferred() -> void:
 
 # 10 смертей — попап бонусов (только один раз за уровень)
 func _should_show_bonuses_popup() -> bool:
-	return GameData.current_level_deaths >= 2 and not GameData.bonuses_popup_shown
+	return GameData.current_level_deaths >= 10 and not GameData.bonuses_popup_shown
 
-# 20, 35, 50, 65... — попап пропуска (каждые 15 после 20)
+# 20, 30, 40... — попап пропуска (каждые 10)
 func _should_show_skip_popup() -> bool:
 	var d := GameData.current_level_deaths
-	if d < 4:
+	if d < 20:
 		return false
-	if (d - 4) % 2 != 0:
+	if d % 10 != 0:
 		return false
 	# Не показывать повторно при одном и том же количестве смертей
 	return GameData.last_skip_popup_deaths != d
