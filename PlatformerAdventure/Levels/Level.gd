@@ -37,10 +37,11 @@ var _level_completed: bool = false
 
 @onready var fruit_counter = preload("res://Entities/Level/Buttons/сounter.tscn").instantiate()
 
-const TUTORIAL_SCENE  = preload("res://Entities/Level/UI/TutorialOverlay.tscn")
-const CONFETTI_SCENE  = preload("res://Entities/Level/Effects/confetti_effect.tscn")
-const VICTORY_SOUND   = preload("res://Assets/audio/Voicy_Level up sfx 2.mp3")
-const DeathHelpPopup  = preload("res://Entities/Level/UI/death_help_popup.gd")
+const TUTORIAL_SCENE    = preload("res://Entities/Level/UI/TutorialOverlay.tscn")
+const CONFETTI_SCENE    = preload("res://Entities/Level/Effects/confetti_effect.tscn")
+const VICTORY_SOUND     = preload("res://Assets/audio/Voicy_Level up sfx 2.mp3")
+const VICTORY_SOUND_END = preload("res://Assets/audio/quotyou-are-credited-with-victoryquot.mp3")
+const DeathHelpPopup    = preload("res://Entities/Level/UI/death_help_popup.gd")
 
 const MUSIC_LEVELS_1_8   = preload("res://Assets/audio/For_Levels/kissan4-pixel-paradise-358340.mp3")
 const MUSIC_LEVELS_9_16  = preload("res://Assets/audio/maskdude1.mp3")
@@ -199,7 +200,8 @@ func _on_level_completed() -> void:
 	GameData.submit_level_result(level_name, collected_count)
 
 	var victory_sfx := AudioStreamPlayer.new()
-	victory_sfx.stream = VICTORY_SOUND
+	var is_final_level := next_level_path.ends_with("Credits.tscn") and not GameData.credits_shown
+	victory_sfx.stream = VICTORY_SOUND_END if is_final_level else VICTORY_SOUND
 	victory_sfx.bus = &"SFX"
 	victory_sfx.volume_db = 6.0
 	add_child(victory_sfx)
