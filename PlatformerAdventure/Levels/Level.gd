@@ -210,7 +210,7 @@ func _on_level_completed() -> void:
 
 	var confetti = CONFETTI_SCENE.instantiate()
 	get_tree().root.add_child(confetti)
-	await confetti.play()
+	await confetti.play(3.2 if is_final_level else confetti.EFFECT_DURATION)
 	confetti.queue_free()
 
 	victory_sfx.stop()
