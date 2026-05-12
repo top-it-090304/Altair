@@ -5,6 +5,8 @@ extends Control
 func _ready() -> void:
 	video.stream = load("res://Assets/Video/ALTAIR-WHITEE_2.ogv")
 	video.expand = true
+	video.audio_track = 0
+	video.bus = "Music"
 	print("[IntroScreen] stream: ", video.stream)
 	var timer = get_tree().create_timer(0.3)
 	await timer.timeout
