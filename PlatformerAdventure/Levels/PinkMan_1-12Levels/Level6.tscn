@@ -399,7 +399,7 @@ position = Vector2(464, 192)
 chain_length = 130.0
 
 [node name="Trampoline" parent="Entities/Traps" instance=ExtResource("14_yg68r")]
-position = Vector2(688, 410.667)
+position = Vector2(701.333, 412)
 bounce_force = -1200.0
 
 [node name="SpikedBallTrap2" parent="Entities/Traps" instance=ExtResource("13_7mhss")]
