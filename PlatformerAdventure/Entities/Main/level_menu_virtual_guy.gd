@@ -75,12 +75,7 @@ func _ready() -> void:
 func _refresh_buttons() -> void:
 	for i in range(buttons.size()):
 		var btn: TextureButton = buttons[i]
-		# Level17 is always unlocked; each next level requires the previous one
-		var unlocked: bool
-		if i == 0:
-			unlocked = true
-		else:
-			unlocked = GameData.is_level_completed(LEVEL_NAMES[i - 1])
+		var unlocked: bool = GameData.is_level_unlocked(16 + i)
 		var completed = GameData.is_level_completed(LEVEL_NAMES[i])
 
 		btn.modulate = Color(1, 1, 1)
