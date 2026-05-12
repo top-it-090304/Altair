@@ -16,7 +16,13 @@ func _ready() -> void:
 	_diamond = transition.get_node("Diamond")
 	_setup_diamond()
 	_diamond.scale = Vector2.ONE * _cover_scale
-	_reveal()
+
+	# Skip reveal animation on intro screen
+	var current = get_tree().current_scene
+	if current and current.scene_file_path == "res://Entities/Main/IntroScreen.tscn":
+		_diamond.scale = Vector2.ZERO  # hide diamond completely
+	else:
+		_reveal()
 
 # Centre the diamond on screen and compute the scale that fully covers every corner.
 # Diamond (rotated square) covers point (x,y) from centre when |x|+|y| <= half_size * scale.
