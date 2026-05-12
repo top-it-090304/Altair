@@ -3,7 +3,7 @@ extends Control
 @onready var video: VideoStreamPlayer = $VideoStreamPlayer
 
 func _ready() -> void:
-	video.stream = load("res://Assets/Video/ALTAIR WHITEE.ogv")
+	video.stream = load("res://Assets/Video/ALTAIR-WHITEE_2.ogv")
 	video.expand = true
 	print("[IntroScreen] stream: ", video.stream)
 	var timer = get_tree().create_timer(0.3)

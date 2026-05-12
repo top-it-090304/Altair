@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://bv71kp5xn3qdj"]
 
 [ext_resource type="Script" uid="uid://cqtrw92ns48mk" path="res://Entities/Main/IntroScreen.gd" id="1_intro"]
-[ext_resource type="VideoStream" path="res://Assets/Video/ALTAIR WHITEE.ogv" id="2_intro"]
+[ext_resource type="VideoStream" path="res://Assets/Video/ALTAIR-WHITEE_2.ogv" id="2_intro"]
 
 [node name="IntroScreen" type="Control"]
 layout_mode = 3
