@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=4 uid="uid://bv71kp5xn3qdj"]
+
+[ext_resource type="Script" uid="uid://cqtrw92ns48mk" path="res://Entities/Main/IntroScreen.gd" id="1_intro"]
+[ext_resource type="VideoStream" path="res://Assets/Video/ALTAIR WHITEE.ogv" id="2_intro"]
+
+[node name="IntroScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_intro")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_intro")
+expand = true
