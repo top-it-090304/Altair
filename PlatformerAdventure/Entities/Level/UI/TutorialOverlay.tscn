@@ -234,6 +234,26 @@ theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 20
 text = "Прыгни на другую стену"
 
+[node name="HintWallJumpUp" type="HBoxContainer" parent="RootControl/Center/Panel/VBox/WallJumpSection"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/HintWallJumpUp"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "↑ + ↑"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="RootControl/Center/Panel/VBox/WallJumpSection/HintWallJumpUp"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Прыжок по стене"
+
 [node name="DashSection" type="VBoxContainer" parent="RootControl/Center/Panel/VBox"]
 visible = false
 layout_mode = 2

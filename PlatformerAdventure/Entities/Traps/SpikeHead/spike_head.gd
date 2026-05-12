@@ -45,7 +45,6 @@ func _physics_process(delta: float) -> void:
 	var collider := collision.get_collider()
 	if collider != null and collider.is_in_group("player"):
 		collider.hit()
-		return
 
 	_start_wait(collision.get_normal())
 
