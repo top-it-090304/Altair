@@ -5,14 +5,14 @@ extends Control
 func _ready() -> void:
 	video.stream = load("res://Assets/Video/ALTAIR WHITEE.ogv")
 	video.expand = true
-	await get_tree().process_frame
-	await get_tree().process_frame
-	# Hide the SceneManager diamond transition
+	print("[IntroScreen] stream: ", video.stream)
+	var timer = get_tree().create_timer(0.3)
+	await timer.timeout
 	var transition = get_tree().root.get_node_or_null("TransitionLayer")
 	if transition:
 		transition.hide()
 	video.play()
-	print("[IntroScreen] is_playing: ", video.is_playing())
+	print("[IntroScreen] is_playing after timer: ", video.is_playing())
 	video.finished.connect(_go_to_menu)
 
 func _go_to_menu() -> void:
