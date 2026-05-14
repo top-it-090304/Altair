@@ -1,6 +1,6 @@
 **🎮Platformer Adventure** — 2D платформер для ОС «Аврора»
 
-![Platformer Adventure](images/icon.png)
+![Platformer Adventure] (/Assets/Textures/icon.png)
 ---
 **📖 О проекте**
 
