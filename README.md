@@ -1,10 +1,15 @@
 <div align="center">
 
-<img src="images/icon.png" alt="Приключение Платформера" width="160" />
+<img src="https://raw.githubusercontent.com/top-it-090304/Altair/develop/PlatformerAdventure/Assets/Textures/icon.png" alt="Приключение Платформера" width="150"/>
 
 # 🎮 Приключение Платформера
 
-**2D-платформер для ОС «Аврора»**
+**Динамичный 2D-платформер для ОС «Аврора»**
+
+[![Godot Engine](https://img.shields.io/badge/Godot-4.4-blue?logo=godot-engine&logoColor=white)](https://godotengine.org)
+[![GDScript](https://img.shields.io/badge/Language-GDScript-green)](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/)
+[![Platform](https://img.shields.io/badge/Platform-ОС%20«Аврора»-purple)](https://auroraos.ru)
+[![GitHub](https://img.shields.io/badge/Repo-Altair-black?logo=github)](https://github.com/top-it-090304/Altair)
 
 </div>
 
