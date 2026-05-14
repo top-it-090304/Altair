@@ -50,10 +50,10 @@ func _ready() -> void:
 # ── INPUT ──────────────────────────────────────────────────────────────────────
 
 func _input(event: InputEvent) -> void:
-	get_viewport().set_input_as_handled()
 	match _phase:
 		_Phase.INTRO, _Phase.CREDITS:
 			if event.is_action_pressed("ui_cancel"):
+				get_viewport().set_input_as_handled()
 				_skip_to_final()
 		_Phase.FINAL:
 			# Любое нажатие клавиши, клик мыши или тач — выход в меню
@@ -63,6 +63,7 @@ func _input(event: InputEvent) -> void:
 				(event is InputEventScreenTouch and event.pressed)
 			)
 			if is_press:
+				get_viewport().set_input_as_handled()
 				_go_to_menu()
 
 func _go_to_menu() -> void:

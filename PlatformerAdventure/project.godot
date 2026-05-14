@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="Platformer Adventure"
-run/main_scene="uid://co1ws314r8c86"
+run/main_scene="res://Entities/Main/IntroScreen.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="uid://b7w3j3bq06yq7"
 
 [autoload]
