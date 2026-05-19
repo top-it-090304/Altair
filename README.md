@@ -20,7 +20,7 @@
 <!-- Сюда вставить GIF с геймплеем -->
 <div align="center">
 
-![demo](images/forreadme/IMG_2978_tiny.gif)
+![demo](images/forreadme/IMG_2978_small.gif)
 </div>
 
 ---
