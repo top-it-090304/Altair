@@ -20,8 +20,7 @@
 <!-- Сюда вставить GIF с геймплеем -->
 <div align="center">
 
-<!-- ![Геймплей](images/forreadme/gameplay.gif) -->
-<video src="IMG_2978.mp4" autoplay loop muted playsinline></video>
+![demo](IMG_2978_small.gif)
 
 </div>
 
