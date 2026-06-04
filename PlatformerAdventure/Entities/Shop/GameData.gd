@@ -113,6 +113,7 @@ func buy_shield() -> bool:
 		return false
 	count_shield += 1
 	save_data()
+	PycoLog.log_event_by_type("shop_purchase", {"item": "shield", "price": PRICE_SHIELD, "balance": get_balance()})
 	return true
 
 func buy_slowmo() -> bool:
@@ -120,6 +121,7 @@ func buy_slowmo() -> bool:
 		return false
 	count_slowmo += 1
 	save_data()
+	PycoLog.log_event_by_type("shop_purchase", {"item": "slowmo", "price": PRICE_SLOWMO, "balance": get_balance()})
 	return true
 
 func buy_magnet() -> bool:
@@ -127,6 +129,7 @@ func buy_magnet() -> bool:
 		return false
 	count_magnet += 1
 	save_data()
+	PycoLog.log_event_by_type("shop_purchase", {"item": "magnet", "price": PRICE_MAGNET, "balance": get_balance()})
 	return true
 
 # ── ИСПОЛЬЗОВАНИЕ ────────────────────────────
@@ -226,6 +229,7 @@ func reset_ctrl_positions() -> void:
 	save_data()
 
 func reset_progress() -> void:
+	PycoLog.log_event_by_type("progress_reset", {})
 	level_records.clear()
 	total_fruits = 0
 	_spent = 0

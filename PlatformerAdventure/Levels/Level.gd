@@ -65,6 +65,7 @@ func _ready() -> void:
 	else:
 		MusicManager.play_music(MUSIC_LEVELS_1_8)
 	add_to_group("level")  # ← нужно для BonusHUD
+	PycoLog.log_event_by_type("level_start", {"level": level_name})
 
 	if player and spawn_marker:
 		player.global_position = spawn_marker.global_position
@@ -139,6 +140,7 @@ func activate_shield_bonus() -> void:
 	if allow_shield and player and can_use_shield():
 		used_shield += 1
 		player.activate_shield()
+		PycoLog.log_event_by_type("bonus_used", {"type": "shield", "level": scene_file_path.get_file().get_basename()})
 
 func activate_slowmo_bonus() -> void:
 	if not allow_slowmo or player == null or not can_use_slowmo():
@@ -146,6 +148,7 @@ func activate_slowmo_bonus() -> void:
 	if Engine.time_scale < 1.0:
 		return
 	used_slowmo += 1
+	PycoLog.log_event_by_type("bonus_used", {"type": "slowmo", "level": scene_file_path.get_file().get_basename()})
 	_slowmo_original = {
 		"speed": player.speed,
 		"acceleration": player.acceleration,
@@ -190,6 +193,7 @@ func activate_magnet_bonus() -> void:
 			return
 		used_magnet += 1
 		player.activate_magnet()
+		PycoLog.log_event_by_type("bonus_used", {"type": "magnet", "level": scene_file_path.get_file().get_basename()})
 
 func reset_bonus_uses() -> void:
 	_restore_slowmo()
@@ -227,10 +231,12 @@ func _on_level_completed() -> void:
 		player._invincibility_timer = 99.0
 	var level_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	GameData.submit_level_result(level_name, collected_count)
-	PycoLog.log_event_by_type("level_complete", {"level": level_name, "fruits": collected_count})
+	PycoLog.log_event_by_type("level_complete", {"level": level_name, "fruits": collected_count, "deaths": GameData.current_level_deaths})
 
 	var victory_sfx := AudioStreamPlayer.new()
 	var is_final_level := next_level_path.ends_with("Credits.tscn") and not GameData.credits_shown
+	if is_final_level:
+		PycoLog.log_event_by_type("game_complete", {})
 	victory_sfx.stream = VICTORY_SOUND_END if is_final_level else VICTORY_SOUND
 	victory_sfx.bus = &"SFX"
 	victory_sfx.volume_db = 6.0
@@ -315,7 +321,7 @@ func _on_player_died() -> void:
 	if _time_alive > 3.0:
 		GameData.current_level_deaths += 1
 	var level_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
-	PycoLog.log_event_by_type("death", {"level": level_name})
+	PycoLog.log_event_by_type("death", {"level": level_name, "deaths_so_far": GameData.current_level_deaths, "time_alive": _time_alive})
 
 func _check_death_popups_deferred() -> void:
 	# Небольшая задержка чтобы уровень успел отрисоваться
@@ -326,10 +332,12 @@ func _check_death_popups_deferred() -> void:
 		var popup := DeathHelpPopup.new()
 		add_child(popup)
 		popup.show_bonuses_popup(self)
+		PycoLog.log_event_by_type("help_popup", {"type": "bonuses", "level": scene_file_path.get_file().get_basename(), "deaths": GameData.current_level_deaths})
 	elif _should_show_skip_popup():
 		var popup := DeathHelpPopup.new()
 		add_child(popup)
 		popup.show_skip_popup(self)
+		PycoLog.log_event_by_type("help_popup", {"type": "skip", "level": scene_file_path.get_file().get_basename(), "deaths": GameData.current_level_deaths})
 
 func _show_skip_tutorial_deferred() -> void:
 	await get_tree().create_timer(1.2).timeout
