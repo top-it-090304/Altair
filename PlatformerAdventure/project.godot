@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Платформер"
+config/version="1.0.1"
 run/main_scene="res://Entities/Main/IntroScreen.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -24,6 +25,7 @@ GameData="*res://Entities/Shop/GameData.gd"
 AppFocus="*res://autoload/app_focus.gd"
 MusicManager="*res://Entities/Music/MusicManager.tscn"
 SceneManager="*res://Entities/Level/Buttons/SceneManager.gd"
+PycoLog="*res://addons/pycolytics/pyco_log.gd"
 
 [display]
 

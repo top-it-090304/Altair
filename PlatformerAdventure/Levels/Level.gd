@@ -227,6 +227,7 @@ func _on_level_completed() -> void:
 		player._invincibility_timer = 99.0
 	var level_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	GameData.submit_level_result(level_name, collected_count)
+	PycoLog.log_event_by_type("level_complete", {"level": level_name, "fruits": collected_count})
 
 	var victory_sfx := AudioStreamPlayer.new()
 	var is_final_level := next_level_path.ends_with("Credits.tscn") and not GameData.credits_shown
@@ -313,6 +314,8 @@ func _on_player_died() -> void:
 	# Сама смерть считается только если игрок прожил > 3 секунд
 	if _time_alive > 3.0:
 		GameData.current_level_deaths += 1
+	var level_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
+	PycoLog.log_event_by_type("death", {"level": level_name})
 
 func _check_death_popups_deferred() -> void:
 	# Небольшая задержка чтобы уровень успел отрисоваться

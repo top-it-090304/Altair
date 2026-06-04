@@ -160,6 +160,7 @@ func _on_texture_button_2_pressed() -> void:
 	SceneManager.go_to("res://Entities/Shop/shop.tscn")
 
 func _on_texture_button_3_pressed() -> void:
+	await PycoLog.log_stop_playing()
 	get_tree().quit()
 
 func _on_btn_about_pressed() -> void:
