@@ -1,7 +1,7 @@
 extends Node
 
 # Добавить после строки var shutdown_callable: Callable
-var _is_paused: bool = false  ## Отслеживает состояние паузы
+var _is_paused: bool = false  ## true = игра свёрнута/в фоне (сессия завершена)
 var _pause_start_time: float = 0.0  ## Время начала паузы для расчета длительности
 var _session_start_unix: float = 0.0  ## Реальное время старта сессии (unix), для session_duration
 
@@ -15,7 +15,7 @@ var flush_period_msec: float = 2000.0  ## Send batched events to server at least
 var queue_limit: int = 10  ## Send a batch of events if the queue is at least this long. Helps avoid frame stutter from too many events.
 var request_timeout: float = 30.0  ## Number of seconds after which the event logging requests timeout. Will result in lost events.
 # TEST: webhook.site (полный url, БЕЗ _url_suffix). PROD: заменить на "<ip>:<port>/" + _url_suffix (от Aleksandr'а).
-var url: String = "https://webhook.site/03d028c7-f015-4e91-a81d-e2bbfc2a2911"  ## The exact server url for accepting batch requests (eg. including "v1.0/events").
+var url: String = "https://webhook.site/bdeee979-972b-4082-a831-c40ae6dad4f1"  ## The exact server url for accepting batch requests (eg. including "v1.0/events").
 # TODO: общая соль от Aleksandr'а — ОДИНАКОВАЯ для всех 8 игр.
 var hash_salt: String = "effective_games_salt" # ("%x" % randi()).left(8)
 var startup_callable: Callable  ## Callable returning a PycoEvent to send after the zeroth frame. Set to null to disable.
@@ -25,7 +25,8 @@ signal shutdown_event_sent  ## Emitted after the shutdown event defined by shutd
 
 
 func _ready() -> void:
-	self.process_mode = Node.PROCESS_MODE_PAUSABLE
+	# ALWAYS: продолжаем флашить очередь даже когда дерево на паузе (фон/пауз-меню).
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	# TODO: реальный api-key от Aleksandr'а (webhook.site его игнорирует).
 	PycoEvent.default_event.api_key = "TODO_API_KEY_FROM_ALEKSANDR"
@@ -64,17 +65,17 @@ func _notification(what: int) -> void:
 		NOTIFICATION_WM_CLOSE_REQUEST:
 			_handle_game_close()
 		
-		# Обработка паузы на мобильных устройствах
+		# Сворачивание (мобильный фон) → сессия завершается + игра на паузу
 		NOTIFICATION_APPLICATION_PAUSED:
-			_handle_game_pause("mobile_background")
+			_handle_background("mobile_background")
 		NOTIFICATION_APPLICATION_RESUMED:
-			_handle_game_resume("mobile_foreground")
-		
-		# Обработка потери/получения фокуса (Linux и другие desktop платформы)
+			_handle_foreground("mobile_foreground")
+
+		# Потеря/получение фокуса (desktop + сворачивание на части платформ) → то же
 		NOTIFICATION_WM_WINDOW_FOCUS_OUT, NOTIFICATION_APPLICATION_FOCUS_OUT:
-			_handle_game_pause("focus_lost")
+			_handle_background("focus_lost")
 		NOTIFICATION_WM_WINDOW_FOCUS_IN, NOTIFICATION_APPLICATION_FOCUS_IN:
-			_handle_game_resume("focus_gained")
+			_handle_foreground("focus_gained")
 		
 		# Обработка кнопки "Назад" на Android
 		NOTIFICATION_WM_GO_BACK_REQUEST:
@@ -251,38 +252,42 @@ func _flush_queue() -> void:
 		)
 
 
-func _handle_game_pause(reason: String) -> void:
-	if not _is_paused:
-		_is_paused = true
-		_pause_start_time = Time.get_unix_time_from_system()
-		
-		# Отправляем событие паузы
-		var pause_event := _get_pause_event(reason)
-		log_event(pause_event)
-		
-		print("PycoLog: Game paused - ", reason)
+# Сворачивание/фон: сессия ЗАВЕРШАЕТСЯ (stop_playing с длительностью).
+# Саму паузу/заморозку игры (paused, max_fps, аудио) делает отдельный autoload AppFocus —
+# здесь только аналитика, чтобы не конфликтовать с ним.
+func _handle_background(reason: String) -> void:
+	if _is_paused or _shutdown_initiated:
+		return
+	_is_paused = true
 
-func _handle_game_resume(reason: String) -> void:
-	if _is_paused:
-		var pause_duration = Time.get_unix_time_from_system() - _pause_start_time
-		_is_paused = false
-		
-		# Отправляем событие возобновления
-		var resume_event := _get_resume_event(reason, pause_duration)
-		log_event(resume_event)
-		
-		print("PycoLog: Game resumed - ", reason, " (paused for ", pause_duration, " seconds)")
+	var duration := Time.get_unix_time_from_system() - _session_start_unix
+	log_event_by_type("stop_playing", {"session_duration": duration, "reason": reason})
+
+	print("PycoLog: session ended (backgrounded) - ", reason, " duration=", duration)
+
+# Разворачивание: начинаем НОВУЮ сессию (новый session_id + start_playing).
+# Распаузу/звук восстанавливает autoload AppFocus.
+func _handle_foreground(reason: String) -> void:
+	if not _is_paused:
+		return
+	_is_paused = false
+
+	# Новая сессия
+	_session_start_unix = Time.get_unix_time_from_system()
+	PycoEvent.default_event.session_id = (
+		(PycoEvent.default_event.user_id + str(_session_start_unix)).sha256_text()
+	)
+	log_event_by_type("start_playing", {"reason": reason})
+
+	print("PycoLog: new session started (foreground) - ", reason)
 
 func _handle_game_close() -> void:
 	print("PycoLog: Game closing...")
-	
-	# Если игра была на паузе, отправляем событие возобновления
-	if _is_paused:
-		_handle_game_resume("game_closing")
-	
-	# Отправляем событие закрытия
-	var close_event := _get_close_event()
-	log_event(close_event)
+
+	# Если уже свёрнуты — сессия уже завершена (stop_playing отправлен), close не дублируем.
+	if not _is_paused:
+		var close_event := _get_close_event()
+		log_event(close_event)
 	
 	# Ждем завершения текущего запроса
 	if _http_request.is_requesting:

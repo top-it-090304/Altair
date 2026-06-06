@@ -27,6 +27,7 @@ var tutorial_shown_9: bool = false
 var tutorial_shown_17: bool = false
 var tutorial_skip_shown: bool = false
 var credits_shown: bool = false
+var reset_progress_count: int = 0  # сколько раз жали "сброс прогресса" (накопительно, переживает сброс)
 
 # ── СЧЁТЧИК СМЕРТЕЙ (не сохраняется, живёт в памяти) ─────────────────────────
 var current_level_deaths: int = 0
@@ -218,6 +219,7 @@ func save_data() -> void:
 	config.set_value("tutorial", "shown_17", tutorial_shown_17)
 	config.set_value("tutorial", "skip_shown", tutorial_skip_shown)
 	config.set_value("game", "credits_shown", credits_shown)
+	config.set_value("game", "reset_progress_count", reset_progress_count)
 	for level_name in level_records:
 		config.set_value("records", level_name, level_records[level_name])
 	config.save(SAVE_PATH)
@@ -229,7 +231,8 @@ func reset_ctrl_positions() -> void:
 	save_data()
 
 func reset_progress() -> void:
-	PycoLog.log_event_by_type("progress_reset", {})
+	reset_progress_count += 1
+	PycoLog.log_event_by_type("progress_reset", {"reset_count": reset_progress_count})
 	level_records.clear()
 	total_fruits = 0
 	_spent = 0
@@ -266,6 +269,7 @@ func load_data() -> void:
 	tutorial_shown_17 = config.get_value("tutorial", "shown_17", false)
 	tutorial_skip_shown = config.get_value("tutorial", "skip_shown", false)
 	credits_shown = config.get_value("game", "credits_shown", false)
+	reset_progress_count = config.get_value("game", "reset_progress_count", 0)
 	if config.has_section("records"):
 		for key in config.get_section_keys("records"):
 			level_records[key] = config.get_value("records", key, 0)
