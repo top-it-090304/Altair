@@ -1,9 +1,8 @@
 extends Node
 ## Автопауза игры при потере фокуса окна. Регистрируется как autoload AppFocus.
 
-# FPS в фоне. НЕ 0 (0 в Godot = безлимит). 10 = почти нулевая нагрузка, но окно
-# мгновенно «просыпается» при возврате фокуса.
-const BACKGROUND_FPS: int = 10
+# FPS в фоне. НЕ 0 (0 в Godot = безлимит). 1 = минимальная нагрузка в фоне.
+const BACKGROUND_FPS: int = 1
 
 var _was_paused: bool = false        # была ли игра на паузе ДО потери фокуса
 var _saved_max_fps: int = 0          # кап FPS до потери фокуса
