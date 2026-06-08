@@ -16,10 +16,10 @@ const _url_suffix: String = "v1.0/events"
 var flush_period_msec: float = 2000.0  ## Send batched events to server at least this often.
 var queue_limit: int = 10  ## Send a batch of events if the queue is at least this long. Helps avoid frame stutter from too many events.
 var request_timeout: float = 30.0  ## Number of seconds after which the event logging requests timeout. Will result in lost events.
-# TEST: webhook.site (полный url, БЕЗ _url_suffix). PROD: заменить на "<ip>:<port>/" + _url_suffix (от Aleksandr'а).
-var url: String = "https://webhook.site/15a8e895-9b81-4f3c-ada5-90c3e996b794"  ## The exact server url for accepting batch requests (eg. including "v1.0/events").
-# TODO: общая соль от Aleksandr'а — ОДИНАКОВАЯ для всех 8 игр.
-var hash_salt: String = "effective_games_salt" # ("%x" % randi()).left(8)
+# PROD: боевой сервер Aleksandr'а (effective.games каталог).
+var url: String = "http://37.252.20.174:8103/" + _url_suffix  ## The exact server url for accepting batch requests (eg. including "v1.0/events").
+# Общая соль от Aleksandr'а — ОДИНАКОВАЯ для всех 9 игр.
+var hash_salt: String = "2ab6f74e"
 var startup_callable: Callable  ## Callable returning a PycoEvent to send after the zeroth frame. Set to null to disable.
 var shutdown_callable: Callable  ## Callable returning a PycoEvent to send on NOTIFICATION_WM_CLOSE_REQUEST. Set to null to disable.
 
@@ -30,8 +30,8 @@ func _ready() -> void:
 	# ALWAYS: продолжаем флашить очередь даже когда дерево на паузе (фон/пауз-меню).
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	# TODO: реальный api-key от Aleksandr'а (webhook.site его игнорирует).
-	PycoEvent.default_event.api_key = "TODO_API_KEY_FROM_ALEKSANDR"
+	# Боевой api-key от Aleksandr'а.
+	PycoEvent.default_event.api_key = "3b8ced07-7f00-4738-bfea-96f04b1d098c"
 	PycoEvent.default_event.application = ProjectSettings.get_setting_with_override(
 		&"application/config/name"
 	)
