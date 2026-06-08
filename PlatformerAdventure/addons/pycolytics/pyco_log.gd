@@ -152,7 +152,14 @@ func _generate_user_id() -> String:
 	
 	# Генерируем новый UUID если файл не найден или user_id отсутствует
 	var new_user_id = _generate_uuid()
-	
+
+	# Каталог common общий для всех игр effective.games (user://../common).
+	# Godot не создаёт родительские папки сам — создаём, иначе запись user_id
+	# падает (Failed to save user_id) и UUID пересоздаётся каждый запуск.
+	var common_dir := ProjectSettings.globalize_path("user://../common")
+	if not DirAccess.dir_exists_absolute(common_dir):
+		DirAccess.make_dir_recursive_absolute(common_dir)
+
 	# Сохраняем в файл
 	var save_file = FileAccess.open(file_path, FileAccess.WRITE)
 	if save_file != null:
