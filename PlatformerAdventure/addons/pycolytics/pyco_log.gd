@@ -1,9 +1,11 @@
 extends Node
 
-# Добавить после строки var shutdown_callable: Callable
-var _is_paused: bool = false  ## true = игра свёрнута/в фоне (сессия завершена)
-var _pause_start_time: float = 0.0  ## Время начала паузы для расчета длительности
-var _session_start_unix: float = 0.0  ## Реальное время старта сессии (unix), для session_duration
+# Сессия = от запуска игры до ЗАКРЫТИЯ. session_id НЕ пересоздаётся на сворачивание.
+# session_duration = только foreground-время (фон в зачёт не идёт).
+var _is_paused: bool = false  ## true = игра свёрнута/в фоне (таймер активного времени на паузе)
+var _active_accum: float = 0.0  ## Накопленное активное (foreground) время сессии, сек
+var _last_resume_unix: float = 0.0  ## unix-время последнего входа в foreground
+var _session_start_unix: float = 0.0  ## Реальное время старта сессии (unix), для справки
 
 var _event_queue: PackedStringArray
 var _http_request: AwaitableHTTPRequest
@@ -15,7 +17,7 @@ var flush_period_msec: float = 2000.0  ## Send batched events to server at least
 var queue_limit: int = 10  ## Send a batch of events if the queue is at least this long. Helps avoid frame stutter from too many events.
 var request_timeout: float = 30.0  ## Number of seconds after which the event logging requests timeout. Will result in lost events.
 # TEST: webhook.site (полный url, БЕЗ _url_suffix). PROD: заменить на "<ip>:<port>/" + _url_suffix (от Aleksandr'а).
-var url: String = "https://webhook.site/bdeee979-972b-4082-a831-c40ae6dad4f1"  ## The exact server url for accepting batch requests (eg. including "v1.0/events").
+var url: String = "https://webhook.site/15a8e895-9b81-4f3c-ada5-90c3e996b794"  ## The exact server url for accepting batch requests (eg. including "v1.0/events").
 # TODO: общая соль от Aleksandr'а — ОДИНАКОВАЯ для всех 8 игр.
 var hash_salt: String = "effective_games_salt" # ("%x" % randi()).left(8)
 var startup_callable: Callable  ## Callable returning a PycoEvent to send after the zeroth frame. Set to null to disable.
@@ -50,7 +52,9 @@ func _ready() -> void:
 	_http_request = _create_request()
 
 	_session_start_unix = Time.get_unix_time_from_system()
-	# Явный старт игровой сессии (session start). Шлём после нулевого кадра.
+	_last_resume_unix = _session_start_unix
+	_active_accum = 0.0
+	# Явный старт сессии — ОДИН раз за lifetime. session_id задан выше и НЕ меняется.
 	log_event_by_type.call_deferred("start_playing", {})
 
 
@@ -252,51 +256,50 @@ func _flush_queue() -> void:
 		)
 
 
-# Сворачивание/фон: сессия ЗАВЕРШАЕТСЯ (stop_playing с длительностью).
-# Саму паузу/заморозку игры (paused, max_fps, аудио) делает отдельный autoload AppFocus —
-# здесь только аналитика, чтобы не конфликтовать с ним.
+# Сворачивание/фон: таймер активного времени на ПАУЗУ + чекпойнт stop_playing
+# с НАКОПЛЕННОЙ активной длительностью (тот же session_id). Сессия НЕ завершается —
+# это контрольная точка на случай OS-kill из фона (Аврора не шлёт close).
+# Заморозку игры (paused/max_fps/аудио) делает autoload AppFocus — здесь только аналитика.
 func _handle_background(reason: String) -> void:
 	if _is_paused or _shutdown_initiated:
 		return
 	_is_paused = true
 
-	var duration := Time.get_unix_time_from_system() - _session_start_unix
-	log_event_by_type("stop_playing", {"session_duration": duration, "reason": reason})
+	_active_accum += Time.get_unix_time_from_system() - _last_resume_unix
+	log_event_by_type("stop_playing", {"session_duration": _active_accum, "reason": reason})
 
-	print("PycoLog: session ended (backgrounded) - ", reason, " duration=", duration)
+	print("PycoLog: session paused (backgrounded) - ", reason, " active=", _active_accum)
 
-# Разворачивание: начинаем НОВУЮ сессию (новый session_id + start_playing).
+# Разворачивание: ПРОДОЛЖАЕМ ту же сессию (session_id НЕ меняется).
+# Снимаем таймер активного времени с паузы. Событие не шлём.
 # Распаузу/звук восстанавливает autoload AppFocus.
 func _handle_foreground(reason: String) -> void:
 	if not _is_paused:
 		return
 	_is_paused = false
 
-	# Новая сессия
-	_session_start_unix = Time.get_unix_time_from_system()
-	PycoEvent.default_event.session_id = (
-		(PycoEvent.default_event.user_id + str(_session_start_unix)).sha256_text()
-	)
-	log_event_by_type("start_playing", {"reason": reason})
+	_last_resume_unix = Time.get_unix_time_from_system()
 
-	print("PycoLog: new session started (foreground) - ", reason)
+	print("PycoLog: session resumed (foreground) - ", reason)
 
 func _handle_game_close() -> void:
 	print("PycoLog: Game closing...")
 
-	# Если уже свёрнуты — сессия уже завершена (stop_playing отправлен), close не дублируем.
+	# Финальный конец сессии: stop_playing с итоговой активной длительностью.
+	# Если уже свёрнуты — чекпойнт stop_playing уже ушёл с тем же значением, не дублируем.
 	if not _is_paused:
-		var close_event := _get_close_event()
-		log_event(close_event)
-	
+		_active_accum += Time.get_unix_time_from_system() - _last_resume_unix
+		log_event_by_type("stop_playing", {"session_duration": _active_accum, "reason": "close"})
+		_is_paused = true
+
 	# Ждем завершения текущего запроса
 	if _http_request.is_requesting:
 		await _http_request.request_finished
-	
+
 	# Отправляем shutdown событие (существующая логика)
 	if shutdown_callable != null:
 		log_event(shutdown_callable.call())
-	
+
 	_shutdown_initiated = true
 	_flush_queue()
 	await _http_request.request_finished
@@ -356,9 +359,11 @@ func _get_session_start_time() -> float:
 	return _session_start_unix
 
 
-## Явный конец игровой сессии. Шлёт stop_playing с длительностью и ждёт отправки.
-## Вызывать перед get_tree().quit().
+## Явный конец игровой сессии (кнопка Выход в игре). Шлёт stop_playing с итоговой
+## активной длительностью и ждёт отправки. Вызывать перед get_tree().quit().
 func log_stop_playing() -> void:
-	var duration := Time.get_unix_time_from_system() - _session_start_unix
-	log_event_by_type("stop_playing", {"session_duration": duration})
+	if not _is_paused:
+		_active_accum += Time.get_unix_time_from_system() - _last_resume_unix
+		_is_paused = true
+	log_event_by_type("stop_playing", {"session_duration": _active_accum, "reason": "exit_button"})
 	await _flush_queue()

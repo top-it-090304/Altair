@@ -12,6 +12,10 @@ extends Resource
 
 static var default_event:PycoEvent = PycoEvent.new()  ## All auto-generated events are based on this instance.
 
+## TEST: пока тестируем на боевом сервере — каждое событие помечается value.is_test=true,
+## чтобы скрипт аналитики игнорировал тестовые данные. ПЕРЕД РЕЛИЗОМ в Rustore выставить false.
+static var test_mode: bool = true
+
 
 ## Creates a copy of the default event, use this with merge() to create customized events.
 static func copy_default() -> PycoEvent:
@@ -40,6 +44,10 @@ func merge(pyco_event:PycoEvent) -> PycoEvent:
 
 
 func to_json() -> String:
+	# В тест-режиме помечаем событие is_test внутри value (не ломает схему сервера).
+	var out_value: Dictionary = value.duplicate()
+	if PycoEvent.test_mode:
+		out_value["is_test"] = true
 	var property_strings:PackedStringArray
 	property_strings.append('"event_type":' + JSON.stringify(event_type))
 	property_strings.append('"application":' + JSON.stringify(application))
@@ -47,7 +55,7 @@ func to_json() -> String:
 	property_strings.append('"platform":' + JSON.stringify(platform))
 	property_strings.append('"user_id":' + JSON.stringify(user_id))
 	property_strings.append('"session_id":' + JSON.stringify(session_id))
-	property_strings.append('"value":' + JSON.stringify(value))
+	property_strings.append('"value":' + JSON.stringify(out_value))
 	property_strings.append('"api_key":' + JSON.stringify(api_key))
 	var json:String = "{" + ",".join(property_strings) + "}"
 	return json
