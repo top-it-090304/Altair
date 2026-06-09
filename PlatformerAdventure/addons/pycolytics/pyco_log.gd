@@ -32,6 +32,11 @@ func _ready() -> void:
 	
 	# Боевой api-key от Aleksandr'а.
 	PycoEvent.default_event.api_key = "3b8ced07-7f00-4738-bfea-96f04b1d098c"
+
+	# Тестовая пометка событий (value.is_test). По умолчанию ВКЛ.
+	# Снимается ТОЛЬКО в сборке с custom feature "production" (export-пресет Rustore).
+	# Редактор/обычный экспорт/друзьям → is_test=true. Боевой пресет → false.
+	PycoEvent.test_mode = not OS.has_feature("production")
 	PycoEvent.default_event.application = ProjectSettings.get_setting_with_override(
 		&"application/config/name"
 	)
